@@ -24,4 +24,15 @@ public class IndexController {
         model.addAttribute("students",students );
         return "index";
     }
+	
+	@RequestMapping("/mg/stu")
+    public String studentMangement(Model model) {
+    	List<Student> students =new ArrayList<Student>();
+    	Student stu = new Student(1,"1234","sjw");
+    	students.add(stu);
+    	stu = new Student(2,"2222","lm");
+    	students.add(stu);
+        model.addAttribute("students",students );
+        return "management/student";
+    }
 }
