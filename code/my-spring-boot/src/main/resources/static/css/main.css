@@ -51,7 +51,7 @@ footer {
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  width: 260px;
+  width: 200px;
   height: 100%;
   float: left;
   background-color: #2B333E;
@@ -64,7 +64,7 @@ footer {
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  width: calc(100% - 260px);
+  width: calc(100% - 200px);
   left: 0;
   position: relative;
   float: right;
@@ -80,7 +80,7 @@ footer {
     padding-top: 130px; } }
 
 .layout-fullwidth #wrapper .sidebar {
-  left: -260px; }
+  left: -200px; }
 
 .layout-fullwidth #wrapper .main {
   width: 100%; }
@@ -97,11 +97,11 @@ footer {
 .offcanvas-active #wrapper .main {
   width: 100%;
   position: relative;
-  left: 260px; }
+  left: 200px; }
 
 @media screen and (max-width: 1024px) {
   #wrapper .sidebar {
-    left: -260px; }
+    left: -200px; }
   #wrapper .main {
     width: 100%; }
   #wrapper .navbar {
@@ -156,6 +156,7 @@ html.fullscreen-bg #wrapper {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
+  height : 60px;
   padding: 0;
   margin: 0;
   border: none;
@@ -167,6 +168,7 @@ html.fullscreen-bg #wrapper {
   .navbar-default .brand {
     float: left;
     padding: 30px 39px;
+    height: 60px;
     background-color: #fff; }
   @media screen and (max-width: 1024px) {
     .navbar-default .brand {

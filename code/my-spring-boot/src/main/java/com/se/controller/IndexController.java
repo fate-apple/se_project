@@ -32,6 +32,13 @@ public class IndexController {
     	students.add(stu);
     	stu = new Student(2,"2222","lm");
     	students.add(stu);
+    	stu = new Student(3,"2322","lm");
+    	students.add(stu);
+    	stu = new Student(4,"22312","lm");
+    	students.add(stu);
+    	stu = new Student(5,"22321","lm");
+    	students.add(stu);
+
         model.addAttribute("students",students );
         return "management/student";
     }
