@@ -91,7 +91,7 @@ $(document).ready(function() {
 				affectedElement = $('.slimScrollDiv');
 			}
 
-			$(this).parents('.panel').find(affectedElement).slideUp(300);
+			$(this).parents('.panel').find(affectedElement).slideDown(300);
 			$(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
 		},
 		function(e) {
@@ -102,7 +102,7 @@ $(document).ready(function() {
 				affectedElement = $('.slimScrollDiv');
 			}
 
-			$(this).parents('.panel').find(affectedElement).slideDown(300);
+			$(this).parents('.panel').find(affectedElement).slideUp(300);
 			$(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
 		}
 	);

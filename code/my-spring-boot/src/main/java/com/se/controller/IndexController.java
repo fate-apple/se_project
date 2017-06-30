@@ -25,7 +25,7 @@ public class IndexController {
         return "index";
     }
 	
-	@RequestMapping("/mg/stu")
+	@RequestMapping("/manage/stu")
     public String studentMangement(Model model) {
     	List<Student> students =new ArrayList<Student>();
     	Student stu = new Student(1,"1234","sjw");
@@ -41,5 +41,15 @@ public class IndexController {
 
         model.addAttribute("students",students );
         return "management/student";
+    }
+	
+	@RequestMapping("/cd")
+    public String classDisplay(Model model) {
+        return "display/classDisplay";
+    }
+	
+	@RequestMapping("/manage/news")
+    public String showNews(Model model) {
+        return "management/news";
     }
 }
