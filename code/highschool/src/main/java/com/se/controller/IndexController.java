@@ -50,6 +50,6 @@ public class IndexController {
 	
 	@RequestMapping("/manage/news")
     public String showNews(Model model) {
-        return "management/news2";
+        return "management/news";
     }
 }

@@ -3,88 +3,48 @@
 <head>
     <title>SE</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <link th:href="@{/css/manage-style.css}" rel="stylesheet"/> 
+    <link th:href="@{/css/loader-style.css}" rel="stylesheet"/>
     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
-    <link th:href="@{/font-awesome/css/font-awesome.min.css}" rel="stylesheet"/> 
-	<link th:href="@{/linearicons/style.css}" rel="stylesheet"/>
-    <link th:href="@{/css/main.css}" rel="stylesheet"/>
+    <link th:href="@{/linearicons/style.css}" rel="stylesheet"/>
+    <link th:href="@{/css/manage.css}" rel="stylesheet"/>
+
 </head>
 <body>
-	<div id="wrapper">
-		<div  th:replace="component/header :: copy"></div>
-		<div  th:replace="component/sidebar :: copy"></div>
-		<div class="main">
-			<div class="main-content">
-				<div class="container-fluid">
-					<h2 class="page-title">通知</h2>
-					<div class="row">
-						<div class="col-md-12">
-							<!-- PANEL DEFAULT -->
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">热烈庆祝开学————2017年9月1日</h3>
-									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-down"></i></button>
-									</div>
-								</div>
-								<div class="panel-body collapse">
-									<p>今天开学啦！</p>
-								</div>
+	 <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+	<div  th:replace="component/navbar :: copy"></div>
+	<div  th:replace="component/sidebar :: copy"></div>
+	<div class="wrap-fluid">
+		<div class="informationWrapper">
+			<h1> 通知</h1>
+			<div class="row">
+				<div class="col-md-12">
+					<!-- PANEL DEFAULT -->
+					<div class="panel">
+						<div class="panel-heading">
+							<h3 class="panel-title">热烈庆祝开学————2017年9月1日</h3>
+							<div class="right">
+								<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-down"></i></button>
 							</div>
-							<!-- END PANEL DEFAULT -->
+						</div>
+						<div class="panel-body collapse">
+							<p>今天开学啦！</p>
 						</div>
 					</div>
-					<!-- Ending Row -->
-					<div class="row">
-						<div class="col-md-12">
-							<h4>发布新通知</h4>
-							<select name="class" id="class">
-								<option value="1">高一（1）班</option>
-							</select>
-						</div>
-						
-					</div>
-					<!-- Ending Row -->
+					<!-- END PANEL DEFAULT -->
 				</div>
 			</div>
 		</div>
 	</div>
-    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
-    <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
-	<script type="text/javascript" th:src="@{/js/jquery.slimscroll.min.js}"></script>
-	<script type="text/javascript" th:src="@{/js/klorofil-common.js}"></script>
-	<script>
-		$(document).ready(function() {
-			var affectedElement = $('.panel-body');
-
-			$('.panel .btn-toggle-collapse').clickToggle(
-				function(e) {
-					e.preventDefault();
-
-					// if has scroll
-					if( $(this).parents('.panel').find('.slimScrollDiv').length > 0 ) {
-						affectedElement = $('.slimScrollDiv');
-					}
-
-					$(this).parents('.panel').find(affectedElement).slideDown(300);
-					$(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
-				},
-				function(e) {
-					e.preventDefault();
-
-					// if has scroll
-					if( $(this).parents('.panel').find('.slimScrollDiv').length > 0 ) {
-						affectedElement = $('.slimScrollDiv');
-					}
-
-					$(this).parents('.panel').find(affectedElement).slideUp(300);
-					$(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
-				}
-			);
-
-		}
-	</script>
-
+	<script type="text/javascript" th:src="@{/js/preloader.js}"></script>
+	<script type="text/javascript" th:src="@{/bootstrap//js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/changeBg.js}"></script>
+	<script type="text/javascript" th:src="@{/js/load.js}"></script>
+	<script type="text/javascript" th:src="@{/js/main.js}"></script>
+	<script type="text/javascript" th:src="@{/js/panel.js}"></script>
 </body>
 </html>
