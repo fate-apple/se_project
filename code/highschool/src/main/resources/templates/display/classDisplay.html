@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/font-awesome/css/font-awesome.min.css}" rel="stylesheet"/> 
+    <link th:href="@{/templatemo/css/templatemo_misc.css}" rel="stylesheet"/> 
+    <link th:href="@{/templatemo/css/easy-responsive-tabs.css}" rel="stylesheet"/>
+   	<link th:href="@{/templatemo/css/templatemo_style.css}" rel="stylesheet"/>  
+    
+</head>
+<body>
+	<div class="logocontainer">
+    	<div class="row">
+        	<h1>高一（1）班</h1>
+            <div class="clear"></div>
+            <div class="templatemo_smalltitle">班级展示</div>
+       </div>
+    </div>    
+   <div id="menu-container" class="main_menu">
+   <!-- homepage start -->
+    <div class="content homepage" id="menu-1">
+  		<div class="container">
+          	<div class="col-md-3 col-sm-6 templatemo_leftgap">
+            	<div class="templatemo_mainservice templatemo_botgap">
+                	<div class="templatemo_link"><a class="show-2 templatemo_page2" href="#">通知</a></div>
+                	
+                </div>
+                <div class="templatemo_mainimg"><img th:src="@{/img/display/se1.jpg}" alt="home img 01"/></div>
+            </div>
+            <div class="col-md-3 col-sm-6 templatemo_leftgap">
+            	<div class="templatemo_mainimg templatemo_botgap templatemo_portfotopgap"><img th:src="@{/img/display/se4.jpg}" alt="home img 02"/></div>
+                <div class="templatemo_mainportfolio">
+                      <div class="templatemo_link"><a class="show-3 templatemo_page3" href="#">作业</a></div>
+                	                   
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 templatemo_leftgap">
+            	<div class="templatemo_maintesti templatemo_botgap templatemo_topgap">
+                	<div class="templatemo_link"><a class="show-4 templatemo_page4" href="#">课表</a></div>
+                </div>
+                <div class="templatemo_mainimg"><img th:src="@{/img/display/se2.jpg}" alt="home img 03"/></div>
+            </div>
+            <div class="col-md-3 col-sm-6 templatemo_leftgap">
+            	<div class="templatemo_mainimg templatemo_botgap templatemo_topgap">
+             	   <img th:src="@{/img/display/se3.jpg}" alt="home img 04"/>
+                </div>
+                <div class="templatemo_mainabout templatemo_botgap">
+                	<div class="templatemo_link"><a class="show-5 templatemo_page5" href="#">班级介绍</a></div>
+                </div>
+                <div class="templatemo_maincontact">
+                	<div class="templatemo_link"><a class="show-6 templatemo_page6" href="#">其他</a></div>
+                </div>
+            </div>
+    	</div>
+    </div>
+    </div>
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/jquery.lightbox.js}"></script>
+    <script type="text/javascript" th:src="@{/templatemo/js/templatemo_custom.js}"></script>
+    <script type="text/javascript" th:src="@{/js/easyResponsiveTabs.js}"></script>
+    <script>
+    function showhide()
+    {
+        var div = document.getElementById("newpost");
+		if (div.style.display !== "none") 
+		{
+			div.style.display = "none";
+		}
+		else 
+		{
+			div.style.display = "block";
+		}
+    }
+    $(document).ready(function () {
+        $('#horizontalTab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion
+            width: 'auto', //auto or any width like 600px
+            fit: true, // 100% fit in a container
+            closed: 'accordion', // Start closed if in accordion view
+            activate: function(event) { // Callback function if tab is switched
+                var $tab = $(this);
+                var $info = $('#tabInfo');
+                var $name = $('span', $info);
+
+                $name.text($tab.text());
+
+                $info.show();
+				
+            }
+        });
+
+        $('#ab').easyResponsiveTabs({
+            type: 'vertical',
+            width: 'auto',
+            fit: true,
+        });
+		
+
+		$('#cmt').easyResponsiveTabs({
+            type: 'vertical',
+            width: 'auto',
+            fit: true,
+        });
+    });
+  </script>
+  
+</body>
+</html>
