@@ -52,4 +52,14 @@ public class IndexController {
     public String showNews(Model model) {
         return "management/news";
     }
+	
+	@RequestMapping("/manage/addnews")
+    public String addNews(Model model) {
+        return "management/addnews";
+    }
+	
+	@RequestMapping("/manage/timetable")
+    public String showTimetable(Model model) {
+        return "management/timetable";
+    }
 }

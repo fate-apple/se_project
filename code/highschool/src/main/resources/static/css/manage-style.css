@@ -11,7 +11,7 @@
     font-family:'FontAwesome', sans-serif;
 }
 body {
-    color: #9ea7b3!important;
+    color: #000000!important;
     font-family:"Open Sans", Arial, sans-serif!important;
     font-size: 13px!important;
     line-height: 20px;
@@ -432,7 +432,7 @@ input:-webkit-autofill, textarea:-webkit-autofill {
     background-image: none;
     border: 1px solid !important;
     border-radius: 4px;
-    border-bottom-color: #FFFFFF;
+    border-bottom-color: #ffffff;
     box-shadow: none !important;
     color: #000000!important;
     font-size: 13px !important;
@@ -733,7 +733,7 @@ input[type="search"] {
 }
 input[type="search"]:focus {
     background-color: #FFFFFF;
-    border-color: #6DCFF6;
+    border-color: #ffffff;
     box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
     width: 130px;
 }
