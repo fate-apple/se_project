@@ -31,7 +31,7 @@ jQuery(document).ready(function() {
 		password = $("input[name='password']").val();
 		console.log(username, password,usertype);
 		jQuery.ajax({
-			url : 'se/manage/news',
+			url : '/base/news',
 				processData : true,
 				dataType : "text",
 				data : {
@@ -40,7 +40,7 @@ jQuery(document).ready(function() {
 					usertype : usertype
 				},
 				success : function(data) {
-					window.location.href = "/se/manage/news";
+					window.location.href = "/base/news";
 					console.log(data);
 
 				}

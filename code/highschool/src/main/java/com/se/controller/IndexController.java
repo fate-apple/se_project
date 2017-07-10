@@ -11,7 +11,6 @@ import com.se.domain.Student;
 
 
 @Controller
-@RequestMapping("/se")
 public class IndexController {
 	
 	@RequestMapping("")
@@ -25,7 +24,7 @@ public class IndexController {
         return "index";
     }
 	
-	@RequestMapping("/manage/stu")
+	@RequestMapping("/manage/student")
     public String studentMangement(Model model) {
     	List<Student> students =new ArrayList<Student>();
     	Student stu = new Student(1,"1234","sjw");
@@ -40,26 +39,31 @@ public class IndexController {
     	students.add(stu);
 
         model.addAttribute("students",students );
-        return "management/student";
+        return "manage/student";
     }
 	
-	@RequestMapping("/cd")
+	@RequestMapping("/display/class")
     public String classDisplay(Model model) {
-        return "display/classDisplay";
+        return "display/class";
     }
 	
-	@RequestMapping("/manage/news")
+	@RequestMapping("/base/news")
     public String showNews(Model model) {
-        return "management/news";
+        return "base/news";
     }
 	
-	@RequestMapping("/manage/addnews")
+	@RequestMapping("/edu/addnews")
     public String addNews(Model model) {
-        return "management/addnews";
+        return "edu/addnews";
     }
 	
-	@RequestMapping("/manage/timetable")
+	@RequestMapping("/base/timetable")
     public String showTimetable(Model model) {
-        return "management/timetable";
+        return "base/timetable";
+    }
+	
+	@RequestMapping("/edu/courseware")
+    public String addCourseware(Model model) {
+        return "edu/courseware";
     }
 }
