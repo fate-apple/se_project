@@ -19,42 +19,22 @@
 	 <div id="preloader">
         <div id="status">&nbsp;</div>
     </div>
+    
 	<div  th:replace="component/navbar :: copy"></div>
 	<div  th:replace="component/sidebar :: copy"></div>
+	
 	<div class="wrap-fluid">
 		<div class="informationWrapper">
-			<h1>学生信息</h1>
-			<div class="row">
-				<div class="col-md-3">
-					<select id="grade" class="selectpicker" multiple="multiple"  data-actions-box="true" title="选择年级">
-						<option value="1">高一</option>
-						<option value="2">高二</option>
-						<option value="3">高三</option>
-						<option value="0">3+3虚拟班</option>
-					</select>
-				</div>
-				<div class="col-md-3">
-					<select id="class" class="selectpicker" multiple="multiple"  data-actions-box="true" title="选择班级">
+			<h1>课程时间</h1>
 
-					</select>
-				</div>
-				<div class="col-md-3">
-					<form id="getStudentForm" action="" method="post">
-						<input id="classes" name="classes" type="hidden"/>
-						<button type="button" id="getStudent" class="btn btn-default">获取</button>
-					 </form>
-				</div>
-			</div>
-			<br/>
-			<br/>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							学生列表
-							<button class="btn btn-default" type="button" id="addStudent"
+							课程时间列表
+							<button class="btn btn-default" type="button" id="addRoom"
 									style="float:right">
-								<i class="fa fa-plus">添加学生</i>
+								<i class="fa fa-plus">添加课程时间</i>
 							</button>
 						</div>
 						<div class="panel-body">
@@ -62,18 +42,18 @@
 								<table class="table table-bordered table-hover"
 									id="dataTables">
 									<thead>
-										<tr >
-										    <th>学号</th>
-											<th>名字</th>
-											<th>年级</th>
-											<th>班级</th>
+										<tr>
+										    <th>星期</th>
+											<th>开始时间</th>
+											<th>结束时间</th>
+											<th></th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="student:${students}">
-											<td th:text="${student.sno}"></td>
-											<td th:text="${student.name}"></td>
-											<td></td>
+										<tr th:each="period:${periods}">
+											<td th:text="${period.weekday}"></td>
+											<td th:text="${period.beginTime}"></td>
+											<td th:text="${period.endTime}"></td>
 											<td></td>
 										</tr>
 									</tbody>
@@ -87,6 +67,7 @@
 			<!-- Ending Row -->
 		</div>
 	</div>
+
 	<script type="text/javascript" th:src="@{/js/preloader.js}"></script>
 	<script type="text/javascript" th:src="@{/bootstrap//js/bootstrap.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/jquery.dataTables.min.js}"></script>
