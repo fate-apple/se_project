@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/font-awesome/css/font-awesome.min.css}" rel="stylesheet"/> 
+    <link th:href="@{/css/indexstyle.css}" rel="stylesheet"/> 
+    <link th:href="@{/css/form-elements.css}" rel="stylesheet"/>
+    
+</head>
+<body>
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                        			<h1><strong>上海市第二中学</strong></h1>
+                        			<h3>登录</h3>
+                            		
+                        		</div>
+                        		<div class="form-top-right">
+                        			<i class="fa fa-lock"></i>
+                        		</div>
+                            </div>
+                            <div class="form-bottom">
+			                    <form role="form" action="" method="post" class="login-form">
+			                    	<div class="form-group" id="normal">
+			                    		<label class="sr-only" for="username">账号</label>
+			                        	<input type="text" name="username" placeholder="用户名" class="form-username form-control" id="username"></input>
+			                        </div>
+			                        <div class="form-group" id="selectClass" style="display:none">
+			                    		<select class="form-control" id="selectGrade" data-type="horizontal" style="float: left; width:45%;" onchange="classChange()">
+			                    			<option value="1">高一</option>
+											<option value="2">高二</option>
+											<option value="3">高三</option>
+			                    		</select>
+			                    		<select  class="form-control" id="grade1" data-type="horizontal" style="float: right;width:45%;">
+											<option th:each="i:${#numbers.sequence(1,classes.get(0))}" th:inline="text" th:value="${i}"> 高一（[[${i}]]）班</option>
+			                    		</select>
+			                    		<select  class="form-control" id="grade2" data-type="horizontal" style="display:none;float: right;width:45%;">
+											<option th:each="i:${#numbers.sequence(1,classes.get(1))}" th:inline="text" th:value="${i}"> 高二（[[${i}]]）班</option>
+			                    		</select>
+			                    		<select  class="form-control" id="grade3" data-type="horizontal" style="display:none;float: right;width:45%;">
+											<option th:each="i:${#numbers.sequence(1,classes.get(2))}" th:inline="text" th:value="${i}"> 高三（[[${i}]]）班</option>
+			                    		</select>
+			                        </div>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="password">密码</label>
+			                        	<input type="password" name="password" placeholder="密码" class="form-password form-control" id="password"></input>
+			                        </div>
+			                         <div class="form-group">
+			                        	<input type="radio" name="usertype" value="student" checked="checked" onclick="radioShow();"/>学生
+			                        	<input type="radio" name="usertype" value="teacher" onclick="radioShow();"/>老师
+			                        	<input type="radio" name="usertype" value="class" onclick="radioShow();"/>班级
+			                        </div>
+			                        <button type="submit" class="btn" id="login">登录</button>
+			                    </form>
+		                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+	
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/jquery.backstretch.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/index.js}"></script> 
+    <script>
+    		function radioShow(){
+    			var radio = document.getElementsByName("usertype");
+				if(radio[2].checked){
+					document.getElementById("normal").style.display="none";
+					document.getElementById("selectClass").style.display="block";
+				}
+				if(radio[0].checked || radio[1].checked){
+					document.getElementById("selectClass").style.display="none";
+					document.getElementById("normal").style.display="block";
+				}
+    		}
+    </script>
+    <script th:inline="javascript">
+	/*<![CDATA[*/
+		function classChange(){
+		    var grade = $("#selectGrade").val();
+		    for(i=1;i<=3;i++){
+		    	document.getElementById("grade"+i).style.display="none";
+		    }
+		    document.getElementById("grade"+grade).style.display="block";
+		    
+		}
+	/*]]>*/
+	</script>
+
+
+</body>
+</html>
