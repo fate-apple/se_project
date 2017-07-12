@@ -4,16 +4,21 @@ import java.sql.Time;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Table(name="period")
 @Entity
 public class Period {
-	@Id
-	@Column(name="periodid")
-	private int id;
-	private int weekday;
+	
+	private int id;	
+	
+	@NotEmpty
+	private int weekday;	
 	private Time beginTime;
 	private Time endTime;
 	
@@ -27,24 +32,31 @@ public class Period {
 		this.beginTime = beginTime;
 		this.endTime = endTime;
 	}
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="periodid")
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public int getWeekday() {
 		return weekday;
 	}
 	public void setWeekday(int weekday) {
 		this.weekday = weekday;
 	}
+	
 	public Time getBeginTime() {
 		return beginTime;
 	}
 	public void setBeginTime(Time beginTime) {
 		this.beginTime = beginTime;
 	}
+	
 	public Time getEndTime() {
 		return endTime;
 	}
