@@ -44,7 +44,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
     public Role getRole() {
         return role;

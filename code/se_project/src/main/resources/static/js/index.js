@@ -31,13 +31,13 @@ jQuery(document).ready(function() {
 		password = $("input[name='password']").val();
 		console.log(username, password,usertype);
 		jQuery.ajax({
-			url : 'se/manage/news',
+			url : '/auth',
 				processData : true,
 				dataType : "text",
 				data : {
 					username : username,
-					password : password,
-					usertype : usertype
+					password : password
+
 				},
 				success : function(data) {
 					window.location.href = "/se/manage/news";

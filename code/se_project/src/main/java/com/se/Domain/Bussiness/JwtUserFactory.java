@@ -16,11 +16,12 @@ public final class JwtUserFactory {
     private JwtUserFactory(){};
 
     public static JwtUser create (User user){
+        Role role = user.getRole();
         return new JwtUser(
             user.getId(),
             user.getUsername(),
             user.getPassword(),
-            mapToGrandAuthorities(user.getRole()),
+            mapToGrandAuthorities(role),
             user.getLastPasswordResetDate(),
             user.getFullname()
                 );

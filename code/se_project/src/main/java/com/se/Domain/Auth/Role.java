@@ -12,24 +12,24 @@ import java.util.List;
 @Table(name="Role")
 @Entity
 public class Role {
-    private int id;
+    private int role_id;
     private String rolename;
     transient private List<User> users;
 
     public Role(int id, String roleName) {
-        this.id = id;
+        this.role_id = id;
         this.rolename = roleName;
     }
 
     @Id
-    @Column(name = "id")
+    @Column(name = "role_id")
     public int getId() {
 
-        return id;
+        return role_id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.role_id = id;
     }
     @Column(name="rolename")
     public String getRolename() {

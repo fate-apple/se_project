@@ -50,15 +50,6 @@ public class AuthServiceImpl implements AuthService {
     @Value("${jwt.tokenHead}")
     private String tokenHead;
 
-//    @Autowired
-//    public AuthServiceImpl(AuthenticationManager authenticationManager, UserDetailsService userDetailsService, JwtTokenUtil jwtTokenUtil, UserRepository userRepository, RoleRepository roleRepository) {
-//        this.authenticationManager = authenticationManager;
-//        this.userDetailsService = userDetailsService;
-//        this.jwtTokenUtil = jwtTokenUtil;
-//        this.userRepository = userRepository;
-//        this.roleRepository = roleRepository;
-//    }
-
     @Override
     public User register(User userToAdd) {
         final String username = userToAdd.getUsername();
@@ -69,7 +60,7 @@ public class AuthServiceImpl implements AuthService {
         final String rawPassword = userToAdd.getPassword();
         userToAdd.setPassword(encoder.encode(rawPassword));
         userToAdd.setLastPasswordResetDate(new Date());
-        userToAdd.setRole(roleRepository.findByRolename("admin"));
+        userToAdd.setRole(roleRepository.findByRolename("ROLE_USER"));
         return userRepository.save(userToAdd);
     }
 

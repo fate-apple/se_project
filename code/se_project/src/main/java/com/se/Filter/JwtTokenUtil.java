@@ -132,5 +132,29 @@ public class JwtTokenUtil implements Serializable {
                         && !isTokenExpired(token)
                         && !isCreatedBeforeLastPasswordReset(created, user.getLastPasswordResetDate()));
     }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public static String getClaimKeyUsername() {
+        return CLAIM_KEY_USERNAME;
+    }
+
+    public static String getClaimKeyCreated() {
+        return CLAIM_KEY_CREATED;
+    }
+
+    public String getSecret() {
+        return secret;
+    }
+
+    public void setSecret(String secret) {
+        this.secret = secret;
+    }
+
+    public Long getExpiration() {
+        return expiration;
+    }
 }
 
