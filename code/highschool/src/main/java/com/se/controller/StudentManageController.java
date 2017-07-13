@@ -21,6 +21,7 @@ import com.se.domain.Student;
 @RequestMapping("/manage")
 public class StudentManageController {
 	
+	//根据所选的班级返回学生（不重复）
 	@RequestMapping(value="/getStudent", method = RequestMethod.POST)
 	public String getStudent(@RequestParam String classes,Model model){
 		String[] classesStr = classes.split(",");
@@ -35,7 +36,7 @@ public class StudentManageController {
 		return "/manage/student";
 	}
 	
-	
+	//根据所选的年级，返回每个年级所有班级的名字和id
 	@RequestMapping(value="/getClass", method = RequestMethod.POST)
 	@ResponseBody
     public Map<String,Object> getClass(String grades) {

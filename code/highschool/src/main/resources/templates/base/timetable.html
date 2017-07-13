@@ -21,7 +21,7 @@
 	<div class="wrap-fluid">
 		<div class="informationWrapper">
 			<h1>我的课表</h1>
-			<table class="table">
+			<table class="table" style="font-size:20px;">
 				<thead>
 					<tr>
 						<th>时间\星期</th>
@@ -31,8 +31,17 @@
 						<th>星期四</th>
 						<th>星期五</th>
 					</tr>
-
 				</thead>
+				<tbody>
+					<tr th:each="period:${periods}">
+						<td th:text="${period.beginTime}+'-'+${period.endTime}"></td>
+						<td>语文</td>
+						<td>数学</td>
+						<td>英语</td>
+						<td>物理</td>
+						<td>化学</td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 	</div>

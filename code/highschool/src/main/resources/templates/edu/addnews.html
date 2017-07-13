@@ -29,14 +29,11 @@
 						<option value="1">高一</option>
 						<option value="2">高二</option>
 						<option value="3">高三</option>
-						<option value="0">3+3虚拟班</option>
 					</select>
 				</div>
 				<div class="col-md-3">
-					<select class="selectpicker" multiple="multiple"  data-actions-box="true" title="选择班级">
-						<option value="#">高一（1）班</option>
-						<option value="#">高一（2）班</option>
-						<option value="#">高一（3）班</option>
+					<select id="class" class="selectpicker" multiple="multiple"  data-actions-box="true" title="选择班级">
+
 					</select>
 				</div>
 			</div>
@@ -70,6 +67,7 @@
 	<script type="text/javascript" th:src="@{/js/main.js}"></script>
 	<script type="text/javascript" th:src="@{/js/panel.js}"></script>
 	<script type="text/javascript" th:src="@{/js/addNews.js}"></script>
+	<script type="text/javascript" th:src="@{/js/manage.js}"></script>
 	<script type="text/javascript" th:src="@{/bootstrap-select/js/bootstrap-select.min.js}"></script>
 	<script>
 		CKEDITOR.replace('informationEditor');

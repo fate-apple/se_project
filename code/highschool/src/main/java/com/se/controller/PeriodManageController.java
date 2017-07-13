@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.se.domain.Period;
 import com.se.domain.Room;
@@ -37,10 +38,19 @@ public class PeriodManageController {
 		return "/manage/period";
 	}
 	
+	//return message(add the case of "delete failed because of foreign key")
+	@RequestMapping(value="/deletePeriod")
+	@ResponseBody
+	public String deletePeriod(int periodId){
+		System.out.println(periodId);
+		return "删除成功";
+	}
+	
+	//add or update the period. If periodId==0 then add, else update
 	@RequestMapping(value="/updatePeriod",method = RequestMethod.POST)
 	public String updatePeriod(@RequestParam int weekday,@RequestParam String beginTime,
-			 @RequestParam String endTime,Model model){
-		System.out.println(weekday+beginTime+endTime);
+			 @RequestParam String endTime,@RequestParam int periodId,Model model){
+		System.out.println(weekday+beginTime+endTime+periodId);
 		List<Period> periods = new ArrayList<Period>();
 		periods = periodRepository.findAll();
 		model.addAttribute("periods", periods);

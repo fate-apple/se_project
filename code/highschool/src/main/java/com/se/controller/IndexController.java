@@ -49,10 +49,10 @@ public class IndexController {
         return "edu/addnews";
     }
 	
-	@RequestMapping("/base/timetable")
-    public String showTimetable(Model model) {
-        return "base/timetable";
-    }
+//	@RequestMapping("/base/timetable")
+//    public String showTimetable(Model model) {
+//        return "base/timetable";
+//    }
 	
 	@RequestMapping("/edu/courseware")
     public String addCourseware(Model model) {

@@ -35,7 +35,7 @@ public class Period {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="periodid")
+	@Column(name="period_id")
 	public int getId() {
 		return id;
 	}
