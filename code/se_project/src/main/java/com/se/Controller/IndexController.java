@@ -3,12 +3,16 @@ package com.se.Controller;
 import com.se.Domain.Bussiness.User;
 import com.se.Repository.Jpa.UserRepository;
 
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,10 +46,13 @@ UserRepository userRepository;
     public String classDisplay(Model model) {
         return "display/classDisplay";
     }
-	
+
 	@RequestMapping("/manage/news")
-    public String showNews(Model model) {
-        return "management/news";
+	@PreAuthorize("hasRole('USER')")
+    public String showNews(HttpSession session,Model model) {
+//		String user =  session.getAttribute("SPRING_SECURITY_CONTEXT");
+//		model.addAttribute("User",user);
+		return "management/news";
     }
 	
 	@RequestMapping("/test/news")

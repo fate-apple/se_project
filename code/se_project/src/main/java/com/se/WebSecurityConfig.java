@@ -54,12 +54,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         protected   void configure(HttpSecurity httpSecurity) throws Exception{
             httpSecurity
                     // 由于使用的是JWT，我们这里不需要csrf
-                    .csrf().disable()
+                    .csrf().disable();
 
                     // 基于token，所以不需要session
-                    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+//                    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 
-                    .authorizeRequests()
+            httpSecurity.authorizeRequests()
                     //.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
                     // 允许对于网站静态资源的无授权访问
@@ -78,7 +78,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     // 除上面外的所有请求全部需要鉴权认证
                     .anyRequest().authenticated().and()
                     .formLogin().loginPage("/login")
-                    .defaultSuccessUrl("/main").permitAll().and()
+                    .defaultSuccessUrl("/cd").permitAll().and()
                     .logout().permitAll();
 //                        .addFilterBefore(new JWTLoginFilter("/login", authenticationManager()),
 //                                UsernamePasswordAuthenticationFilter.class)

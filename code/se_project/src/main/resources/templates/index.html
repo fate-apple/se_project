@@ -51,11 +51,12 @@
             }),
             dataType: 'json',
             success: function (resp) {
-                alert(resp.token);
+//                alert(resp.token);
                 if (1) {
                     //将token存在本地存储，然后跳转到主页面
-                    localStorage.setItem('token', resp.token);
-                    top.location.href = "main.html";
+                    document.cookie="JwtToken="+"sjw"+resp.token+";path=/;";
+                    alert(document.cookie);
+                    top.location.href = "/manage/news";
                 }
             }
         });
