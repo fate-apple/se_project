@@ -71,7 +71,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                             "/**/*.html",
                             "/**/*.css",
                             "/**/*.js",
-                            "/img/**"
+                            "/img/**",
+                            "/font-awesome/**"
                     ).permitAll()
                     // 对于获取token的rest api要允许匿名访问
                     .antMatchers("/auth/**").permitAll()

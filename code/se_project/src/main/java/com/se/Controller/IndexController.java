@@ -29,6 +29,11 @@ UserRepository userRepository;
 	public List<User> getUsers() {
 		return userRepository.findAll();
 	}
+	
+	@RequestMapping("/register")
+    public String register(Model model) {
+        return "register";
+    }
 
 	@RequestMapping("/login")
     public String index(Model model) {
