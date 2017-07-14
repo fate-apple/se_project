@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <link th:href="@{/css/manage-style.css}" rel="stylesheet"/> 
+    <link th:href="@{/css/loader-style.css}" rel="stylesheet"/>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/dataTables.bootstrap.css}" rel="stylesheet"/>
+    <link th:href="@{/css/dataTables.responsive.css}" rel="stylesheet"/>
+    <link th:href="@{/bootstrap-select/css/bootstrap-select.min.css}" rel="stylesheet"/>
+    <link th:href="@{/linearicons/style.css}" rel="stylesheet"/>
+    <link th:href="@{/css/manage.css}" rel="stylesheet"/>
+
+</head>
+<body>
+	 <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+	<div  th:replace="component/navbar :: copy"></div>
+	<div  th:replace="component/sidebar :: copy"></div>
+	<div class="wrap-fluid">
+		<div class="informationWrapper">
+			<h1>课程信息</h1>
+			<button class="btn btn-primary" type="button" id="add">
+				<i class="fa fa-plus">添加课程</i>
+			</button>
+			<br/>
+			<br/>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="dataTable_wrapper">
+								<table class="table table-bordered table-hover"
+									id="dataTables">
+									<thead>
+										<tr >
+										    <th>科目</th>
+											<th>任课老师</th>
+											<th>教室</th>
+											<th>班级</th>
+											<th>时间</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>物理</td>
+											<td>王先智</td>
+											<td>1号楼 101</td>
+											<td>高一（1）班</td>
+											<td>星期二 8:00-8:40</td>
+											<td></td>
+<!-- 											<td><button class="btn btn-default delete" type="button" -->
+<!-- 												th:attr="data-id=${student.id}">删除</button> -->
+<!-- 												<button class="btn btn-default update" type="button" -->
+<!-- 												th:attr="data-id=${student.id}">修改</button> -->
+<!-- 												<button class="btn btn-default reset" type="button" -->
+<!-- 												th:attr="data-id=${student.id}">重置密码</button> -->
+<!-- 												<button class="btn btn-default " type="button" id="stuTimetable" -->
+<!-- 												th:attr="data-id=${student.id}">查看课表</button> -->
+<!-- 											</td> -->
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- Ending Panel -->
+				</div>
+			</div>
+			<!-- Ending Row -->
+		</div>
+	</div>
+	
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="modalTitle"></h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-lg-12">
+							<form role="form" th:action="@{/manage/updateCourse}"  th:method="post" >
+								<div class="form-group">
+									<label>科目</label> 
+									<select  class="form-control" name="subject">
+									</select>
+								</div>
+								<div class="form-group">
+									<label>任课老师</label> 
+									<select  class="form-control" name="teacher">
+									</select>
+								</div>
+								<div class="form-group">
+									<label>教室</label> 
+									<select  class="form-control" name="classroom">
+									</select>
+								</div>
+								<div class="form-group" >
+									<input type="hidden" class="form-control" name="id"/>
+								</div>
+								<input type="submit"/>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" th:src="@{/js/preloader.js}"></script>
+	<script type="text/javascript" th:src="@{/bootstrap//js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/jquery.dataTables.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/changeBg.js}"></script>
+	<script type="text/javascript" th:src="@{/js/load.js}"></script>
+	<script type="text/javascript" th:src="@{/js/main.js}"></script>
+	<script type="text/javascript" th:src="@{/bootstrap-select/js/bootstrap-select.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/studentSelect.js}"></script>
+	<script type="text/javascript" th:src="@{/js/manage/datatableCHN.js}"></script>
+	<script type="text/javascript" th:src="@{/js/manage/student.js}"></script>
+</body>
+</html>
