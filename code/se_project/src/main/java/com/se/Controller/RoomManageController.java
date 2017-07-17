@@ -24,12 +24,12 @@ public class RoomManageController {
 	
 	@RequestMapping(value="/getRoom")
 	public String getStudent(Model model){
-		Room room1 = new Room("1号楼","101",40,"教室");
-		Room room2 = new Room("3号楼","201",40,"办公室");
-		List<Room> rooms = new ArrayList<Room>();
-		rooms.add(room1);
-		rooms.add(room2);
-		model.addAttribute("rooms",rooms);
+//		Room room1 = new Room("1号楼","101",40,"教室");
+//		Room room2 = new Room("3号楼","201",40,"办公室");
+//		List<Room> rooms = new ArrayList<Room>();
+//		rooms.add(room1);
+//		rooms.add(room2);
+//		model.addAttribute("rooms",rooms);
 		return "/manage/room";
 	}
 	

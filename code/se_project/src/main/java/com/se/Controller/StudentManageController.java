@@ -29,8 +29,6 @@ public class StudentManageController {
 		List<Student> students =new ArrayList<Student>();
 		for (int i=0;i<classesStr.length;i++){
 			//根据班级id查找每个班的学生
-			Student stu = new Student(1,"1234","sjw");
-			students.add(stu);
 		}
 		model.addAttribute("students",students );
 		return "/manage/student";
