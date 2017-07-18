@@ -46,7 +46,7 @@
 									</thead>
 									<tbody>
 										<tr th:each="teacher:${teachers}" class="update" th:attr="data-id=${teacher.id},
-										data-gender=${teacher.gender},data-fullname=${teacher.fullname},
+										data-gender=${teacher.gender}?1:0,data-fullname=${teacher.fullname},
 										data-roomid=${teacher.room.roomId},data-username=${teacher.username}">
 											<td th:text="${teacher.username}"></td>
 											<td th:text="${teacher.fullname}"></td>
