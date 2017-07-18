@@ -1,6 +1,10 @@
 package com.se.Controller;
 
+<<<<<<< HEAD
+import com.se.Domain.Bussiness.User;
+=======
 import com.se.Domain.Business.User;
+>>>>>>> cf14035ebec2295d395762a50c1696656ddd5378
 import com.se.Repository.Jpa.UserRepository;
 
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -29,11 +33,14 @@ UserRepository userRepository;
 	public List<User> getUsers() {
 		return userRepository.findAll();
 	}
+<<<<<<< HEAD
+=======
 	
 	@RequestMapping("/register")
     public String register(Model model) {
         return "register";
     }
+>>>>>>> cf14035ebec2295d395762a50c1696656ddd5378
 
 	@RequestMapping("/login")
     public String index(Model model) {
@@ -44,6 +51,31 @@ UserRepository userRepository;
         model.addAttribute("classes",classes );
         return "index";
     }
+<<<<<<< HEAD
+
+
+	
+	@RequestMapping("/cd")
+    public String classDisplay(Model model) {
+        return "display/classDisplay";
+    }
+
+	@RequestMapping("/manage/news")
+	@PreAuthorize("hasRole('USER')")
+    public String showNews(HttpSession session,Model model) {
+//		String user =  session.getAttribute("SPRING_SECURITY_CONTEXT");
+//		model.addAttribute("User",user);
+		return "management/news";
+    }
+	
+	@RequestMapping("/test/news")
+	String home(){
+		return"management/news";
+	}
+	@RequestMapping("/main")
+	String mai(){
+		return"main";
+=======
 	
 	@RequestMapping("/manage/student")
     public String studentMangement(Model model) {
@@ -85,5 +117,6 @@ UserRepository userRepository;
 	@RequestMapping("/edu/courseware")
     public String addCourseware(Model model) {
         return "edu/courseware";
+>>>>>>> cf14035ebec2295d395762a50c1696656ddd5378
 	}
 }
