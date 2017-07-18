@@ -33,4 +33,6 @@ public class StudentController {
         return "/manage/student";
     }
 
+
 }
+

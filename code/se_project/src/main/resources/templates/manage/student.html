@@ -72,10 +72,10 @@
 										<tr th:each="student:${students}">
 											<td th:text="${student.username}"></td>
 											<td th:text="${student.fullname}"></td>
-											<td th:text="${student.gender}"></td>
+											<td th:text="${student.gender}?'男':'女'"></td>
 											<td th:text="${student.adminClass.fullname}"></td>
-											<td th:text="${student.adminClass.fullname}"></td>
-											<td th:text="${student.enroll_date}"></td>
+											<td th:text="${student.virtualClass}?${student.virtualClass.name}:'无'"></td>
+											<td th:text="${#dates.format(student.enroll_date,'yyyy-MM-dd')}"></td>
 										</tr>
 									</tbody>
 								</table>
