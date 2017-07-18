@@ -24,28 +24,28 @@
 	<div class="wrap-fluid">
 		<div class="informationWrapper">
 			<h1>学生信息</h1>
-			<div class="row">
-				<div class="col-md-3">
-					<select id="grade" class="selectpicker" multiple="multiple"  data-actions-box="true" title="选择年级">
-						<option value="1">高一</option>
-						<option value="2">高二</option>
-						<option value="3">高三</option>
-						<option value="0">3+3虚拟班</option>
-					</select>
-				</div>
-				<div class="col-md-3">
-					<select id="class" class="selectpicker" multiple="multiple"  data-actions-box="true" title="选择班级">
+<!-- 			<div class="row"> -->
+<!-- 				<div class="col-md-3"> -->
+<!-- 					<select id="grade" class="selectpicker" multiple="multiple"  data-actions-box="true" title="选择年级"> -->
+<!-- 						<option value="1">高一</option> -->
+<!-- 						<option value="2">高二</option> -->
+<!-- 						<option value="3">高三</option> -->
+<!-- 						<option value="0">3+3虚拟班</option> -->
+<!-- 					</select> -->
+<!-- 				</div> -->
+<!-- 				<div class="col-md-3"> -->
+<!-- 					<select id="class" class="selectpicker" multiple="multiple"  data-actions-box="true" title="选择班级"> -->
 
-					</select>
-				</div>
-				<div class="col-md-3">
-					<form id="getStudentForm" action="" method="post">
-						<input id="classes" name="classes" type="hidden"/>
-						<button type="button" id="getStudent" class="btn btn-default">获取</button>
-					 </form>
-				</div>
-			</div>
-			<br/>			
+<!-- 					</select> -->
+<!-- 				</div> -->
+<!-- 				<div class="col-md-3"> -->
+<!-- 					<form id="getStudentForm" action="" method="post"> -->
+<!-- 						<input id="classes" name="classes" type="hidden"/> -->
+<!-- 						<button type="button" id="getStudent" class="btn btn-default">获取</button> -->
+<!-- 					 </form> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<br/>			 -->
 			<button class="btn btn-primary" type="button" id="add">
 				<i class="fa fa-plus">添加学生</i>
 			</button>
@@ -65,25 +65,17 @@
 											<th>性别</th>
 											<th>班级</th>
 											<th>3+3虚拟班级</th>
-											<th>操作</th>
+											<th>入学年份</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr th:each="student:${students}">
-											<td th:text="${student.sno}"></td>
-											<td th:text="${student.name}"></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td><button class="btn btn-default delete" type="button"
-												th:attr="data-id=${student.id}">删除</button>
-												<button class="btn btn-default update" type="button"
-												th:attr="data-id=${student.id}">修改</button>
-												<button class="btn btn-default reset" type="button"
-												th:attr="data-id=${student.id}">重置密码</button>
-												<button class="btn btn-default " type="button" id="stuTimetable"
-												th:attr="data-id=${student.id}">查看课表</button>
-											</td>
+											<td th:text="${student.username}"></td>
+											<td th:text="${student.fullname}"></td>
+											<td th:text="${student.gender}"></td>
+											<td th:text="${student.adminClass.fullname}"></td>
+											<td th:text="${student.virtualClass.name}"></td>
+											<td th:text="${student.enroll_date}"></td>
 										</tr>
 									</tbody>
 								</table>

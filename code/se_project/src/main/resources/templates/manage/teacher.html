@@ -45,9 +45,11 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="teacher:${teachers}">
+										<tr th:each="teacher:${teachers}" class="update" th:attr="data-id=${teacher.id},
+										data-gender=${teacher.gender},data-fullname=${teacher.fullname},
+										data-roomid=${teacher.room.roomId},data-username=${teacher.username}">
 											<td th:text="${teacher.username}"></td>
-											<td th:text="${teacher.fullname"></td>
+											<td th:text="${teacher.fullname}"></td>
 											<td th:text="${teacher.gender}?'男':'女'"></td>
 											<td th:text="${teacher.room.buildingName}+' '+${teacher.room.roomNum}"></td>
 											
@@ -88,7 +90,7 @@
 								</div>
 								<div class="form-group">
 									<label>性别</label> 
-									<select  class="form-control" name="gender">
+									<select  class="form-control" id="gender" name="gender">
 										<option value="1">男</option>
 										<option value="0">女</option>
 									</select>
@@ -100,7 +102,8 @@
 									</select>
 								</div>
 								<button class="btn btn-default save" type="button" >保存</button>
-								<button class="btn btn-default delete" type="button" style="display:none;">删除</button>				
+								<button class="btn btn-default delete" type="button" style="display:none;">删除</button>	
+								<button class="btn btn-default detailCourse" type="button" style="display:none;">课程</button>	
 							</form>
 						</div>
 					</div>

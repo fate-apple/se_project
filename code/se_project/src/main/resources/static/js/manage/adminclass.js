@@ -6,6 +6,8 @@ jQuery(document).ready(function() {
     	$("#modalTitle").html("添加");
     	$(".delete").css("display","none");
     	$("#passwordDiv").css("display","block");
+    	$(".detailStudent").css("display","none");
+    	$(".detailCourse").css("display","none");
     	$("input[name='fullname']").val("");
     	$("input[name='username']").val("");
     	$("input[name='password']").val("");
@@ -16,10 +18,12 @@ jQuery(document).ready(function() {
     	$("#modal").modal("show");
 	});
     
-    $(".updateClass").click(function(e){
+    $(".update").click(function(e){
     	$("#modalTitle").html("修改");
     	$(".delete").css("display","inline");
     	$("#passwordDiv").css("display","none");
+    	$(".detailStudent").css("display","inline");
+    	$(".detailCourse").css("display","inline");
     	var dataset = e.currentTarget.dataset;
     	var id = dataset.id;
     	var grade = dataset.grade;
