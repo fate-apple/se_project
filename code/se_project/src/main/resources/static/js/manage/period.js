@@ -2,6 +2,7 @@
 jQuery(document).ready(function() {
 
     
+    
     $("#add").click(function(e) {
     	$("#modalTitle").html("添加");
     	$("input[name='periodId']").val(0);

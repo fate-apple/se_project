@@ -24,36 +24,43 @@
 	<div class="wrap-fluid">
 		<div class="informationWrapper">
 			<h1>班级信息</h1>
+			<button class="btn btn-primary" type="button" id="add">
+				<i class="fa fa-plus">添加班级</i>
+			</button>
 			<br/>
 			<br/>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="panel panel-default">
-						<div class="panel-heading">
-							班级列表
-							<button class="btn btn-default" type="button" id="addStudent"
-									style="float:right">
-								<i class="fa fa-plus">添加班级</i>
-							</button>
-						</div>
 						<div class="panel-body">
 							<div class="dataTable_wrapper">
 								<table class="table table-bordered table-hover"
 									id="dataTables">
 									<thead>
-										<tr >
-										    <th>学号</th>
-											<th>名字</th>
-											<th>班级</th>
-											<th>操作</th>
+										<tr>
+											<th>年级</th>
+										    <th>班级</th>
+											<th>班主任</th>
+											<th>教室</th>
+											
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="student:${students}">
-											<td th:text="${student.sno}"></td>
-											<td th:text="${student.name}"></td>
-											<td></td>
-											<td></td>
+										<tr th:each="adminclass:${classes}">
+											<td th:text="${adminclass.grade}"> </td>
+											<td th:text="${adminclass.fullname}"></td>
+											<td th:text="${adminclass.teacher.fullname}">2</td>
+											<td th:text="${adminclass.room.roomNum}"></td>
+											
+<!-- 											<td><button class="btn btn-default delete" type="button" -->
+<!-- 												th:attr="data-id=${student.id}">删除</button> -->
+<!-- 												<button class="btn btn-default update" type="button" -->
+<!-- 												th:attr="data-id=${student.id}">修改</button> -->
+<!-- 												<button class="btn btn-default reset" type="button" -->
+<!-- 												th:attr="data-id=${student.id}">重置密码</button> -->
+<!-- 												<button class="btn btn-default " type="button" id="stuTimetable" -->
+<!-- 												th:attr="data-id=${student.id}">查看课表</button> -->
+<!-- 											</td> -->
 										</tr>
 									</tbody>
 								</table>
@@ -66,38 +73,60 @@
 			<!-- Ending Row -->
 		</div>
 	</div>
+	
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="modalTitle"></h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-lg-12">
+							<form role="form" >
+								<div class="form-group">
+									<label>年级</label>
+									<select  class="form-control" name="grade">
+										<option value="1">高一</option>
+										<option value="2">高二</option>
+										<option value="3">高三</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>班级</label> <input type="text" class="form-control" name="fullname"/>
+								</div>
+								<div class="form-group">
+									<label>班主任</label> 
+									<select  class="form-control" name="teacher">
+									</select>
+								</div>
+								<div class="form-group">
+									<label>教室</label> 
+									<select  class="form-control" name="classroom">
+									</select>
+								</div>
+								<button class="btn btn-default" type="button" >保存</button>
+								<button class="btn btn-default delete" type="button" style="display:none;">删除</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<script type="text/javascript" th:src="@{/js/preloader.js}"></script>
 	<script type="text/javascript" th:src="@{/bootstrap//js/bootstrap.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/jquery.dataTables.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootbox.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/changeBg.js}"></script>
 	<script type="text/javascript" th:src="@{/js/load.js}"></script>
 	<script type="text/javascript" th:src="@{/js/main.js}"></script>
-	<script type="text/javascript" th:src="@{/js/panel.js}"></script>
 	<script type="text/javascript" th:src="@{/bootstrap-select/js/bootstrap-select.min.js}"></script>
-	<script type="text/javascript" th:src="@{/js/manage.js}"></script>
-	<script>
-		$(document).ready(function() {
-			$('#dataTables').DataTable({
-				responsive : true,
-				
-	            "oLanguage" : {
-	                "sLengthMenu": "每页显示 _MENU_ 条记录",
-	                "sZeroRecords": "抱歉， 没有找到",
-	                "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
-	                "sInfoEmpty": "没有数据",
-	                "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
-	                "sZeroRecords": "没有检索到数据",
-	                 "sSearch": "搜索:",
-	             "oPaginate": {
-	                "sFirst": "首页",
-	                "sPrevious": "前一页",
-	                "sNext": "后一页",
-	                "sLast": "尾页"
-	                }
-	            }
-			});
-		});
-	</script>
+	<script type="text/javascript" th:src="@{/js/manage/datatableCHN.js}"></script>
+	<script type="text/javascript" th:src="@{/js/manage/adminclass.js}"></script>
 </body>
 </html>

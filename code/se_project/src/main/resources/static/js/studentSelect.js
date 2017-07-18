@@ -26,7 +26,7 @@ jQuery(document).ready(function() {
 					for(var i=0;i<data.classnum;i++){
 						$("#class.selectpicker").append("<option value="+data.classid[i]+">"+
 								data.classname[i]+"</option>");
-						
+
 					}
 					$("#class").selectpicker("refresh");
 					console.log(data);
