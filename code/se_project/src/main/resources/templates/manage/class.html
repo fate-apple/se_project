@@ -96,7 +96,7 @@
 								<div class="form-group">
 									<label>班级账号</label> <input type="text" class="form-control" name="username"/>
 								</div>
-								<div class="form-group">
+								<div class="form-group" id="passwordDiv" style="display:none;">
 									<label>密码</label> <input type="text" class="form-control" name="password" />
 								</div>
 								<div class="form-group">
@@ -111,7 +111,7 @@
 										<option th:each="room:${rooms}" th:value="${room.roomId}" th:text="${room.buildingName}+' '+${room.roomNum}"></option>
 									</select>
 								</div>
-								<button class="btn btn-default" type="button" >保存</button>
+								<button class="btn btn-default save" type="button" >保存</button>
 								<button class="btn btn-default delete" type="button" style="display:none;">删除</button>
 							</form>
 						</div>
