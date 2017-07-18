@@ -1,11 +1,7 @@
 package com.se;
 
 import com.se.Domain.Auth.Role;
-<<<<<<< HEAD
-import com.se.Domain.Bussiness.User;
-=======
 import com.se.Domain.Business.User;
->>>>>>> cf14035ebec2295d395762a50c1696656ddd5378
 import com.se.Repository.Jpa.RoleRepository;
 import com.se.Repository.Jpa.UserRepository;
 import org.junit.Test;

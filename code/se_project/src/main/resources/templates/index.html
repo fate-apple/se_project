@@ -1,74 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<<<<<<< HEAD
-
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
-    <title>登陆</title>
-</head>
-<style>
-    .content {
-        font-size: 14px;
-        margin: 0;
-        padding: 10px;
-        text-align: center;
-    }
-
-    .item {
-        margin: 10px;
-    }
-
-    .item input {
-        width: 200px;
-    }
-</style>
-<body>
-<div class="content">
-    <div class="item">
-        <label for="userName">用户名：</label><input type="text" name="userName" id="userName" placeholder="请输入用户名"
-                                                 value="admin" autocomplete="off"/>
-    </div>
-    <div class="item">
-        <label for="password">密码：</label><input type="password" name="password" id="password" placeholder="请输入密码"
-                                                value="123" autocomplete="off"/>
-    </div>
-    <div class="item">
-        <button type="submit" id="login">登陆</button>
-    </div>
-</div>
-<script type="text/javascript" src="/js/jquery.min.js"></script>
-<script>
-    $('#login').on('click', function (e) {
-        var userName = $.trim($('#userName').val());
-        var password = $.trim($('#password').val());
-        $.ajax({
-            type: "post",
-            url: "/auth",
-            contentType: "application/json",
-            data: JSON.stringify({
-                "username": userName,
-                "password": password
-            }),
-            dataType: 'json',
-            success: function (resp) {
-//                alert(resp.token);
-                if (1) {
-                    //将token存在本地存储，然后跳转到主页面
-                    document.cookie="JwtToken="+"sjw"+resp.token+";path=/;";
-                    alert(document.cookie);
-                    top.location.href = "/manage/news";
-                }
-            }
-        });
-
-
-    })
-
-</script>
-</body>
-</html>
-=======
 <head>
     <title>SE</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -170,4 +101,3 @@
 
 </body>
 </html>
->>>>>>> cf14035ebec2295d395762a50c1696656ddd5378

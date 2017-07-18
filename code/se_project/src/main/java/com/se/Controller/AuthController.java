@@ -2,11 +2,7 @@ package com.se.Controller;
 
 import com.se.Domain.Auth.JwtAuthenticationRequest;
 import com.se.Domain.Auth.JwtAuthenticationResponse;
-<<<<<<< HEAD
-import com.se.Domain.Bussiness.User;
-=======
 import com.se.Domain.Business.User;
->>>>>>> cf14035ebec2295d395762a50c1696656ddd5378
 import com.se.Service.Auth.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

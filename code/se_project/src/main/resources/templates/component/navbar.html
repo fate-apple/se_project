@@ -21,12 +21,7 @@
 				<div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
 	                <ul style="margin-right:0;" class="nav navbar-nav navbar-right">
 	                    <li>	
-<<<<<<< HEAD
-	                        <a data-toggle="dropdown" class="dropdown-toggle" href="#" th:text="${session.SPRING_SECURITY_CONTEXT.getAuthentication().getAuthorities()}">
-								<!--<a data-toggle="dropdown" class="dropdown-toggle" href="#" th:text="${User}">-->
-=======
 	                        <a data-toggle="dropdown" class="dropdown-toggle" href="#" th:text="'您好,'+${session.SPRING_SECURITY_CONTEXT.getAuthentication().getName()}+'!'">	
->>>>>>> cf14035ebec2295d395762a50c1696656ddd5378
 	                           	 您好，老师！ <b class="caret"></b>
 	                        </a>
 	                        <ul style="margin-top:14px;" role="menu" class="dropdown-setting dropdown-menu">	

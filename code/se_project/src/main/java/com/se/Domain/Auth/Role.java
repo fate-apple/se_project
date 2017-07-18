@@ -1,11 +1,7 @@
 package com.se.Domain.Auth;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-<<<<<<< HEAD
-import com.se.Domain.Bussiness.User;
-=======
 import com.se.Domain.Business.User;
->>>>>>> cf14035ebec2295d395762a50c1696656ddd5378
 
 import javax.persistence.*;
 import java.util.List;

@@ -30,23 +30,6 @@ jQuery(document).ready(function() {
 		}
 		password = $("input[name='password']").val();
 		console.log(username, password,usertype);
-<<<<<<< HEAD
-		jQuery.ajax({
-			url : '/auth',
-				processData : true,
-				dataType : "text",
-				data : {
-					username : username,
-					password : password
-
-				},
-				success : function(data) {
-					window.location.href = "/se/manage/news";
-					console.log(data);
-
-				}
-			});
-=======
         $.ajax({
             type: "post",
             url: "/auth",
@@ -65,7 +48,6 @@ jQuery(document).ready(function() {
                 }
             }
         });
->>>>>>> cf14035ebec2295d395762a50c1696656ddd5378
 		
 	});
     
