@@ -30,6 +30,7 @@ jQuery(document).ready(function() {
 		}
 		password = $("input[name='password']").val();
 		console.log(username, password,usertype);
+<<<<<<< HEAD
 		jQuery.ajax({
 			url : '/auth',
 				processData : true,
@@ -45,6 +46,26 @@ jQuery(document).ready(function() {
 
 				}
 			});
+=======
+        $.ajax({
+            type: "post",
+            url: "/auth",
+            contentType: "application/json",
+            data: JSON.stringify({
+                "username": userName,
+                "password": password
+            }),
+            dataType: 'json',
+            success: function (resp) {
+                alert(resp.token);
+                if (1) {
+                    //将token存在本地存储，然后跳转到主页面
+                    localStorage.setItem('token', resp.token);
+                    top.location.href = "/base/news";
+                }
+            }
+        });
+>>>>>>> cf14035ebec2295d395762a50c1696656ddd5378
 		
 	});
     

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/font-awesome/css/font-awesome.min.css}" rel="stylesheet"/> 
+    <link th:href="@{/css/indexstyle.css}" rel="stylesheet"/> 
+    <link th:href="@{/css/form-elements.css}" rel="stylesheet"/>
+    
+</head>
+<body>
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                        			<h1><strong>上海市第二中学</strong></h1>
+                        			<h3>注册</h3>
+                            		
+                        		</div>
+                        		<div class="form-top-right">
+                        			<i class="fa fa-lock"></i>
+                        		</div>
+                            </div>
+                            <div class="form-bottom">
+			                    <form role="form" action="" method="post" class="login-form">
+			                    	<div class="form-group" id="normal">
+			                    		<label class="sr-only" for="username">账号</label>
+			                        	<input type="text" name="username" placeholder="用户名" class="form-username form-control" id="username"></input>
+			                        </div>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="password">密码</label>
+			                        	<input type="password" name="password" placeholder="密码" class="form-password form-control" id="password"></input>
+			                        </div>
+			                         <div class="form-group">
+										<label class="sr-only" for="fullname">名字</label>
+			                        	<input type="text" name="fullname" placeholder="名字" class="form-password form-control" id="fullname"></input>
+			                        </div>
+			                        <button type="submit" class="btn" id="register">登录</button>
+			                    </form>
+		                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+	
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/jquery.backstretch.min.js}"></script>
+    <script>
+    $('#register').on('click', function (e) {
+        var userName = $.trim($('#username').val());
+        var password = $.trim($('#password').val());
+        var fullname = $.trim($('#fullname').val());
+        $.ajax({
+            type: "post",
+            url: "/auth/register",
+            contentType: "application/json",
+            data: JSON.stringify({
+                "username": userName,
+                "password": password,
+                "fullname": fullname
+            }),
+            dataType: 'json',
+            success: function (resp) {
+//                alert(resp.token);
+                if (1) {
+                    //将token存在本地存储，然后跳转到主页面
+                    document.cookie="JwtToken="+"sjw"+resp.token+";path=/;";
+                    alert(document.cookie);
+                    top.location.href = "/login";
+                }
+            }
+        });
+
+
+    })
+
+    </script>
+、
+
+
+</body>
+</html>

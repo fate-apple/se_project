@@ -71,6 +71,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                             "/**/*.html",
                             "/**/*.css",
                             "/**/*.js",
+
                             "/img/**"
                     ).permitAll()
                     // 对于获取token的rest api要允许匿名访问
@@ -78,7 +79,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     // 除上面外的所有请求全部需要鉴权认证
                     .anyRequest().authenticated().and()
                     .formLogin().loginPage("/login")
-                    .defaultSuccessUrl("/cd").permitAll().and()
+                    .defaultSuccessUrl("/cd").permitAll()
+                    // 对于获取token的rest api要允许匿名访问
+                    .antMatchers("/auth/**","/register").permitAll()
+                    // 除上面外的所有请求全部需要鉴权认证
+                    .anyRequest().authenticated().and()
+                    .formLogin().loginPage("/login")
+                    .defaultSuccessUrl("/base/news").permitAll().and()
+
                     .logout().permitAll();
 //                        .addFilterBefore(new JWTLoginFilter("/login", authenticationManager()),
 //                                UsernamePasswordAuthenticationFilter.class)

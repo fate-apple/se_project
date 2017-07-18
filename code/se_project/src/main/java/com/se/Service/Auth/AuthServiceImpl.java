@@ -1,7 +1,11 @@
 package com.se.Service.Auth;
 
 import com.se.Domain.Auth.JwtUser;
+<<<<<<< HEAD
 import com.se.Domain.Bussiness.User;
+=======
+import com.se.Domain.Business.User;
+>>>>>>> cf14035ebec2295d395762a50c1696656ddd5378
 import com.se.Filter.JwtTokenUtil;
 import com.se.Repository.Jpa.RoleRepository;
 import com.se.Repository.Jpa.UserRepository;

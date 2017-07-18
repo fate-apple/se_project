@@ -1,6 +1,10 @@
 package com.se.Controller;
 
+<<<<<<< HEAD
 import com.se.Domain.Bussiness.User;
+=======
+import com.se.Domain.Business.User;
+>>>>>>> cf14035ebec2295d395762a50c1696656ddd5378
 import com.se.Repository.Jpa.UserRepository;
 
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -29,6 +33,14 @@ UserRepository userRepository;
 	public List<User> getUsers() {
 		return userRepository.findAll();
 	}
+<<<<<<< HEAD
+=======
+	
+	@RequestMapping("/register")
+    public String register(Model model) {
+        return "register";
+    }
+>>>>>>> cf14035ebec2295d395762a50c1696656ddd5378
 
 	@RequestMapping("/login")
     public String index(Model model) {
@@ -39,6 +51,7 @@ UserRepository userRepository;
         model.addAttribute("classes",classes );
         return "index";
     }
+<<<<<<< HEAD
 
 
 	
@@ -62,5 +75,48 @@ UserRepository userRepository;
 	@RequestMapping("/main")
 	String mai(){
 		return"main";
+=======
+	
+	@RequestMapping("/manage/student")
+    public String studentMangement(Model model) {
+        return "manage/student";
+    }
+
+	@RequestMapping("/manage/teacher")
+    public String teacherMangement(Model model) {
+        return "manage/teacher";
+    }
+	
+
+	
+	@RequestMapping("/manage/course")
+    public String courseMangement(Model model) {
+        return "manage/course";
+    }
+	
+	@RequestMapping("/display/class")
+    public String classDisplay(Model model) {
+        return "display/class";
+    }
+	
+	@RequestMapping("/base/news")
+    public String showNews(Model model) {
+        return "base/news";
+    }
+	
+	@RequestMapping("/edu/addnews")
+    public String addNews(Model model) {
+        return "edu/addnews";
+    }
+	
+//	@RequestMapping("/base/timetable")
+//    public String showTimetable(Model model) {
+//        return "base/timetable";
+//    }
+	
+	@RequestMapping("/edu/courseware")
+    public String addCourseware(Model model) {
+        return "edu/courseware";
+>>>>>>> cf14035ebec2295d395762a50c1696656ddd5378
 	}
 }
