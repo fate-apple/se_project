@@ -37,28 +37,25 @@
 								<table class="table table-bordered table-hover"
 									id="dataTables">
 									<thead>
-										<tr >
+										<tr>
+											<th>年级</th>
 										    <th>班级</th>
-											<th>班主任</th>
+										    <th>班级账号</th>
+										    <th>班主任</th>
 											<th>教室</th>
-											<th>操作</th>
+											
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>1</td>
-											<td>2</td>
-											<td>3</td>
-											<td>4</td>
-<!-- 											<td><button class="btn btn-default delete" type="button" -->
-<!-- 												th:attr="data-id=${student.id}">删除</button> -->
-<!-- 												<button class="btn btn-default update" type="button" -->
-<!-- 												th:attr="data-id=${student.id}">修改</button> -->
-<!-- 												<button class="btn btn-default reset" type="button" -->
-<!-- 												th:attr="data-id=${student.id}">重置密码</button> -->
-<!-- 												<button class="btn btn-default " type="button" id="stuTimetable" -->
-<!-- 												th:attr="data-id=${student.id}">查看课表</button> -->
-<!-- 											</td> -->
+										<tr th:each="adminclass:${classes}" class="updateClass" th:attr="data-id=${adminclass.id},
+										data-grade=${adminclass.grade},data-fullname=${adminclass.fullname},data-teacherid=${adminclass.teacher.id},
+										data-roomid=${adminclass.room.roomId},data-username=${adminclass.username}">
+											<td th:text="${adminclass.grade}"> </td>
+											<td th:text="${adminclass.fullname}"></td>
+											<td th:text="${adminclass.username}"></td>
+											<td th:text="${adminclass.teacher.fullname}"></td>
+											<td th:text="${adminclass.room.buildingName}+'  '+${adminclass.room.roomNum}"></td>
+				
 										</tr>
 									</tbody>
 								</table>
@@ -84,24 +81,38 @@
 				<div class="modal-body">
 					<div class="row">
 						<div class="col-lg-12">
-							<form role="form" th:action="@{/manage/updateClass}"  th:method="post" >
+							<form role="form" >
+								<div class="form-group">
+									<label>年级</label>
+									<select id="grade" class="form-control" name="grade">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+									</select>
+								</div>
 								<div class="form-group">
 									<label>班级</label> <input type="text" class="form-control" name="fullname"/>
 								</div>
 								<div class="form-group">
+									<label>班级账号</label> <input type="text" class="form-control" name="username"/>
+								</div>
+								<div class="form-group" id="passwordDiv" style="display:none;">
+									<label>密码</label> <input type="text" class="form-control" name="password" />
+								</div>
+								<div class="form-group">
 									<label>班主任</label> 
-									<select  class="form-control" name="teacher">
+									<select  id="teacher" class="form-control" name="teacher" >
+										<option th:each="teacher:${teachers}" th:value="${teacher.id}" th:text="${teacher.fullname}"></option>
 									</select>
 								</div>
 								<div class="form-group">
 									<label>教室</label> 
-									<select  class="form-control" name="classroom">
+									<select  id="room" class="form-control" name="classroom">
+										<option th:each="room:${rooms}" th:value="${room.roomId}" th:text="${room.buildingName}+' '+${room.roomNum}"></option>
 									</select>
 								</div>
-								<div class="form-group" >
-									<input type="hidden" class="form-control" name="id"/>
-								</div>
-								<input type="submit"/>
+								<button class="btn btn-default save" type="button" >保存</button>
+								<button class="btn btn-default delete" type="button" style="display:none;">删除</button>
 							</form>
 						</div>
 					</div>
@@ -113,12 +124,12 @@
 	<script type="text/javascript" th:src="@{/bootstrap//js/bootstrap.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/jquery.dataTables.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootbox.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/changeBg.js}"></script>
 	<script type="text/javascript" th:src="@{/js/load.js}"></script>
 	<script type="text/javascript" th:src="@{/js/main.js}"></script>
 	<script type="text/javascript" th:src="@{/bootstrap-select/js/bootstrap-select.min.js}"></script>
-	<script type="text/javascript" th:src="@{/js/studentSelect.js}"></script>
 	<script type="text/javascript" th:src="@{/js/manage/datatableCHN.js}"></script>
-	<script type="text/javascript" th:src="@{/js/manage/student.js}"></script>
+	<script type="text/javascript" th:src="@{/js/manage/adminclass.js}"></script>
 </body>
 </html>

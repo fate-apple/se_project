@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-07-13 17:29:32
+Date: 2017-07-14 10:54:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -47,6 +47,8 @@ CREATE TABLE `course` (
   `class_id` bigint(11) DEFAULT NULL,
   `virtual_class_id` int(11) DEFAULT NULL,
   `room_id` int(11) DEFAULT NULL,
+  `weekday` int(11) DEFAULT NULL,
+  `semester` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`course_id`),
   KEY `FK_teach` (`teacher_id`),
   KEY `FK_teach4` (`period_id`),
@@ -78,6 +80,7 @@ CREATE TABLE `period` (
 -- ----------------------------
 -- Records of period
 -- ----------------------------
+INSERT INTO `period` VALUES ('1', '08:00:00', '08:40:00');
 
 -- ----------------------------
 -- Table structure for role
@@ -197,12 +200,14 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   KEY `FKn82ha3ccdebhokx3a8fgdqeyy` (`role_id`),
   CONSTRAINT `FKn82ha3ccdebhokx3a8fgdqeyy` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'test4', '$2a$10$0CYI90cpU/OjvoAQRFDuxu6qgyq..cDBd1v64p6qEtVegST5LZIhe', '2', '2017-07-12', 'test4');
+INSERT INTO `user` VALUES ('2', '', '$2a$10$moWvU8IYnFGaicX6P16wW.xFDsV1PjzmtrD5ndVQnnEff9ZN1c9/a', '2', '2017-07-14', 'laosiji');
+INSERT INTO `user` VALUES ('3', 'sjw', '$2a$10$/Eb3LIbILFpgXmBAPi1pOuQQYLePKUW2HZP.tvh0NS.C2L2AGNome', '2', '2017-07-14', 'laoshiji');
 
 -- ----------------------------
 -- Table structure for virtualclass
