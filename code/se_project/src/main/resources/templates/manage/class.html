@@ -47,7 +47,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="adminclass:${classes}" class="updateClass" th:attr="data-id=${adminclass.id},
+										<tr th:each="adminclass:${classes}" class="update" th:attr="data-id=${adminclass.id},
 										data-grade=${adminclass.grade},data-fullname=${adminclass.fullname},data-teacherid=${adminclass.teacher.id},
 										data-roomid=${adminclass.room.roomId},data-username=${adminclass.username}">
 											<td th:text="${adminclass.grade}"> </td>
@@ -113,6 +113,8 @@
 								</div>
 								<button class="btn btn-default save" type="button" >保存</button>
 								<button class="btn btn-default delete" type="button" style="display:none;">删除</button>
+								<button class="btn btn-default detailStudent" type="button" style="display:none;">学生</button>
+								<button class="btn btn-default detailCourse" type="button" style="display:none;">课程</button>
 							</form>
 						</div>
 					</div>

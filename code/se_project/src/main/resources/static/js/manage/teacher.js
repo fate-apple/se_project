@@ -6,6 +6,7 @@ jQuery(document).ready(function() {
     	$("#modalTitle").html("添加");
     	$(".delete").css("display","none");
     	$("#passwordDiv").css("display","block");
+    	$(".detailCourse").css("display","none");
     	$("input[name='fullname']").val("");
     	$("input[name='username']").val("");
     	$("input[name='password']").val("");
@@ -15,21 +16,20 @@ jQuery(document).ready(function() {
     	$("#modal").modal("show");
 	});
     
-    $(".updateClass").click(function(e){
+    $(".update").click(function(e){
     	$("#modalTitle").html("修改");
     	$(".delete").css("display","inline");
     	$("#passwordDiv").css("display","none");
+    	$(".detailCourse").css("display","inline");
     	var dataset = e.currentTarget.dataset;
     	var id = dataset.id;
-    	var grade = dataset.grade;
+    	var gender = dataset.gender;
     	var fullname = dataset.fullname;
-    	var teacherid = dataset.teacherid;
     	var roomid = dataset.roomid;
     	var username = dataset.username;
-    	$("#grade option[value="+grade+"]").attr("selected",true);
+    	$("#gender option[value="+gender+"]").attr("selected",true);
     	$("input[name='fullname']").val(fullname);
     	$("input[name='username']").val(username);
-    	$("#teacher option[value="+teacherid+"]").attr("selected",true);
     	$("#room option[value="+roomid+"]").attr("selected",true);
     	$(".save").attr("data-id", dataset.id);
     	$("#modal").modal("show");
@@ -75,13 +75,12 @@ jQuery(document).ready(function() {
 		var fullname = $("input[name='fullname']").val();
 		var username = $("input[name='username']").val();
 		var password = $("input[name='password']").val();
-		var teacherid = $("#teacher").val();
 		var roomid = $("#room").val();
 		var dataset = e.currentTarget.dataset;
 		var id = dataset.id;
 		
 		jQuery.ajax({
-			url : "/manage/class/updateAdminclass",
+			url : "/manage/class/updateTeacher",
 				processData : true,
 				dataType : "text",
 				method : "POST",
@@ -90,7 +89,6 @@ jQuery(document).ready(function() {
 					fullname : fullname,
 					username : username,
 					password : password,
-					teacherid : teacherid,
 					roomid : roomid,
 					grade : grade
 				},
