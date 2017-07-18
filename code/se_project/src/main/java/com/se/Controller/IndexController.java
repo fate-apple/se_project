@@ -45,11 +45,6 @@ UserRepository userRepository;
         return "index";
     }
 	
-	@RequestMapping("/manage/student")
-    public String studentMangement(Model model) {
-        return "manage/student";
-    }
-
 
 	
 	@RequestMapping("/manage/course")
