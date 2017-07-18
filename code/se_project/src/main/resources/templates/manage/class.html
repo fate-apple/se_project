@@ -50,7 +50,7 @@
 											<td th:text="${adminclass.grade}"> </td>
 											<td th:text="${adminclass.fullname}"></td>
 											<td th:text="${adminclass.teacher.fullname}">2</td>
-											<td th:text="${adminclass.room.roomNum}"></td>
+											<td th:text="${adminclass.room.buildingName}+'  '+${adminclass.room.roomNum}"></td>
 											
 <!-- 											<td><button class="btn btn-default delete" type="button" -->
 <!-- 												th:attr="data-id=${student.id}">删除</button> -->
@@ -100,7 +100,7 @@
 								</div>
 								<div class="form-group">
 									<label>班主任</label> 
-									<select  class="form-control" name="teacher">
+									<select  class="form-control" name="teacher" th:each="teacher:${teachers}">
 									</select>
 								</div>
 								<div class="form-group">
