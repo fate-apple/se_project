@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 
 public interface RoomRepository extends JpaRepository<Room,Integer> {
-    Room findByroomId(int roomId);
+    Room findByRoomId(int roomId);
 }

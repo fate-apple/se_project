@@ -40,7 +40,7 @@ public class Student extends User{
         return enrollDate;
     }
 
-    public void setenRollDate(Date enrollDate) {
+    public void setEnRollDate(Date enrollDate) {
         this.enrollDate = enrollDate;
     }
 

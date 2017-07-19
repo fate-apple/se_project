@@ -28,8 +28,6 @@ public class TeacherServiceImpl implements TeacherService {
     @Autowired
     private RoleRepository roleRepository;
     @Autowired
-    private AuthService authService;
-    @Autowired
     private UserRepository userRepository;
 
     @Override
@@ -40,7 +38,7 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public Teacher create(String username, String password, String fullname, int roomId, Boolean gender){
         Role role= roleRepository.findByRolename("ROLE_TEACHER");
-        Room room =roomRepository.findByroomId(roomId);
+        Room room =roomRepository.findByRoomId(roomId);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         if (userRepository.findByUsername(username) != null) {
             return null;
@@ -57,6 +55,7 @@ public class TeacherServiceImpl implements TeacherService {
         teacher.setFullname(fullname);
         teacher.setRoom(roomRepository.findOne(roomId));
         teacher.setGender(gender);
+        teacherRepository.save(teacher);
         return teacher;
     }
 
