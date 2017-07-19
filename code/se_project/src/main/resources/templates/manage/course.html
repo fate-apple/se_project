@@ -47,22 +47,16 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
+										<tr th:each="course:${courses}" class="update" th:attr="data-id=${course.id},
+										data-roomId=${course.room.roomId},data-teacherId=${course.teacher.id},
+										data-username=${student.username},data-adminclassid=${student.adminClass.id},
+										data-enrolldate=${#dates.format(student.enrollDate,'yyyy-MM-dd')}">
 											<td>物理</td>
 											<td>王先智</td>
 											<td>1号楼 101</td>
 											<td>高一（1）班</td>
 											<td>星期二 8:00-8:40</td>
 											<td></td>
-<!-- 											<td><button class="btn btn-default delete" type="button" -->
-<!-- 												th:attr="data-id=${student.id}">删除</button> -->
-<!-- 												<button class="btn btn-default update" type="button" -->
-<!-- 												th:attr="data-id=${student.id}">修改</button> -->
-<!-- 												<button class="btn btn-default reset" type="button" -->
-<!-- 												th:attr="data-id=${student.id}">重置密码</button> -->
-<!-- 												<button class="btn btn-default " type="button" id="stuTimetable" -->
-<!-- 												th:attr="data-id=${student.id}">查看课表</button> -->
-<!-- 											</td> -->
 										</tr>
 									</tbody>
 								</table>

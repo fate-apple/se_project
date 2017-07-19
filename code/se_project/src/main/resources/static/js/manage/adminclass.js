@@ -37,6 +37,7 @@ jQuery(document).ready(function() {
     	$("#teacher option[value="+teacherid+"]").attr("selected",true);
     	$("#room option[value="+roomid+"]").attr("selected",true);
     	$(".save").attr("data-id", dataset.id);
+    	$(".delete").attr("data-id", dataset.id);
     	$("#modal").modal("show");
     });
     
@@ -87,9 +88,16 @@ jQuery(document).ready(function() {
 						},
 						success : function(data) {
 							console.log(id);
-							alert(data);
-							location.reload();
+							bootbox.alert({
+								message :"删除成功",
+								callback : function() {
+									location.reload();
+								}
+							});
 
+						},
+						error:function(data){
+							bootbox.alert({message:"班级仍存在学生或课程，故无法删除！"});
 						}
 					});
 				}

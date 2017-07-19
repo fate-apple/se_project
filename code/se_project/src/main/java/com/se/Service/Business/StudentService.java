@@ -1,5 +1,6 @@
 package com.se.Service.Business;
 
+import com.se.Domain.Business.AdminClass;
 import com.se.Domain.Business.Student;
 import java.util.List;
 
@@ -8,5 +9,7 @@ import java.util.List;
  */
 public interface StudentService {
     List<Student> findAll();
+
+    List<Student> findByAdminClass (AdminClass adminClass);
 }
 

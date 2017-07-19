@@ -13,4 +13,12 @@ public interface AdminClassService {
 
 
     List<AdminClass> findAll();
+
+    List<AdminClass> findByGrade(int grade);
+
+    AdminClass create(String username, String password, String fullname, Long teacherId, int roomId, int grade);
+
+    AdminClass update(Long id, String username, String fullname, Long teacherId, int roomId, int grade);
+
+    void delete(Long id);
 }

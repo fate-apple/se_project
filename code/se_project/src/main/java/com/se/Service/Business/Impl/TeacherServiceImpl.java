@@ -28,8 +28,6 @@ public class TeacherServiceImpl implements TeacherService {
     @Autowired
     private RoleRepository roleRepository;
     @Autowired
-    private AuthService authService;
-    @Autowired
     private UserRepository userRepository;
 
     @Override
