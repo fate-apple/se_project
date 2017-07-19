@@ -5,6 +5,7 @@ import com.se.Repository.Jpa.AdminClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by clevo on 2017/7/18.
@@ -21,4 +22,6 @@ public interface AdminClassService {
     AdminClass update(Long id, String username, String fullname, Long teacherId, int roomId, int grade);
 
     void delete(Long id);
+
+    Map<String,Object> getClassByGrades(String grades);
 }
