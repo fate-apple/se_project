@@ -1,13 +1,10 @@
 package com.se.Domain.Business;
 
 import java.sql.Time;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -20,12 +17,13 @@ public class Period {
 	@NotEmpty	
 	private Time beginTime;
 	private Time endTime;
-	
-	protected Period(){
+	private Set<Course> courses = new HashSet<Course>();
+
+
+	public Period(){
 		
 	}
 	public Period(int id,  Time beginTime, Time endTime) {
-		super();
 		this.id = id;
 		this.beginTime = beginTime;
 		this.endTime = endTime;
@@ -53,5 +51,14 @@ public class Period {
 	}
 	public void setEndTime(Time endTime) {
 		this.endTime = endTime;
+	}
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "period")
+	public Set<Course> getCourses() {
+		return this.courses;
+	}
+
+	public void setCourses(Set<Course> courses) {
+		this.courses = courses;
 	}
 }

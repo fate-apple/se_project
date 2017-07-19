@@ -10,6 +10,7 @@ import java.util.Date;
  */
 @Table(name="User")
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
 public class User {
     private Long id;
     private String username;
@@ -28,6 +29,7 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
+    
     @Column(name="username")
     public String getUsername() {
         return username;

@@ -50,9 +50,16 @@ UserRepository userRepository;
         return "manage/student";
     }
 
-	@RequestMapping("/manage/room")
-    public String roomMangement(Model model) {
-        return "manage/room";
+	@RequestMapping("/manage/teacher")
+    public String teacherMangement(Model model) {
+        return "manage/teacher";
+    }
+	
+
+	
+	@RequestMapping("/manage/course")
+    public String courseMangement(Model model) {
+        return "manage/course";
     }
 	
 	@RequestMapping("/display/class")
