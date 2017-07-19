@@ -96,3 +96,10 @@
   color: #9ea7b3;
   }
 
+.bootstrap-select .btn-defalut{
+	border-color:#000000;
+}
+
+button.btn.dropdown-toggle.btn-default{
+	border-color:#000000;
+}

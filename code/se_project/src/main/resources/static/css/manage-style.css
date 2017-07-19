@@ -144,7 +144,7 @@ body {
     float: left;
     left: 0;
     list-style: none outside none;
-    margin: 3px 0 0;
+    margin: 0;
     min-width: 160px;
     position: absolute;
     top: 100%;

@@ -38,9 +38,9 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public Teacher create(String username, String password, String fullname, int roomid, Boolean gender){
+    public Teacher create(String username, String password, String fullname, int roomId, Boolean gender){
         Role role= roleRepository.findByRolename("ROLE_TEACHER");
-        Room room =roomRepository.findByRoomId(roomid);
+        Room room =roomRepository.findByRoomId(roomId);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         if (userRepository.findByUsername(username) != null) {
             return null;
@@ -48,5 +48,21 @@ public class TeacherServiceImpl implements TeacherService {
         Teacher teacher =new Teacher(username,encoder.encode(password),role,fullname,room,gender);
         teacherRepository.save(teacher);
         return teacher;
+    }
+    @Override
+    public Teacher update(Long id, String username, String fullname, int roomId, Boolean gender){
+//        if(teacherRepository.findOne(id)==null) 
+        Teacher teacher = teacherRepository.findOne(id);
+        teacher.setUsername(username);
+        teacher.setFullname(fullname);
+        teacher.setRoom(roomRepository.findOne(roomId));
+        teacher.setGender(gender);
+        teacherRepository.save(teacher);
+        return teacher;
+    }
+
+    @Override
+    public void delete(Long id){
+        teacherRepository.delete(id);
     }
 }

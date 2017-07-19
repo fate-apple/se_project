@@ -101,13 +101,17 @@
 								</div>
 								<div class="form-group">
 									<label>班主任</label> 
-									<select  id="teacher" class="form-control" name="teacher" >
+									<br/>
+									<select  id="teacher" class="selectpicker" name="teacher" data-live-search="true">
+										<option value="">--请选择--</option>
 										<option th:each="teacher:${teachers}" th:value="${teacher.id}" th:text="${teacher.fullname}"></option>
 									</select>
 								</div>
 								<div class="form-group">
 									<label>教室</label> 
-									<select  id="room" class="form-control" name="classroom">
+									<br/>
+									<select  id="room" class="selectpicker" name="classroom" data-live-search="true">
+										<option value="">--请选择--</option>
 										<option th:each="room:${rooms}" th:value="${room.roomId}" th:text="${room.buildingName}+' '+${room.roomNum}"></option>
 									</select>
 								</div>

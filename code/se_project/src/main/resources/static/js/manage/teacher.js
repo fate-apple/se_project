@@ -16,7 +16,7 @@ jQuery(document).ready(function() {
     	$("#modal").modal("show");
 	});
     
-    $(".update").click(function(e){
+    $("#dataTables").delegate(".update","click",function(e){
     	$("#modalTitle").html("修改");
     	$(".delete").css("display","inline");
     	$("#passwordDiv").css("display","none");
@@ -32,8 +32,28 @@ jQuery(document).ready(function() {
     	$("input[name='username']").val(username);
     	$("#room option[value="+roomid+"]").attr("selected",true);
     	$(".save").attr("data-id", dataset.id);
+    	$(".delete").attr("data-id", dataset.id);
     	$("#modal").modal("show");
     });
+//    $(".update").click(function(e){
+//    	$("#modalTitle").html("修改");
+//    	$(".delete").css("display","inline");
+//    	$("#passwordDiv").css("display","none");
+//    	$(".detailCourse").css("display","inline");
+//    	var dataset = e.currentTarget.dataset;
+//    	var id = dataset.id;
+//    	var gender = dataset.gender;
+//    	var fullname = dataset.fullname;
+//    	var roomid = dataset.roomid;
+//    	var username = dataset.username;
+//    	$("#gender option[value="+gender+"]").attr("selected",true);
+//    	$("input[name='fullname']").val(fullname);
+//    	$("input[name='username']").val(username);
+//    	$("#room option[value="+roomid+"]").attr("selected",true);
+//    	$(".save").attr("data-id", dataset.id);
+//    	$(".delete").attr("data-id", dataset.id);
+//    	$("#modal").modal("show");
+//    });
     
 	$(".delete").click(function(e) {
 		bootbox.confirm({
@@ -60,15 +80,12 @@ jQuery(document).ready(function() {
 							id : id
 						},
 						success : function(data) {
-							console.log(id);
-							bootbox.alert({
+								bootbox.alert({
 								message :"删除成功",
 								callback : function() {
 									location.reload();
 								}
 							});
-							location.reload();
-
 						}
 					});
 				}
@@ -134,7 +151,7 @@ jQuery(document).ready(function() {
 						});
 					},
 					error:function(data){
-						alert("用户名重复");
+						alert("修改失败");
 					}
 			});
 		}
