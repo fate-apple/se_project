@@ -81,12 +81,12 @@ public class User {
 //    }
 
 
-    public User( String username, String password, Role role, Date lastPasswordResetDate, String fullname) {
+    public User( String username, String password, Role role,  String fullname) {
         //this.id = id;
         this.username = username;
         this.password = password;
+        this.lastPasswordResetDate=new Date();
         this.role = role;
-        this.lastPasswordResetDate = lastPasswordResetDate;
         this.fullname = fullname;
     }
 

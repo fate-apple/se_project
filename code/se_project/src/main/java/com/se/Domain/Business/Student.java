@@ -12,7 +12,7 @@ public class Student extends User{
     private  AdminClass adminClass;
     private VirtualClass virtualClass;
     private Boolean     gender;
-    private Date enroll_date;
+    private Date enrollDate;
 
 
     @ManyToOne
@@ -36,12 +36,12 @@ public class Student extends User{
     }
 
     @Column(name="enroll_date")
-    public Date getEnroll_date() {
-        return enroll_date;
+    public Date getenrollDate() {
+        return enrollDate;
     }
 
-    public void setEnroll_date(Date enroll_date) {
-        this.enroll_date = enroll_date;
+    public void setenrollDate(Date enrollDate) {
+        this.enrollDate = enrollDate;
     }
 
     @Column(name="gender")
@@ -53,12 +53,12 @@ public class Student extends User{
         this.gender = gender;
     }
 
-    public Student(AdminClass adminClass, VirtualClass virtualClass, Boolean gender, Date enroll_date) {
+    public Student(AdminClass adminClass, VirtualClass virtualClass, Boolean gender, Date enrollDate) {
 
         this.adminClass = adminClass;
         this.virtualClass = virtualClass;
         this.gender = gender;
-        this.enroll_date = enroll_date;
+        this.enrollDate = enrollDate;
     }
 
     public Student(){

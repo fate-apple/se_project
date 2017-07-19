@@ -13,6 +13,8 @@ target/
 .idea
 *.iws
 *.iml
+*.html
+*.js
 *.ipr
 
 ### NetBeans ###

@@ -44,7 +44,7 @@ UserRepository userRepository;
         model.addAttribute("classes",classes );
         return "index";
     }
-    
+
 	@RequestMapping("/manage/course")
     public String courseMangement(Model model) {
         return "manage/course";
