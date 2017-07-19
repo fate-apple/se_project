@@ -1,7 +1,11 @@
 package com.se.Domain.Business;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.se.Domain.Auth.Role;
+
 import javax.persistence.*;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,6 +38,7 @@ public class Teacher extends User{
     }
     
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "teacher")
+	@JsonIgnore
 	public Set<Course> getCourses() {
 		return this.courses;
 	}
@@ -49,6 +54,7 @@ public class Teacher extends User{
 
     @ManyToOne
     @JoinColumn(name="office_id")
+    @JsonIgnore
     public Room getRoom() {
         return room;
     }
@@ -58,6 +64,7 @@ public class Teacher extends User{
     }
 
     @OneToOne(mappedBy="teacher")
+    @JsonIgnore
 	public AdminClass getAdminClass() {
 		return adminClass;
 	}
@@ -65,6 +72,11 @@ public class Teacher extends User{
 	public void setAdminClass(AdminClass adminClass) {
 		this.adminClass = adminClass;
 	}
-    
+
+    public Teacher(String username, String password, Role role, String fullname, Room room, Boolean gender) {
+        super(username, password, role, fullname);
+        this.room = room;
+        this.gender = gender;
+    }
 
 }

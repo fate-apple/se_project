@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface TeacherService {
     List<Teacher> findAll();
+
+    Teacher create(String username, String password, String fullname, int room_id, Boolean gender);
 }

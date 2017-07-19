@@ -86,18 +86,20 @@
 									<label>名字</label> <input type="text" class="form-control" name="fullname"/>
 								</div>
 								<div class="form-group" id="passwordDiv" style="display:none;">
-									<label>密码</label> <input type="text" class="form-control" name="password" />
+									<label>密码</label> <input type="password" class="form-control" name="password" />
 								</div>
 								<div class="form-group">
 									<label>性别</label> 
-									<select  class="form-control" id="gender" name="gender">
+									<br/>
+									<select  class="selectpicker" id="gender" name="gender">
 										<option value="1">男</option>
 										<option value="0">女</option>
 									</select>
 								</div>
 								<div class="form-group">
-									<label>办公室</label> 
-									<select  id="room" class="form-control" name="office">
+									<label>办公室</label>
+									<br/> 
+									<select  id="room" class="selectpicker" name="office"  data-live-search="true">
 										<option th:each="room:${rooms}" th:value="${room.roomId}" th:text="${room.buildingName}+' '+${room.roomNum}"></option>
 									</select>
 								</div>
@@ -115,6 +117,7 @@
 	<script type="text/javascript" th:src="@{/bootstrap//js/bootstrap.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/jquery.dataTables.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootbox.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/changeBg.js}"></script>
 	<script type="text/javascript" th:src="@{/js/load.js}"></script>
 	<script type="text/javascript" th:src="@{/js/main.js}"></script>

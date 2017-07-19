@@ -52,15 +52,21 @@ jQuery(document).ready(function() {
 					var id = dataset.id;
 					console.log(id);
 					jQuery.ajax({
-						url : '/manage/class/deleteAdminclass',
+						url : '/manage/teacher/delete',
 						processData : true,
 						dataType : "text",
+						method : "POST",
 						data : {
 							id : id
 						},
 						success : function(data) {
 							console.log(id);
-							alert(data);
+							bootbox.alert({
+								message :"删除成功",
+								callback : function() {
+									location.reload();
+								}
+							});
 							location.reload();
 
 						}
@@ -71,37 +77,68 @@ jQuery(document).ready(function() {
 	});
 	
 	$(".save").click(function(e){
-		var grade = $("#grade").val();
+		var gender = $("#gender").val();
 		var fullname = $("input[name='fullname']").val();
 		var username = $("input[name='username']").val();
 		var password = $("input[name='password']").val();
 		var roomid = $("#room").val();
 		var dataset = e.currentTarget.dataset;
 		var id = dataset.id;
-		
-		jQuery.ajax({
-			url : "/manage/class/updateTeacher",
-				processData : true,
-				dataType : "text",
-				method : "POST",
-				data:{
-					id: id,
-					fullname : fullname,
-					username : username,
-					password : password,
-					roomid : roomid,
-					grade : grade
-				},
-				success : function(data) {
-					console.log(id);
-					bootbox.alert({
-						message : data,
-						callback : function() {
-							location.reload();
+		if(id==""){
+			jQuery.ajax({
+					url : "/manage/teacher/create",
+						processData : true,
+						dataType : "text",
+						method : "POST",
+						data:{
+							fullname : fullname,
+							username : username,
+							password : password,
+							roomId : roomid,
+							gender : gender
+						},
+						success : function(data) {
+							console.log(id);
+							bootbox.alert({
+								message :"添加成功",
+								callback : function() {
+									location.reload();
+								}
+							});
+						},
+						error:function(data){
+							alert("用户名重复");
 						}
-					});
-				}
-		});
+				});
+		}
+		else{
+			jQuery.ajax({
+				url : "/manage/teacher/update",
+					processData : true,
+					dataType : "text",
+					method : "POST",
+					data:{
+						id: id,
+						fullname : fullname,
+						username : username,
+						roomId : roomid,
+						gender : gender
+					},
+					success : function(data) {
+						console.log(id);
+						bootbox.alert({
+							message :"修改成功",
+							callback : function() {
+								location.reload();
+							}
+						});
+					},
+					error:function(data){
+						alert("用户名重复");
+					}
+			});
+		}
 	});
+
     
 });

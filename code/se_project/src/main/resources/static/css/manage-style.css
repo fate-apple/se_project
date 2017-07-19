@@ -251,7 +251,7 @@ body {
 }
 .dropdown-menu > li > a {
     clear: both;
-    color: #777777!important;
+    color: #000000!important;
     display: block;
     font-weight: normal;
     line-height: 1.42857;
