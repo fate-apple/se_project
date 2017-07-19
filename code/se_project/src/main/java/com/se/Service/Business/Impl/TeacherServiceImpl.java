@@ -7,9 +7,11 @@ import com.se.Domain.Business.User;
 import com.se.Repository.Jpa.RoleRepository;
 import com.se.Repository.Jpa.RoomRepository;
 import com.se.Repository.Jpa.TeacherRepository;
+import com.se.Repository.Jpa.UserRepository;
 import com.se.Service.Auth.AuthService;
 import com.se.Service.Business.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,6 +29,8 @@ public class TeacherServiceImpl implements TeacherService {
     private RoleRepository roleRepository;
     @Autowired
     private AuthService authService;
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public List<Teacher> findAll(){
@@ -34,11 +38,30 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public Teacher create(String username, String password, String fullname, int room_id, Boolean gender){
+    public Teacher create(String username, String password, String fullname, int roomId, Boolean gender){
         Role role= roleRepository.findByRolename("ROLE_TEACHER");
-        Room room =roomRepository.findById(room_id);
-        Teacher teacher =new Teacher(username,password,role,fullname,room,gender);
+        Room room =roomRepository.findByroomId(roomId);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        if (userRepository.findByUsername(username) != null) {
+            return null;
+        }
+        Teacher teacher =new Teacher(username,encoder.encode(password),role,fullname,room,gender);
         teacherRepository.save(teacher);
         return teacher;
+    }
+    @Override
+    public Teacher update(Long id, String username, String fullname, int roomId, Boolean gender){
+//        if(teacherRepository.findOne(id)==null) 
+        Teacher teacher = teacherRepository.findOne(id);
+        teacher.setUsername(username);
+        teacher.setFullname(fullname);
+        teacher.setRoom(roomRepository.findOne(roomId));
+        teacher.setGender(gender);
+        return teacher;
+    }
+
+    @Override
+    public void delete(Long id){
+        teacherRepository.delete(id);
     }
 }

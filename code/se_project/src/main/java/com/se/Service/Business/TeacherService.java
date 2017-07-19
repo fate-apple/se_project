@@ -11,4 +11,8 @@ public interface TeacherService {
     List<Teacher> findAll();
 
     Teacher create(String username, String password, String fullname, int room_id, Boolean gender);
+
+    Teacher update(Long id, String username, String fullname, int roomId, Boolean gender);
+
+    void delete(Long id);
 }

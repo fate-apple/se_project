@@ -42,24 +42,29 @@ public class PublicAdvice {
 
     @ModelAttribute
     public void addCommonModel(Model model, HttpServletRequest request) {
-        Object o = SecurityContextHolder.getContext().getAuthentication().getName();
-        String sec_username = (String) o;
         String sec_role = "ROLE_VISTOR";
-        UserDetails userDetails;
+        String sec_username="AnnonymousUser";
+        if(SecurityContextHolder.getContext()!=null) {
+            Object o = SecurityContextHolder.getContext().getAuthentication().getName();
+            sec_username = (String) o;
+
+            UserDetails userDetails;
 //        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Object temps = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (temps instanceof UserDetails) {
-            userDetails = (UserDetails) temps;
-            GrantedAuthority[] authorities = userDetails.getAuthorities().toArray(new GrantedAuthority[0]);
-            if (authorities.length > 0) {
-                GrantedAuthority authoritie = authorities[0];
-                sec_role = authoritie.getAuthority();
+            Object temps = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (temps instanceof UserDetails) {
+                userDetails = (UserDetails) temps;
+                GrantedAuthority[] authorities = userDetails.getAuthorities().toArray(new GrantedAuthority[0]);
+                if (authorities.length > 0) {
+                    GrantedAuthority authoritie = authorities[0];
+                    sec_role = authoritie.getAuthority();
+                }
             }
         }
         if (sec_username != null) {
             model.addAttribute("sec_username", sec_username);
             model.addAttribute("sec_role", sec_role);
         }
+        return;
     }
 //
 //
