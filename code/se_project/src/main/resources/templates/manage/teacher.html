@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <link th:href="@{/css/manage-style.css}" rel="stylesheet"/> 
+    <link th:href="@{/css/loader-style.css}" rel="stylesheet"/>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/dataTables.bootstrap.css}" rel="stylesheet"/>
+    <link th:href="@{/css/dataTables.responsive.css}" rel="stylesheet"/>
+    <link th:href="@{/bootstrap-select/css/bootstrap-select.min.css}" rel="stylesheet"/>
+    <link th:href="@{/linearicons/style.css}" rel="stylesheet"/>
+    <link th:href="@{/css/manage.css}" rel="stylesheet"/>
+
+</head>
+<body>
+	 <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+	<div  th:replace="component/navbar :: copy"></div>
+	<div  th:replace="component/sidebar :: copy"></div>
+	<div class="wrap-fluid">
+		<div class="informationWrapper">
+			<h1>教师信息</h1>
+			<button class="btn btn-primary" type="button" id="add">
+				<i class="fa fa-plus">添加教师</i>
+			</button>	
+			<br/>
+			<br/>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="dataTable_wrapper">
+								<table class="table table-bordered table-hover"
+									id="dataTables">
+									<thead>
+										<tr >
+										    <th>工号</th>
+											<th>名字</th>
+											<th>性别</th>
+											<th>办公室</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="teacher:${teachers}">
+											<td th:text="${teacher.username}"></td>
+											<td th:text="${teacher.fullname"></td>
+											<td th:text="${teacher.gender}?'男':'女'"></td>
+											<td th:text="${teacher.room.buildingName}+' '+${teacher.room.roomNum}"></td>
+											
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- Ending Panel -->
+				</div>
+			</div>
+			<!-- Ending Row -->
+		</div>
+	</div>
+	
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="modalTitle"></h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-lg-12">
+							<form role="form" >
+								<div class="form-group">
+									<label>工号</label> <input type="text" class="form-control" name="username"/>
+								</div>
+								<div class="form-group">
+									<label>名字</label> <input type="text" class="form-control" name="fullname"/>
+								</div>
+								<div class="form-group" id="passwordDiv" style="display:none;">
+									<label>密码</label> <input type="text" class="form-control" name="password" />
+								</div>
+								<div class="form-group">
+									<label>性别</label> 
+									<select  class="form-control" name="gender">
+										<option value="1">男</option>
+										<option value="0">女</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>办公室</label> 
+									<select  id="room" class="form-control" name="office">
+										<option th:each="room:${rooms}" th:value="${room.roomId}" th:text="${room.buildingName}+' '+${room.roomNum}"></option>
+									</select>
+								</div>
+								<button class="btn btn-default save" type="button" >保存</button>
+								<button class="btn btn-default delete" type="button" style="display:none;">删除</button>				
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" th:src="@{/js/preloader.js}"></script>
+	<script type="text/javascript" th:src="@{/bootstrap//js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/jquery.dataTables.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/changeBg.js}"></script>
+	<script type="text/javascript" th:src="@{/js/load.js}"></script>
+	<script type="text/javascript" th:src="@{/js/main.js}"></script>
+	<script type="text/javascript" th:src="@{/bootstrap-select/js/bootstrap-select.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/studentSelect.js}"></script>
+	<script type="text/javascript" th:src="@{/js/manage/datatableCHN.js}"></script>
+	<script type="text/javascript" th:src="@{/js/manage/teacher.js}"></script>
+</body>
+</html>

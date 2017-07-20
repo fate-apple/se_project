@@ -5,8 +5,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
+
 
 @Table(name="period")
 @Entity
@@ -14,7 +16,7 @@ public class Period {
 	
 	private int id;	
 	
-	@NotEmpty	
+
 	private Time beginTime;
 	private Time endTime;
 	private Set<Course> courses = new HashSet<Course>();

@@ -9,7 +9,7 @@ import java.util.Date;
 @PrimaryKeyJoinColumn(name = "student_id") 
 public class Student extends User{
 	
-    private  AdminClass adminClass;
+    private AdminClass adminClass;
     private VirtualClass virtualClass;
     private Boolean     gender;
     private Date enroll_date;
