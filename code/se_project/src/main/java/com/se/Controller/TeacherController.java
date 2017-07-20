@@ -34,10 +34,7 @@ public class TeacherController {
 
     @RequestMapping("/create")
      public ResponseEntity<?> create(@RequestParam String username,@RequestParam String password,@RequestParam String fullname,@RequestParam int roomId,@RequestParam Boolean gender){
-//        String username = httpServletRequest.getParameter("username");
-//        String password = httpServletRequest.getParameter(("password"));
-//        String fullname = httpServletRequest.getParameter("fullname");
-//        int room_id = httpServletRequest.getParameter("room_id");
+
         Teacher teacher = teacherService.create(username, password, fullname, roomId, gender);
         if (teacher == null) return ResponseEntity.badRequest().body("create error");
         return ResponseEntity.ok(teacher);

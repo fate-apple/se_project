@@ -109,14 +109,14 @@
 										
 									</select>
 								</div>
-								<div class="form-group">
+								<div class="form-group" id="getTeacher">
 									<label>任课老师</label> 
 									<select class="selectpicker" id="teacher" name="teacher">
 										<option value="">--请选择</option>
 										<option th:each="teacher:${teachers}" th:value="${teacher.id}" th:text="${teacher.fullname}"></option>
 									</select>
 								</div>
-								<div class="form-group">
+								<div class="form-group" id="getRoom">
 									<label>教室</label> 
 									<select  class="selectpicker" id="classroom" name="classroom">
 										<option value="">--请选择--</option>
