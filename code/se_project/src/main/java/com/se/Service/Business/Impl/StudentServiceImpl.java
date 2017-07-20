@@ -102,7 +102,7 @@ public class StudentServiceImpl implements StudentService {
         student.setAdminClass((adminClass));
         student.setVirtualClass(virtualClass);
         student.setGender(gender);
-        student.setEnRollDate(date);
+        student.setEnrollDate(date);
         studentRepository.save(student);
         return student;
     }

@@ -46,11 +46,11 @@ public class Student extends User{
     }
 
     @Column(name="enroll_date")
-    public Date getenRollDate() {
+    public Date getEnrollDate() {
         return enrollDate;
     }
 
-    public void setEnRollDate(Date enrollDate) {
+    public void setEnrollDate(Date enrollDate) {
         this.enrollDate = enrollDate;
     }
 

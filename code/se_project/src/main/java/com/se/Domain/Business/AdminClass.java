@@ -1,5 +1,6 @@
 package com.se.Domain.Business;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.se.Domain.Auth.Role;
 
 import javax.persistence.*;
@@ -66,6 +67,7 @@ public class AdminClass extends User{
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "adminClass")
+    @JsonIgnore
 	public Set<Student> getStudents() {
 		return students;
 	}
@@ -76,6 +78,7 @@ public class AdminClass extends User{
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "adminClass")
+    @JsonIgnore
 	public Set<Course> getCourses() {
 		return courses;
 	}
