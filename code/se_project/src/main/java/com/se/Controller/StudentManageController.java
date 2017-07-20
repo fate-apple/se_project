@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import com.se.Domain.Business.AdminClass;
+import com.se.Repository.Jpa.VirtualClassRepository;
 import com.se.Service.Business.AdminClassService;
 import com.se.Service.Business.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,15 +29,19 @@ public class StudentManageController {
 	StudentService studentService;
 	@Autowired
 	AdminClassService adminClassService;
+	@Autowired
+	VirtualClassRepository virtualClassRepository;
 	
 	//根据所选的班级返回学生（不重复）
 	@RequestMapping(value="/getStudent", method = RequestMethod.POST)
 	public String getStudent(@RequestParam String classes,Model model){
-	
+
 		List<Student> students =new ArrayList<Student>();
 		students = studentService.findByAdminClasses(classes);
 
 		model.addAttribute("students",students );
+		model.addAttribute("adminClasses",adminClassService.findAll());
+		model.addAttribute("virtualClasses",virtualClassRepository.findAll());
 
 		return "/manage/student";
 	}
