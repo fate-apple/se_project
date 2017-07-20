@@ -129,7 +129,7 @@
 								<div class="form-group">
 									<label>虚拟班</label>
 									<select class="form-control" id="virtualClass" name="virtualClass">
-										<option th:each="virtualclass:${virtualClasses}" th:value="${virtualclass.id}" th:text="${virtualclass.name}"></option>
+										<option th:each="virtualclass:${virtualClasses}" th:value="${virtualclass.virtualClassId}" th:text="${virtualclass.name}"></option>
 									</select>
 								</div>
 								<div class="form-group">

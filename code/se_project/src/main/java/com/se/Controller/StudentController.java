@@ -1,5 +1,6 @@
 package com.se.Controller;
 
+import com.se.Repository.Jpa.VirtualClassRepository;
 import com.se.Service.Business.AdminClassService;
 import com.se.Service.Business.RoomService;
 import com.se.Service.Business.StudentService;
@@ -25,13 +26,15 @@ public class StudentController {
     private RoomService roomService;
     @Autowired
     private StudentService studentService;
+    @Autowired
+    private VirtualClassRepository virtualClassRepository;
 
     @RequestMapping("")
     public String manage(Model model){
         model.addAttribute("adminClasses",adminClassService.findAll());
         model.addAttribute("teachers",teacherService.findAll());
         model.addAttribute("rooms",roomService.findAll());
-        //model.addAttribute("students",studentService.findAll());
+        model.addAttribute("virtualClasses",virtualClassRepository.findAll());
         return "/manage/student";
     }
 
