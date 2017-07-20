@@ -7,9 +7,12 @@ import com.se.Service.Business.CourseSerivce;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 /**
  * Created by clevo on 2017/7/20.
@@ -40,8 +43,10 @@ public class CourseController {
          return;
     }
     @RequestMapping("/findByAdminClass")
-    public ResponseEntity<?> findByAdminClass(@RequestParam String adminClasses){
-        return ResponseEntity.ok(courseSerivce.findByAdminClass(adminClasses));
+    public String findByAdminClass(@RequestParam String adminClasses,Model model){
+        List<Course> courseList =courseSerivce.findByAdminClass(adminClasses);
+    model.addAttribute("courses",courseList);
+    return "manage/course";
     }
 
 }
