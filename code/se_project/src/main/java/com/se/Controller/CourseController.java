@@ -4,9 +4,13 @@ import com.se.Domain.Business.Course;
 import com.se.Domain.Business.Teacher;
 import com.se.Repository.Jpa.CourseRepository;
 import com.se.Service.Business.CourseSerivce;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,5 +43,10 @@ public class CourseController {
          courseSerivce.delete(courseId);
          return;
     }
-
+    @RequestMapping("/findByAdminClass")
+    public String findByAdminClass(@RequestParam String adminClasses,Model model){
+        List<Course> courseList =courseSerivce.findByAdminClass(adminClasses);
+	    model.addAttribute("courses",courseList);
+	    return "manage/course";
+    }
 }

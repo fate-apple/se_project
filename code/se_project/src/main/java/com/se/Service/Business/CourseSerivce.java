@@ -2,6 +2,8 @@ package com.se.Service.Business;
 
 import com.se.Domain.Business.Course;
 
+import java.util.List;
+
 /**
  * Created by clevo on 2017/7/20.
  */
@@ -13,4 +15,6 @@ public interface CourseSerivce {
                   Long teacherId, int periodId, int subjectId, int weekday);
 
     void delete(Long courseId);
+
+    List<Course> findByAdminClass(String adminClasses);
 }

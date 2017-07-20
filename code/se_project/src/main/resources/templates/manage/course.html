@@ -39,7 +39,7 @@
 				</div>
 				<div class="col-md-3">
 					<form id="getCourseForm" action="" method="post">
-						<input id="classes" name="classes" type="hidden"/>
+						<input id="adminClasses" name="adminClasses" type="hidden"/>
 						<button type="button" id="getCourse" class="btn btn-default">获取</button>
 					 </form>
 				</div>
@@ -67,15 +67,13 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="course:${courses}" class="update" th:attr="data-id=${course.id},
-										data-roomId=${course.room.roomId},data-teacherId=${course.teacher.id},
-										data-username=${student.username},data-adminclassid=${student.adminClass.id},
-										data-enrolldate=${#dates.format(student.enrollDate,'yyyy-MM-dd')}">
+										<tr th:each="course:${courses}" class="update" th:attr="data-id=${course.courseId},
+										data-roomId=${course.room.roomId},data-teacherId=${course.teacher.id}">
 											<td th:text="${course.subject.title}"></td>
 											<td th:text="${course.teacher.fullname}"></td>
-											<td th:texy="${course.room.buildingName}+' '+${course.room.roomNum}"></td>
+											<td th:text="${course.room.buildingName}+' '+${course.room.roomNum}"></td>
 											<td th:text="${course.virtualClass}?${course.virtualClass.name}:${course.adminClass.fullname}"></td>
-											<td th:text="${course.room.weekday}+${course.period.beginTime}+'-'+${course.period.endTime}"></td>
+											<td th:text="'星期'+${course.weekday}+' ： '+${course.period.beginTime}+'-'+${course.period.endTime}"></td>
 										</tr>
 									</tbody>
 								</table>

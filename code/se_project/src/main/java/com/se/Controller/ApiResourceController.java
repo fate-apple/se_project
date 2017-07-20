@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by clevo on 2017/7/20.
  */
 @Controller
-@RequestMapping(value="/api/resource",method=RequestMethod.GET)
+@RequestMapping(value = "/api/resource", method = RequestMethod.GET)
 public class ApiResourceController {
     @Autowired
     PeriodRepository periodRepository;
@@ -35,39 +35,47 @@ public class ApiResourceController {
     VirtualClassRepository virtualClassRepository;
 
     @RequestMapping("/period")
-    public ResponseEntity<?> period(){
+    public ResponseEntity<?> period() {
         return ResponseEntity.ok(periodRepository.findAll());
     }
+
     @RequestMapping("/adminClass")
-    public ResponseEntity<?> adminClass(){
+    public ResponseEntity<?> adminClass() {
         return ResponseEntity.ok(adminClassRepository.findAll());
     }
+
     @RequestMapping("/course")
-    public ResponseEntity<?> course(){
+    public ResponseEntity<?> course() {
         return ResponseEntity.ok(courseRepository.findAll());
     }
+
     @RequestMapping("/room")
-    public ResponseEntity<?> room(){
+    public ResponseEntity<?> room() {
         return ResponseEntity.ok(roomRepository.findAll());
     }
+
     @RequestMapping("/student")
-    public ResponseEntity<?> student(){
+    public ResponseEntity<?> student() {
         return ResponseEntity.ok(studentRepository.findAll());
     }
+
     @RequestMapping("/subject")
-    public ResponseEntity<?> subject(){
+    public ResponseEntity<?> subject() {
         return ResponseEntity.ok(subjectRepository.findAll());
     }
+
     @RequestMapping("/teacher")
-    public ResponseEntity<?> teacher(){
+    public ResponseEntity<?> teacher() {
         return ResponseEntity.ok(teacherRepository.findAll());
     }
+
     @RequestMapping("/user")
-    public ResponseEntity<?> user(){
+    public ResponseEntity<?> user() {
         return ResponseEntity.ok(userRepository.findAll());
     }
+
     @RequestMapping("/virtualClass")
-    public ResponseEntity<?> virtualClass(){
+    public ResponseEntity<?> virtualClass() {
         return ResponseEntity.ok(virtualClassRepository.findAll());
     }
 }
