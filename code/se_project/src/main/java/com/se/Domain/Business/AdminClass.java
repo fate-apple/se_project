@@ -78,7 +78,7 @@ public class AdminClass extends User{
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "adminClass")
-	@JsonIgnore
+    @JsonIgnore
 	public Set<Course> getCourses() {
 		return courses;
 	}

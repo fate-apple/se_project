@@ -26,6 +26,8 @@ public interface StudentService {
 
     Student update(Long id, String username, String fullname, Long adminClassId, Long virtualClassId, boolean gender, String enrollDate);
 
+
+
     void delete(Long id);
 }
 

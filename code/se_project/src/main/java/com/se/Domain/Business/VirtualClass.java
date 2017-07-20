@@ -1,5 +1,7 @@
 package com.se.Domain.Business;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -13,8 +15,8 @@ import java.util.Set;
 public class VirtualClass {
     private Long virtualClassId;
     private String name;
-    private Set<Course> courses = new HashSet<Course>();
-	private Set<Student> students = new HashSet<Student>();
+    private transient Set<Course> courses = new HashSet<Course>();
+	private transient Set<Student> students = new HashSet<Student>();
 
     public VirtualClass(Long virtualClassId, String name) {
 
@@ -43,7 +45,7 @@ public class VirtualClass {
     }
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "virtualClass")
-	@JsonIgnore
+    @JsonIgnore
 	public Set<Course> getCourses() {
 		return this.courses;
 	}
@@ -53,7 +55,7 @@ public class VirtualClass {
 	}
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "virtualClass")
-	@JsonIgnore
+    @JsonIgnore
 	public Set<Student> getStudents() {
 		return this.students;
 	}
