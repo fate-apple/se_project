@@ -13,11 +13,11 @@ public interface AdminClassRepository extends JpaRepository<AdminClass,Long>
 {
     List<AdminClass> findByGrade(int grade);
 
-    Set<AdminClass> findByGradeIn(Set<Integer> gradesInt);
-
-	List<AdminClass> findByGradeInOrderByFullnameAsc(Set<Integer> gradesInt);
-
-	List<AdminClass> findByGradeInOrderByGradeAscFullnameAsc(Set<Integer> gradesInt);
 
 
+
+
+
+
+    List<AdminClass> findByGradeInOrderByGradeAscFullnameAsc(Set<Integer> gradesInt);
 }

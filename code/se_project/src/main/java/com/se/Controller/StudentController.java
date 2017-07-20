@@ -28,7 +28,7 @@ public class StudentController {
 
     @RequestMapping("")
     public String manage(Model model){
-        model.addAttribute("classes",adminClassService.findAll());
+        model.addAttribute("adminClasses",adminClassService.findAll());
         model.addAttribute("teachers",teacherService.findAll());
         model.addAttribute("rooms",roomService.findAll());
         //model.addAttribute("students",studentService.findAll());
