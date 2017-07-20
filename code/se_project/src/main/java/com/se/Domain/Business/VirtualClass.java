@@ -24,11 +24,11 @@ public class VirtualClass {
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    public Long getvirtualClassId() {
+    public Long getVirtualClassId() {
         return virtualClassId;
     }
 
-    public void setvirtualClassId(Long virtualClassId) {
+    public void setVirtualClassId(Long virtualClassId) {
         this.virtualClassId = virtualClassId;
     }
 
