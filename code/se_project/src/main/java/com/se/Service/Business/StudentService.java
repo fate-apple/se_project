@@ -19,5 +19,13 @@ public interface StudentService {
     List<Student> findByAdminClasses(String classes);
 
     Collection<? extends Student> findByAdminClassId(Long classId);
+
+
+    Student create(String username, String password, String fullname,
+                   Long adminClassId, Long virtualClassId, boolean gender, String enrollDate);
+
+    Student update(Long id, String username, String fullname, Long adminClassId, Long virtualClassId, boolean gender, String enrollDate);
+
+    void delete(Long id);
 }
 

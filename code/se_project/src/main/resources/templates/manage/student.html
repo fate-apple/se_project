@@ -71,6 +71,7 @@
 										<tr th:each="student:${students}" class="update" th:attr="data-id=${student.id},
 										data-gender=${student.gender}?1:0,data-fullname=${student.fullname},
 										data-username=${student.username},data-adminclassid=${student.adminClass.id},
+										data-virtualclassid=${student.virtualClass}?${student.virtualClass.virtualClassId}:0,
 										data-enrolldate=${#dates.format(student.enrollDate,'yyyy-MM-dd')}">
 											<td th:text="${student.username}"></td>
 											<td th:text="${student.fullname}"></td>
@@ -115,27 +116,35 @@
 								</div>
 								<div class="form-group">
 									<label>性别</label> 
+<!-- 									<input type="radio" name="gender" value="1"/>男 -->
+<!-- 									<input type="radio" name="gender" value="0"/>女 -->
 									<select  class="form-control" id="gender" name="gender">
 										<option value="1">男</option>
 										<option value="0">女</option>
 									</select>
 								</div>
 								<div class="form-group">
+									<label>入学日期</label>
+									<input class="form-control" type="date" id="enrollDate" name="enrollDate"/>
+								</div>
+								<div class="form-group">
 									<label>班级</label> 
-									<select class="form-control" id="adminClass" name="adminClass">
+									<br/>
+									<select class="selectpicker" id="adminClass" name="adminClass"  data-live-search="true">
+										<option value="">--请选择</option>
 										<option th:each="adminclass:${adminClasses}" th:value="${adminclass.id}" th:text="${adminclass.fullname}"></option>
 									</select>
 								</div>
 								<div class="form-group">
 									<label>虚拟班</label>
-									<select class="form-control" id="virtualClass" name="virtualClass">
+									<br/>
+									<select class="selectpicker" id="virtualClass" name="virtualClass"  data-live-search="true">
+										<option value="">--请选择</option>
+										<option value="0">无</option>
 										<option th:each="virtualclass:${virtualClasses}" th:value="${virtualclass.virtualClassId}" th:text="${virtualclass.name}"></option>
 									</select>
 								</div>
-								<div class="form-group">
-									<label>入学日期</label>
-									<input class="form-control" type="date" id="enrollDate" name="enrollDate"/>
-								</div>
+
 								<button class="btn btn-default save" type="button" >保存</button>
 								<button class="btn btn-default delete" type="button" style="display:none;">删除</button>	
 								<button class="btn btn-default detailCourse" type="button" style="display:none;">课程</button>
@@ -150,11 +159,12 @@
 	<script type="text/javascript" th:src="@{/bootstrap//js/bootstrap.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/jquery.dataTables.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootbox.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/changeBg.js}"></script>
 	<script type="text/javascript" th:src="@{/js/load.js}"></script>
 	<script type="text/javascript" th:src="@{/js/main.js}"></script>
 	<script type="text/javascript" th:src="@{/bootstrap-select/js/bootstrap-select.min.js}"></script>
-	<script type="text/javascript" th:src="@{/js/studentSelect.js}"></script>
+	<script type="text/javascript" th:src="@{/js/classSelect.js}"></script>
 	<script type="text/javascript" th:src="@{/js/manage/datatableCHN.js}"></script>
 	<script type="text/javascript" th:src="@{/js/manage/student.js}"></script>
 </body>

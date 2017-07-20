@@ -14,6 +14,8 @@ jQuery(document).ready(function() {
     	$("#adminClass").val("");
     	$("#virtualClass").val("");
     	$("#enrollDate").val("");
+    	$("#adminClass").selectpicker("val","");
+    	$("#virtualClass").selectpicker("val","");
     	$(".save").attr("data-id","");
     	$("#modal").modal("show");
 	});
@@ -27,13 +29,16 @@ jQuery(document).ready(function() {
     	var id = dataset.id;
     	var gender = dataset.gender;
     	var fullname = dataset.fullname;
-    	var roomid = dataset.roomid;
     	var username = dataset.username;
     	var enrolldate = dataset.enrolldate;
+    	var adminclassid = dataset.adminclassid;
+    	var virtualclassid = dataset.virtualclassid;
     	$("#gender option[value="+gender+"]").attr("selected",true);
     	$("input[name='fullname']").val(fullname);
     	$("input[name='username']").val(username);
     	$("#enrollDate").val(enrolldate);
+    	$("#adminClass").selectpicker("val",adminclassid);
+    	$("#virtualClass").selectpicker("val",virtualclassid);
     	$(".save").attr("data-id", dataset.id);
     	$(".delete").attr("data-id", dataset.id);
     	$("#modal").modal("show");
@@ -143,7 +148,7 @@ jQuery(document).ready(function() {
 		}
 		else{
 			jQuery.ajax({
-				url : "/manage/teacher/update",
+				url : "/manage/student/update",
 					processData : true,
 					dataType : "text",
 					method : "POST",
@@ -171,5 +176,22 @@ jQuery(document).ready(function() {
 			});
 		}
 	});
+	
+	
+    $("#getStudent").click(function(e){
+    	var classes="";
+    	var obj = document.getElementById("class");
+    	for(var i=0;i<obj.options.length;i++){
+			if(obj.options[i].selected){
+				classes += obj.options[i].value+",";
+			}
+    	}
+    	classes = classes.substring(0,classes.length-1);
+       	console.log(classes);
+       
+       	$("#classes").val(classes);
+       	$("#getStudentForm").attr("action","/manage/getStudent");
+       	$("#getStudentForm").submit();
+    });
     
 });

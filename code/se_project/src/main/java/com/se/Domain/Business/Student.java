@@ -1,5 +1,7 @@
 package com.se.Domain.Business;
 
+import com.se.Domain.Auth.Role;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -13,6 +15,14 @@ public class Student extends User{
     private VirtualClass virtualClass;
     private Boolean     gender;
     private Date enrollDate;
+
+    public Student(String username, String password, Role role, String fullname, AdminClass adminClass, VirtualClass virtualClass, Boolean gender, Date enrollDate) {
+        super(username, password, role, fullname);
+        this.adminClass = adminClass;
+        this.virtualClass = virtualClass;
+        this.gender = gender;
+        this.enrollDate = enrollDate;
+    }
 
 
     @ManyToOne

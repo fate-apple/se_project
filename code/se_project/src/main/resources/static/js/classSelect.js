@@ -34,22 +34,7 @@ jQuery(document).ready(function() {
 				}
 			});
     });
-		
-    $("#getStudent").click(function(e){
-    	var classes="";
-    	var obj = document.getElementById("class");
-    	for(var i=0;i<obj.options.length;i++){
-			if(obj.options[i].selected){
-				classes += obj.options[i].value+",";
-			}
-    	}
-    	classes = classes.substring(0,classes.length-1);
-       	console.log(classes);
-       
-       	$("#classes").val(classes);
-       	$("#getStudentForm").attr("action","/manage/getStudent");
-       	$("#getStudentForm").submit();
-    });
+
     
     
 });
