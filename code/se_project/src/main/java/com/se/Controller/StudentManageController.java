@@ -32,11 +32,12 @@ public class StudentManageController {
 	//根据所选的班级返回学生（不重复）
 	@RequestMapping(value="/getStudent", method = RequestMethod.POST)
 	public String getStudent(@RequestParam String classes,Model model){
-
+	
 		List<Student> students =new ArrayList<Student>();
 		students = studentService.findByAdminClasses(classes);
 
 		model.addAttribute("students",students );
+
 		return "/manage/student";
 	}
 	

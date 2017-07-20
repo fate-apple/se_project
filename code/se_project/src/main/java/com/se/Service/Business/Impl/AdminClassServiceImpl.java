@@ -70,22 +70,26 @@ public class AdminClassServiceImpl implements AdminClassService{
     }
     @Override
     public Map<String,Object> getClassByGrades(String grade){
-        String[] gradesStr = grade.split(",");
-        Set<Integer> gradesInt = new HashSet<Integer>();
-        for(String temp : gradesStr){
-                    gradesInt.add(Integer.parseInt(temp));
-        }
         Map<String,Object> classes = new HashMap<String,Object>();
         List<String> classname = new ArrayList<String> ();
         List<Long> classid = new ArrayList<Long> ();
         int classnum = 0;
 
-        Set<AdminClass> resultSet =adminClassRepository.findByGradeIn(gradesInt);
+        if(grade!=""){
+        String[] gradesStr = grade.split(",");
+        Set<Integer> gradesInt = new HashSet<Integer>();
+        for(String temp : gradesStr){
+                    gradesInt.add(Integer.parseInt(temp));
+        }
+
+
+        List<AdminClass> resultSet =adminClassRepository.findByGradeInOrderByGradeAscFullnameAsc(gradesInt);
         for (AdminClass adminClass: resultSet){
             classname.add(adminClass.getFullname());
             classid.add(adminClass.getId());
             classnum++;
-        }
+        }}
+
         classes.put("classname", classname);
         classes.put("classid", classid);
         classes.put("classnum",classnum);
