@@ -39,5 +39,9 @@ public class CourseController {
          courseSerivce.delete(courseId);
          return;
     }
+    @RequestMapping("/findByAdminClass")
+    public ResponseEntity<?> findByAdminClass(@RequestParam String adminClasses){
+        return ResponseEntity.ok(courseSerivce.findByAdminClass(adminClasses));
+    }
 
 }

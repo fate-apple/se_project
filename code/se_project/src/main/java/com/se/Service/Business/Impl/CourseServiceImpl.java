@@ -6,6 +6,8 @@ import com.se.Service.Business.CourseSerivce;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.*;
+
 
 /**
  * Created by clevo on 2017/7/20.
@@ -62,4 +64,26 @@ public class CourseServiceImpl implements CourseSerivce {
         courseRepository.delete(courseId);
         return;
     }
+@Override
+public List<Course> findByAdminClass(String adminClasses){
+       List<Course>courses = new ArrayList<Course>();
+       if(adminClasses!=""){
+           String[] classesStr = adminClasses.split(",");
+           Set<Long> classesId = new HashSet<Long>();
+           for (String classStr : classesStr) {
+               classesId.add(Long.parseLong(classStr));
+           }
+
+           for (Long classId : classesId) {
+               courses.addAll(courseRepository.findByAdminClass(adminClassRepository.findOne(classId)));
+           }
+       }
+//    Collections.sort(courses, new Comparator<Course>() {
+//        @Override
+//        public int compare(Course o1, Course o2) {
+//            return o1.ge
+//        }
+//    });
+       return   courses;
+}
 }

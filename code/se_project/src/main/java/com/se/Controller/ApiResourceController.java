@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by clevo on 2017/7/20.
  */
 @Controller
-@RequestMapping(value="/api/resource",method=RequestMethod.GET)
+@RequestMapping(value = "/api/resource", method = RequestMethod.GET)
 public class ApiResourceController {
     @Autowired
     PeriodRepository periodRepository;
@@ -33,33 +33,49 @@ public class ApiResourceController {
     UserRepository userRepository;
     @Autowired
     VirtualClassRepository virtualClassRepository;
+
     @RequestMapping("/period")
-    public ResponseEntity<?> period(){
+    public ResponseEntity<?> period() {
         return ResponseEntity.ok(periodRepository.findAll());
     }
+
     @RequestMapping("/adminClass")
-    public ResponseEntity<?> adminClass(){
+    public ResponseEntity<?> adminClass() {
         return ResponseEntity.ok(adminClassRepository.findAll());
-    }@RequestMapping("/course")
-    public ResponseEntity<?> course(){
+    }
+
+    @RequestMapping("/course")
+    public ResponseEntity<?> course() {
         return ResponseEntity.ok(courseRepository.findAll());
-    }@RequestMapping("/room")
-    public ResponseEntity<?> room(){
+    }
+
+    @RequestMapping("/room")
+    public ResponseEntity<?> room() {
         return ResponseEntity.ok(roomRepository.findAll());
-    }@RequestMapping("/student")
-    public ResponseEntity<?> student(){
+    }
+
+    @RequestMapping("/student")
+    public ResponseEntity<?> student() {
         return ResponseEntity.ok(studentRepository.findAll());
-    }@RequestMapping("/subject")
-    public ResponseEntity<?> subject(){
+    }
+
+    @RequestMapping("/subject")
+    public ResponseEntity<?> subject() {
         return ResponseEntity.ok(subjectRepository.findAll());
-    }@RequestMapping("/teacher")
-    public ResponseEntity<?> teacher(){
+    }
+
+    @RequestMapping("/teacher")
+    public ResponseEntity<?> teacher() {
         return ResponseEntity.ok(teacherRepository.findAll());
-    }@RequestMapping("/user")
-    public ResponseEntity<?> user(){
+    }
+
+    @RequestMapping("/user")
+    public ResponseEntity<?> user() {
         return ResponseEntity.ok(userRepository.findAll());
-    }@RequestMapping("/virtualClass")
-    public ResponseEntity<?> virtualClass(){
+    }
+
+    @RequestMapping("/virtualClass")
+    public ResponseEntity<?> virtualClass() {
         return ResponseEntity.ok(virtualClassRepository.findAll());
     }
 }
