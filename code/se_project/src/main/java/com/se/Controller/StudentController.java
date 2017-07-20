@@ -31,7 +31,7 @@ public class StudentController {
         model.addAttribute("classes",adminClassService.findAll());
         model.addAttribute("teachers",teacherService.findAll());
         model.addAttribute("rooms",roomService.findAll());
-        model.addAttribute("students",studentService.findAll());
+        //model.addAttribute("students",studentService.findAll());
         return "/manage/student";
     }
 

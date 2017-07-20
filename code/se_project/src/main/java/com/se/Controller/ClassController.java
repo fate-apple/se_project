@@ -37,22 +37,21 @@ public class ClassController {
 
     @RequestMapping("/create")
     public ResponseEntity<?> create(@RequestParam String username,@RequestParam String password,@RequestParam String fullname,@RequestParam Long teacherId, @RequestParam int roomId,@RequestParam int grade){
-
+    	
         AdminClass adminClass = adminClassService.create(username,password,fullname,teacherId,roomId,grade);
         if (adminClass == null) return ResponseEntity.badRequest().body("create error");
         return ResponseEntity.ok(adminClass);
     }
 
     @RequestMapping("/update")
-    public ResponseEntity<?> update(@RequestParam Long id,@RequestParam String username,@RequestParam String fullname,
-    		@RequestParam Long teacherId,@RequestParam int roomId,@RequestParam int grade){
+    public ResponseEntity<?> update(@RequestParam Long id,@RequestParam String username,@RequestParam String fullname,@RequestParam Long teacherId,@RequestParam int roomId,@RequestParam int grade){
         AdminClass adminClass = adminClassService.update(id,username,fullname,teacherId,roomId,grade);
         return ResponseEntity.ok(adminClass);
     }
 
     @RequestMapping("/delete")
     public ResponseEntity<?> delete(@RequestParam Long id){
-    	adminClassService.delete(id);
+        adminClassService.delete(id);
         return ResponseEntity.ok(null);
     }
 

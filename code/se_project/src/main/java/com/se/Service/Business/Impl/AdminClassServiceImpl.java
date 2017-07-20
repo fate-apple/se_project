@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
+
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 
 /**
  * Created by clevo on 2017/7/18.
@@ -65,5 +67,34 @@ public class AdminClassServiceImpl implements AdminClassService{
     @Override
     public void delete(Long id){
         adminClassRepository.delete(id);
+    }
+    @Override
+    public Map<String,Object> getClassByGrades(String grade){
+        Map<String,Object> classes = new HashMap<String,Object>();
+        List<String> classname = new ArrayList<String> ();
+        List<Long> classid = new ArrayList<Long> ();
+        int classnum = 0;
+
+        if(grade!=""){
+        String[] gradesStr = grade.split(",");
+        Set<Integer> gradesInt = new HashSet<Integer>();
+        for(String temp : gradesStr){
+                    gradesInt.add(Integer.parseInt(temp));
+        }
+
+
+        List<AdminClass> resultSet =adminClassRepository.findByGradeInOrderByGradeAscFullnameAsc(gradesInt);
+        for (AdminClass adminClass: resultSet){
+            classname.add(adminClass.getFullname());
+            classid.add(adminClass.getId());
+            classnum++;
+        }}
+
+        classes.put("classname", classname);
+        classes.put("classid", classid);
+        classes.put("classnum",classnum);
+        System.out.println(classes);
+        return classes;
+
     }
 }
