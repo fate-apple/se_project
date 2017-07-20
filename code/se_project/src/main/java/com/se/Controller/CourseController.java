@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 /**
  * Created by clevo on 2017/7/20.
  */
@@ -46,7 +48,7 @@ public class CourseController {
     @RequestMapping("/findByAdminClass")
     public String findByAdminClass(@RequestParam String adminClasses,Model model){
         List<Course> courseList =courseSerivce.findByAdminClass(adminClasses);
-	    model.addAttribute("courses",courseList);
-	    return "manage/course";
+    model.addAttribute("courses",courseList);
+    return "manage/course";
     }
 }

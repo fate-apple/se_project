@@ -3,6 +3,8 @@ package com.se.Domain.Business;
 
 // Generated 2017-7-17 16:39:34 by Hibernate Tools 3.4.0.CR1
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -58,6 +60,7 @@ public class Subject  {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "subject")
+	@JsonIgnore
 	public Set<Course> getCourses() {
 		return this.courses;
 	}

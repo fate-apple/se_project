@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Table(name="period")
@@ -54,6 +55,7 @@ public class Period {
 	}
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "period")
+	@JsonIgnore
 	public Set<Course> getCourses() {
 		return this.courses;
 	}
