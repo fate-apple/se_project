@@ -31,6 +31,16 @@ public class Course {
 		this.weekday = weekday;
 	}
 
+	public Course(Room room, Teacher teacher, VirtualClass virtualClass, Subject subject, Period period, AdminClass adminClass, Integer weekday) {
+		this.room = room;
+		this.teacher = teacher;
+		this.virtualClass = virtualClass;
+		this.subject = subject;
+		this.period = period;
+		this.adminClass = adminClass;
+		this.weekday = weekday;
+	}
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "course_id")
