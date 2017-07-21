@@ -21,7 +21,8 @@
 	<div class="wrap-fluid">
 		<div class="informationWrapper">
 			<h1>我的课表</h1>
-			<table class="table" style="font-size:20px;">
+			<input id="timetableUsername" th:value="${sec_username}" style="display:none;"/>
+			<table class="table" style="font-size:20px;" id="timetable" >
 				<thead>
 					<tr>
 						<th>时间\星期</th>
@@ -35,11 +36,11 @@
 				<tbody>
 					<tr th:each="period:${periods}">
 						<td th:text="${period.beginTime}+'-'+${period.endTime}"></td>
-						<td>语文</td>
-						<td>数学</td>
-						<td>英语</td>
-						<td>物理</td>
-						<td>化学</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
 					</tr>
 				</tbody>
 			</table>
@@ -51,6 +52,6 @@
 	<script type="text/javascript" th:src="@{/js/load.js}"></script>
 	<script type="text/javascript" th:src="@{/js/main.js}"></script>
 	<script type="text/javascript" th:src="@{/js/panel.js}"></script>
-	
+	<script type="text/javascript" th:src="@{/js/base/timetable.js}"></script>
 </body>
 </html>
