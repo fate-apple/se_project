@@ -16,6 +16,7 @@ public interface StudentRepository extends JpaRepository<Student,Long> {
     List<Student> findByAdminClass(AdminClass adminClass);
 
 
+    Student findByUsername(String studentrname);
 }
 
 

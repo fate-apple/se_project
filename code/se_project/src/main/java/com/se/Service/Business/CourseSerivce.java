@@ -1,6 +1,7 @@
 package com.se.Service.Business;
 
 import com.se.Domain.Business.Course;
+import com.se.Domain.Business.Student;
 
 import java.util.List;
 
@@ -17,4 +18,8 @@ public interface CourseSerivce {
     void delete(Long courseId);
 
     List<Course> findByAdminClass(String adminClasses);
+
+
+
+    List<Course> findByStudentname(String studentname);
 }

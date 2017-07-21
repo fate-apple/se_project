@@ -49,6 +49,7 @@ public class AdminClass extends User{
 
     @OneToOne
     @JoinColumn(name = "classroom_id")
+    @JsonIgnore
     public Room getRoom() {
         return room;
     }
