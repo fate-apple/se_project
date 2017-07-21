@@ -52,10 +52,9 @@ public class CourseController {
     return "manage/course";
     }
     @RequestMapping("/findByStudentId")
-    public String findByStudent(@RequestParam String studentUsername,Model model){
+    public ResponseEntity<?> findByStudent(@RequestParam String studentUsername,Model model){
         List<Course> courseList = courseSerivce.findByStudentname(studentUsername);
-        model.addAttribute("courses",courseList);
-        return "/base/timetable";
+        return  ResponseEntity.ok(courseList);
     }
 
 }
