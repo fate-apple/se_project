@@ -42,13 +42,14 @@ public class TeacherController {
 
     @RequestMapping("/update")
     public ResponseEntity<?> update(@RequestParam Long id,@RequestParam String username,@RequestParam String fullname,@RequestParam int roomId,@RequestParam boolean gender){
+    	 System.out.println(id+username+fullname+roomId+gender);
          Teacher teacher = teacherService.update(id,username,fullname,roomId,gender);
          return ResponseEntity.ok(teacher);
     }
 
     @RequestMapping("/delete")
     public ResponseEntity<?> delete(@RequestParam Long id){
-teacherService.delete(id);
-return ResponseEntity.ok(null);
+    	teacherService.delete(id);
+    	return ResponseEntity.ok(id);
     }
 }
