@@ -4,12 +4,14 @@ jQuery(document).ready(function() {
 	jQuery.ajax({
 		url:"/manage/course/findByUsername",
 		method:"GET",
-		dataType:"text",
+		dataType:"JSON",
 		data:{
 			username:username
 		},
 		success:function(data){
-			alert(data);
+			for(var i=0;i<data.length;i++){
+				$("#timetable tr:eq("+data[i].period.id+") td:eq("+data[i].weekday+")").text(data[i].subject.title);
+			}
 		}
 	});
 })
