@@ -32,9 +32,9 @@ public class CourseServiceImpl implements CourseSerivce {
     @Override
     public Course create(int roomId, Long adminClassId, Long virtualClassId,
                          Long teacherId, int periodId, int subjectId, int weekday) {
-        Room room = roomRepository.findOne(roomId);;
+        Room room = roomRepository.findOne(roomId);
         AdminClass adminClass = adminClassRepository.findOne(adminClassId);
-        VirtualClass virtualClass = virtualClassRepository.findOne(virtualClassId);
+        VirtualClass virtualClass = (virtualClassId != null)?virtualClassRepository.findOne(virtualClassId):null;
         Teacher teacher = teacherRepository.findOne(teacherId);
         Period period = periodRepository.findOne(periodId);
         Subject subject = subjectRepository.findOne(subjectId);
@@ -57,6 +57,7 @@ public class CourseServiceImpl implements CourseSerivce {
         course.setTeacher(teacher);
         course.setPeriod(period);
         course.setSubject(subject);
+        course.setWeekday(weekday);
         return courseRepository.save(course);
     }
     @Override
