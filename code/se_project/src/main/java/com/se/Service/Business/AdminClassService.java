@@ -5,6 +5,10 @@ import com.se.Repository.Jpa.AdminClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+<<<<<<< HEAD
+=======
+import java.util.Map;
+>>>>>>> origin/csy
 
 /**
  * Created by clevo on 2017/7/18.
@@ -13,4 +17,17 @@ public interface AdminClassService {
 
 
     List<AdminClass> findAll();
+<<<<<<< HEAD
+=======
+
+    List<AdminClass> findByGrade(int grade);
+
+    AdminClass create(String username, String password, String fullname, Long teacherId, int roomId, int grade);
+
+    AdminClass update(Long id, String username, String fullname, Long teacherId, int roomId, int grade);
+
+    void delete(Long id);
+
+    Map<String,Object> getClassByGrades(String grades);
+>>>>>>> origin/csy
 }

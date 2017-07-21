@@ -5,18 +5,29 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
+<<<<<<< HEAD
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 
+=======
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.NotEmpty;
+
+>>>>>>> origin/csy
 @Table(name="period")
 @Entity
 public class Period {
 	
 	private int id;	
 	
+<<<<<<< HEAD
 
+=======
+	@NotEmpty	
+>>>>>>> origin/csy
 	private Time beginTime;
 	private Time endTime;
 	private Set<Course> courses = new HashSet<Course>();
@@ -56,6 +67,10 @@ public class Period {
 	}
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "period")
+<<<<<<< HEAD
+=======
+	@JsonIgnore
+>>>>>>> origin/csy
 	public Set<Course> getCourses() {
 		return this.courses;
 	}

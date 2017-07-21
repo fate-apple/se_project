@@ -45,9 +45,17 @@
 										</tr>
 									</thead>
 									<tbody>
+<<<<<<< HEAD
 										<tr th:each="teacher:${teachers}">
 											<td th:text="${teacher.username}"></td>
 											<td th:text="${teacher.fullname"></td>
+=======
+										<tr th:each="teacher:${teachers}" class="update" th:attr="data-id=${teacher.id},
+										data-gender=${teacher.gender}?1:0,data-fullname=${teacher.fullname},
+										data-roomid=${teacher.room.roomId},data-username=${teacher.username}">
+											<td th:text="${teacher.username}"></td>
+											<td th:text="${teacher.fullname}"></td>
+>>>>>>> origin/csy
 											<td th:text="${teacher.gender}?'男':'女'"></td>
 											<td th:text="${teacher.room.buildingName}+' '+${teacher.room.roomNum}"></td>
 											
@@ -78,29 +86,54 @@
 						<div class="col-lg-12">
 							<form role="form" >
 								<div class="form-group">
+<<<<<<< HEAD
 									<label>工号</label> <input type="text" class="form-control" name="username"/>
+=======
+									<label>工号（登录账号）</label> <input type="text" class="form-control" name="username"/>
+>>>>>>> origin/csy
 								</div>
 								<div class="form-group">
 									<label>名字</label> <input type="text" class="form-control" name="fullname"/>
 								</div>
 								<div class="form-group" id="passwordDiv" style="display:none;">
+<<<<<<< HEAD
 									<label>密码</label> <input type="text" class="form-control" name="password" />
 								</div>
 								<div class="form-group">
 									<label>性别</label> 
 									<select  class="form-control" name="gender">
+=======
+									<label>密码</label> <input type="password" class="form-control" name="password" />
+								</div>
+								<div class="form-group">
+									<label>性别</label> 
+									<br/>
+									<select  class="form-control" id="gender" name="gender">	
+>>>>>>> origin/csy
 										<option value="1">男</option>
 										<option value="0">女</option>
 									</select>
 								</div>
 								<div class="form-group">
+<<<<<<< HEAD
 									<label>办公室</label> 
 									<select  id="room" class="form-control" name="office">
+=======
+									<label>办公室</label>
+									<br/> 
+									<select  id="room" class="selectpicker" name="office"  data-live-search="true">
+										<option value="">--请选择--</option>
+>>>>>>> origin/csy
 										<option th:each="room:${rooms}" th:value="${room.roomId}" th:text="${room.buildingName}+' '+${room.roomNum}"></option>
 									</select>
 								</div>
 								<button class="btn btn-default save" type="button" >保存</button>
+<<<<<<< HEAD
 								<button class="btn btn-default delete" type="button" style="display:none;">删除</button>				
+=======
+								<button class="btn btn-default delete" type="button" style="display:none;">删除</button>	
+								<button class="btn btn-default detailCourse" type="button" style="display:none;">课程</button>	
+>>>>>>> origin/csy
 							</form>
 						</div>
 					</div>
@@ -112,6 +145,10 @@
 	<script type="text/javascript" th:src="@{/bootstrap//js/bootstrap.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/jquery.dataTables.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+<<<<<<< HEAD
+=======
+    <script type="text/javascript" th:src="@{/js/bootbox.min.js}"></script>
+>>>>>>> origin/csy
 	<script type="text/javascript" th:src="@{/js/changeBg.js}"></script>
 	<script type="text/javascript" th:src="@{/js/load.js}"></script>
 	<script type="text/javascript" th:src="@{/js/main.js}"></script>

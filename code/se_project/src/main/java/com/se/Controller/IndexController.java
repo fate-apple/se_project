@@ -3,16 +3,22 @@ package com.se.Controller;
 import com.se.Domain.Business.User;
 import com.se.Repository.Jpa.UserRepository;
 
+<<<<<<< HEAD
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+=======
+>>>>>>> origin/csy
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+<<<<<<< HEAD
 import javax.servlet.http.HttpSession;
+=======
+>>>>>>> origin/csy
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,6 +50,7 @@ UserRepository userRepository;
         model.addAttribute("classes",classes );
         return "index";
     }
+<<<<<<< HEAD
 	
 	@RequestMapping("/manage/student")
     public String studentMangement(Model model) {
@@ -57,6 +64,9 @@ UserRepository userRepository;
 	
 
 	
+=======
+
+>>>>>>> origin/csy
 	@RequestMapping("/manage/course")
     public String courseMangement(Model model) {
         return "manage/course";
@@ -86,4 +96,9 @@ UserRepository userRepository;
     public String addCourseware(Model model) {
         return "edu/courseware";
 	}
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/csy
 }
