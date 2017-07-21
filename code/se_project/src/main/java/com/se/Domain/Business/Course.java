@@ -1,9 +1,12 @@
 package com.se.Domain.Business;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Table(name = "course")
 @Entity
+@JsonIgnoreProperties({ "handler","hibernateLazyInitializer" })
 public class Course {
 
     private Long courseId;
@@ -73,7 +76,8 @@ public class Course {
     }
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+//    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "teacher_id")
     public Teacher getTeacher() {
         return teacher;
@@ -83,8 +87,9 @@ public class Course {
         this.teacher = teacher;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+//    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "virtual_class_id")
+    @ManyToOne
     public VirtualClass getVirtualClass() {
         return virtualClass;
     }
@@ -94,8 +99,9 @@ public class Course {
     }
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+//    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "subject_id")
+    @ManyToOne
     public Subject getSubject() {
         return subject;
     }
@@ -104,8 +110,9 @@ public class Course {
         this.subject = subject;
     }
 
-    @ManyToOne
+//    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "period_id")
+    @ManyToOne
     public Period getPeriod() {
         return period;
     }
@@ -114,7 +121,7 @@ public class Course {
         this.period = period;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "class_id")
     public AdminClass getAdminClass() {
         return adminClass;

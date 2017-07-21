@@ -70,7 +70,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                             "/favicon.ico",
                             "/**/*.html",
                             "/**/*.css",
-                            "/**/*.js",
+                            "/**/*.js","/js/**",
                             "/img/**",
                             "/font-awesome/**"
                     ).permitAll()

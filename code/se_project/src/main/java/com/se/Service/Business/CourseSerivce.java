@@ -1,5 +1,6 @@
 package com.se.Service.Business;
 
+import com.se.Domain.Business.AdminClass;
 import com.se.Domain.Business.Course;
 import com.se.Domain.Business.Student;
 
@@ -17,9 +18,9 @@ public interface CourseSerivce {
 
     void delete(Long courseId);
 
-    List<Course> findByAdminClass(String adminClasses);
 
 
+    List<Course> findByAdminClasses(String adminClasses);
 
     List<Course> findByStudentname(String studentname);
 }

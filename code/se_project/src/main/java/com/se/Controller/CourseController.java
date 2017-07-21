@@ -1,5 +1,6 @@
 package com.se.Controller;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.se.Domain.Business.Course;
 import com.se.Domain.Business.Period;
 import com.se.Domain.Business.Student;
@@ -28,6 +29,7 @@ import java.util.Optional;
  */
 @Controller
 @RequestMapping("/manage/course")
+@JsonIgnoreProperties({ "handler","hibernateLazyInitializer" })
 public class CourseController {
     @Autowired
     CourseRepository courseRepository;
@@ -57,8 +59,8 @@ public class CourseController {
     }
     
     @RequestMapping("/findByAdminClass")
-    public String findByAdminClass(@RequestParam String adminClasses,Model model){
-        List<Course> courseList =courseSerivce.findByAdminClass(adminClasses);
+    public String findByAdminClasses(@RequestParam String adminClasses,Model model){
+        List<Course> courseList =courseSerivce.findByAdminClasses(adminClasses);
     model.addAttribute("courses",courseList);
     return "manage/course";
     }

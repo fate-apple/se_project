@@ -71,7 +71,7 @@ public class CourseServiceImpl implements CourseSerivce {
     }
 
     @Override
-    public List<Course> findByAdminClass(String adminClasses) {
+    public List<Course> findByAdminClasses(String adminClasses) {
         List<Course> courses = new ArrayList<Course>();
         if (adminClasses != "") {
             String[] classesStr = adminClasses.split(",");
@@ -88,7 +88,8 @@ public class CourseServiceImpl implements CourseSerivce {
     }
     @Override
     public List<Course> findByStudentname(String studentrname){
-             List<Course> courses = courseRepository.findByAdminClass(studentRepository.findByUsername(studentrname).getAdminClass());
+        AdminClass adminClass=studentRepository.findByUsername(studentrname).getAdminClass();
+             List<Course> courses = courseRepository.findByAdminClass(adminClass);
              return courses;
     }
 
