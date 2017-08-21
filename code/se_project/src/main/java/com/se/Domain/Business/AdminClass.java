@@ -1,11 +1,8 @@
 package com.se.Domain.Business;
 
-<<<<<<< HEAD
-=======
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.se.Domain.Auth.Role;
 
->>>>>>> origin/csy
 import javax.persistence.*;
 
 import java.util.HashSet;
@@ -20,13 +17,8 @@ public class AdminClass extends User{
     private Teacher teacher;
     private Room room;
     private int grade;
-<<<<<<< HEAD
-    private Set<Student> students = new HashSet<Student>();
-    private Set<Course> courses = new HashSet<Course>();
-=======
     private transient Set<Student> students = new HashSet<Student>();
     private transient Set<Course> courses = new HashSet<Course>();
->>>>>>> origin/csy
 
     public AdminClass(){
     }
@@ -38,8 +30,6 @@ public class AdminClass extends User{
         this.grade = grade;
     }
 
-<<<<<<< HEAD
-=======
     public AdminClass(String username, String password, Role role, String fullname, Teacher teacher, Room room, int grade) {
         super(username, password, role, fullname);
         this.teacher = teacher;
@@ -47,7 +37,6 @@ public class AdminClass extends User{
         this.grade = grade;
     }
 
->>>>>>> origin/csy
     @OneToOne
     @JoinColumn(name = "class_teacher_id")
     public Teacher getTeacher() {
@@ -60,10 +49,7 @@ public class AdminClass extends User{
 
     @OneToOne
     @JoinColumn(name = "classroom_id")
-<<<<<<< HEAD
-=======
     @JsonIgnore
->>>>>>> origin/csy
     public Room getRoom() {
         return room;
     }
@@ -82,10 +68,7 @@ public class AdminClass extends User{
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "adminClass")
-<<<<<<< HEAD
-=======
     @JsonIgnore
->>>>>>> origin/csy
 	public Set<Student> getStudents() {
 		return students;
 	}
@@ -96,10 +79,7 @@ public class AdminClass extends User{
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "adminClass")
-<<<<<<< HEAD
-=======
     @JsonIgnore
->>>>>>> origin/csy
 	public Set<Course> getCourses() {
 		return courses;
 	}

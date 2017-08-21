@@ -6,11 +6,8 @@ jQuery(document).ready(function() {
     	$("#modalTitle").html("添加");
     	$(".delete").css("display","none");
     	$("#passwordDiv").css("display","block");
-<<<<<<< HEAD
-=======
     	$(".detailStudent").css("display","none");
     	$(".detailCourse").css("display","none");
->>>>>>> origin/csy
     	$("input[name='fullname']").val("");
     	$("input[name='username']").val("");
     	$("input[name='password']").val("");
@@ -21,19 +18,12 @@ jQuery(document).ready(function() {
     	$("#modal").modal("show");
 	});
     
-<<<<<<< HEAD
-    $(".updateClass").click(function(e){
-    	$("#modalTitle").html("修改");
-    	$(".delete").css("display","inline");
-    	$("#passwordDiv").css("display","none");
-=======
     $("#dataTables").delegate(".update","click",function(e){
     	$("#modalTitle").html("修改");
     	$(".delete").css("display","inline");
     	$("#passwordDiv").css("display","none");
     	$(".detailStudent").css("display","inline");
     	$(".detailCourse").css("display","inline");
->>>>>>> origin/csy
     	var dataset = e.currentTarget.dataset;
     	var id = dataset.id;
     	var grade = dataset.grade;
@@ -47,11 +37,6 @@ jQuery(document).ready(function() {
     	$("#teacher option[value="+teacherid+"]").attr("selected",true);
     	$("#room option[value="+roomid+"]").attr("selected",true);
     	$(".save").attr("data-id", dataset.id);
-<<<<<<< HEAD
-    	$("#modal").modal("show");
-    });
-    
-=======
     	$(".delete").attr("data-id", dataset.id);
     	$("#modal").modal("show");
     });
@@ -78,7 +63,6 @@ jQuery(document).ready(function() {
 //    	$("#modal").modal("show");
 //    });
     
->>>>>>> origin/csy
 	$(".delete").click(function(e) {
 		bootbox.confirm({
 			buttons : {
@@ -96,11 +80,7 @@ jQuery(document).ready(function() {
 					var id = dataset.id;
 					console.log(id);
 					jQuery.ajax({
-<<<<<<< HEAD
-						url : '/manage/class/deleteAdminclass',
-=======
 						url : '/manage/class/delete',
->>>>>>> origin/csy
 						processData : true,
 						dataType : "text",
 						data : {
@@ -108,11 +88,6 @@ jQuery(document).ready(function() {
 						},
 						success : function(data) {
 							console.log(id);
-<<<<<<< HEAD
-							alert(data);
-							location.reload();
-
-=======
 							bootbox.alert({
 								message :"删除成功",
 								callback : function() {
@@ -123,7 +98,6 @@ jQuery(document).ready(function() {
 						},
 						error:function(data){
 							bootbox.alert({message:"班级仍存在学生或课程，故无法删除！"});
->>>>>>> origin/csy
 						}
 					});
 				}
@@ -140,33 +114,6 @@ jQuery(document).ready(function() {
 		var roomid = $("#room").val();
 		var dataset = e.currentTarget.dataset;
 		var id = dataset.id;
-<<<<<<< HEAD
-		
-		jQuery.ajax({
-			url : "/manage/class/updateAdminclass",
-				processData : true,
-				dataType : "text",
-				method : "POST",
-				data:{
-					id: id,
-					fullname : fullname,
-					username : username,
-					password : password,
-					teacherid : teacherid,
-					roomid : roomid,
-					grade : grade
-				},
-				success : function(data) {
-					console.log(id);
-					bootbox.alert({
-						message : data,
-						callback : function() {
-							location.reload();
-						}
-					});
-				}
-		});
-=======
 		if(id==""){
 			jQuery.ajax({
 				url : "/manage/class/create",
@@ -223,7 +170,6 @@ jQuery(document).ready(function() {
 					}
 			});
 		}
->>>>>>> origin/csy
 	});
     
 });

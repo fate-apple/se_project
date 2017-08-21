@@ -24,8 +24,6 @@
 	<div class="wrap-fluid">
 		<div class="informationWrapper">
 			<h1>课程信息</h1>
-<<<<<<< HEAD
-=======
 			<div class="row">
 				<div class="col-md-3">
 					<select id="grade" class="selectpicker" multiple="multiple"  data-actions-box="true" title="选择年级">
@@ -47,7 +45,6 @@
 				</div>
 			</div>
 			<br/>
->>>>>>> origin/csy
 			<button class="btn btn-primary" type="button" id="add">
 				<i class="fa fa-plus">添加课程</i>
 			</button>
@@ -67,28 +64,6 @@
 											<th>教室</th>
 											<th>班级</th>
 											<th>时间</th>
-<<<<<<< HEAD
-											<th>操作</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>物理</td>
-											<td>王先智</td>
-											<td>1号楼 101</td>
-											<td>高一（1）班</td>
-											<td>星期二 8:00-8:40</td>
-											<td></td>
-<!-- 											<td><button class="btn btn-default delete" type="button" -->
-<!-- 												th:attr="data-id=${student.id}">删除</button> -->
-<!-- 												<button class="btn btn-default update" type="button" -->
-<!-- 												th:attr="data-id=${student.id}">修改</button> -->
-<!-- 												<button class="btn btn-default reset" type="button" -->
-<!-- 												th:attr="data-id=${student.id}">重置密码</button> -->
-<!-- 												<button class="btn btn-default " type="button" id="stuTimetable" -->
-<!-- 												th:attr="data-id=${student.id}">查看课表</button> -->
-<!-- 											</td> -->
-=======
 										</tr>
 									</thead>
 									<tbody>
@@ -101,7 +76,6 @@
 											<td th:text="${course.room.buildingName}+' '+${course.room.roomNum}"></td>
 											<td th:text="${course.adminClass}?${course.adminClass.fullname}:${course.virtualClass.name}"></td>
 											<td th:text="'星期'+${course.weekday}+' ： '+${course.period.beginTime}+'-'+${course.period.endTime}"></td>
->>>>>>> origin/csy
 										</tr>
 									</tbody>
 								</table>
@@ -127,28 +101,6 @@
 				<div class="modal-body">
 					<div class="row">
 						<div class="col-lg-12">
-<<<<<<< HEAD
-							<form role="form" th:action="@{/manage/updateCourse}"  th:method="post" >
-								<div class="form-group">
-									<label>科目</label> 
-									<select  class="form-control" name="subject">
-									</select>
-								</div>
-								<div class="form-group">
-									<label>任课老师</label> 
-									<select  class="form-control" name="teacher">
-									</select>
-								</div>
-								<div class="form-group">
-									<label>教室</label> 
-									<select  class="form-control" name="classroom">
-									</select>
-								</div>
-								<div class="form-group" >
-									<input type="hidden" class="form-control" name="id"/>
-								</div>
-								<input type="submit"/>
-=======
 							<form role="form" >
 								<div class="form-group" id="getSubject" >
 									<label>科目</label> 
@@ -203,7 +155,6 @@
 								</div>
 								<button class="btn btn-default save" type="button" >保存</button>
 								<button class="btn btn-default delete" type="button" style="display:none;">删除</button>
->>>>>>> origin/csy
 							</form>
 						</div>
 					</div>
@@ -215,24 +166,15 @@
 	<script type="text/javascript" th:src="@{/bootstrap//js/bootstrap.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/jquery.dataTables.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/dataTables.bootstrap.min.js}"></script>
-<<<<<<< HEAD
-=======
     <script type="text/javascript" th:src="@{/js/bootbox.min.js}"></script>
->>>>>>> origin/csy
 	<script type="text/javascript" th:src="@{/js/changeBg.js}"></script>
 	<script type="text/javascript" th:src="@{/js/load.js}"></script>
 	<script type="text/javascript" th:src="@{/js/main.js}"></script>
 	<script type="text/javascript" th:src="@{/bootstrap-select/js/bootstrap-select.min.js}"></script>
-<<<<<<< HEAD
-	<script type="text/javascript" th:src="@{/js/studentSelect.js}"></script>
-	<script type="text/javascript" th:src="@{/js/manage/datatableCHN.js}"></script>
-	<script type="text/javascript" th:src="@{/js/manage/student.js}"></script>
-=======
 	<script type="text/javascript" th:src="@{/js/classSelect.js}"></script>
 	<script type="text/javascript" th:src="@{/js/manage/datatableCHN.js}"></script>
 <!-- 	<script type="text/javascript" th:src="@{/js/manage/resource.js}"></script> -->
 	<script type="text/javascript" th:src="@{/js/manage/course.js}"></script>
 	
->>>>>>> origin/csy
 </body>
 </html>

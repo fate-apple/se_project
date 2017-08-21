@@ -4,22 +4,6 @@ jQuery(document).ready(function() {
     
     $("#add").click(function(e) {
     	$("#modalTitle").html("添加");
-<<<<<<< HEAD
-    	//$("input[name='periodId']").val(0);
-    	$("#modal").modal("show");
-	});
-    
-    $(".update").click(function(e){
-    	$("#modalTitle").html("修改");
-    	var dataset = e.currentTarget.dataset;
-    	console.log(dataset.beginTime,dataset.endTime);
-    	//$("input[name='weekday']").val(dataset.weekday);
-    	//$("input[name='beginTime']").val(dataset.beginTime);
-    	//$("input[name='endTime']").val(dataset.endTime);
-    	//$("input[name='periodId']").val(dataset.id);
-    	$("#modal").modal("show");
-    });
-=======
     	$(".delete").css("display","none");
     	$("#passwordDiv").css("display","block");
     	$(".detailCourse").css("display","none");
@@ -79,7 +63,6 @@ jQuery(document).ready(function() {
 //    	$(".save").attr("data-id", dataset.id);
 //    	$("#modal").modal("show");
 //    });
->>>>>>> origin/csy
     
 	$(".delete").click(function(e) {
 		bootbox.confirm({
@@ -98,19 +81,6 @@ jQuery(document).ready(function() {
 					var id = dataset.id;
 					console.log(id);
 					jQuery.ajax({
-<<<<<<< HEAD
-						url : '/manage/deleteStudent',
-						processData : true,
-						dataType : "text",
-						data : {
-							studentId : id
-						},
-						success : function(data) {
-							console.log(id);
-							alert(data);
-							location.reload();
-
-=======
 						url : '/manage/student/delete',
 						processData : true,
 						dataType : "text",
@@ -129,15 +99,12 @@ jQuery(document).ready(function() {
 						},
 						error:function(data){
 							bootbox.alert({message:"删除失败，详情请咨询QQ1403656791"});
->>>>>>> origin/csy
 						}
 					});
 				}
 			}
 		});
 	});
-<<<<<<< HEAD
-=======
 	
 	$(".save").click(function(e){
 		var gender = $("#gender").val();
@@ -226,6 +193,5 @@ jQuery(document).ready(function() {
        	$("#getStudentForm").attr("action","/manage/getStudent");
        	$("#getStudentForm").submit();
     });
->>>>>>> origin/csy
     
 });

@@ -13,11 +13,8 @@ target/
 .idea
 *.iws
 *.iml
-<<<<<<< HEAD
-=======
 *.html
 *.js
->>>>>>> origin/csy
 *.ipr
 
 ### NetBeans ###

@@ -144,22 +144,14 @@ body {
     float: left;
     left: 0;
     list-style: none outside none;
-<<<<<<< HEAD
-    margin: 3px 0 0;
-=======
     margin: 0;
->>>>>>> origin/csy
     min-width: 160px;
     position: absolute;
     top: 100%;
     z-index: 2147483647!important;
     -webkit-box-shadow: none!important;
     box-shadow: none!important;
-<<<<<<< HEAD
-    border: 0px solid #ccc!important;
-=======
     border: 1px;
->>>>>>> origin/csy
     
 }
 .dropdown-wrap:after {
@@ -259,11 +251,7 @@ body {
 }
 .dropdown-menu > li > a {
     clear: both;
-<<<<<<< HEAD
-    color: #777777!important;
-=======
     color: #000000!important;
->>>>>>> origin/csy
     display: block;
     font-weight: normal;
     line-height: 1.42857;

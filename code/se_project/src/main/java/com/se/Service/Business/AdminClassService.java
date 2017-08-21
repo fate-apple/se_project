@@ -5,10 +5,7 @@ import com.se.Repository.Jpa.AdminClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
-<<<<<<< HEAD
-=======
 import java.util.Map;
->>>>>>> origin/csy
 
 /**
  * Created by clevo on 2017/7/18.
@@ -17,8 +14,6 @@ public interface AdminClassService {
 
 
     List<AdminClass> findAll();
-<<<<<<< HEAD
-=======
 
     List<AdminClass> findByGrade(int grade);
 
@@ -29,5 +24,4 @@ public interface AdminClassService {
     void delete(Long id);
 
     Map<String,Object> getClassByGrades(String grades);
->>>>>>> origin/csy
 }

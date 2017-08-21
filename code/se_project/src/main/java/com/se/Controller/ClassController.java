@@ -1,14 +1,5 @@
 package com.se.Controller;
 
-<<<<<<< HEAD
-import com.se.Service.Business.AdminClassService;
-import com.se.Service.Business.RoomService;
-import com.se.Service.Business.TeacherService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-=======
 import com.se.Domain.Business.AdminClass;
 import com.se.Domain.Business.Student;
 import com.se.Domain.Business.Teacher;
@@ -22,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
->>>>>>> origin/csy
 
 /**
  * Created by clevo on 2017/7/18.
@@ -45,8 +35,6 @@ public class ClassController {
         return "/manage/class";
     }
 
-<<<<<<< HEAD
-=======
     @RequestMapping("/create")
     public ResponseEntity<?> create(@RequestParam String username,@RequestParam String password,@RequestParam String fullname,@RequestParam Long teacherId, @RequestParam int roomId,@RequestParam int grade){
     	
@@ -67,5 +55,4 @@ public class ClassController {
         return ResponseEntity.ok(null);
     }
 
->>>>>>> origin/csy
 }

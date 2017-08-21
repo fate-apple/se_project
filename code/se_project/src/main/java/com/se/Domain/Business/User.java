@@ -81,21 +81,12 @@ public class User {
 //    }
 
 
-<<<<<<< HEAD
-    public User( String username, String password, Role role, Date lastPasswordResetDate, String fullname) {
-        //this.id = id;
-        this.username = username;
-        this.password = password;
-        this.role = role;
-        this.lastPasswordResetDate = lastPasswordResetDate;
-=======
     public User( String username, String password, Role role,  String fullname) {
         //this.id = id;
         this.username = username;
         this.password = password;
         this.lastPasswordResetDate=new Date();
         this.role = role;
->>>>>>> origin/csy
         this.fullname = fullname;
     }
 

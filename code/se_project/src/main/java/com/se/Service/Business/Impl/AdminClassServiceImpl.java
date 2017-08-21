@@ -1,14 +1,5 @@
 package com.se.Service.Business.Impl;
 
-<<<<<<< HEAD
-import com.se.Domain.Business.AdminClass;
-import com.se.Repository.Jpa.AdminClassRepository;
-import com.se.Service.Business.AdminClassService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-=======
 import com.se.Domain.Auth.Role;
 import com.se.Domain.Business.AdminClass;
 import com.se.Domain.Business.Room;
@@ -22,7 +13,6 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
->>>>>>> origin/csy
 
 /**
  * Created by clevo on 2017/7/18.
@@ -31,8 +21,6 @@ import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 public class AdminClassServiceImpl implements AdminClassService{
     @Autowired
     private AdminClassRepository adminClassRepository;
-<<<<<<< HEAD
-=======
     @Autowired
     private RoomRepository roomRepository;
     @Autowired
@@ -42,14 +30,11 @@ public class AdminClassServiceImpl implements AdminClassService{
     @Autowired
     private TeacherRepository teacherRepository;
 
->>>>>>> origin/csy
 
     @Override
     public List<AdminClass> findAll(){
         return adminClassRepository.findAll();
     }
-<<<<<<< HEAD
-=======
     @Override
     public List<AdminClass> findByGrade(int grade){return adminClassRepository.findByGrade(grade);}
 
@@ -112,5 +97,4 @@ public class AdminClassServiceImpl implements AdminClassService{
         return classes;
 
     }
->>>>>>> origin/csy
 }

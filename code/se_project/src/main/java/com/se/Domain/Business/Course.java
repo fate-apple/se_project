@@ -31,8 +31,6 @@ public class Course {
 		this.weekday = weekday;
 	}
 
-<<<<<<< HEAD
-=======
 	public Course(Room room, Teacher teacher, VirtualClass virtualClass, Subject subject, Period period, AdminClass adminClass, Integer weekday) {
 		this.room = room;
 		this.teacher = teacher;
@@ -43,7 +41,6 @@ public class Course {
 		this.weekday = weekday;
 	}
 
->>>>>>> origin/csy
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "course_id")

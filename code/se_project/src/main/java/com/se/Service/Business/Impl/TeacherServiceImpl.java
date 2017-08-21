@@ -1,11 +1,5 @@
 package com.se.Service.Business.Impl;
 
-<<<<<<< HEAD
-import com.se.Domain.Business.Teacher;
-import com.se.Repository.Jpa.TeacherRepository;
-import com.se.Service.Business.TeacherService;
-import org.springframework.beans.factory.annotation.Autowired;
-=======
 import com.se.Domain.Auth.Role;
 import com.se.Domain.Business.Room;
 import com.se.Domain.Business.Teacher;
@@ -18,7 +12,6 @@ import com.se.Service.Auth.AuthService;
 import com.se.Service.Business.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
->>>>>>> origin/csy
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,22 +23,17 @@ import java.util.List;
 public class TeacherServiceImpl implements TeacherService {
     @Autowired
     private TeacherRepository teacherRepository;
-<<<<<<< HEAD
-=======
     @Autowired
     private RoomRepository roomRepository;
     @Autowired
     private RoleRepository roleRepository;
     @Autowired
     private UserRepository userRepository;
->>>>>>> origin/csy
 
     @Override
     public List<Teacher> findAll(){
         return teacherRepository.findAll();
     }
-<<<<<<< HEAD
-=======
 
     @Override
     public Teacher create(String username, String password, String fullname, int roomId, Boolean gender){
@@ -75,5 +63,4 @@ public class TeacherServiceImpl implements TeacherService {
     public void delete(Long id){
         teacherRepository.delete(id);
     }
->>>>>>> origin/csy
 }

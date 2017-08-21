@@ -1,16 +1,5 @@
 package com.se.Repository.Jpa;
 
-<<<<<<< HEAD
-import org.springframework.data.jpa.repository.JpaRepository;
-
-
-import com.se.Domain.Business.VirtualClass;
-
-
-public interface VirtualClassRepository extends JpaRepository<VirtualClass,Long>
-{
-}
-=======
 import com.se.Domain.Business.VirtualClass;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -20,4 +9,3 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface VirtualClassRepository  extends JpaRepository<VirtualClass,Long>{
 
 }
->>>>>>> origin/csy
