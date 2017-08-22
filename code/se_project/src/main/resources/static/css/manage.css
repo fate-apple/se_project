@@ -103,3 +103,8 @@
 button.btn.dropdown-toggle.btn-default{
 	border-color:#000000;
 }
+
+.modal-body{
+	max-height:400px;
+	overflow:auto;
+}

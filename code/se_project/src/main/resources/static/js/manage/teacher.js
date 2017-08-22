@@ -11,7 +11,7 @@ jQuery(document).ready(function() {
     	$("input[name='username']").val("");
     	$("input[name='password']").val("");
     	$("#gender").val("");
-    	$("#room").val("");
+    	$("#room").selectpicker("val","");
     	$(".save").attr("data-id","");
     	$("#modal").modal("show");
 	});
@@ -22,15 +22,10 @@ jQuery(document).ready(function() {
     	$("#passwordDiv").css("display","none");
     	$(".detailCourse").css("display","inline");
     	var dataset = e.currentTarget.dataset;
-    	var id = dataset.id;
-    	var gender = dataset.gender;
-    	var fullname = dataset.fullname;
-    	var roomid = dataset.roomid;
-    	var username = dataset.username;
-    	$("#gender option[value="+gender+"]").attr("selected",true);
-    	$("input[name='fullname']").val(fullname);
-    	$("input[name='username']").val(username);
-    	$("#room option[value="+roomid+"]").attr("selected",true);
+    	$("#gender option[value="+dataset.gender+"]").attr("selected",true);
+    	$("input[name='fullname']").val(dataset.fullname);
+    	$("input[name='username']").val(dataset.username);
+    	$("#room").selectpicker("val",dataset.roomid);
     	$(".save").attr("data-id", dataset.id);
     	$(".delete").attr("data-id", dataset.id);
     	$("#modal").modal("show");

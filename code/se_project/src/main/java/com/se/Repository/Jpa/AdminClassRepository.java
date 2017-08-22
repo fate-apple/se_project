@@ -18,6 +18,5 @@ public interface AdminClassRepository extends JpaRepository<AdminClass,Long>
 
 
 
-
     List<AdminClass> findByGradeInOrderByGradeAscFullnameAsc(Set<Integer> gradesInt);
 }

@@ -99,8 +99,7 @@
 								<div class="form-group">
 									<label>办公室</label>
 									<br/> 
-									<select  id="room" class="selectpicker" name="office"  data-live-search="true">
-										<option value="">--请选择--</option>
+									<select  id="room" class="selectpicker" name="office"  title="--请选择--" data-live-search="true">
 										<option th:each="room:${rooms}" th:value="${room.roomId}" th:text="${room.buildingName}+' '+${room.roomNum}"></option>
 									</select>
 								</div>

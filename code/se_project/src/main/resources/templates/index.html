@@ -31,7 +31,7 @@
 			                    <form role="form" action="" method="post" class="login-form">
 			                    	<div class="form-group" id="normal">
 			                    		<label class="sr-only" for="username">账号</label>
-			                        	<input type="text" name="username" placeholder="用户名" class="form-username form-control" id="username"></input>
+			                        	<input type="text" name="username" placeholder="账号" class="form-username form-control" id="username"></input>
 			                        </div>
 			                        <div class="form-group" id="selectClass" style="display:none">
 			                    		<select class="form-control" id="selectGrade" data-type="horizontal" style="float: left; width:45%;" onchange="classChange()">
@@ -54,9 +54,8 @@
 			                        	<input type="password" name="password" placeholder="密码" class="form-password form-control" id="password"></input>
 			                        </div>
 			                         <div class="form-group">
-			                        	<input type="radio" name="usertype" value="student" checked="checked" onclick="radioShow();"/>学生
-			                        	<input type="radio" name="usertype" value="teacher" onclick="radioShow();"/>老师
-			                        	<input type="radio" name="usertype" value="class" onclick="radioShow();"/>班级
+			                        	<input type="radio" name="usertype" value="person" checked="checked" onclick="radioShow();"/>学号/工号登录
+			                        	<input type="radio" name="usertype" value="class" onclick="radioShow();"/>班级登录
 			                        </div>
 			                        <button type="submit" class="btn" id="login">登录</button>
 			                    </form>
@@ -72,31 +71,7 @@
     <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/jquery.backstretch.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/index.js}"></script> 
-    <script>
-    		function radioShow(){
-    			var radio = document.getElementsByName("usertype");
-				if(radio[2].checked){
-					document.getElementById("normal").style.display="none";
-					document.getElementById("selectClass").style.display="block";
-				}
-				if(radio[0].checked || radio[1].checked){
-					document.getElementById("selectClass").style.display="none";
-					document.getElementById("normal").style.display="block";
-				}
-    		}
-    </script>
-    <script th:inline="javascript">
-	/*<![CDATA[*/
-		function classChange(){
-		    var grade = $("#selectGrade").val();
-		    for(i=1;i<=3;i++){
-		    	document.getElementById("grade"+i).style.display="none";
-		    }
-		    document.getElementById("grade"+grade).style.display="block";
-		    
-		}
-	/*]]>*/
-	</script>
+
 
 
 </body>

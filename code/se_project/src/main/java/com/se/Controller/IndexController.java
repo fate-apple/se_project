@@ -33,10 +33,12 @@ UserRepository userRepository;
 
 	@RequestMapping("/login")
     public String index(Model model) {
+		//获取每个年级的班级数
     	List<Integer> classes =new ArrayList<Integer>();
     	classes.add(8);
     	classes.add(10);
     	classes.add(12);
+    	//end
         model.addAttribute("classes",classes );
         return "index";
     }

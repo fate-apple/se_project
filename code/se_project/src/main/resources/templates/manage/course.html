@@ -63,6 +63,7 @@
 											<th>任课老师</th>
 											<th>教室</th>
 											<th>班级</th>
+											<th>星期</th>
 											<th>时间</th>
 										</tr>
 									</thead>
@@ -75,7 +76,8 @@
 											<td th:text="${course.teacher.fullname}"></td>
 											<td th:text="${course.room.buildingName}+' '+${course.room.roomNum}"></td>
 											<td th:text="${course.adminClass}?${course.adminClass.fullname}:${course.virtualClass.name}"></td>
-											<td th:text="'星期'+${course.weekday}+' ： '+${course.period.beginTime}+'-'+${course.period.endTime}"></td>
+											<td th:text="${course.weekday}"></td>
+											<td th:text="${course.period.beginTime}+'-'+${course.period.endTime}"></td>
 										</tr>
 									</tbody>
 								</table>
@@ -150,7 +152,6 @@
 									<label>时间段</label> 
 									<br/>
 									<select class="selectpicker" id="period" name="period" title="--请选择--" data-live-search="true">
-										<option value="">--请选择--</option>
 									</select>
 								</div>
 								<button class="btn btn-default save" type="button" >保存</button>

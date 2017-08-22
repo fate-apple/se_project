@@ -20,7 +20,7 @@ jQuery(document).ready(function() {
 	            usertype = radio[i].value;  
 	        }  
 	    } 
-		if (usertype=="student"||usertype=="teacher"){
+		if (usertype=="person"){
 			username = $("input[name='username']").val();
 		}
 		if (usertype=="class"){
@@ -51,5 +51,27 @@ jQuery(document).ready(function() {
 		
 	});
     
+
     
 });
+
+function radioShow(){
+	var radio = document.getElementsByName("usertype");
+	if(radio[1].checked){
+		document.getElementById("normal").style.display="none";
+		document.getElementById("selectClass").style.display="block";
+	}
+	if(radio[0].checked){
+		document.getElementById("selectClass").style.display="none";
+		document.getElementById("normal").style.display="block";
+	}
+};
+
+function classChange(){
+    var grade = $("#selectGrade").val();
+    for(i=1;i<=3;i++){
+    	document.getElementById("grade"+i).style.display="none";
+    }
+    document.getElementById("grade"+grade).style.display="block";
+    
+};
