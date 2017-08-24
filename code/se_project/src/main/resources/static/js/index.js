@@ -35,12 +35,12 @@ jQuery(document).ready(function() {
             url: "/auth",
             contentType: "application/json",
             data: JSON.stringify({
-                "username": userName,
+                "username": username,
                 "password": password
             }),
             dataType: 'json',
             success: function (resp) {
-                alert(resp.token);
+                //alert(resp.token);
                 if (1) {
                     //将token存在本地存储，然后跳转到主页面
                     localStorage.setItem('token', resp.token);
