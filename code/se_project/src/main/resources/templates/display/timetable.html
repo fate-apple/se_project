@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+	<!-- testimonial start -->
+    <div class="content testimonial" id="menu-4" th:fragment="testimonial">
+    	<div class="container">
+        	<div class="row templatemo_bordergapborder">
+            <!--vertical Tabs-->
+	      		<div id="cmt">
+		            <div class="col-md-3 col-sm-12 templatemo_leftgap_about">
+			            <ul class="resp-tabs-list templatemo_testitab">
+			                <li>当前课程</li>
+			                <li>下节课程</li>
+			                <li>课程表</li>
+			            </ul>
+			            <div class="templatemo_aboutlinkwrapper">
+				     		<div class="templatemo_link">
+				     			<a class="show-1 templatemo_hometestimonial" href="">Go Back</a>
+				     		</div>
+				        </div>
+		            </div>
+		            <div class="resp-tabs-container templatemo_testicontainer">
+		                <div>
+		                	<div class="templatemo_col100 templatemo_rightgap_about">
+		                    	<div class="templatemo_graybg templatemo_botgap">
+		                         	<div class="templatemo_frame">
+		                    			<h2>当前课程</h2>
+		                    			
+		                        	</div>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div>
+		                	<div class="templatemo_col100 templatemo_rightgap_about">
+		                    	<div class="templatemo_graybg templatemo_botgap">
+		                        	<div class="templatemo_frame">
+		                    			<h2>下节课程</h2>
+		                        	</div>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div>
+		                	<div class="templatemo_col100 templatemo_rightgap_about">
+		                    	<div class="templatemo_graybg templatemo_botgap">
+		                        	<div class="templatemo_frame">
+		                    			<h2>课程表</h2>
+										<input id="timetableUsername" th:value="${sec_username}" style="display:none;"/>
+										<table class="table" style="font-size:20px;border:1" id="timetable" >
+											<thead>
+												<tr>
+													<th>时间\星期</th>
+													<th>星期一</th>
+													<th>星期二</th>
+													<th>星期三</th>
+													<th>星期四</th>
+													<th>星期五</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr th:each="period:${periods}">
+													<td th:text="${period.beginTime}+'-'+${period.endTime}"></td>
+													<td ></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+											</tbody>
+										</table>
+		                    		</div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+	        	</div>
+        		<div class="col-sm-12 templatemo_leftgap templatemo_aboutlinkwrapper1">
+                	<div class="templatemo_aboutback templatemo_botgap">
+                	<div class="templatemo_link"><a class="show-1 templatemo_hometestimonial" href="#">Go Back</a></div>
+                </div>
+			</div>
+    	</div>
+       	</div>
+
+    </div>
+	 <!-- testimonial end -->
+
+</body>
+</html>

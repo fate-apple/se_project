@@ -133,13 +133,13 @@ h3 {
 }
 	
 .templatemo_portfolioback { 
-	background: #666666;
+	background: #d8ea5b;
 	text-align: center;
 	width: 100%;
 }
 
 .templatemo_aboutback { 
-	background: #666666;
+	background: #d8ea5b;
 	text-align: center;
 }
 	
@@ -259,8 +259,8 @@ h3 {
 .resp-vtabs ul.templatemo_tab li.resp-tab-active{ background: url(../images/templatemo_arrow.png) no-repeat center right #cc9933; border: 0px; padding: 0px; color: #ffffff; }
 
 .resp-vtabs ul.templatemo_testitab { float: left; width: 100%; }
-.resp-vtabs ul.templatemo_testitab li { padding: 0px; background: url(../images/templatemo_arrow_gap.png) no-repeat center right #339966; font-size: 24px; text-align: center; font-weight: normal; }
-.resp-vtabs ul.templatemo_testitab li.resp-tab-active { background: url(../images/templatemo_testi_arrow.png) no-repeat center right #339966; border: 0px; padding: 0px; color: #ffffff;  }
+.resp-vtabs ul.templatemo_testitab li { padding: 0px; background: #339966; font-size: 24px;margin:0px 10px 15px 0px; text-align: center; font-weight: normal; }
+.resp-vtabs ul.templatemo_testitab li.resp-tab-active { background: #1f5f3f; border: 0px; margin:0px 10px 15px 0px;padding: 0px; color: #ffffff;  }
 
 .resp-vtabs .templatemo_aboutcontainer, .resp-vtabs .templatemo_testicontainer	{  background: none; border-radius: 0px; border: 0px; }
 h2.resp-accordion	{ color: #ffffff; }
@@ -272,7 +272,7 @@ h2.resp-accordion	{ color: #ffffff; }
 .templatemo_aboutcontainer h2.resp-accordion {
  background: #cc9933 !important; }
  
-/*----- Page Load ------*/
+/*----- Page Load ------ */
 
 @media(min-width:320px) {
 	.templatemo_leftgap	{ padding: 0px 10px; }
@@ -291,7 +291,7 @@ h2.resp-accordion	{ color: #ffffff; }
 
 }	
 @media(min-width:320px) and (max-width: 767px) {
-	/*.container	{ left: 15px; right: 15px; padding: 0px; }*/
+	/*.container	{ left: 15px; right: 15px; padding: 0px; } */
 }
 @media(min-width:768px) {
 	.templatemo_leftgap	{ padding: 0px 10px; }
@@ -299,7 +299,7 @@ h2.resp-accordion	{ color: #ffffff; }
 	.templatemo_topgap	{	margin-top: 20px; }
 	.templatemo_portfotopgap	{ margin-top: 0px; } 
 	.templatemo_link { padding-top: 20%; }
-	/*.container { left: 50%; margin-left: -375px; right: 0px; }*/
+	/*.container { left: 50%; margin-left: -375px; right: 0px; } */
 	.logocontainer	{ width: 750px; padding: 0px 15px; margin: 0 auto; }
 	.templatemo_insideportfolio	{ height: 398px; }
 	.templatemo_link, .templatemo_linkservice, .templatemo_linkcontact 	{ height: 189px; line-height: 189px; padding: 0px; }
@@ -321,7 +321,7 @@ h2.resp-accordion	{ color: #ffffff; }
 	.templatemo_portfoliotext { width: 95%; padding: 15px ; font-size: 14px; }
 	.resp-vtabs .templatemo_aboutcontainer, .resp-vtabs .templatemo_testicontainer	{ width: 75%; }
 	.templatemo_leftgap_about	{ padding: 0px 0px 0px 6px; }
-	.templatemo_aboutlinkwrapper { width: 95.8%; float: left; background: #666666; text-align: center; display: block; }
+	.templatemo_aboutlinkwrapper { width: 95.8%; float: left; background:  #d8ea5b; text-align: center; display: block; }
 	.templatemo_aboutlinkwrapper1 {  display: none; }
 	.resp-vtabs .templatemo_tab li,
 	.resp-vtabs .templatemo_testitab li{ padding: 0px;  margin-bottom: 12px; }
@@ -331,7 +331,7 @@ h2.resp-accordion	{ color: #ffffff; }
 	.resp-vtabs ul.templatemo_testitab li.resp-tab-active	{ line-height: 79px; height: 79px; }
 	.templatemo_frame	{ height: 337px; margin-right: 1px; padding: 0px 30px; }
 	.templatemo_link { padding-top: 15%; }
-	/*.container { left: 50%; margin-left: -485px; }*/
+	/*.container { left: 50%; margin-left: -485px; } */
 	.templatemo_link, .templatemo_linkservice, .templatemo_linkcontact { height: 124px; line-height: 124px; padding: 0px; }
 	.logocontainer	{ width: 970px; padding: 0px 15px; margin: 0 auto; }
 	.templatemo_insideportfolio	{ height: 260px; }
@@ -361,7 +361,7 @@ h2.resp-accordion	{ color: #ffffff; }
 	.resp-vtabs .templatemo_testitab li { padding: 0px;  margin-bottom: 15px; }
 	.templatemo_frame	{ height: 406px; padding: 0px 30px; }
 	.templatemo_link { height: 150px; line-height: 150px; padding: 0px; }
-	/*.container { left: 50%; margin-left: -585px; }*/
+	/*.container { left: 50%; margin-left: -585px; } */
 	.logocontainer	{ width: 1140px; padding: 0px 30px; margin: 0 auto; }
 	.templatemo_insideportfolio	{ height: 316px; }
 	.templatemo_leftgap_about .templatemo_link { height: 142px; line-height: 142px; padding: 0px; }

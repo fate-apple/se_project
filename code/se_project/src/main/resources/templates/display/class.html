@@ -9,7 +9,20 @@
     <link th:href="@{/templatemo/css/templatemo_misc.css}" rel="stylesheet"/> 
     <link th:href="@{/templatemo/css/easy-responsive-tabs.css}" rel="stylesheet"/>
    	<link th:href="@{/templatemo/css/templatemo_style.css}" rel="stylesheet"/>  
-    
+    <script>
+    function showhide()
+    {
+        var div = document.getElementById("newpost");
+		if (div.style.display !== "none") 
+		{
+			div.style.display = "none";
+		}
+		else 
+		{
+			div.style.display = "block";
+		}
+    }
+  </script>
 </head>
 <body>
 	<div class="logocontainer">
@@ -19,8 +32,8 @@
             <div class="templatemo_smalltitle">班级展示</div>
        </div>
     </div>    
-   <div id="menu-container" class="main_menu">
-   <!-- homepage start -->
+	<div id="menu-container" class="main_menu">
+  		<!-- homepage start -->
 	    <div class="content homepage" id="menu-1">
 	  		<div class="container">
 	          	<div class="col-md-3 col-sm-6 templatemo_leftgap">
@@ -71,9 +84,14 @@
 	            </div>
 	    	</div>
 	    </div>
+	    <!-- homepage end -->
+	    
+	    <div  th:replace="display/timetable :: testimonial"></div> 
     </div>
-     <!-- homepage end -->
-     
+    
+    
+   
+    
     <!-- logo start -->
     <div class="logocontainer">
     	<div class="row">
@@ -85,19 +103,8 @@
     <script type="text/javascript" th:src="@{/js/jquery.lightbox.js}"></script>
     <script type="text/javascript" th:src="@{/templatemo/js/templatemo_custom.js}"></script>
     <script type="text/javascript" th:src="@{/templatemo/js/easyResponsiveTabs.js}"></script>
+     <script type="text/javascript" th:src="@{/js/display/timetable.js}"></script>
     <script>
-    function showhide()
-    {
-        var div = document.getElementById("newpost");
-		if (div.style.display !== "none") 
-		{
-			div.style.display = "none";
-		}
-		else 
-		{
-			div.style.display = "block";
-		}
-    }
     $(document).ready(function () {
     	
     	var height = $("#block1").css("height");
