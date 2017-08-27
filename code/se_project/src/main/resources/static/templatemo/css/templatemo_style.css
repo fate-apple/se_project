@@ -93,12 +93,14 @@ h3 {
 	background: #ffd761;
 	text-align: center;
 	width: 100%;
+	margin: 0px 0px 20px 0px;
 }
 
 .templatemo_maintesti {
 	background: #90f193;
 	text-align: center;
 	width: 100%;
+	margin: 0px 0px 20px 0px;
 }
 
 .templatemo_mainabout	{
@@ -114,7 +116,7 @@ h3 {
 }
 
 .templatemo_mainimg	{
-	margin: 0px 0px 20px 0px
+	margin: 0px 0px 20px 0px;
 }
 
 .templatemo_insideportfolio	 h2 { color: #ffffff; }
@@ -145,7 +147,7 @@ h3 {
 	
 .templatemo_graybg { 
 	float: left; 
-	background: #cccccc; 
+	background: #c0c0c0; 
 	overflow: hidden;
 	width: 100%;
 }
@@ -366,4 +368,24 @@ h2.resp-accordion	{ color: #ffffff; }
 	.templatemo_insideportfolio	{ height: 316px; }
 	.templatemo_leftgap_about .templatemo_link { height: 142px; line-height: 142px; padding: 0px; }
 	.templatemo_linkservice, .templatemo_linkcontact { height: 145px; line-height: 145px; padding: 0px; }
+}
+
+
+.filter {
+  position: relative;
+  -webkit-filter: contrast(86%) brightness(91%) saturate(36%) sepia(19%) grayscale(41%) blur(2px);
+  filter: contrast(86%) brightness(91%) saturate(36%) sepia(19%) grayscale(41%) blur(2px);
+}
+.filter::before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  opacity: 0.5;
+  background: rgba(173, 205, 239, 1);
 }

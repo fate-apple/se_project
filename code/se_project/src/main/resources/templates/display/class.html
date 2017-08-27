@@ -43,50 +43,64 @@
 	                	</div>	
 	                </div>
 	                <div class="templatemo_mainimg">
-	                	<img th:src="@{/img/display/se1.jpg}" class="image" alt="home img 01"/>
+	                	<img th:src="@{/img/display/se1.jpg}" class="image filter" alt="home img 01"/>
 	                </div>
-	                <div class="templatemo_mainportfolio">
-	                      <div class="templatemo_link">
-	                      	<a class="show-3 templatemo_page3" href="#">作业</a>
-	                      </div>	                	                   
+	                <div class="templatemo_mainimg">
+	                	<img th:src="@{/img/display/se3.jpg}" class="image filter" alt="home img 01"/>
 	                </div>
+	                
+
 	            </div>
 	            <div class="col-md-3 col-sm-6 templatemo_leftgap">
 	            	<div class="templatemo_mainimg templatemo_botgap templatemo_portfotopgap">
-	            		<img th:src="@{/img/display/se4.jpg}" class="image" alt="home img 02"/>
+	            		<img th:src="@{/img/display/se4.jpg}" class="image filter" alt="home img 02"/>
 	            	</div>
-	                <div class="templatemo_mainportfolio">
-	                      <div class="templatemo_link">
-	                      	<a class="show-3 templatemo_page3" href="#">作业</a>
-	                      </div>	                	                   
+	            	<div class="templatemo_mainimg">
+	                	<img th:src="@{/img/display/se7.jpg}" class="image filter" alt="home img 01"/>
 	                </div>
+	                <div class="templatemo_mainportfolio">
+						<div class="templatemo_link">
+							<a class="show-3 templatemo_page3" href="#">班级相册</a>
+						</div>	                	                   
+	                </div>
+
 	            </div>
 	            <div class="col-md-3 col-sm-6 templatemo_leftgap">
-	            	<div class="templatemo_maintesti templatemo_botgap templatemo_topgap">
+	            	<div class="templatemo_mainimg templatemo_botgap templatemo_topgap">
+						<img th:src="@{/img/display/se1.jpg}" class="image filter" alt="home img 02"/>
+	                </div>
+	                <div class="templatemo_maintesti">
 	                	<div class="templatemo_link">
 	                		<a class="show-4 templatemo_page4" href="#">课表</a>
 	                	</div>
 	                </div>
 	                <div class="templatemo_mainimg">
-	                	<img th:src="@{/img/display/se2.jpg}" class="image" alt="home img 03"/>
+	                	<img th:src="@{/img/display/se2.jpg}" class="image filter" alt="home img 03"/>
 	                </div>
 	            </div>
 	            <div class="col-md-3 col-sm-6 templatemo_leftgap">
-	            	<div class="templatemo_mainimg templatemo_botgap templatemo_topgap">
-	             	   <img th:src="@{/img/display/se3.jpg}" class="image" alt="home img 04"/>
+	            	<div class="templatemo_mainabout templatemo_botgap templatemo_topgap">
+	            		<div class="templatemo_link">
+	            			<a class="show-5 templatemo_page5" href="#">班级介绍</a>
+	            		</div>
+	             	   
 	                </div>
-	                <div class="templatemo_mainabout templatemo_botgap">
-	                	<div class="templatemo_link"><a class="show-5 templatemo_page5" href="#">班级介绍</a></div>
+	                <div class="templatemo_mainimg templatemo_botgap">
+	                	<img th:src="@{/img/display/se3.jpg}" class="image filter" alt="home img 04"/>
 	                </div>
 	                <div class="templatemo_maincontact">
-	                	<div class="templatemo_link"><a class="show-6 templatemo_page6" href="#">其他</a></div>
+	                	<div class="templatemo_link">
+	                		<a class="show-6 templatemo_page6" href="#">班级公告</a>
+	                	</div>
 	                </div>
 	            </div>
 	    	</div>
 	    </div>
 	    <!-- homepage end -->
+	    <div  th:replace="display/information :: information"></div> 
+	    <div  th:replace="display/timetable :: timetable"></div> 
+	    <div  th:replace="display/album :: album"></div> 
 	    
-	    <div  th:replace="display/timetable :: testimonial"></div> 
     </div>
     
     
@@ -95,7 +109,7 @@
     <!-- logo start -->
     <div class="logocontainer">
     	<div class="row">
-            <div class="templatemo_footer">Copyright © 2084 Company Name</div>
+            <div class="templatemo_footer">SE</div>
        </div>
     </div>
     <!-- logo end -->
