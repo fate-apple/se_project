@@ -65,10 +65,10 @@ public class IndexController {
         return "manage/course";
     }
 
-    @RequestMapping("/display/class")
-    public String classDisplay(Model model) {
-        return "display/class";
-    }
+//    @RequestMapping("/display/class")
+//    public String classDisplay(Model model) {
+//        return "display/class";
+//    }
 
     @RequestMapping("/base/news")
     public String showNews(Model model) {
