@@ -29,48 +29,48 @@ import java.util.Optional;
  */
 @Controller
 @RequestMapping("/manage/course")
-@JsonIgnoreProperties({ "handler","hibernateLazyInitializer" })
+@JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 public class CourseController {
-    @Autowired
-    CourseRepository courseRepository;
+    //    @Autowired
+//    CourseRepository courseRepository;
     @Autowired
     CourseSerivce courseSerivce;
-	@Autowired
-	private PeriodRepository periodRepository;
+//	@Autowired
+//	private PeriodRepository periodRepository;
 
     @RequestMapping("/create")
-    public ResponseEntity<?> create(@RequestParam int roomId,@RequestParam(value="adminClassId",required = false) Long adminClassId,@RequestParam (value = "virtualClassId",required = false) Long virtualClassId,
-                                    @RequestParam Long teacherId,@RequestParam int periodId,@RequestParam int subjectId,@RequestParam int weekday) {
-        Course course = courseSerivce.create(roomId,adminClassId,virtualClassId,teacherId,periodId,subjectId,weekday);
-                return ResponseEntity.ok(course);
-    }
-    
-    @RequestMapping("/update")
-    public ResponseEntity<?> update(@RequestParam Long courseId,@RequestParam int roomId,@RequestParam Long adminClassId,@RequestParam Long virtualClassId,
-                                    @RequestParam Long teacherId,@RequestParam int periodId,@RequestParam int subjectId,@RequestParam int weekday) {
-        Course course = courseSerivce.update(courseId,roomId,adminClassId,virtualClassId,teacherId,periodId,subjectId,weekday);
+    public ResponseEntity<?> create(@RequestParam int roomId, @RequestParam(value = "adminClassId", required = false) Long adminClassId, @RequestParam(value = "virtualClassId", required = false) Long virtualClassId,
+                                    @RequestParam Long teacherId, @RequestParam int periodId, @RequestParam int subjectId, @RequestParam int weekday) {
+        Course course = courseSerivce.create(roomId, adminClassId, virtualClassId, teacherId, periodId, subjectId, weekday);
         return ResponseEntity.ok(course);
     }
-    
-    @RequestMapping("/delete")
-    public ResponseEntity<?> delete(@RequestParam Long courseId){
-         courseSerivce.delete(courseId);
-         return ResponseEntity.ok(null);
-    }
-    
-    @RequestMapping("/findByAdminClass")
-    public String findByAdminClasses(@RequestParam String adminClasses,Model model){
-        List<Course> courseList =courseSerivce.findByAdminClasses(adminClasses);
-    model.addAttribute("courses",courseList);
-    return "manage/course";
+
+    @RequestMapping("/update")
+    public ResponseEntity<?> update(@RequestParam Long courseId, @RequestParam int roomId, @RequestParam Long adminClassId, @RequestParam Long virtualClassId,
+                                    @RequestParam Long teacherId, @RequestParam int periodId, @RequestParam int subjectId, @RequestParam int weekday) {
+        Course course = courseSerivce.update(courseId, roomId, adminClassId, virtualClassId, teacherId, periodId, subjectId, weekday);
+        return ResponseEntity.ok(course);
     }
 
-    
+    @RequestMapping("/delete")
+    public ResponseEntity<?> delete(@RequestParam Long courseId) {
+        courseSerivce.delete(courseId);
+        return ResponseEntity.ok(null);
+    }
+
+    @RequestMapping("/findByAdminClass")
+    public String findByAdminClasses(@RequestParam String adminClasses, Model model) {
+        List<Course> courseList = courseSerivce.findByAdminClasses(adminClasses);
+        model.addAttribute("courses", courseList);
+        return "manage/course";
+    }
+
+
     @RequestMapping("/findByUsername")
-    public ResponseEntity<?> findByStudent(@RequestParam String username,Model model){
+    public ResponseEntity<?> findByStudent(@RequestParam String username, Model model) {
         List<Course> courseList = courseSerivce.findByStudentname(username);
-        model.addAttribute("courses",courseList);
-        return  ResponseEntity.ok(courseList);
+        model.addAttribute("courses", courseList);
+        return ResponseEntity.ok(courseList);
     }
 
 }

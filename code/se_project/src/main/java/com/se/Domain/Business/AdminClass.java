@@ -11,8 +11,8 @@ import java.util.Set;
 
 @Table(name = "adminclass")
 @Entity
-@PrimaryKeyJoinColumn(name = "class_id") 
-public class AdminClass extends User{
+@PrimaryKeyJoinColumn(name = "class_id")
+public class AdminClass extends User {
 
     private Teacher teacher;
     private Room room;
@@ -20,7 +20,7 @@ public class AdminClass extends User{
     private transient Set<Student> students = new HashSet<Student>();
     private transient Set<Course> courses = new HashSet<Course>();
 
-    public AdminClass(){
+    public AdminClass() {
     }
 
 
@@ -58,7 +58,7 @@ public class AdminClass extends User{
         this.room = room;
     }
 
-    @Column(name="grade")
+    @Column(name = "grade")
     public int getGrade() {
         return grade;
     }
@@ -69,25 +69,25 @@ public class AdminClass extends User{
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "adminClass")
     @JsonIgnore
-	public Set<Student> getStudents() {
-		return students;
-	}
+    public Set<Student> getStudents() {
+        return students;
+    }
 
 
-	public void setStudents(Set<Student> students) {
-		this.students = students;
-	}
+    public void setStudents(Set<Student> students) {
+        this.students = students;
+    }
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "adminClass")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "adminClass")
     @JsonIgnore
-	public Set<Course> getCourses() {
-		return courses;
-	}
+    public Set<Course> getCourses() {
+        return courses;
+    }
 
 
-	public void setCourses(Set<Course> courses) {
-		this.courses = courses;
-	}
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
+    }
 
 
 }

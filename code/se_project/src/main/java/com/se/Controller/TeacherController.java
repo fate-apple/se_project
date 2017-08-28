@@ -26,14 +26,14 @@ public class TeacherController {
     private RoomService roomService;
 
     @RequestMapping("")
-    public String manage(Model model){
-        model.addAttribute("teachers",teacherService.findAll());
-        model.addAttribute("rooms",roomService.findAll());
+    public String manage(Model model) {
+        model.addAttribute("teachers", teacherService.findAll());
+        model.addAttribute("rooms", roomService.findAll());
         return "/manage/teacher";
     }
 
     @RequestMapping("/create")
-     public ResponseEntity<?> create(@RequestParam String username,@RequestParam String password,@RequestParam String fullname,@RequestParam int roomId,@RequestParam Boolean gender){
+    public ResponseEntity<?> create(@RequestParam String username, @RequestParam String password, @RequestParam String fullname, @RequestParam int roomId, @RequestParam Boolean gender) {
 
         Teacher teacher = teacherService.create(username, password, fullname, roomId, gender);
         if (teacher == null) return ResponseEntity.badRequest().body("create error");
@@ -41,15 +41,15 @@ public class TeacherController {
     }
 
     @RequestMapping("/update")
-    public ResponseEntity<?> update(@RequestParam Long id,@RequestParam String username,@RequestParam String fullname,@RequestParam int roomId,@RequestParam boolean gender){
-    	 System.out.println(id+username+fullname+roomId+gender);
-         Teacher teacher = teacherService.update(id,username,fullname,roomId,gender);
-         return ResponseEntity.ok(teacher);
+    public ResponseEntity<?> update(@RequestParam Long id, @RequestParam String username, @RequestParam String fullname, @RequestParam int roomId, @RequestParam boolean gender) {
+        System.out.println(id + username + fullname + roomId + gender);
+        Teacher teacher = teacherService.update(id, username, fullname, roomId, gender);
+        return ResponseEntity.ok(teacher);
     }
 
     @RequestMapping("/delete")
-    public ResponseEntity<?> delete(@RequestParam Long id){
-    	teacherService.delete(id);
-    	return ResponseEntity.ok(id);
+    public ResponseEntity<?> delete(@RequestParam Long id) {
+        teacherService.delete(id);
+        return ResponseEntity.ok(id);
     }
 }

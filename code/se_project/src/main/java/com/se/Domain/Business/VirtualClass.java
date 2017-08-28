@@ -16,18 +16,19 @@ public class VirtualClass {
     private Long virtualClassId;
     private String name;
     private transient Set<Course> courses = new HashSet<Course>();
-	private transient Set<Student> students = new HashSet<Student>();
+    private transient Set<Student> students = new HashSet<Student>();
 
     public VirtualClass(Long virtualClassId, String name) {
 
         this.virtualClassId = virtualClassId;
         this.name = name;
     }
-    public VirtualClass(){
+
+    public VirtualClass() {
     }
-    
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getVirtualClassId() {
         return virtualClassId;
     }
@@ -44,24 +45,24 @@ public class VirtualClass {
         this.name = name;
     }
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "virtualClass")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "virtualClass")
     @JsonIgnore
-	public Set<Course> getCourses() {
-		return this.courses;
-	}
+    public Set<Course> getCourses() {
+        return this.courses;
+    }
 
-	public void setCourses(Set<Course> courses) {
-		this.courses = courses;
-	}
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "virtualClass")
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "virtualClass")
     @JsonIgnore
-	public Set<Student> getStudents() {
-		return this.students;
-	}
+    public Set<Student> getStudents() {
+        return this.students;
+    }
 
-	public void setStudents(Set<Student> students) {
-		this.students = students;
-	}
+    public void setStudents(Set<Student> students) {
+        this.students = students;
+    }
 
 }

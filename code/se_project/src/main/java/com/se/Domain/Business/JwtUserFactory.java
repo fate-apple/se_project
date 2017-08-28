@@ -13,18 +13,21 @@ import java.util.stream.Collectors;
  * Created by clevo on 2017/7/11.
  */
 public final class JwtUserFactory {
-    private JwtUserFactory(){};
+    private JwtUserFactory() {
+    }
 
-    public static JwtUser create (User user){
+    ;
+
+    public static JwtUser create(User user) {
         Role role = user.getRole();
         return new JwtUser(
-            user.getId(),
-            user.getUsername(),
-            user.getPassword(),
-            mapToGrandAuthorities(role),
-            user.getLastPasswordResetDate(),
-            user.getFullname()
-                );
+                user.getId(),
+                user.getUsername(),
+                user.getPassword(),
+                mapToGrandAuthorities(role),
+                user.getLastPasswordResetDate(),
+                user.getFullname()
+        );
     }
 
     private static List<GrantedAuthority> mapToGrandAuthorities(Role role) {

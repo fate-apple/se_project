@@ -7,7 +7,6 @@ import com.se.Repository.Jpa.RoleRepository;
 import com.se.Repository.Jpa.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -17,7 +16,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.Date;
 
 /**
@@ -35,7 +33,6 @@ public class AuthServiceImpl implements AuthService {
     private RoleRepository roleRepository;
 
     private AuthenticationManager authenticationManager;
-
 
 
     @Autowired
@@ -84,5 +81,34 @@ public class AuthServiceImpl implements AuthService {
             return jwtTokenUtil.refreshToken(token);
         }
         return null;
+    }
+
+    @Override
+    public void logout() {
+        SecurityContextHolder.getContext().setAuthentication(null);
+        return;
+    }
+
+    @Override
+    public User reset(String username, String newPassword) {
+        User userToReset = userRepository.findByUsername(username);
+        if (userToReset != null) {
+            return null;
+        }
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        userToReset.setPassword(encoder.encode(newPassword));
+        userToReset.setLastPasswordResetDate(new Date());
+        return userRepository.save(userToReset);
+    }
+
+    @Override
+    public User alter(String username, String oldPassword, String newPassword) {
+        try {
+            UsernamePasswordAuthenticationToken upToken = new UsernamePasswordAuthenticationToken(username, oldPassword);
+            Authentication authentication = authenticationManager.authenticate(upToken);
+        } catch (Exception e) {
+            System.out.println("认证失败");
+        }
+        return reset(username, newPassword);
     }
 }

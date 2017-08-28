@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Table(name = "course")
 @Entity
-@JsonIgnoreProperties({ "handler","hibernateLazyInitializer" })
+@JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 public class Course {
 
     private Long courseId;
@@ -76,7 +76,7 @@ public class Course {
     }
 
 
-//    @ManyToOne(fetch = FetchType.LAZY)
+    //    @ManyToOne(fetch = FetchType.LAZY)
     @ManyToOne
     @JoinColumn(name = "teacher_id")
     public Teacher getTeacher() {
@@ -87,7 +87,7 @@ public class Course {
         this.teacher = teacher;
     }
 
-//    @ManyToOne(fetch = FetchType.LAZY)
+    //    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "virtual_class_id")
     @ManyToOne
     public VirtualClass getVirtualClass() {
@@ -99,7 +99,7 @@ public class Course {
     }
 
 
-//    @ManyToOne(fetch = FetchType.LAZY)
+    //    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "subject_id")
     @ManyToOne
     public Subject getSubject() {
@@ -110,7 +110,7 @@ public class Course {
         this.subject = subject;
     }
 
-//    @ManyToOne(fetch = FetchType.LAZY)
+    //    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "period_id")
     @ManyToOne
     public Period getPeriod() {

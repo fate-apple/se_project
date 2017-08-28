@@ -8,19 +8,19 @@ import java.util.Date;
 /**
  * Created by clevo on 2017/7/10.
  */
-@Table(name="User")
+@Table(name = "User")
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
     private Long id;
     private String username;
     private String password;
-     private Role role;
+    private Role role;
     private Date lastPasswordResetDate;
     private String fullname;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public Long getId() {
         return id;
@@ -29,8 +29,8 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
-    
-    @Column(name="username")
+
+    @Column(name = "username")
     public String getUsername() {
         return username;
     }
@@ -46,6 +46,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
     public Role getRole() {
@@ -81,16 +82,16 @@ public class User {
 //    }
 
 
-    public User( String username, String password, Role role,  String fullname) {
+    public User(String username, String password, Role role, String fullname) {
         //this.id = id;
         this.username = username;
         this.password = password;
-        this.lastPasswordResetDate=new Date();
+        this.lastPasswordResetDate = new Date();
         this.role = role;
         this.fullname = fullname;
     }
 
-    protected User(){
+    protected User() {
 
     }
 }

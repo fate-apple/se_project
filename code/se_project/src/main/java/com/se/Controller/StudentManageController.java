@@ -12,6 +12,7 @@ import com.se.Domain.Business.AdminClass;
 import com.se.Repository.Jpa.VirtualClassRepository;
 import com.se.Service.Business.AdminClassService;
 import com.se.Service.Business.StudentService;
+import com.se.Service.Business.VirtualClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,32 +26,32 @@ import com.se.Domain.Business.Student;
 @Controller
 @RequestMapping("/manage")
 public class StudentManageController {
-	@Autowired
-	StudentService studentService;
-	@Autowired
-	AdminClassService adminClassService;
-	@Autowired
-	VirtualClassRepository virtualClassRepository;
-	
-	//根据所选的班级返回学生（不重复）
-	@RequestMapping(value="/getStudent", method = RequestMethod.POST)
-	public String getStudent(@RequestParam String classes,Model model){
+    @Autowired
+    StudentService studentService;
+    @Autowired
+    AdminClassService adminClassService;
+    @Autowired
+    VirtualClassService virtualClassService;
 
-		List<Student> students =new ArrayList<Student>();
-		students = studentService.findByAdminClasses(classes);
+    //根据所选的班级返回学生（不重复）
+    @RequestMapping(value = "/getStudent", method = RequestMethod.POST)
+    public String getStudent(@RequestParam String classes, Model model) {
 
-		model.addAttribute("students",students );
-		model.addAttribute("adminClasses",adminClassService.findAll());
-		model.addAttribute("virtualClasses",virtualClassRepository.findAll());
+        List<Student> students = new ArrayList<Student>();
+        students = studentService.findByAdminClasses(classes);
 
-		return "/manage/student";
-	}
-	
-	//根据所选的年级，返回每个年级所有班级的名字和id
-	@RequestMapping(value="/getClass", method = RequestMethod.POST)
-	@ResponseBody
-    public Map<String,Object> getClassByGrades(String grades) {
-		Map<String,Object>classes = adminClassService.getClassByGrades(grades);
+        model.addAttribute("students", students);
+        model.addAttribute("adminClasses", adminClassService.findAll());
+        model.addAttribute("virtualClasses", virtualClassService.findAll());
+
+        return "/manage/student";
+    }
+
+    //根据所选的年级，返回每个年级所有班级的名字和id
+    @RequestMapping(value = "/getClass", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> getClassByGrades(String grades) {
+        Map<String, Object> classes = adminClassService.getClassByGrades(grades);
         return classes;
     }
 

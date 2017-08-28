@@ -9,13 +9,8 @@ import java.util.Set;
 /**
  * Created by clevo on 2017/7/18.
  */
-public interface AdminClassRepository extends JpaRepository<AdminClass,Long>
-{
+public interface AdminClassRepository extends JpaRepository<AdminClass, Long> {
     List<AdminClass> findByGrade(int grade);
-
-
-
-
 
 
     List<AdminClass> findByGradeInOrderByGradeAscFullnameAsc(Set<Integer> gradesInt);

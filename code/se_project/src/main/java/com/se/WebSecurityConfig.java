@@ -38,6 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // 使用BCrypt进行密码的hash
                 .passwordEncoder(passwordEncoder());
     }
+
     // 装载BCrypt密码编码器
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -50,45 +51,45 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-        @Override
-        protected   void configure(HttpSecurity httpSecurity) throws Exception{
-            httpSecurity
-                    // 由于使用的是JWT，我们这里不需要csrf
-                    .csrf().disable();
+    @Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity
+                // 由于使用的是JWT，我们这里不需要csrf
+                .csrf().disable();
 
-                    // 基于token，所以不需要session
+        // 基于token，所以不需要session
 //                    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 
-            httpSecurity.authorizeRequests()
-                    //.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+        httpSecurity.authorizeRequests()
+                //.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
-                    // 允许对于网站静态资源的无授权访问
-                    .antMatchers(
-                            HttpMethod.GET,
-                            "/",
-                            "/*.html",
-                            "/favicon.ico",
-                            "/**/*.html",
-                            "/**/*.css",
-                            "/**/*.js","/js/**",
-                            "/img/**",
-                            "/font-awesome/**"
-                    ).permitAll()
-                    //test
-                    .antMatchers("/auth/**","/register",
-                            "/manage/**","/error","/api/**").permitAll()
-                    // 除上面外的所有请求全部需要鉴权认证
-                    .anyRequest().authenticated().and()
-                    .formLogin().loginPage("/login")
-                    .defaultSuccessUrl("/base/news").permitAll().and()
-                    .logout().permitAll();
+                // 允许对于网站静态资源的无授权访问
+                .antMatchers(
+                        HttpMethod.GET,
+                        "/",
+                        "/*.html",
+                        "/favicon.ico",
+                        "/**/*.html",
+                        "/**/*.css",
+                        "/**/*.js", "/js/**",
+                        "/img/**",
+                        "/font-awesome/**"
+                ).permitAll()
+                //test
+                .antMatchers("/auth/**", "/register",
+                        "/manage/**", "/error", "/api/**").permitAll()
+                // 除上面外的所有请求全部需要鉴权认证
+                .anyRequest().authenticated().and()
+                .formLogin().loginPage("/login")
+                .defaultSuccessUrl("/base/news").permitAll().and()
+                .logout().permitAll();
 //                        .addFilterBefore(new JWTLoginFilter("/login", authenticationManager()),
 //                                UsernamePasswordAuthenticationFilter.class)
-                    // 添加一个过滤器验证其他请求的Token是否合法
-            httpSecurity.addFilterBefore(authenticationTokenFilterBean(),
-                            UsernamePasswordAuthenticationFilter.class);
-            httpSecurity.headers().cacheControl();
-        }
+        // 添加一个过滤器验证其他请求的Token是否合法
+        httpSecurity.addFilterBefore(authenticationTokenFilterBean(),
+                UsernamePasswordAuthenticationFilter.class);
+        httpSecurity.headers().cacheControl();
+    }
 //    @Override
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        // 使用自定义身份验证组件

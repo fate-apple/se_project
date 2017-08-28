@@ -13,7 +13,7 @@ import java.util.Map;
 public interface StudentService {
     List<Student> findAll();
 
-    List<Student> findByAdminClass (AdminClass adminClass);
+    List<Student> findByAdminClass(AdminClass adminClass);
 
 
     List<Student> findByAdminClasses(String classes);
@@ -25,7 +25,6 @@ public interface StudentService {
                    Long adminClassId, Long virtualClassId, boolean gender, String enrollDate);
 
     Student update(Long id, String username, String fullname, Long adminClassId, Long virtualClassId, boolean gender, String enrollDate);
-
 
 
     void delete(Long id);

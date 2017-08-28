@@ -53,22 +53,22 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 //        Assert.notNull(request, "request is null!");
 //        String authHeader = request.getHeader(this.tokenHeader);
-        String authHeader=null;
-        Cookie[] cookies= request.getCookies();
-        if(cookies!=null){
-        	for( Cookie rr: cookies) {
-        		if (rr.getName().equals("JwtToken")){
-        			authHeader=rr.getValue();
-        			break;
-        		}
-        	}
+        String authHeader = null;
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie rr : cookies) {
+                if (rr.getName().equals("JwtToken")) {
+                    authHeader = rr.getValue();
+                    break;
+                }
+            }
         }
-        if (authHeader != null ) {
+        if (authHeader != null) {
             final String authToken = authHeader.substring(tokenHead.length()); // The part after "Bearer "
             String username = jwtTokenUtil.getUsernameFromToken(authToken);
 
             logger.info("checking authentication " + username);
-            Authentication test =SecurityContextHolder.getContext().getAuthentication();
+            Authentication test = SecurityContextHolder.getContext().getAuthentication();
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
                 UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);

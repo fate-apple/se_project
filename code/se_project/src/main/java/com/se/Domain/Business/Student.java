@@ -7,13 +7,13 @@ import java.util.Date;
 
 
 @Entity
-@Table(name="student")
-@PrimaryKeyJoinColumn(name = "student_id") 
-public class Student extends User{
-	
-    private  AdminClass adminClass;
+@Table(name = "student")
+@PrimaryKeyJoinColumn(name = "student_id")
+public class Student extends User {
+
+    private AdminClass adminClass;
     private VirtualClass virtualClass;
-    private Boolean     gender;
+    private Boolean gender;
     private Date enrollDate;
 
     public Student(String username, String password, Role role, String fullname, AdminClass adminClass, VirtualClass virtualClass, Boolean gender, Date enrollDate) {
@@ -34,9 +34,9 @@ public class Student extends User{
     public void setAdminClass(AdminClass adminClass) {
         this.adminClass = adminClass;
     }
-    
-	@ManyToOne
-	@JoinColumn(name = "virtual_class_id")
+
+    @ManyToOne
+    @JoinColumn(name = "virtual_class_id")
     public VirtualClass getVirtualClass() {
         return virtualClass;
     }
@@ -45,7 +45,7 @@ public class Student extends User{
         this.virtualClass = virtualClass;
     }
 
-    @Column(name="enroll_date")
+    @Column(name = "enroll_date")
     public Date getEnrollDate() {
         return enrollDate;
     }
@@ -54,11 +54,11 @@ public class Student extends User{
         this.enrollDate = enrollDate;
     }
 
-    @Column(name="gender")
+    @Column(name = "gender")
     public Boolean getGender() {
         return this.gender;
     }
-    
+
     public void setGender(Boolean gender) {
         this.gender = gender;
     }
@@ -71,6 +71,8 @@ public class Student extends User{
         this.enrollDate = enrollDate;
     }
 
-    public Student(){
-    };
+    public Student() {
+    }
+
+    ;
 }

@@ -11,7 +11,7 @@ import java.util.Set;
 /**
  * Created by clevo on 2017/7/18.
  */
-public interface StudentRepository extends JpaRepository<Student,Long> {
+public interface StudentRepository extends JpaRepository<Student, Long> {
 
     List<Student> findByAdminClass(AdminClass adminClass);
 

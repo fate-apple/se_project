@@ -19,8 +19,9 @@ public interface CourseSerivce {
     void delete(Long courseId);
 
 
-
     List<Course> findByAdminClasses(String adminClasses);
 
     List<Course> findByStudentname(String studentname);
+
+    List<Course> findNextCourse(String studentname);
 }

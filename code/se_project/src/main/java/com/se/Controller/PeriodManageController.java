@@ -22,43 +22,40 @@ import com.se.Domain.Business.Period;
 import com.se.Repository.Jpa.PeriodRepository;
 
 
-
 @Controller
 @RequestMapping("/manage")
 public class PeriodManageController {
-	
-	@Autowired
-	private PeriodRepository periodRepository;
-	
-	
-	@RequestMapping(value="/getPeriod")
-	public String getPeriod(Model model){
-		List<Period> periods = new ArrayList<Period>();
-		periods = periodRepository.findAll();
-		model.addAttribute("periods", periods);
-		return "/manage/period";
-	}
-	
-	//return message(add the case of "delete failed because of foreign key")
-	@RequestMapping(value="/deletePeriod")
-	@ResponseBody
-	public String deletePeriod(int periodId){
-		System.out.println(periodId);
-		return "删除成功";
-	}
-	
-	//add or update the period. If periodId==0 then add, else update
-	@RequestMapping(value="/updatePeriod",method = RequestMethod.POST)
-	public String updatePeriod(@RequestParam String beginTime,
-			 @RequestParam String endTime,@RequestParam int periodId,Model model){
-		System.out.println(beginTime+endTime+periodId);
-		List<Period> periods = new ArrayList<Period>();
-		periods = periodRepository.findAll();
-		model.addAttribute("periods", periods);
-		return "redirect:/manage/getPeriod";
-	}
-	
-	
+
+    @Autowired
+    private PeriodRepository periodRepository;
+
+
+    @RequestMapping(value = "/getPeriod")
+    public String getPeriod(Model model) {
+        List<Period> periods = new ArrayList<Period>();
+        periods = periodRepository.findAll();
+        model.addAttribute("periods", periods);
+        return "/manage/period";
+    }
+
+    //return message(add the case of "delete failed because of foreign key")
+    @RequestMapping(value = "/deletePeriod")
+    @ResponseBody
+    public String deletePeriod(int periodId) {
+        System.out.println(periodId);
+        return "删除成功";
+    }
+
+    //add or update the period. If periodId==0 then add, else update
+    @RequestMapping(value = "/updatePeriod", method = RequestMethod.POST)
+    public String updatePeriod(@RequestParam String beginTime,
+                               @RequestParam String endTime, @RequestParam int periodId, Model model) {
+        System.out.println(beginTime + endTime + periodId);
+        List<Period> periods = new ArrayList<Period>();
+        periods = periodRepository.findAll();
+        model.addAttribute("periods", periods);
+        return "redirect:/manage/getPeriod";
+    }
 
 
 }

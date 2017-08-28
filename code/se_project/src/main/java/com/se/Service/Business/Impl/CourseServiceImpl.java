@@ -3,6 +3,7 @@ package com.se.Service.Business.Impl;
 import com.se.Domain.Business.*;
 import com.se.Repository.Jpa.*;
 import com.se.Service.Business.CourseSerivce;
+import com.se.Service.Business.PeriodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,8 @@ public class CourseServiceImpl implements CourseSerivce {
     SubjectRepository subjectRepository;
     @Autowired
     StudentRepository studentRepository;
+    @Autowired
+    PeriodService periodService;
 
     @Override
     public Course create(int roomId, Long adminClassId, Long virtualClassId,
@@ -92,6 +95,21 @@ public class CourseServiceImpl implements CourseSerivce {
              List<Course> courses = courseRepository.findByAdminClass(adminClass);
              return courses;
     }
+
+    @Override
+    public List<Course> findNextCourse(String studentname){
+        AdminClass adminClass=studentRepository.findByUsername(studentname).getAdminClass();
+        Calendar now = Calendar.getInstance();
+        int weekday = now.get(Calendar.DATE);
+        Period period = periodService.findByDate(new Date());
+        Period nextperiod = periodRepository.findOne(period.getId()+1);
+        List<Course>  list = new ArrayList<>();
+        list.addAll(courseRepository.findByAdminClassAndWeekdayAndPeriod(adminClass,weekday,period));
+        list.addAll(courseRepository.findByAdminClassAndWeekdayAndPeriod(adminClass,weekday,nextperiod));
+        return list;
+    }
+
+
 
 
 }

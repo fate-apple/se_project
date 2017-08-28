@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by clevo on 2017/7/10.
  */
-@Table(name="Role")
+@Table(name = "Role")
 @Entity
 public class Role {
     private int role_id;
@@ -31,7 +31,8 @@ public class Role {
     public void setId(int id) {
         this.role_id = id;
     }
-    @Column(name="rolename")
+
+    @Column(name = "rolename")
     public String getRolename() {
         return rolename;
     }
@@ -39,7 +40,6 @@ public class Role {
     public void setRolename(String rolename) {
         this.rolename = rolename;
     }
-
 
 
     @OneToMany(mappedBy = "role")
@@ -51,7 +51,8 @@ public class Role {
     public void setUsers(List<User> users) {
         this.users = users;
     }
-    protected Role(){
+
+    protected Role() {
 
     }
 }

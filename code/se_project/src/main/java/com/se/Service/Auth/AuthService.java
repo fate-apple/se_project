@@ -7,6 +7,14 @@ import com.se.Domain.Business.User;
  */
 public interface AuthService {
     User register(User userToAdd);
+
     String login(String username, String password);
+
     String refresh(String oldToken);
+
+    void logout();
+
+    User reset(String username, String newpassword);
+
+    User alter(String username, String oldpassword, String newPassword);
 }

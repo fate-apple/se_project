@@ -39,10 +39,10 @@ public class AuthController {
 
     @RequestMapping(value = "${jwt.route.authentication.refresh}", method = RequestMethod.GET)
     public ResponseEntity<?> refreshAndGetAuthenticationToken(
-            HttpServletRequest request) throws AuthenticationException{
+            HttpServletRequest request) throws AuthenticationException {
         String token = request.getHeader(tokenHeader);
         String refreshedToken = authService.refresh(token);
-        if(refreshedToken == null) {
+        if (refreshedToken == null) {
             return ResponseEntity.badRequest().body(null);
         } else {
             return ResponseEntity.ok(new JwtAuthenticationResponse(refreshedToken));
@@ -50,9 +50,11 @@ public class AuthController {
     }
 
     @RequestMapping(value = "/auth/register", method = RequestMethod.POST)
-    public User register(@RequestBody User addedUser) throws AuthenticationException{
+    public User register(@RequestBody User addedUser) throws AuthenticationException {
         return authService.register(addedUser);
     }
+
+
 //    @RequestMapping(value="/auth/test",method = RequestMethod.POST)
 //    public  User test(@RequestBody User addedUser) throws AuthenticationException
 //    {

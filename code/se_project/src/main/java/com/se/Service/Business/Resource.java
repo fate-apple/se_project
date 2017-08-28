@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Resource {
     private Object o;
-    private  boolean success;
+    private boolean success;
     private String message;
 
     public Object getO() {

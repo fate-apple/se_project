@@ -23,5 +23,5 @@ public interface AdminClassService {
 
     void delete(Long id);
 
-    Map<String,Object> getClassByGrades(String grades);
+    Map<String, Object> getClassByGrades(String grades);
 }

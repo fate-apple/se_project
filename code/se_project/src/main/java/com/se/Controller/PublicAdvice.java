@@ -43,8 +43,8 @@ public class PublicAdvice {
     @ModelAttribute
     public void addCommonModel(Model model, HttpServletRequest request) {
         String sec_role = "ROLE_VISTOR";
-        String sec_username="AnnonymousUser";
-        if(SecurityContextHolder.getContext().getAuthentication()!=null) {
+        String sec_username = "AnnonymousUser";
+        if (SecurityContextHolder.getContext().getAuthentication() != null) {
             Object o = SecurityContextHolder.getContext().getAuthentication().getName();
             sec_username = (String) o;
 

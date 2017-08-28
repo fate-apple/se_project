@@ -11,7 +11,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+
 import static javax.persistence.GenerationType.IDENTITY;
+
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,52 +23,52 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "subject")
-public class Subject  {
+public class Subject {
 
-	private Integer subjectId;
-	private String title;
-	private Set<Course> courses = new HashSet<Course>();
+    private Integer subjectId;
+    private String title;
+    private Set<Course> courses = new HashSet<Course>();
 
-	public Subject() {
-	}
+    public Subject() {
+    }
 
-	public Subject(String title) {
-		this.title = title;
-	}
+    public Subject(String title) {
+        this.title = title;
+    }
 
-	public Subject(String title, Set<Course> courses) {
-		this.title = title;
-		this.courses = courses;
-	}
+    public Subject(String title, Set<Course> courses) {
+        this.title = title;
+        this.courses = courses;
+    }
 
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "subject_id")
-	public Integer getSubjectId() {
-		return this.subjectId;
-	}
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "subject_id")
+    public Integer getSubjectId() {
+        return this.subjectId;
+    }
 
-	public void setSubjectId(Integer subjectId) {
-		this.subjectId = subjectId;
-	}
+    public void setSubjectId(Integer subjectId) {
+        this.subjectId = subjectId;
+    }
 
-	@Column(name = "title")
-	public String getTitle() {
-		return this.title;
-	}
+    @Column(name = "title")
+    public String getTitle() {
+        return this.title;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "subject")
-	@JsonIgnore
-	public Set<Course> getCourses() {
-		return this.courses;
-	}
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "subject")
+    @JsonIgnore
+    public Set<Course> getCourses() {
+        return this.courses;
+    }
 
-	public void setCourses(Set<Course> courses) {
-		this.courses = courses;
-	}
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
+    }
 
 }

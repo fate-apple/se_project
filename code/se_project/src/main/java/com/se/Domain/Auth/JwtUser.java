@@ -10,7 +10,7 @@ import java.util.Date;
 /**
  * Created by clevo on 2017/7/10.
  */
-public class JwtUser implements UserDetails{
+public class JwtUser implements UserDetails {
     private final Long id;
     private final String username;
     private final String password;
@@ -56,18 +56,21 @@ public class JwtUser implements UserDetails{
     public boolean isAccountNonExpired() {
         return true;
     }
+
     // 账户是否未锁定
     @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
+
     // 密码是否未过期
     @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
+
     // 账户是否激活
     @JsonIgnore
     @Override

@@ -9,6 +9,6 @@ import com.se.Domain.Business.User;
  * Created by clevo on 2017/7/10.
  */
 @RepositoryRestResource
-public interface UserRepository extends JpaRepository<User,Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
 }
