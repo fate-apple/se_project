@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Information {
+	private int id;
 	private Date date;
 	private String title;
 	private String content;

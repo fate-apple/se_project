@@ -257,8 +257,8 @@ h3 {
 }
 .copyrights{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
 .resp-vtabs ul.templatemo_tab { float: left; width: 100%; }
-.resp-vtabs ul.templatemo_tab li { padding: 0px; background: url(../images/templatemo_arrow_gap.png) no-repeat center right #cc9933; font-size: 24px; text-align: center; font-weight: normal; }
-.resp-vtabs ul.templatemo_tab li.resp-tab-active{ background: url(../images/templatemo_arrow.png) no-repeat center right #cc9933; border: 0px; padding: 0px; color: #ffffff; }
+.resp-vtabs ul.templatemo_tab li { padding: 0px; background:#cc9933;margin:0px 10px 15px 0px;  font-size: 24px; text-align: center; font-weight: normal; }
+.resp-vtabs ul.templatemo_tab li.resp-tab-active{ background:#c57a30; margin:0px 10px 15px 0px; border: 0px; padding: 0px; color: #ffffff; }
 
 .resp-vtabs ul.templatemo_testitab { float: left; width: 100%; }
 .resp-vtabs ul.templatemo_testitab li { padding: 0px; background: #339966; font-size: 24px;margin:0px 10px 15px 0px; text-align: center; font-weight: normal; }
@@ -373,8 +373,8 @@ h2.resp-accordion	{ color: #ffffff; }
 
 .filter {
   position: relative;
-  -webkit-filter: contrast(86%) brightness(91%) saturate(36%) sepia(19%) grayscale(41%) blur(2px);
-  filter: contrast(86%) brightness(91%) saturate(36%) sepia(19%) grayscale(41%) blur(2px);
+  -webkit-filter: contrast(71%) brightness(155%) saturate(99%) sepia(28%) blur(1px);
+  filter: contrast(71%) brightness(155%) saturate(99%) sepia(28%) blur(1px);
 }
 .filter::before {
   content: "";
