@@ -24,4 +24,19 @@ public class DisplayController {
 		model.addAttribute("periods", periods);
 		return "/display/class";
 	}
+	
+	@RequestMapping(value="/editDisplay/introduction")
+	public String initEditIntroduction(Model model){
+		return "/editDisplay/introduction";
+	}
+	
+	@RequestMapping(value="/editDisplay/bulletin")
+	public String initEditBulletin(Model model){
+		return "/editDisplay/bulletin";
+	}
+	
+	@RequestMapping(value="/editDisplay/album")
+	public String initEditAlbum(Model model){
+		return "/editDisplay/album";
+	}
 }

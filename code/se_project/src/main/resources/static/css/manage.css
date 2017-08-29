@@ -108,3 +108,24 @@ button.btn.dropdown-toggle.btn-default{
 	max-height:400px;
 	overflow:auto;
 }
+
+.image{
+	height:200px;
+	align:center;
+	margin:0 auto;
+}
+
+.albumshow{
+	text-align:center;
+	vertical-align:middle;
+	margin:0 auto;
+}
+
+.inputfile {
+    width: 0.1px; 
+    height: 0.1px; 
+    opacity: 0; 
+    overflow: hidden; 
+    position: absolute; 
+    z-index: -1;
+}
