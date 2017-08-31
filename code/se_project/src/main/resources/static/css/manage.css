@@ -129,3 +129,8 @@ button.btn.dropdown-toggle.btn-default{
     position: absolute; 
     z-index: -1;
 }
+
+#myTab{
+	font-size:20px;
+	
+}

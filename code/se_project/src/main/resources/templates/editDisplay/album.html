@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <link th:href="@{/css/manage-style.css}" rel="stylesheet"/> 
+    <link th:href="@{/css/loader-style.css}" rel="stylesheet"/>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/linearicons/style.css}" rel="stylesheet"/>
+    <link th:href="@{/css/manage.css}" rel="stylesheet"/>
+
+</head>
+<body>
+	 <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+	<div  th:replace="component/navbar :: copy"></div>
+	<div  th:replace="component/sidebar :: copy"></div>
+	<div class="wrap-fluid">
+		<div class="informationWrapper">
+			<h1>编辑班级相册</h1>
+			<br/>
+			<div class="row">
+				<div class="col-md-4 albumshow">
+					<img th:src="@{/img/display/se3.jpg}" class="image" alt="图片1"/>
+					<br/>
+					<br/>
+					<form class="form-group" enctype="multipart/form-data">
+						<input type="file" class="inputfile" name="image1" id="image1" accept="image/jpeg"/>
+						<label for="image1" class="btn btn-primary">选择文件</label>
+						<input class="btn btn-primary" type="submit" value="修改"/>
+					</form>
+				</div>
+				<div class="col-md-4 albumshow">
+					<img th:src="@{/img/display/se4.jpg}" class="image" alt="图片2"/>
+					<br/>
+					<br/>
+					<form class="form-group" enctype="multipart/form-data">
+						<input type="file" class="inputfile" name="image2" id="image2" accept="image/jpeg"/>
+						<label for="image2" class="btn btn-primary">选择文件</label>
+						<input class="btn btn-primary" type="submit" value="修改"/>
+					</form>
+				</div>
+				<div class="col-md-4 albumshow">
+					<img th:src="@{/img/display/se3.jpg}" class="image" alt="图片1"/>
+					<br/>
+					<br/>
+					<form class="form-group" enctype="multipart/form-data">
+
+						<input type="file" class="inputfile" name="image3" id="image3" accept="image/jpeg"/>
+						<label for="image3" class="btn btn-primary">选择文件</label>
+						<input class="btn btn-primary" type="submit" value="修改"/>
+					</form>
+				</div>
+			</div>
+			<!-- end row -->
+			<div class="row">
+				<div class="col-md-4 albumshow">
+					<img th:src="@{/img/display/se2.jpg}" class="image" alt="图片4"/>
+					<br/>
+					<br/>
+					<form class="form-group" enctype="multipart/form-data">
+						<input type="file" class="inputfile" name="image4" id="image4" accept="image/jpeg"/>
+						<label for="image4" class="btn btn-primary">选择文件</label>
+						<input class="btn btn-primary" type="submit" value="修改"/>
+					</form>
+				</div>
+				<div class="col-md-4 albumshow">
+					<img th:src="@{/img/display/se6.jpg}" class="image" alt="图片5"/>
+					<br/>
+					<br/>
+					<form class="form-group" enctype="multipart/form-data">
+						<input type="file" class="inputfile" name="image5" id="image5" accept="image/jpeg"/>
+						<label for="image5" class="btn btn-primary">选择文件</label>
+						<input class="btn btn-primary" type="submit" value="修改"/>
+					</form>
+				</div>
+				<div class="col-md-4 albumshow">
+					<img th:src="@{/img/display/se7.jpg}" class="image" alt="图片6"/>
+					<br/>
+					<br/>
+					<form class="form-group" enctype="multipart/form-data">
+
+						<input type="file" class="inputfile" name="image6" id="image6" accept="image/jpeg"/>
+						<label for="image6" class="btn btn-primary">选择文件</label>
+						<input class="btn btn-primary" type="submit" value="修改"/>
+					</form>
+				</div>
+			</div>
+			<!-- end row -->
+			<div class="row">
+				<div class="col-md-4 albumshow">
+					<img th:src="@{/img/display/se9.jpg}" class="image" alt="图片7"/>
+					<br/>
+					<br/>
+					<form class="form-group" enctype="multipart/form-data">
+						<input type="file" class="inputfile" name="image7" id="image7" accept="image/jpeg"/>
+						<label for="image7" class="btn btn-primary">选择文件</label>
+						<input class="btn btn-primary" type="submit" value="修改"/>
+					</form>
+				</div>
+				<div class="col-md-4 albumshow">
+					<img th:src="@{/img/display/se1.jpg}" class="image" alt="图片8"/>
+					<br/>
+					<br/>
+					<form class="form-group" enctype="multipart/form-data">
+						<input type="file" class="inputfile" name="image8" id="image8" accept="image/jpeg"/>
+						<label for="image5" class="btn btn-primary">选择文件</label>
+						<input class="btn btn-primary" type="submit" value="修改"/>
+					</form>
+				</div>
+				<div class="col-md-4 albumshow">
+					<img th:src="@{/img/display/se2.jpg}" class="image" alt="图片9"/>
+					<br/>
+					<br/>
+					<form class="form-group" enctype="multipart/form-data">
+
+						<input type="file" class="inputfile" name="image9" id="image9" accept="image/jpeg"/>
+						<label for="image9" class="btn btn-primary">选择文件</label>
+						<input class="btn btn-primary" type="submit" value="修改"/>
+					</form>
+				</div>
+			</div>
+			<!-- end row -->
+		</div>
+
+
+	</div>
+	<script type="text/javascript" th:src="@{/js/preloader.js}"></script>
+	<script type="text/javascript" th:src="@{/bootstrap//js/bootstrap.min.js}"></script>
+	
+	<script type="text/javascript" th:src="@{/js/changeBg.js}"></script>
+	<script type="text/javascript" th:src="@{/js/load.js}"></script>
+	<script type="text/javascript" th:src="@{/js/main.js}"></script>
+	<script type="text/javascript" th:src="@{/js/panel.js}"></script>
+	<script type="text/javascript" th:src="@{/js/editDisplay/editAlbum.js}"></script>
+</body>
+</html>

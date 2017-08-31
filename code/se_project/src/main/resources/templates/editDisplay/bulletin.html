@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <link th:href="@{/css/manage-style.css}" rel="stylesheet"/> 
+    <link th:href="@{/css/loader-style.css}" rel="stylesheet"/>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/linearicons/style.css}" rel="stylesheet"/>
+    <link th:href="@{/css/manage.css}" rel="stylesheet"/>
+
+</head>
+<body>
+	 <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+	<div  th:replace="component/navbar :: copy"></div>
+	<div  th:replace="component/sidebar :: copy"></div>
+	<div class="wrap-fluid">
+		<div class="informationWrapper">
+			<h1>编辑班级公告</h1>
+			<br/>
+			<ul class="nav nav-pills" id="myTab">
+			  <li class="active" ><a href="#bulletin1" data-toggle="tab">公告1</a></li>
+			  <li><a href="#bulletin2" data-toggle="tab">公告2</a></li>
+			  <li><a href="#bulletin3" data-toggle="tab">公告3</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane fade in active" id="bulletin1">
+					<div class ="row">
+						<div class="col-md-12">
+							<h2>标题1</h2>
+							<input type="text" class="form-control" id="title1" style="width:100%;"></input>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<h2>正文</h2>
+							<textarea id="content1" cols="20" rows="2" class="ckeditor">
+							</textarea>
+							<br/>
+						</div>	
+					</div>
+					<button type="button" id="editBulletin1" class="btn btn-default">
+						<span class="entypo-pencil"></span>&nbsp;&nbsp;保存</button>
+				</div>
+				<div class="tab-pane fade" id="bulletin2">
+					<div class ="row">
+						<div class="col-md-12">
+							<h2>标题2</h2>
+							<input type="text" class="form-control" id="title2" style="width:100%;"></input>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<h2>正文</h2>
+							<textarea id="content2" cols="20" rows="2" class="ckeditor">
+							</textarea>
+							<br/>
+						</div>	
+					</div>
+					<button type="button" id="editBulletin2" class="btn btn-default">
+						<span class="entypo-pencil"></span>&nbsp;&nbsp;保存</button>
+				</div>
+				<div class="tab-pane fade" id="bulletin3">
+					<div class ="row">
+						<div class="col-md-12">
+							<h2>标题3</h2>
+							<input type="text" class="form-control" id="title3" style="width:100%;"></input>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<h2>正文</h2>
+							<textarea id="content3" cols="20" rows="2" class="ckeditor">
+							</textarea>
+							<br/>
+						</div>	
+					</div>
+					<button type="button" id="editBulletin3" class="btn btn-default">
+						<span class="entypo-pencil"></span>&nbsp;&nbsp;保存</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" th:src="@{/js/preloader.js}"></script>
+	<script type="text/javascript" th:src="@{/bootstrap//js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/ckeditor/ckeditor.js}"></script>
+	
+	<script type="text/javascript" th:src="@{/js/changeBg.js}"></script>
+	<script type="text/javascript" th:src="@{/js/load.js}"></script>
+	<script type="text/javascript" th:src="@{/js/main.js}"></script>
+	<script type="text/javascript" th:src="@{/js/panel.js}"></script>
+	<script type="text/javascript" th:src="@{/js/editDisplay/editBulletin.js}"></script>
+
+	<script>
+		CKEDITOR.replace('content1');
+		CKEDITOR.replace('content2');
+		CKEDITOR.replace('content3');
+	</script>
+</body>
+</html>
