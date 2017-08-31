@@ -8,12 +8,14 @@ target/
 .project
 .settings
 .springBeans
+.gitignore
 
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
+
 
 ### NetBeans ###
 nbproject/private/
