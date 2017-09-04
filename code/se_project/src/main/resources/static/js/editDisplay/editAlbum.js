@@ -1,4 +1,5 @@
 jQuery(document).ready(function() {
+	//根据选择文件修改按钮文字
 	$( '.inputfile' ).click( function(e) {
 	    var $input = $( this ),
 	        $label = $input.next( 'label' ),

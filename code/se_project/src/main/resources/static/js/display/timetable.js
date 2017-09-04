@@ -1,4 +1,5 @@
 jQuery(document).ready(function() {
+	//填充课表
 	var username = $("#timetableUsername").val();
 	console.log(username);
 	jQuery.ajax({
