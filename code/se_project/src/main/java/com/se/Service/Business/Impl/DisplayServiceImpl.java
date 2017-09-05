@@ -17,6 +17,7 @@ public class DisplayServiceImpl implements DisplayService {
     DisplayRepository displayRepository;
     @Autowired
     AdminClassRepository adminClassRepository;
+    @Override
     public Display findDisplay(){
         try{
             AdminClass adminClass= adminClassRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
@@ -28,5 +29,5 @@ public class DisplayServiceImpl implements DisplayService {
         return null;
     }
 
-    
+
 }
