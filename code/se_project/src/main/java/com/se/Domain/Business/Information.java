@@ -1,6 +1,7 @@
 package com.se.Domain.Business;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Date;
 import java.util.HashSet;
@@ -16,4 +17,61 @@ public class Information {
 	private User informer;
 	private Set<AdminClass> receivers = new HashSet<AdminClass>();
 
+	public Information(int id, Date date, String title, String content, User informer, Set<AdminClass> receivers) {
+		this.id = id;
+		this.date = date;
+		this.title = title;
+		this.content = content;
+		this.informer = informer;
+		this.receivers = receivers;
+	}
+
+	public int getId() {
+
+		return id;
+	}
+	@Id
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public User getInformer() {
+		return informer;
+	}
+
+	public void setInformer(User informer) {
+		this.informer = informer;
+	}
+
+	public Set<AdminClass> getReceivers() {
+		return receivers;
+	}
+
+	public void setReceivers(Set<AdminClass> receivers) {
+		this.receivers = receivers;
+	}
 }

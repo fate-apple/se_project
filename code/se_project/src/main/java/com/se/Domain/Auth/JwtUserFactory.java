@@ -1,7 +1,8 @@
-package com.se.Domain.Business;
+package com.se.Domain.Auth;
 
 import com.se.Domain.Auth.JwtUser;
 import com.se.Domain.Auth.Role;
+import com.se.Domain.Business.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 

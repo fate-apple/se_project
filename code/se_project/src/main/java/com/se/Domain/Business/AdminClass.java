@@ -5,7 +5,9 @@ import com.se.Domain.Auth.Role;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -19,6 +21,16 @@ public class AdminClass extends User {
     private int grade;
     private transient Set<Student> students = new HashSet<Student>();
     private transient Set<Course> courses = new HashSet<Course>();
+    private transient List<Information> informations = new ArrayList<>();
+@ManyToMany(fetch = FetchType.LAZY, mappedBy = "adminClass")
+@JsonIgnore
+    public List<Information> getInformations() {
+        return informations;
+    }
+
+    public void setInformations(List<Information> informations) {
+        this.informations = informations;
+    }
 
     public AdminClass() {
     }

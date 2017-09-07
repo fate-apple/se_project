@@ -12,7 +12,7 @@ public class Display {
 	private int roomId;
 
 	//富文本
-	private Profile rtf;
+//	private Profile rtf;
 	//班级介绍
 	private String Introduction;
 	//班级公告
@@ -27,13 +27,13 @@ public class Display {
 	//首页图片7张
 	private List<Profile>pictures;
 
-	public Profile getRtf() {
-		return rtf;
-	}
+//	public Profile getRtf() {
+//		return rtf;
+//	}
 
-	public void setRtf(Profile rtf) {
-		this.rtf = rtf;
-	}
+//	public void setRtf(Profile rtf) {
+//		this.rtf = rtf;
+//	}
 
 	public List<Profile> getPictures() {
 		return pictures;
