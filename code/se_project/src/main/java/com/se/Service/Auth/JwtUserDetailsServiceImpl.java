@@ -1,16 +1,13 @@
 package com.se.Service.Auth;
 
-import com.se.Domain.Business.JwtUserFactory;
+import com.se.Domain.Auth.JwtUserFactory;
 import com.se.Domain.Business.User;
 import com.se.Repository.Jpa.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 /**
  * Created by clevo on 2017/7/11.
