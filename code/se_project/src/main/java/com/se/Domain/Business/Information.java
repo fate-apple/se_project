@@ -1,20 +1,25 @@
 package com.se.Domain.Business;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @Table(name = "information")
 @Entity
+@PrimaryKeyJoinColumn(name = "information_id")
 public class Information {
+	@Id
 	private int id;
+	@OrderBy
 	private Date date;
 	private String title;
 	private String content;
+	@ManyToOne
+	@JoinColumn(name="user_id")
 	private User informer;
+//	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "informations")
+	@ManyToMany
 	private Set<AdminClass> receivers = new HashSet<AdminClass>();
 
 	public Information(int id, Date date, String title, String content, User informer, Set<AdminClass> receivers) {
@@ -30,7 +35,7 @@ public class Information {
 
 		return id;
 	}
-	@Id
+
 	public void setId(int id) {
 		this.id = id;
 	}

@@ -11,7 +11,7 @@ public class InformationController {
     @Autowired
     InformationService informationService;
 
-    public String findFirst(Model model)
-
+    public String findFirst(Model model){
+    return "";
     }
 }

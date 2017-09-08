@@ -16,7 +16,7 @@ public interface InformationService {
     List<Information> findAll();
 
 
-    Information findFirst(AdminClass adminClass);
+    Information findFirst();
 
     List<Information>findPage(Pager pager);
 }

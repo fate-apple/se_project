@@ -1,8 +1,7 @@
 package com.se.Domain.Business;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Table(name = "display")
@@ -16,7 +15,13 @@ public class Display {
 	//班级介绍
 	private String Introduction;
 	//班级公告
-	private List<Information> informationList;
+	//保存在adminclass里
+//	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+//	@JoinTable(name = "adminclass_information",
+//			joinColumns = {@JoinColumn(name = "class_id", referencedColumnName = "class_id")},
+//			inverseJoinColumns = {@JoinColumn(name = "information_id", referencedColumnName ="information_id")}
+//	)
+//	private List<Information> informationList;
 	private String title1;
 	private String content1;
 	private String title2;
@@ -25,7 +30,7 @@ public class Display {
 	private String content3;
 
 	//首页图片7张
-	private List<Profile>pictures;
+	private transient  List<Profile>pictures = new ArrayList<>();
 
 //	public Profile getRtf() {
 //		return rtf;
@@ -61,13 +66,13 @@ public class Display {
 		Introduction = introduction;
 	}
 
-	public List<Information> getInformationList() {
-		return informationList;
-	}
-
-	public void setInformationList(List<Information> informationList) {
-		this.informationList = informationList;
-	}
+//	public List<Information> getInformationList() {
+//		return informationList;
+//	}
+//
+//	public void setInformationList(List<Information> informationList) {
+//		this.informationList = informationList;
+//	}
 
 	public String getTitle1() {
 		return title1;

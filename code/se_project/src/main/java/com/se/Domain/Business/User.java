@@ -3,7 +3,9 @@ package com.se.Domain.Business;
 import com.se.Domain.Auth.Role;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by clevo on 2017/7/10.
@@ -18,6 +20,15 @@ public class User {
     private Role role;
     private Date lastPasswordResetDate;
     private String fullname;
+    private transient List<Information> informations = new ArrayList<>();
+@OneToMany(mappedBy = "informer")
+    public List<Information> getInformations() {
+        return informations;
+    }
+
+    public void setInformations(List<Information> informations) {
+        this.informations = informations;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
