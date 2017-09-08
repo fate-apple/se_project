@@ -1,15 +1,15 @@
 package com.se.Domain.Business;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @Table(name = "information")
 @Entity
+@PrimaryKeyJoinColumn(name = "information_id")
 public class Information {
+	@Id
 	private int id;
 	private Date date;
 	private String title;
@@ -30,7 +30,7 @@ public class Information {
 
 		return id;
 	}
-	@Id
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -58,7 +58,8 @@ public class Information {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
+@ManyToOne
+@JoinColumn(name="informer")
 	public User getInformer() {
 		return informer;
 	}
@@ -66,7 +67,7 @@ public class Information {
 	public void setInformer(User informer) {
 		this.informer = informer;
 	}
-
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "receivers")
 	public Set<AdminClass> getReceivers() {
 		return receivers;
 	}

@@ -22,8 +22,10 @@ public class AdminClass extends User {
     private transient Set<Student> students = new HashSet<Student>();
     private transient Set<Course> courses = new HashSet<Course>();
     private transient List<Information> informations = new ArrayList<>();
-@ManyToMany(fetch = FetchType.LAZY, mappedBy = "adminClass")
-@JsonIgnore
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinTable(name = "adminclass_information",
+            joinColumns = {@JoinColumn(name = "class_id", referencedColumnName = "class_id")},
+            inverseJoinColumns = {@JoinColumn(name = "information_id", referencedColumnName ="information_id")})
     public List<Information> getInformations() {
         return informations;
     }

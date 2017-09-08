@@ -39,7 +39,7 @@ public class InformationServiceImpl implements InformationService {
         return null;
     }
     @Override
-    public Information findFirst(AdminClass adminClass){
+    public Information findFirst(){
         List<Information>list = findAll();
         if(null!=list && list.size()>0){
             return list.get(1);
