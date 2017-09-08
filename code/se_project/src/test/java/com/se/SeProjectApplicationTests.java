@@ -1,7 +1,11 @@
 package com.se;
 
 import com.se.Domain.Auth.Role;
+import com.se.Domain.Business.AdminClass;
+import com.se.Domain.Business.Information;
 import com.se.Domain.Business.User;
+import com.se.Repository.Jpa.AdminClassRepository;
+import com.se.Repository.Jpa.InformationRepository;
 import com.se.Repository.Jpa.RoleRepository;
 import com.se.Repository.Jpa.UserRepository;
 import org.junit.Test;
@@ -13,6 +17,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -21,14 +28,26 @@ public class SeProjectApplicationTests {
 	UserRepository ur;
 	@Autowired
 	RoleRepository rr;
+	@Autowired
+	InformationRepository informationRepository;
+	@Autowired
+	AdminClassRepository adminClassRepository;
 
 	Role role = new Role(1, "admin");
 	Date date = new Date();
 //	User user = new User("root","root",rr.findOne(1),date,"sjw");
 	@Test
 	public void contextLoads() {
-		Role role = new Role(1, "admin");
-		rr.save(role);
+		Set<AdminClass> receivers = new HashSet<>();
+		receivers.add(adminClassRepository.findOne(5L));
+		User user = ur.findOne(3L);
+		Information information=new Information(new java.sql.Date(System.currentTimeMillis()),"test","test",user,receivers);
+		informationRepository.save(information);
+		AdminClass adminClass =adminClassRepository.findOne(5L);
+		List<Information> set  = adminClass.getInformations();
+		List<Information> list2 = informationRepository.findByInformer(user);
+//		Role role = new Role(1, "admin");
+//		rr.save(role);
 	}
 //		try{
 //		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd ");
