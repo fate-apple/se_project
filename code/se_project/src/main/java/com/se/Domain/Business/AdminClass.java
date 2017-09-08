@@ -26,7 +26,7 @@ public class AdminClass extends User {
             joinColumns = {@JoinColumn(name = "class_id", referencedColumnName = "class_id")},
             inverseJoinColumns = {@JoinColumn(name = "information_id", referencedColumnName ="information_id")}
     )
-    private transient List<Information> informations = new ArrayList<>();
+    private List<Information> informations = new ArrayList<>();
 
     public List<Information> getInformations() {
         return informations;

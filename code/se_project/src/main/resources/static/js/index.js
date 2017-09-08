@@ -46,6 +46,9 @@ jQuery(document).ready(function() {
                     localStorage.setItem('token', resp.token);
                     top.location.href = "/base/news";
                 }
+            },
+            error:function(){
+            	alert("账号或密码错误，登录失败！");
             }
         });
 		

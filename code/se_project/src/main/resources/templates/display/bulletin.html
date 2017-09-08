@@ -11,9 +11,9 @@
 	      		<div id="ab">
 	            	<div class="col-md-3 col-sm-12 templatemo_leftgap_about">
 			            <ul class="resp-tabs-list templatemo_tab">
-			                <li>新闻</li>
-			                <li>作业</li>
-			                <li>光荣榜</li>
+			                <li th:text="${display.title1}">新闻</li>
+			                <li th:text="${display.title2}">作业</li>
+			                <li th:text="${display.title3}">光荣榜</li>
 			            </ul>
 	            		<div class="templatemo_aboutlinkwrapper">
 	     					<div class="templatemo_link">
@@ -26,7 +26,8 @@
 		                	<div class="templatemo_col100 templatemo_rightgap_about">
 		                    	<div class="templatemo_graybg templatemo_botgap">
 									<div class="templatemo_frame">
-		                    			<h2>Our Team</h2>
+		                    			<input id="content1" th:value="${display.content1}" style="display:none;"/>
+		                    			<p id="content1p" ></p>
 		                    		</div>
 		                        </div>
 							</div>
@@ -35,7 +36,8 @@
 		                	<div class="templatemo_col100 templatemo_rightgap_about">
 		                    	<div class="templatemo_graybg templatemo_botgap">
 		                        	<div class="templatemo_frame">
-		                    			<h2>Our History</h2>
+		                    			<input id="content2" th:value="${display.content2}" style="display:none;"/>
+		                    			<p id="content2p" ></p>
 		                    		</div>
 		                        </div>
 		                    </div>
@@ -44,7 +46,8 @@
 		                	<div class="templatemo_col100 templatemo_rightgap_about">
 		                    	<div class="templatemo_graybg templatemo_botgap">
 									<div class="templatemo_frame">
-		                    			<h2>Our Vision</h2>
+		                    			<input id="content3" th:value="${display.content3}" style="display:none;"/>
+		                    			<p id="content3p" ></p>
 		                    		</div>
 		                        </div>
 		                    </div>

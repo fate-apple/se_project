@@ -32,9 +32,10 @@ public class InformationServiceImpl implements InformationService {
         GrantedAuthority authority = authorities[0];
         String role = authority.getAuthority();
         User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        if (role == "ROLE_TEACHER") return informationRepository.findByInformer(user);
-        if (role == "ROLE_CLASS") return adminClassRepository.findByUsername(user.getUsername()).getInformations();
-        if (role == "ROLE_STUDENT")
+        if (role.equals("ROLE_TEACHER")) return informationRepository.findByInformer(user);
+        if (role.equals("ROLE_CLASS")) 
+        	return adminClassRepository.findByUsername(user.getUsername()).getInformations();
+        if (role.equals("ROLE_STUDENT"))
             return studentRepository.findByUsername(user.getUsername()).getAdminClass().getInformations();
         return null;
     }
