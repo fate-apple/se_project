@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface InformationRepository extends JpaRepository<Information,Integer> {
-    List<Display> findAllOrderByDate();
+    List<Information> findAll();
 
-    List<Information> findByInformer(User byUsername);
+    List<Information> findByInformer(User informer);
 }

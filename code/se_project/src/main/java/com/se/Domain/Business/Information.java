@@ -11,11 +11,16 @@ import java.util.Set;
 public class Information {
 	@Id
 	private int id;
+	@OrderBy
 	private Date date;
 	private String title;
 	private String content;
+	@ManyToOne
+	@JoinColumn(name="user_id")
 	private User informer;
-	private Set<AdminClass> receivers = new HashSet<AdminClass>();
+//	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "informations")
+	@ManyToMany
+	private transient  Set<AdminClass> receivers = new HashSet<AdminClass>();
 
 	public Information(int id, Date date, String title, String content, User informer, Set<AdminClass> receivers) {
 		this.id = id;
@@ -58,8 +63,7 @@ public class Information {
 	public void setContent(String content) {
 		this.content = content;
 	}
-@ManyToOne
-@JoinColumn(name="informer")
+
 	public User getInformer() {
 		return informer;
 	}
@@ -67,7 +71,7 @@ public class Information {
 	public void setInformer(User informer) {
 		this.informer = informer;
 	}
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "receivers")
+
 	public Set<AdminClass> getReceivers() {
 		return receivers;
 	}
