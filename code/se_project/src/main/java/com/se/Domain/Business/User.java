@@ -21,7 +21,7 @@ public class User {
     private Date lastPasswordResetDate;
     private String fullname;
     private transient List<Information> informations = new ArrayList<>();
-@OneToMany(mappedBy = "informer")
+@OneToMany(mappedBy = "informer",fetch = FetchType.EAGER)
     public List<Information> getInformations() {
         return informations;
     }

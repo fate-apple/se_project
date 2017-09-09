@@ -40,12 +40,11 @@ jQuery(document).ready(function() {
             }),
             dataType: 'json',
             success: function (resp) {
-                //alert(resp.token);
-                if (1) {
+                alert("登陆成功！");
+                
                     //将token存在本地存储，然后跳转到主页面
                     localStorage.setItem('token', resp.token);
-                    top.location.href = "/base/news";
-                }
+                    window.location.href = "/base/news";
             },
             error:function(){
             	alert("账号或密码错误，登录失败！");

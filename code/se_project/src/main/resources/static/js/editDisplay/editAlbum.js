@@ -19,4 +19,25 @@ jQuery(document).ready(function() {
 	            $label.html( labelVal );
 	    });
 	});
+	
+	$(".uploadFile").click(function(e){
+		var formData = new FormData();
+		var name = $('#image1').val();
+		var $input = $("#image1");
+		formData.append("file", $input.files[0]);
+		$.ajax({
+		    url: '/editDisplay/uploadAlbum',
+		    type: 'POST',
+		    cache: false,
+		    data: new FormData($('#uploadForm')[0]),
+		    processData: false,
+		    contentType: false,         
+		    success: function (returndata) {  
+	              alert(returndata);  
+	          },  
+	        error: function (returndata) {  
+	              alert(returndata);  
+	         } 
+		})
+	});
 })

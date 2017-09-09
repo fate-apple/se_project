@@ -7,9 +7,10 @@ import java.util.Set;
 
 @Table(name = "information")
 @Entity
-@PrimaryKeyJoinColumn(name = "information_id")
+@PrimaryKeyJoinColumn(name = "id")
 public class Information {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@OrderBy
 	private Date date;
@@ -19,8 +20,19 @@ public class Information {
 	@JoinColumn(name="user_id")
 	private User informer;
 //	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "informations")
-	@ManyToMany
-	private Set<AdminClass> receivers = new HashSet<AdminClass>();
+	@ManyToMany(fetch = FetchType.EAGER)
+	private  Set<AdminClass> receivers = new HashSet<AdminClass>();
+
+	public Information() {
+	}
+
+	public Information(Date date, String title, String content, User informer, Set<AdminClass> receivers) {
+		this.date = date;
+		this.title = title;
+		this.content = content;
+		this.informer = informer;
+		this.receivers = receivers;
+	}
 
 	public Information(int id, Date date, String title, String content, User informer, Set<AdminClass> receivers) {
 		this.id = id;

@@ -21,12 +21,12 @@ public class AdminClass extends User {
     private int grade;
     private transient Set<Student> students = new HashSet<Student>();
     private transient Set<Course> courses = new HashSet<Course>();
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinTable(name = "adminclass_information",
             joinColumns = {@JoinColumn(name = "class_id", referencedColumnName = "class_id")},
-            inverseJoinColumns = {@JoinColumn(name = "information_id", referencedColumnName ="information_id")}
+            inverseJoinColumns = {@JoinColumn(name = "id", referencedColumnName ="information_id")}
     )
-    private List<Information> informations = new ArrayList<>();
+    private transient List<Information> informations = new ArrayList<>();
 
     public List<Information> getInformations() {
         return informations;
@@ -83,7 +83,7 @@ public class AdminClass extends User {
         this.grade = grade;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "adminClass")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "adminClass")
     @JsonIgnore
     public Set<Student> getStudents() {
         return students;
@@ -94,7 +94,7 @@ public class AdminClass extends User {
         this.students = students;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "adminClass")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "adminClass")
     @JsonIgnore
     public Set<Course> getCourses() {
         return courses;

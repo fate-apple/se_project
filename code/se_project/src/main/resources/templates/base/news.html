@@ -21,18 +21,18 @@
 	<div class="wrap-fluid">
 		<div class="informationWrapper">
 			<h1> 通知</h1>
-			<div class="row">
+			<div class="row" th:each="information:${informations}">
 				<div class="col-md-12">
 					<!-- PANEL DEFAULT -->
 					<div class="panel">
 						<div class="panel-heading">
-							<h3 class="panel-title">热烈庆祝开学————2017年9月1日</h3>
+							<h3 th:text="${information.title}" class="panel-title">热烈庆祝开学————2017年9月1日</h3>
 							<div class="right">
 								<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-down"></i></button>
 							</div>
 						</div>
 						<div class="panel-body collapse">
-							<p>今天开学啦！</p>
+							<p th:text="${information.content}">今天开学啦！</p>
 						</div>
 					</div>
 					<!-- END PANEL DEFAULT -->

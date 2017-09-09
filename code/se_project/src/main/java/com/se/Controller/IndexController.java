@@ -70,7 +70,7 @@ public class IndexController {
 //        return "display/class";
 //    }
 
-    @RequestMapping("/base/news")
+
     public String showNews(Model model) {
         return "base/news";
     }
