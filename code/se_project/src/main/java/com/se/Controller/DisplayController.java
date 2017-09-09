@@ -63,17 +63,18 @@ public class DisplayController {
 	}
 	
 	@RequestMapping(value="/editDisplay/uploadAlbum", method = RequestMethod.POST)
-	public  ResponseEntity<?> uploadAlbum(@RequestParam("file") MultipartFile file,
+	public  ResponseEntity<?> uploadAlbum(@RequestParam MultipartFile file,
             HttpServletRequest request) throws IllegalStateException, IOException{
         String contentType = file.getContentType();
         String fileName = file.getOriginalFilename();
-        String filePath = request.getSession().getServletContext().getRealPath("/imgupload/");
+        //String filePath = request.getSession().getServletContext().getRealPath("/imgupload/");
+        String filePath = "./src/main/resources/static/imgupload";
         File targetFile = new File(filePath);
         if(!targetFile.exists()){    
             targetFile.mkdirs();    
         } 
         file.transferTo(new File(filePath+fileName));
-        return ResponseEntity.ok(filePath);
+        return ResponseEntity.ok(filePath+fileName);
 
 	}
 }
