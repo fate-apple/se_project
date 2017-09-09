@@ -10,7 +10,8 @@ import java.util.Set;
 @PrimaryKeyJoinColumn(name = "id")
 public class Information {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private int id;
 	@OrderBy
 	private Date date;
@@ -19,9 +20,15 @@ public class Information {
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User informer;
-//	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "informations")
-	@ManyToMany(fetch = FetchType.EAGER)
-	private  Set<AdminClass> receivers = new HashSet<AdminClass>();
+//	@ManyToMany(fetch = FetchType.EAGER)
+//@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY,targetEntity = AdminClass.class)
+@ManyToMany( cascade=CascadeType.MERGE,fetch = FetchType.EAGER)
+@JoinTable(name = "information_receivers",
+		joinColumns = {@JoinColumn(name = "information_id", referencedColumnName = "id")},
+		inverseJoinColumns = {@JoinColumn(name = "receivers_class_id", referencedColumnName ="class_id")}
+)
+//@ManyToMany(mappedBy = "information",targetEntity = AdminClass.class)
+	private   Set<AdminClass> receivers;
 
 	public Information() {
 	}
@@ -34,14 +41,14 @@ public class Information {
 		this.receivers = receivers;
 	}
 
-	public Information(int id, Date date, String title, String content, User informer, Set<AdminClass> receivers) {
-		this.id = id;
-		this.date = date;
-		this.title = title;
-		this.content = content;
-		this.informer = informer;
-		this.receivers = receivers;
-	}
+//	public Information(int id, Date date, String title, String content, User informer, Set<AdminClass> receivers) {
+//		this.id = id;
+//		this.date = date;
+//		this.title = title;
+//		this.content = content;
+//		this.informer = informer;
+//		this.receivers = receivers;
+//	}
 
 	public int getId() {
 

@@ -3,6 +3,7 @@ package com.se;
 import com.se.Domain.Auth.Role;
 import com.se.Domain.Business.AdminClass;
 import com.se.Domain.Business.Information;
+import com.se.Domain.Business.Room;
 import com.se.Domain.Business.User;
 import com.se.Repository.Jpa.AdminClassRepository;
 import com.se.Repository.Jpa.InformationRepository;
@@ -39,14 +40,20 @@ public class SeProjectApplicationTests {
 	@Test
 	public void contextLoads() {
 		Set<AdminClass> receivers = new HashSet<>();
-		receivers.add(adminClassRepository.findOne(5L));
-		User user = ur.findOne(3L);
-		Information information=new Information(new java.sql.Date(System.currentTimeMillis()),"test","test",user,receivers);
-		informationRepository.save(information);
+
+		User user = ur.findOne(5L);
 		AdminClass adminClass =adminClassRepository.findOne(5L);
-		List<Information> set  = adminClass.getInformations();
+		AdminClass adminClass2 =adminClassRepository.findOne(8L);
+		receivers.add(adminClass);
+		receivers.add(adminClass2);
+
+		Information information=new Information(new java.sql.Date(System.currentTimeMillis()),"test","test",user,receivers);
+
+		informationRepository.save(information);
+Information information2 =informationRepository.findOne(27);
+		List<Information> set  = adminClass.getInformation();
 		List<Information> list2 = informationRepository.findByInformer(user);
-//		Role role = new Role(1, "admin");
+	User user2 = new User("1","1",role,"1");
 //		rr.save(role);
 	}
 //		try{

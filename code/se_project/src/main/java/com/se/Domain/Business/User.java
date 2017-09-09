@@ -20,14 +20,14 @@ public class User {
     private Role role;
     private Date lastPasswordResetDate;
     private String fullname;
-    private transient List<Information> informations = new ArrayList<>();
+    private transient List<Information> information = new ArrayList<>();
 @OneToMany(mappedBy = "informer",fetch = FetchType.EAGER)
-    public List<Information> getInformations() {
-        return informations;
+    public List<Information> getInformation() {
+        return information;
     }
 
-    public void setInformations(List<Information> informations) {
-        this.informations = informations;
+    public void setInformation(List<Information> information) {
+        this.information = information;
     }
 
     @Id
