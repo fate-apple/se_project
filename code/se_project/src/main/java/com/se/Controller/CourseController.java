@@ -65,10 +65,18 @@ public class CourseController {
         return "manage/course";
     }
 
+//
+//    @RequestMapping("/findByUsername")
+//    public ResponseEntity<?> findByStudent(@RequestParam String username, Model model) {
+//        List<Course> courseList = courseSerivce.findByStudentname(username);
+//        model.addAttribute("courses", courseList);
+//        return ResponseEntity.ok(courseList);
+//    }
+
 
     @RequestMapping("/findByUsername")
     public ResponseEntity<?> findByStudent(@RequestParam String username, Model model) {
-        List<Course> courseList = courseSerivce.findByStudentname(username);
+        List<Course> courseList = courseSerivce.findAll();
         model.addAttribute("courses", courseList);
         return ResponseEntity.ok(courseList);
     }

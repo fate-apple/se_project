@@ -21,30 +21,48 @@ public class AdminClass extends User {
     private int grade;
     private transient Set<Student> students = new HashSet<Student>();
     private transient Set<Course> courses = new HashSet<Course>();
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinTable(name = "adminclass_information",
-            joinColumns = {@JoinColumn(name = "class_id", referencedColumnName = "class_id")},
-            inverseJoinColumns = {@JoinColumn(name = "id", referencedColumnName ="information_id")}
-    )
-    private transient List<Information> informations = new ArrayList<>();
+//    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER,targetEntity = Information.class)
 
-    public List<Information> getInformations() {
-        return informations;
+
+
+    private  List<Information> received_information ;
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name = "information_receivers",
+//            joinColumns = {@JoinColumn(name = "class_id", referencedColumnName = "class_id")},
+//            inverseJoinColumns = {@JoinColumn(name = "information _id", referencedColumnName ="information_id")}
+//    )
+    @ManyToMany(mappedBy = "receivers")
+    public List<Information> getReceived_information() {
+        return received_information;
     }
 
-    public void setInformations(List<Information> informations) {
-        this.informations = informations;
+    public void setReceived_information(List<Information> received_information) {
+        this.received_information = received_information;
     }
+
+//     @ManyToMany(cascade = CascadeType.ALL)
+//@JoinTable(name = "received_information _receivers",
+//        joinColumns = {@JoinColumn(name = "receivers_class_id", referencedColumnName = "class_id")},
+//        inverseJoinColumns = {@JoinColumn(name = "received_information _id", referencedColumnName ="id")}
+//)
+//    public List<Information> getInformation() {
+//        return received_information ;
+//
+//    }
+//
+//    public void setInformation(List<Information> received_information ) {
+//        this.received_information  = received_information ;
+//    }
 
     public AdminClass() {
     }
 
 
-    public AdminClass(Teacher teacher, Room room, int grade) {
-        this.teacher = teacher;
-        this.room = room;
-        this.grade = grade;
-    }
+//    public AdminClass(Teacher teacher, Room room, int grade) {
+//        this.teacher = teacher;
+//        this.room = room;
+//        this.grade = grade;
+//    }
 
     public AdminClass(String username, String password, Role role, String fullname, Teacher teacher, Room room, int grade) {
         super(username, password, role, fullname);

@@ -67,8 +67,8 @@ public class DisplayController {
             HttpServletRequest request) throws IllegalStateException, IOException{
         String contentType = file.getContentType();
         String fileName = file.getOriginalFilename();
-        //String filePath = request.getSession().getServletContext().getRealPath("/imgupload/");
-        String filePath = "./src/main/resources/static/imgupload";
+        String filePath = request.getSession().getServletContext().getRealPath("/imgupload/");
+//        String filePath = "./src/main/resources/static/imgupload";
         File targetFile = new File(filePath);
         if(!targetFile.exists()){    
             targetFile.mkdirs();    

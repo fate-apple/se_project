@@ -24,4 +24,6 @@ public interface CourseSerivce {
     List<Course> findByStudentname(String studentname);
 
     List<Course> findNextCourse(String studentname);
+
+    List<Course> findAll();
 }

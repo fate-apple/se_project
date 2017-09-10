@@ -2,27 +2,52 @@ package com.se.Domain.Business;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
-@Document
+@Entity
+@Table(name="profile")
 public class Profile {
     public static final Integer TYPE_IMAGE = 0;
     public static final Integer TYPE_VIDEO = 1;
     public static final Integer TYPE_RTF = 2;
 
-    private Integer userId;
+    private User user;
     private Integer typeId;
-    private String id;
+    private int profile_id;
     private String resource;
     private Date time;
-
-    public Integer getUserId() {
-        return userId;
+    private Display display;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int getProfile_id() {
+        return profile_id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setProfile_id(int profile_id) {
+        this.profile_id = profile_id;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
+    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "display_id")
+    public Display getDisplay() {
+        return display;
+    }
+
+    public void setDisplay(Display display) {
+        this.display = display;
+    }
+
+    @ManyToOne
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Integer getTypeId() {
@@ -33,14 +58,6 @@ public class Profile {
         this.typeId = typeId;
     }
 
-    @Id
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String resourceId) {
-        this.id = resourceId;
-    }
 
     public String getResource() {
         return resource;
@@ -51,11 +68,11 @@ public class Profile {
     }
 
     public Date getTime() {
-        return new Date(id);
+        return new Date(System.currentTimeMillis());
     }
 
-    public Profile(Integer userId, Integer typeId, String resource, Date time) {
-        this.userId = userId;
+    public Profile(User user, Integer typeId, String resource, Date time) {
+        this.user = user;
         this.typeId = typeId;
         this.resource = resource;
         this.time = time;

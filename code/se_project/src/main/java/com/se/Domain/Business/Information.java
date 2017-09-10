@@ -7,21 +7,20 @@ import java.util.Set;
 
 @Table(name = "information")
 @Entity
-@PrimaryKeyJoinColumn(name = "id")
 public class Information {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+
+	private int information_id;
 	@OrderBy
 	private Date date;
 	private String title;
 	private String content;
-	@ManyToOne
-	@JoinColumn(name="user_id")
+
 	private User informer;
-//	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "informations")
-	@ManyToMany(fetch = FetchType.EAGER)
-	private  Set<AdminClass> receivers = new HashSet<AdminClass>();
+//	@ManyToMany(fetch = FetchType.EAGER)
+//@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY,targetEntity = AdminClass.class)
+
+//@ManyToMany(mappedBy = "information",targetEntity = AdminClass.class)
+	private   Set<AdminClass> receivers;
 
 	public Information() {
 	}
@@ -34,22 +33,24 @@ public class Information {
 		this.receivers = receivers;
 	}
 
-	public Information(int id, Date date, String title, String content, User informer, Set<AdminClass> receivers) {
-		this.id = id;
-		this.date = date;
-		this.title = title;
-		this.content = content;
-		this.informer = informer;
-		this.receivers = receivers;
+//	public Information(int id, Date date, String title, String content, User informer, Set<AdminClass> receivers) {
+//		this.id = id;
+//		this.date = date;
+//		this.title = title;
+//		this.content = content;
+//		this.informer = informer;
+//		this.receivers = receivers;
+//	}
+
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public int getInformation_id() {
+		return information_id;
 	}
 
-	public int getId() {
-
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
+	public void setInformation_id(int information_id) {
+		this.information_id = information_id;
 	}
 
 	public Date getDate() {
@@ -75,7 +76,8 @@ public class Information {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
+	@ManyToOne
+	@JoinColumn(name="user_id")
 	public User getInformer() {
 		return informer;
 	}
@@ -83,7 +85,11 @@ public class Information {
 	public void setInformer(User informer) {
 		this.informer = informer;
 	}
-
+	@ManyToMany( cascade=CascadeType.MERGE,fetch = FetchType.EAGER)
+	@JoinTable(name = "information_receivers",
+			joinColumns = {@JoinColumn(name = "information_id", referencedColumnName = "information_id")},
+			inverseJoinColumns = {@JoinColumn(name = "class_id", referencedColumnName ="class_id")}
+	)
 	public Set<AdminClass> getReceivers() {
 		return receivers;
 	}

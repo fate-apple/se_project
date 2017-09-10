@@ -4,17 +4,21 @@ import com.se.Domain.Auth.Role;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 
 @Entity
 @Table(name = "student")
 @PrimaryKeyJoinColumn(name = "student_id")
+@Access(AccessType.PROPERTY)
 public class Student extends User {
 
     private AdminClass adminClass;
     private VirtualClass virtualClass;
     private Boolean gender;
     private Date enrollDate;
+
+    private Set<ElectiveCourse> electiveCourses;
 
     public Student(String username, String password, Role role, String fullname, AdminClass adminClass, VirtualClass virtualClass, Boolean gender, Date enrollDate) {
         super(username, password, role, fullname);
@@ -61,6 +65,17 @@ public class Student extends User {
 
     public void setGender(Boolean gender) {
         this.gender = gender;
+    }
+//    @ManyToMany(mappedBy = "students")
+@ManyToMany(cascade = CascadeType.MERGE,targetEntity = ElectiveCourse.class)
+@JoinTable(name = "takes",joinColumns = {@JoinColumn(name="student_id")},inverseJoinColumns = {@JoinColumn(name="course_id")})
+//    @ManyToMany(cascade = CascadeType.MERGE,mappedBy = "students")
+    public Set<ElectiveCourse> getElectiveCourses() {
+        return electiveCourses;
+    }
+
+    public void setElectiveCourses(Set<ElectiveCourse> electiveCourses) {
+        this.electiveCourses = electiveCourses;
     }
 
     public Student(AdminClass adminClass, VirtualClass virtualClass, Boolean gender, Date enrollDate) {
