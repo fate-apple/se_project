@@ -42,7 +42,7 @@ public class SeProjectApplicationTests {
 		Set<AdminClass> receivers = new HashSet<>();
 
 		User user = ur.findOne(5L);
-		AdminClass adminClass =adminClassRepository.findOne(5L);
+		AdminClass adminClass =adminClassRepository.findOne(36L);
 		AdminClass adminClass2 =adminClassRepository.findOne(8L);
 		receivers.add(adminClass);
 		receivers.add(adminClass2);
