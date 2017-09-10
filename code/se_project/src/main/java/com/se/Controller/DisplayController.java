@@ -47,8 +47,8 @@ public class DisplayController {
 		model.addAttribute("periods", periods);
 		model.addAttribute("display",displayService.findDisplay());
 		model.addAttribute("information",informationService.findFirst());
-		model.addAttribute("tmpcourse", courseService.findNextCourse().get(0));
-		model.addAttribute("nextcourse", courseService.findNextCourse().get(1));
+//		model.addAttribute("tmpcourse", courseService.findNextCourse().get(0));
+//		model.addAttribute("nextcourse", courseService.findNextCourse().get(1));
 		return "/display/class";
 	}
 	
@@ -78,8 +78,9 @@ public class DisplayController {
 	}
 	
 	@RequestMapping(value="/editDisplay/uploadAlbum", method = RequestMethod.POST)
-	public  ResponseEntity<?> uploadAlbum(@RequestParam MultipartFile file,
+	public  ResponseEntity<?> uploadAlbum(@RequestParam MultipartFile file, @RequestParam int id,
             HttpServletRequest request) throws IllegalStateException, IOException{
+		System.out.println(id);
         String contentType = file.getContentType();
         String fileName = file.getOriginalFilename();
 //        String filePath = request.getSession().getServletContext().getRealPath("/imgupload/");

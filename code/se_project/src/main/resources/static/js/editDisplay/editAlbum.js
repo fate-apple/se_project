@@ -1,4 +1,4 @@
-jQuery(document).ready(function() {
+
 	//根据选择文件修改按钮文字
 	$( '.inputfile' ).click( function(e) {
 	    var $input = $( this ),
@@ -40,26 +40,26 @@ jQuery(document).ready(function() {
 //	         } 
 //		})
 //	});
-});
+
 
 function uploadimg(id){
 	var formData = new FormData();
 	var name = $('#image'+id).val();
-	formData.append("file",$("#image"+id).get(0).files[0]);
+	formData.append("file",$("#image"+id).get(0).files[0]); 
+	formData.append("id",id);
 	$.ajax({
 	    url: '/editDisplay/uploadAlbum',
 	    type: 'POST',
 	    cache: false,
 	    data: formData,
 	    processData: false,
-	    contentType: false,         
+	    contentType: false, 
 	    success: function (returndata) {  
-	    	alert(returndata);
-            $("#realImg1").attr("src",returndata); 
+            $("#realImg"+id).attr("src",returndata);
+//            $("#realImg1").html('<img scr="'+returndata+'" />');
           },  
         error: function (returndata) {  
-              alert("上传失败！");  
+              alert("修改失败！");  
          } 
-	})
-
+	});
 }

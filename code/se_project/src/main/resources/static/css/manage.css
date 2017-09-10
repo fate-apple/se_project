@@ -113,6 +113,7 @@ button.btn.dropdown-toggle.btn-default{
 	height:200px;
 	align:center;
 	margin:0 auto;
+	max-width:200px;
 }
 
 .albumshow{
