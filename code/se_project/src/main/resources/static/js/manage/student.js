@@ -128,14 +128,14 @@ jQuery(document).ready(function() {
 						success : function(data) {
 							console.log(id);
 							bootbox.alert({
-								message :"添加成功",
+								message :data,
 								callback : function() {
 									location.reload();
 								}
 							});
 						},
 						error:function(data){
-							alert("用户名重复");
+							alert(data);
 						}
 				});
 		}
@@ -155,7 +155,7 @@ jQuery(document).ready(function() {
 						enrollDate : enrollDate
 					},
 					success : function(data) {
-						console.log(id);
+						console.log(data);
 						bootbox.alert({
 							message :"修改成功",
 							callback : function() {
