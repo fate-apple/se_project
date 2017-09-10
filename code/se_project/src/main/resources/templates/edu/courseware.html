@@ -42,9 +42,14 @@
 			</div>
 			<div class ="row">
 				<div class="col-md-12">
-					<form action="/upload" method="POST" enctype="multipart/form-data">
-					    文件：<input type="file" name="test"/>
-					    <input type="submit" />
+<!-- 					<form action="/upload" method="POST" enctype="multipart/form-data"> -->
+<!-- 					    文件：<input type="file" name="test"/> -->
+<!-- 					    <input type="submit" /> -->
+<!-- 					</form> -->
+					<form class="form-group" enctype="multipart/form-data" action="/" method="post">
+						<input type="file" class="inputfile" name="courseware1" id="courseware1" />
+						<label for="courseware1" class="btn btn-primary">选择文件</label>
+						<input class="btn btn-primary uploadFile" type="submit" value="修改" />
 					</form>
 				</div>
 			</div>
