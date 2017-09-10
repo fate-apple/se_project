@@ -3,9 +3,7 @@ package com.se.Domain.Business;
 import com.se.Domain.Auth.Role;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by clevo on 2017/7/10.
@@ -14,24 +12,45 @@ import java.util.List;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
+
     private Long id;
     private String username;
     private String password;
     private Role role;
     private Date lastPasswordResetDate;
     private String fullname;
-    private transient List<Information> information = new ArrayList<>();
-@OneToMany(mappedBy = "informer",fetch = FetchType.EAGER)
-    public List<Information> getInformation() {
-        return information;
+    private transient Set<Information> released_information  = new HashSet<>();
+    private transient  List<Profile> profiles = new ArrayList<>();
+
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    public List<Profile> getProfiles() {
+        return profiles;
     }
 
-    public void setInformation(List<Information> information) {
-        this.information = information;
+    public void setProfiles(List<Profile> profiles) {
+        this.profiles = profiles;
+    }
+
+//    @OneToMany(mappedBy = "informer",fetch = FetchType.EAGER)
+//    public Set<Information> getInformation() {
+//        return released_information ;
+//    }
+//
+//    public void setInformation(Set<Information> released_information ) {
+//        this.released_information  = released_information ;
+//    }
+    @OneToMany(mappedBy = "informer",fetch = FetchType.EAGER)
+    public Set<Information> getReleased_information() {
+        return released_information;
+    }
+
+    public void setReleased_information(Set<Information> released_information) {
+        this.released_information = released_information;
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     public Long getId() {
         return id;

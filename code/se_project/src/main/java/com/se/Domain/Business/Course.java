@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Table(name = "course")
 @Entity
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Course {
 
     private Long courseId;

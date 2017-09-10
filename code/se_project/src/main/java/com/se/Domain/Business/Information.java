@@ -7,26 +7,18 @@ import java.util.Set;
 
 @Table(name = "information")
 @Entity
-@PrimaryKeyJoinColumn(name = "id")
 public class Information {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	private int id;
+
+	private int information_id;
 	@OrderBy
 	private Date date;
 	private String title;
 	private String content;
-	@ManyToOne
-	@JoinColumn(name="user_id")
+
 	private User informer;
 //	@ManyToMany(fetch = FetchType.EAGER)
 //@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY,targetEntity = AdminClass.class)
-@ManyToMany( cascade=CascadeType.MERGE,fetch = FetchType.EAGER)
-@JoinTable(name = "information_receivers",
-		joinColumns = {@JoinColumn(name = "information_id", referencedColumnName = "id")},
-		inverseJoinColumns = {@JoinColumn(name = "receivers_class_id", referencedColumnName ="class_id")}
-)
+
 //@ManyToMany(mappedBy = "information",targetEntity = AdminClass.class)
 	private   Set<AdminClass> receivers;
 
@@ -50,13 +42,15 @@ public class Information {
 //		this.receivers = receivers;
 //	}
 
-	public int getId() {
 
-		return id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public int getInformation_id() {
+		return information_id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setInformation_id(int information_id) {
+		this.information_id = information_id;
 	}
 
 	public Date getDate() {
@@ -82,7 +76,8 @@ public class Information {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
+	@ManyToOne
+	@JoinColumn(name="user_id")
 	public User getInformer() {
 		return informer;
 	}
@@ -90,7 +85,11 @@ public class Information {
 	public void setInformer(User informer) {
 		this.informer = informer;
 	}
-
+	@ManyToMany( cascade=CascadeType.MERGE,fetch = FetchType.EAGER)
+	@JoinTable(name = "information_receivers",
+			joinColumns = {@JoinColumn(name = "information_id", referencedColumnName = "information_id")},
+			inverseJoinColumns = {@JoinColumn(name = "class_id", referencedColumnName ="class_id")}
+	)
 	public Set<AdminClass> getReceivers() {
 		return receivers;
 	}

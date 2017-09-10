@@ -84,6 +84,7 @@ public class Room {
     }
 
     @OneToOne(mappedBy = "room")
+//    @OneToOne
     public AdminClass getAdminClass() {
         return adminClass;
     }

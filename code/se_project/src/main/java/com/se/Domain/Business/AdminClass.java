@@ -23,21 +23,36 @@ public class AdminClass extends User {
     private transient Set<Course> courses = new HashSet<Course>();
 //    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER,targetEntity = Information.class)
 
-	@ManyToMany(fetch = FetchType.EAGER,mappedBy = "receivers")
-//@ManyToMany(cascade = CascadeType.ALL)
-//@JoinTable(name = "information_receivers",
+
+
+    private  List<Information> received_information ;
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name = "information_receivers",
+//            joinColumns = {@JoinColumn(name = "class_id", referencedColumnName = "class_id")},
+//            inverseJoinColumns = {@JoinColumn(name = "information _id", referencedColumnName ="information_id")}
+//    )
+    @ManyToMany(mappedBy = "receivers")
+    public List<Information> getReceived_information() {
+        return received_information;
+    }
+
+    public void setReceived_information(List<Information> received_information) {
+        this.received_information = received_information;
+    }
+
+//     @ManyToMany(cascade = CascadeType.ALL)
+//@JoinTable(name = "received_information _receivers",
 //        joinColumns = {@JoinColumn(name = "receivers_class_id", referencedColumnName = "class_id")},
-//        inverseJoinColumns = {@JoinColumn(name = "information_id", referencedColumnName ="id")}
+//        inverseJoinColumns = {@JoinColumn(name = "received_information _id", referencedColumnName ="id")}
 //)
-    private  List<Information> information;
-
-    public List<Information> getInformation() {
-        return information;
-    }
-
-    public void setInformation(List<Information> information) {
-        this.information = information;
-    }
+//    public List<Information> getInformation() {
+//        return received_information ;
+//
+//    }
+//
+//    public void setInformation(List<Information> received_information ) {
+//        this.received_information  = received_information ;
+//    }
 
     public AdminClass() {
     }

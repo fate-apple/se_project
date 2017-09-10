@@ -51,7 +51,7 @@ public class SeProjectApplicationTests {
 
 		informationRepository.save(information);
 Information information2 =informationRepository.findOne(27);
-		List<Information> set  = adminClass.getInformation();
+		List<Information> set  = adminClass.getReceived_information();
 		List<Information> list2 = informationRepository.findByInformer(user);
 	User user2 = new User("1","1",role,"1");
 //		rr.save(role);

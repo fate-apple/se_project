@@ -1,5 +1,7 @@
 package com.se.Domain.Business;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +9,6 @@ import java.util.List;
 @Table(name = "display")
 @Entity
 public class Display {
-	@Id
 	private int roomId;
 
 	//富文本
@@ -39,7 +40,8 @@ public class Display {
 //	public void setRtf(Profile rtf) {
 //		this.rtf = rtf;
 //	}
-
+@OneToMany(fetch = FetchType.LAZY, mappedBy = "display")
+@JsonIgnore
 	public List<Profile> getPictures() {
 		return pictures;
 	}
@@ -48,8 +50,8 @@ public class Display {
 		this.pictures = pictures;
 	}
 	//班级相册图片9张
-
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int getRoomId() {
 		return roomId;
 	}

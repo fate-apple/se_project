@@ -5,6 +5,8 @@ import com.se.Repository.Jpa.*;
 import com.se.Service.Business.CourseSerivce;
 import com.se.Service.Business.PeriodService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -33,6 +35,8 @@ public class CourseServiceImpl implements CourseSerivce {
     StudentRepository studentRepository;
     @Autowired
     PeriodService periodService;
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public Course create(int roomId, Long adminClassId, Long virtualClassId,
@@ -109,7 +113,16 @@ public class CourseServiceImpl implements CourseSerivce {
         return list;
     }
 
-
+@Override
+    public List<Course> findAll(){
+    GrantedAuthority[] authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toArray(new GrantedAuthority[0]);
+    GrantedAuthority authority = authorities[0];
+    String role = authority.getAuthority();
+    User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+    if(role.matches("ROLE_STUDENT")) return findByStudentname(user.getUsername());
+    if(role.matches("ROLE_CLASS")) return courseRepository.findByAdminClass(adminClassRepository.findByUsername(user.getUsername()));
+    return null;
+}
 
 
 }
