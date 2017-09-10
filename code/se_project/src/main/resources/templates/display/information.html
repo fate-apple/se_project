@@ -29,9 +29,10 @@
                 <div class="col-md-9 templatemo_leftgap">
                 	<div class="templatemo_graybg">
                     	<div class="templatemo_frame">
-                			<h2 th:text="${information}">Our Services</h2>
+                			<h1 id="information1h" th:text="${information.title}">标题</h1>
                     		<div class="clear"></div>
-							<p>通知一下</p>
+                    		<input id="information1" th:value="${information.content}" style="display:none;"/>
+							<p id="information1p">通知一下</p>
 			            </div>
                	  	</div>
 				</div>
