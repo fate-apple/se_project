@@ -14,6 +14,7 @@ import com.se.Service.Business.DisplayService;
 import com.se.Service.Business.Impl.DisplayServiceImpl;
 import com.se.Service.Business.InformationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +37,8 @@ public class DisplayController {
 	private InformationService informationService;
 	@Autowired
 	private CourseSerivce courseService;
+
+
 	
 	@RequestMapping(value="/display/class")
 	public String initDisplay(Model model){
@@ -72,14 +75,19 @@ public class DisplayController {
             HttpServletRequest request) throws IllegalStateException, IOException{
         String contentType = file.getContentType();
         String fileName = file.getOriginalFilename();
-        String filePath = request.getSession().getServletContext().getRealPath("/imgupload/");
+//        String filePath = request.getSession().getServletContext().getRealPath("/imgupload/");
+//		ClassLoader loader = Thread.currentThread().getContextClassLoader();
+		String resourcePath = "\\src\\main\\resources\\static\\imgupload";
+		String filePath=System.getProperty("user.dir")+resourcePath;
 //        String filePath = "./src/main/resources/static/imgupload";
         File targetFile = new File(filePath);
-        if(!targetFile.exists()){    
-            targetFile.mkdirs();    
+        boolean flag1 = targetFile.exists();
+        boolean flag2;
+        if(!flag1){
+            flag2 = targetFile.mkdirs();
         } 
-        file.transferTo(new File(filePath+fileName));
-        return ResponseEntity.ok(filePath+fileName);
+        file.transferTo(new File(filePath+"\\"+fileName));
+        return ResponseEntity.ok("/imgupload/"+fileName);
 
 	}
 }
