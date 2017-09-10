@@ -20,24 +20,46 @@ jQuery(document).ready(function() {
 	    });
 	});
 	
-	$(".uploadFile").click(function(e){
-		var formData = new FormData();
-		var name = $('#image1').val();
-		formData.append("file",$("#image1").get(0).files[0]);
-		$.ajax({
-		    url: '/editDisplay/uploadAlbum',
-		    type: 'POST',
-		    cache: false,
-		    data: formData,
-		    processData: false,
-		    contentType: false,         
-		    success: function (returndata) {  
-		    	alert(returndata);
-	            $("#realImg1").attr("src",returndata); 
-	          },  
-	        error: function (returndata) {  
-	              alert("上传失败！");  
-	         } 
-		})
-	});
-})
+//	$(".uploadFile").click(function(e){
+//		var formData = new FormData();
+//		var name = $('#image1').val();
+//		formData.append("file",$("#image1").get(0).files[0]);
+//		$.ajax({
+//		    url: '/editDisplay/uploadAlbum',
+//		    type: 'POST',
+//		    cache: false,
+//		    data: formData,
+//		    processData: false,
+//		    contentType: false,         
+//		    success: function (returndata) {  
+//		    	alert(returndata);
+//	            $("#realImg1").attr("src",returndata); 
+//	          },  
+//	        error: function (returndata) {  
+//	              alert("上传失败！");  
+//	         } 
+//		})
+//	});
+});
+
+function uploadimg(id){
+	var formData = new FormData();
+	var name = $('#image'+id).val();
+	formData.append("file",$("#image"+id).get(0).files[0]);
+	$.ajax({
+	    url: '/editDisplay/uploadAlbum',
+	    type: 'POST',
+	    cache: false,
+	    data: formData,
+	    processData: false,
+	    contentType: false,         
+	    success: function (returndata) {  
+	    	alert(returndata);
+            $("#realImg1").attr("src",returndata); 
+          },  
+        error: function (returndata) {  
+              alert("上传失败！");  
+         } 
+	})
+
+}

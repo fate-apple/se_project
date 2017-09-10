@@ -172,6 +172,7 @@ jQuery(document).ready(function() {
 	
 	
     $("#getStudent").click(function(e){
+    	//组建班级数组
     	var classes="";
     	var obj = document.getElementById("class");
     	for(var i=0;i<obj.options.length;i++){

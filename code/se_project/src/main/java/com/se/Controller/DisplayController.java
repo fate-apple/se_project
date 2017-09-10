@@ -61,6 +61,13 @@ public class DisplayController {
 		return "/editDisplay/bulletin";
 	}
 	
+	//修改introduction
+	@RequestMapping(value="/editDisplay/editIntroduction")
+	public String editIntroduction(@RequestParam String content,Model model){
+		model.addAttribute("display",displayService.findDisplay());
+		return "/editDisplay/introduction";
+	}
+	
 	@RequestMapping(value="/editDisplay/album")
 	public String initEditAlbum(Model model){
 		model.addAttribute("display",displayService.findDisplay());
