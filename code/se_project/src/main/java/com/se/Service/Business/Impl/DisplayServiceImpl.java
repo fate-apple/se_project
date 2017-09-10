@@ -81,7 +81,7 @@ String INTRODUCTION = "please add introduction here";
             display = new Display(0,INTRODUCTION,TITLE,CONTENT,TITLE,CONTENT,TITLE,CONTENT);
             try{
             for (int i =0;i<LIMIT;i++){
-            display.getPictures().add(profileRepository.findByResource("\\"+pictureDir+"\\default"+String.valueOf(i)));
+            display.getPictures().add(profileRepository.findByResource("\\"+pictureDir+"\\default"+String.valueOf(i+1)));
             }}catch (Exception e){e.printStackTrace();}
             displayRepository.save(display);
         }
