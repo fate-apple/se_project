@@ -9,6 +9,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.se.Domain.Business.Information;
+import com.se.Domain.Business.Profile;
 import com.se.Service.Business.CourseSerivce;
 import com.se.Service.Business.DisplayService;
 import com.se.Service.Business.Impl.DisplayServiceImpl;
@@ -78,23 +79,10 @@ public class DisplayController {
 	}
 	
 	@RequestMapping(value="/editDisplay/uploadAlbum", method = RequestMethod.POST)
-	public  ResponseEntity<?> uploadAlbum(@RequestParam MultipartFile file,
+	public  ResponseEntity<?> uploadAlbum(@RequestParam MultipartFile file,@RequestParam int id,
             HttpServletRequest request) throws IllegalStateException, IOException{
-        String contentType = file.getContentType();
-        String fileName = file.getOriginalFilename();
-//        String filePath = request.getSession().getServletContext().getRealPath("/imgupload/");
-//		ClassLoader loader = Thread.currentThread().getContextClassLoader();
-		String resourcePath = "\\src\\main\\resources\\static\\imgupload";
-		String filePath=System.getProperty("user.dir")+resourcePath;
-//        String filePath = "./src/main/resources/static/imgupload";
-        File targetFile = new File(filePath);
-        boolean flag1 = targetFile.exists();
-        boolean flag2;
-        if(!flag1){
-            flag2 = targetFile.mkdirs();
-        } 
-        file.transferTo(new File(filePath+"\\"+fileName));
-        return ResponseEntity.ok("/imgupload/"+fileName);
+		Profile picture = displayService.UploadPictures(file,id);
+        return ResponseEntity.ok(picture.getResource());
 
 	}
 }

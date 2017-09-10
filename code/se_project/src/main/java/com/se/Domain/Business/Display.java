@@ -1,9 +1,11 @@
 package com.se.Domain.Business;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Table(name = "display")
@@ -29,6 +31,8 @@ public class Display {
 	private String content2;
 	private String title3;
 	private String content3;
+//	@Value("@{pictureDir}")
+//	String pictureDir;
 
 	//首页图片7张
 	private transient  List<Profile>pictures = new ArrayList<>();
@@ -122,5 +126,17 @@ public class Display {
 
 	public void setContent3(String content3) {
 		this.content3 = content3;
+	}
+
+	public Display(int roomId, String introduction, String title1, String content1, String title2, String content2, String title3, String content3) {
+		this.roomId = roomId;
+		Introduction = introduction;
+		this.title1 = title1;
+		this.content1 = content1;
+		this.title2 = title2;
+		this.content2 = content2;
+		this.title3 = title3;
+		this.content3 = content3;
+//		this.pictures.add(new Profile(null,Profile.TYPE_IMAGE,"\\"+pictureDir+"\\"+"g0c0_"+toString(),new Date(System.currentTimeMillis()),this));
 	}
 }

@@ -71,11 +71,13 @@ public class Profile {
         return new Date(System.currentTimeMillis());
     }
 
-    public Profile(User user, Integer typeId, String resource, Date time) {
+    public Profile(User user, Integer typeId, String resource, Date time,Display display) {
         this.user = user;
         this.typeId = typeId;
         this.resource = resource;
         this.time = time;
+        this.display = display;
+
     }
 }
 
