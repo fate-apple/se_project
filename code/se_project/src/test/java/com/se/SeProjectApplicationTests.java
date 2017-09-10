@@ -50,7 +50,7 @@ public class SeProjectApplicationTests {
 		Information information=new Information(new java.sql.Date(System.currentTimeMillis()),"test","test",user,receivers);
 
 		informationRepository.save(information);
-Information information2 =informationRepository.findOne(27);
+Information information2 =informationRepository.findOne(1);
 		List<Information> set  = adminClass.getReceived_information();
 		List<Information> list2 = informationRepository.findByInformer(user);
 	User user2 = new User("1","1",role,"1");

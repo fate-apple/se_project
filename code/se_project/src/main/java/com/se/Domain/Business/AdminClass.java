@@ -31,7 +31,7 @@ public class AdminClass extends User {
 //            joinColumns = {@JoinColumn(name = "class_id", referencedColumnName = "class_id")},
 //            inverseJoinColumns = {@JoinColumn(name = "information _id", referencedColumnName ="information_id")}
 //    )
-    @ManyToMany(mappedBy = "receivers")
+    @ManyToMany(mappedBy = "receivers",fetch = FetchType.EAGER)
     public List<Information> getReceived_information() {
         return received_information;
     }
