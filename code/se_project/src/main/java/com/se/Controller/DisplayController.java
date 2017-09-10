@@ -9,6 +9,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.se.Domain.Business.Information;
+import com.se.Service.Business.CourseSerivce;
 import com.se.Service.Business.DisplayService;
 import com.se.Service.Business.Impl.DisplayServiceImpl;
 import com.se.Service.Business.InformationService;
@@ -33,6 +34,8 @@ public class DisplayController {
 	private DisplayService displayService;
 	@Autowired
 	private InformationService informationService;
+	@Autowired
+	private CourseSerivce courseService;
 	
 	@RequestMapping(value="/display/class")
 	public String initDisplay(Model model){
@@ -41,6 +44,8 @@ public class DisplayController {
 		model.addAttribute("periods", periods);
 		model.addAttribute("display",displayService.findDisplay());
 		model.addAttribute("information",informationService.findFirst());
+		model.addAttribute("tmpcourse", courseService.findNextCourse().get(0));
+		model.addAttribute("nextcourse", courseService.findNextCourse().get(1));
 		return "/display/class";
 	}
 	

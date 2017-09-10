@@ -1,5 +1,7 @@
 package com.se.Domain.Business;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +12,7 @@ import javax.persistence.Table;
 
 @Table(name = "room")
 @Entity
+@JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 public class Room {
 
     private int roomId;

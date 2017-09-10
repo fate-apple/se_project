@@ -41,6 +41,8 @@ jQuery(document).ready(function() {
 	$("#content2p").html(content2);	
 	var content3 = $("#content3").val();
 	$("#content3p").html(content3);
+	var information1 = $("#information1").val();
+	$("#information1p").html(information1);
 	
 	//填充课表
 	var username = $("#timetableUsername").val();

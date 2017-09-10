@@ -42,7 +42,7 @@ public class InformationServiceImpl implements InformationService {
     public Information findFirst(){
         List<Information>list = findAll();
         if(null!=list && list.size()>0){
-            return list.get(1);
+            return list.get(0);
         }
         return null;
     }

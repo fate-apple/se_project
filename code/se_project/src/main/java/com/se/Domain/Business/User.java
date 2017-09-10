@@ -1,5 +1,6 @@
 package com.se.Domain.Business;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.se.Domain.Auth.Role;
 
 import javax.persistence.*;
@@ -41,6 +42,7 @@ public class User {
 //        this.released_information  = released_information ;
 //    }
     @OneToMany(mappedBy = "informer",fetch = FetchType.EAGER)
+    @JsonManagedReference
     public Set<Information> getReleased_information() {
         return released_information;
     }

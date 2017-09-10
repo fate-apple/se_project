@@ -1,5 +1,9 @@
 package com.se.Domain.Business;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.HashSet;
@@ -7,6 +11,7 @@ import java.util.Set;
 
 @Table(name = "information")
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "information_id")
 public class Information {
 
 	private int information_id;
@@ -78,6 +83,7 @@ public class Information {
 	}
 	@ManyToOne
 	@JoinColumn(name="user_id")
+	@JsonBackReference
 	public User getInformer() {
 		return informer;
 	}
@@ -90,6 +96,7 @@ public class Information {
 			joinColumns = {@JoinColumn(name = "information_id", referencedColumnName = "information_id")},
 			inverseJoinColumns = {@JoinColumn(name = "class_id", referencedColumnName ="class_id")}
 	)
+
 	public Set<AdminClass> getReceivers() {
 		return receivers;
 	}
