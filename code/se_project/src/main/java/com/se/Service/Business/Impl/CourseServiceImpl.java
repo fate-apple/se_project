@@ -105,9 +105,10 @@ public class CourseServiceImpl implements CourseSerivce {
         User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         AdminClass adminClass=adminClassRepository.findByUsername(user.getUsername());
         Calendar now = Calendar.getInstance();
-        int weekday = now.get(Calendar.DATE);
-        Period period = periodService.findByDate(new Date()) != null?periodService.findByDate(new Date()):null;
-        Period nextperiod = periodRepository.findOne(period.getId()+1)!=null?periodRepository.findOne(period.getId()+1):null;
+        int weekday = now.get(Calendar.DAY_OF_WEEK);
+        Date date = new Date(System.currentTimeMillis());
+        Period period = periodService.findByDate(date);
+        Period nextperiod =periodRepository.findOne(period.getId()+1);
         List<Course>  list = new ArrayList<>();
         list.addAll(courseRepository.findByAdminClassAndWeekdayAndPeriod(adminClass,weekday,period));
         list.addAll(courseRepository.findByAdminClassAndWeekdayAndPeriod(adminClass,weekday,nextperiod));

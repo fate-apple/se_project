@@ -16,6 +16,7 @@ public class Period {
     private int id;
 
     @NotEmpty
+    @OrderBy
     private Time beginTime;
     private Time endTime;
     private Set<Course> courses = new HashSet<Course>();

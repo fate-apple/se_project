@@ -1,10 +1,14 @@
 package com.se.Domain.Business;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name="profile")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "profie_id")
 public class Profile {
     public static final Integer TYPE_IMAGE = 0;
     public static final Integer TYPE_VIDEO = 1;
