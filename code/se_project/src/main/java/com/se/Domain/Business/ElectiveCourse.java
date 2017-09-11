@@ -23,6 +23,8 @@ public class ElectiveCourse extends  Course {
         this.number = number;
     }
 
+
+
     public int getCapability() {
         return capability;
     }

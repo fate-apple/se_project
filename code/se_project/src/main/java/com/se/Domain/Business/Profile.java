@@ -79,5 +79,8 @@ public class Profile {
         this.display = display;
 
     }
+
+    public Profile() {
+    }
 }
 
