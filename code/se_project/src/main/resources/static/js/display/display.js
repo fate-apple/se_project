@@ -62,6 +62,12 @@ jQuery(document).ready(function() {
 		}
 	});
 	
-
+	$( '.prevInform' ).click( function(e) {
+		alert("上一条");
+	});
+	
+	$( '.nextInform' ).click( function(e) {
+		alert("下一条");
+	});
 //	window.setInterval("alert('test!');",1000);
 })

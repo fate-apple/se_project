@@ -39,7 +39,15 @@ public class DisplayController {
 	@Autowired
 	private CourseSerivce courseService;
 
-
+	@RequestMapping(value="/display/prevInform")
+	public  ResponseEntity<?> prevInform() {
+        return ResponseEntity.ok(1);
+	}
+	
+	@RequestMapping(value="/display/nextInform")
+	public  ResponseEntity<?> nextInform() {
+        return ResponseEntity.ok(1);
+	}
 	
 	@RequestMapping(value="/display/class")
 	public String initDisplay(Model model){
