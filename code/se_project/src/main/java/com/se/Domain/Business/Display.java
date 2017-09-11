@@ -55,7 +55,6 @@ public class Display {
 	}
 	//班级相册图片9张
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int getRoomId() {
 		return roomId;
 	}
