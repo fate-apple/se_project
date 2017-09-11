@@ -8,6 +8,8 @@
     <link th:href="@{/css/manage-style.css}" rel="stylesheet"/> 
     <link th:href="@{/css/loader-style.css}" rel="stylesheet"/>
     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/dataTables.bootstrap.css}" rel="stylesheet"/>
+    <link th:href="@{/css/dataTables.responsive.css}" rel="stylesheet"/>
     <link th:href="@{/bootstrap-select/css/bootstrap-select.min.css}" rel="stylesheet"/>
     <link th:href="@{/linearicons/style.css}" rel="stylesheet"/>
     <link th:href="@{/css/manage.css}" rel="stylesheet"/>
@@ -21,55 +23,56 @@
 	<div  th:replace="component/sidebar :: copy"></div>
 	<div class="wrap-fluid">
 		<div class="informationWrapper">
-			<h1>上传课件</h1>
-			<br/>
-			<div class="row" >				
-				<div class="col-md-3">
-					<select id="grade" class="selectpicker" multiple="multiple"  data-actions-box="true" title="选择年级">
-						<option value="1">高一</option>
-						<option value="2">高二</option>
-						<option value="3">高三</option>
-					</select>
-				</div>
-				<div class="col-md-3">
-					<select id="class" class="selectpicker" multiple="multiple"  data-actions-box="true" title="选择班级">
+			<h1>下载课件</h1>
 
-					</select>
-				</div>
-			</div>
 			<br/>
 			<br/>
-			<div class ="row">
+			<div class="row">
 				<div class="col-md-12">
-<!-- 					<form action="/upload" method="POST" enctype="multipart/form-data"> -->
-<!-- 					    文件：<input type="file" name="test"/> -->
-<!-- 					    <input type="submit" /> -->
-<!-- 					</form> -->
-					<form class="form-group" enctype="multipart/form-data" method="post">
-						<input type="file" class="inputfile" name="file" id="courseware1" />
-						<label for="courseware1" class="btn btn-primary">选择文件</label>
-						<input class="btn btn-primary uploadFile" type="button" value="修改" />
-					</form>
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="dataTable_wrapper">
+								<table class="table table-bordered table-hover"
+									id="dataTables">
+									<thead>
+										<tr >
+										    <th>文件</th>
+											<th>发布者</th>
+											<th>发布日期</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="course:${courses}" class="update" th:attr="data-id=${course.courseId},
+										data-roomid=${course.room.roomId},data-teacherid=${course.teacher.id},
+										data-subjectid=${course.subject.subjectId},data-periodid=${course.period.id},
+										data-adminclassid=${course.adminClass.id},data-weekday=${course.weekday}">
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- Ending Panel -->
 				</div>
 			</div>
-
-			
+			<!-- Ending Row -->
 		</div>
 	</div>
 	<script type="text/javascript" th:src="@{/js/preloader.js}"></script>
 	<script type="text/javascript" th:src="@{/bootstrap//js/bootstrap.min.js}"></script>
-	<script type="text/javascript" th:src="@{/ckeditor/ckeditor.js}"></script>
-	
+	<script type="text/javascript" th:src="@{/js/jquery.dataTables.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootbox.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/changeBg.js}"></script>
 	<script type="text/javascript" th:src="@{/js/load.js}"></script>
 	<script type="text/javascript" th:src="@{/js/main.js}"></script>
-	<script type="text/javascript" th:src="@{/js/panel.js}"></script>
-	<script type="text/javascript" th:src="@{/js/base/courseware.js}"></script>
 	<script type="text/javascript" th:src="@{/bootstrap-select/js/bootstrap-select.min.js}"></script>
-	<script type="text/javascript" th:src="@{/js/classSelect.js}"></script>
-	<script>
-		CKEDITOR.replace('informationEditor');
+	<script type="text/javascript" th:src="@{/js/manage/datatableCHN.js}"></script>
+<!-- 	<script type="text/javascript" th:src="@{/js/manage/resource.js}"></script> -->
 
-	</script>
+	
 </body>
 </html>

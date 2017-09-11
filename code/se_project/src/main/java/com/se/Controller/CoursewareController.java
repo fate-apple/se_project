@@ -15,9 +15,15 @@ public class CoursewareController {
         return "edu/courseware";
     }
     
+  //添加courseware，发布者后端获取，classes为接受者字符串需要处理一下
 	  @RequestMapping("/edu/addcourseware")
-	  public String addCourseware(@RequestParam MultipartFile file, Model model) {
+	  public String addCourseware(@RequestParam MultipartFile file,@RequestParam String classes ,Model model) {
 		  System.out.println(file.getOriginalFilename());
 	      return "edu/courseware";
+	  }
+	  
+	  @RequestMapping("base/courseware")
+	  public String initDownload(Model model){
+		  return "base/courseware";
 	  }
 }

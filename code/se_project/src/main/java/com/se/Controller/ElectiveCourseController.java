@@ -25,18 +25,22 @@ public class ElectiveCourseController {
       return "manage/electivecourse";
   }
   
+  @RequestMapping("/initselect")
+  public String initSelect(Model model) {
+      return "base/electivecourse";
+  }
+  
   @RequestMapping("/create")
-  public ResponseEntity<?> create(@RequestParam int roomId, @RequestParam(value = "adminClassId", required = false) Long adminClassId, @RequestParam(value = "virtualClassId", required = false) Long virtualClassId,
+  public ResponseEntity<?> create(@RequestParam int roomId, @RequestParam int capability,
                                   @RequestParam Long teacherId, @RequestParam int periodId, @RequestParam int subjectId, @RequestParam int weekday) {
-      Course course = courseSerivce.create(roomId, adminClassId, virtualClassId, teacherId, periodId, subjectId, weekday);
-      return ResponseEntity.ok(course);
+      
+      return ResponseEntity.ok(1);
   }
 
   @RequestMapping("/update")
-  public ResponseEntity<?> update(@RequestParam Long courseId, @RequestParam int roomId, @RequestParam Long adminClassId, @RequestParam Long virtualClassId,
+  public ResponseEntity<?> update(@RequestParam Long courseId, @RequestParam int roomId, @RequestParam int capability,
                                   @RequestParam Long teacherId, @RequestParam int periodId, @RequestParam int subjectId, @RequestParam int weekday) {
-      Course course = courseSerivce.update(courseId, roomId, adminClassId, virtualClassId, teacherId, periodId, subjectId, weekday);
-      return ResponseEntity.ok(course);
+      return ResponseEntity.ok(1);
   }
 
   @RequestMapping("/delete")

@@ -135,3 +135,14 @@ button.btn.dropdown-toggle.btn-default{
 	font-size:20px;
 	
 }
+
+.templatemo_frame{  
+    height: auto;  
+    word-wrap:break-word;  
+    word-break:break-all;  
+    overflow: auto;
+}
+
+#templatemo_information{
+	background-color:#ff6363;
+}
