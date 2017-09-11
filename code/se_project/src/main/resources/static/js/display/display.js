@@ -62,12 +62,45 @@ jQuery(document).ready(function() {
 		}
 	});
 	
-	$( '.prevInform' ).click( function(e) {
-		alert("上一条");
-	});
+//	$( '.prevInform' ).click( function(e) {
+//		alert("上一条");
+//	});
+//	
+//	$( '.nextInform' ).click( function(e) {
+//		alert("下一条");
+//	});
+	window.setInterval("updateTime();",1000);
 	
-	$( '.nextInform' ).click( function(e) {
-		alert("下一条");
-	});
-//	window.setInterval("alert('test!');",1000);
+
 })
+
+function updateTime(){
+	var mydate = new Date();
+	var day = mydate.getDay(); 
+	var date = mydate.toLocaleDateString(); 
+	var hours = mydate.getHours(); 
+	var minutes = mydate.getMinutes(); 
+	var seconds = mydate.getSeconds(); 
+	$("#tmptime").text(hours+":"+minutes+":"+seconds);
+	if(day==1){
+		$("#tmpweekday").text("星期一");
+	}
+	else if(day==2){
+		$("#tmpweekday").text("星期二");
+	}
+	else if(day==3){
+		$("#tmpweekday").text("星期三");
+	}	
+	else if(day==4){
+		$("#tmpweekday").text("星期四");
+	}	
+	else if(day==5){
+		$("#tmpweekday").text("星期五");
+	}	
+	else if(day==6){
+		$("#tmpweekday").text("星期六");
+	}	
+	else if(day==0){
+		$("#tmpweekday").text("星期日");
+	}
+}

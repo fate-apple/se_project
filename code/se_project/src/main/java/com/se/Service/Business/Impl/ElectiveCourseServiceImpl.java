@@ -6,12 +6,13 @@ import com.se.Service.Business.CourseSerivce;
 import com.se.Service.Business.ElectiveCourseService;
 import com.se.Service.Business.PeriodService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+@Service
 public class ElectiveCourseServiceImpl implements ElectiveCourseService {
     @Autowired
     RoomRepository roomRepository;
@@ -35,12 +36,12 @@ public class ElectiveCourseServiceImpl implements ElectiveCourseService {
     public ElectiveCourse create(int roomId, Long adminClassId, Long virtualClassId,
                                  Long teacherId, int periodId, int subjectId, int weekday, int capability){
         Room room = roomRepository.findOne(roomId);
-        AdminClass adminClass = adminClassRepository.findOne(adminClassId);
-        VirtualClass virtualClass = (virtualClassId != null)?virtualClassRepository.findOne(virtualClassId):null;
+//        AdminClass adminClass = adminClassRepository.findOne(adminClassId);
+//        VirtualClass virtualClass = (virtualClassId != null)?virtualClassRepository.findOne(virtualClassId):null;
         Teacher teacher = teacherRepository.findOne(teacherId);
         Period period = periodRepository.findOne(periodId);
         Subject subject = subjectRepository.findOne(subjectId);
-        ElectiveCourse electiveCourse = new ElectiveCourse(room,teacher,virtualClass,subject,period,adminClass,weekday,capability,0);
+        ElectiveCourse electiveCourse = new ElectiveCourse(room,teacher,null,subject,period,null,weekday,capability,0);
         return electiveCourseRepository.save(electiveCourse);
     }
 
@@ -50,7 +51,7 @@ public class ElectiveCourseServiceImpl implements ElectiveCourseService {
         return;
     }
     @Override
-    public Course update(Long courseId, int roomId, Long adminClassId, Long virtualClassId,
+    public ElectiveCourse update(Long courseId, int roomId, Long adminClassId, Long virtualClassId,
                          Long teacherId, int periodId, int subjectId, int weekday,int capability,int number) {
         Room room = roomRepository.findOne(roomId);
         AdminClass adminClass = (adminClassId != null) ? adminClassRepository.findOne(adminClassId) : null;
@@ -70,5 +71,10 @@ public class ElectiveCourseServiceImpl implements ElectiveCourseService {
         course.setNumber(number);
         return electiveCourseRepository.save(course);
     }
+
+	@Override
+	public List<ElectiveCourse> findAll() {
+		return electiveCourseRepository.findAll();
+	}
 
 }

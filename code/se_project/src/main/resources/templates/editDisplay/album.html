@@ -58,7 +58,7 @@
 			<!-- end row -->
 			<div class="row">
 				<div class="col-md-4 albumshow">
-					<img th:src="@{/img/display/se2.jpg}" class="image" id="realImg4" alt="图片4"/>
+					<img th:src="${display.pictures.get(3).resource}" class="image" id="realImg4" alt="图片4"/>
 					<br/>
 					<br/>
 					<form class="form-group" enctype="multipart/form-data">
@@ -68,7 +68,7 @@
 					</form>
 				</div>
 				<div class="col-md-4 albumshow">
-					<img th:src="@{/img/display/se6.jpg}" class="image" id="realImg5" alt="图片5"/>
+					<img th:src="${display.pictures.get(4).resource}" class="image" id="realImg5" alt="图片5"/>
 					<br/>
 					<br/>
 					<form class="form-group" enctype="multipart/form-data">
@@ -78,7 +78,7 @@
 					</form>
 				</div>
 				<div class="col-md-4 albumshow">
-					<img th:src="@{/img/display/se7.jpg}" class="image" id="realImg6" alt="图片6"/>
+					<img th:src="${display.pictures.get(5).resource}" class="image" id="realImg6" alt="图片6"/>
 					<br/>
 					<br/>
 					<form class="form-group" enctype="multipart/form-data">
@@ -92,7 +92,7 @@
 			<!-- end row -->
 			<div class="row">
 				<div class="col-md-4 albumshow">
-					<img th:src="@{/img/display/se9.jpg}" class="image" id="realImg7" alt="图片7"/>
+					<img th:src="${display.pictures.get(6).resource}" class="image" id="realImg7" alt="图片7"/>
 					<br/>
 					<br/>
 					<form class="form-group" enctype="multipart/form-data">
@@ -102,17 +102,17 @@
 					</form>
 				</div>
 				<div class="col-md-4 albumshow">
-					<img th:src="@{/img/display/se1.jpg}" class="image" id="realImg8" alt="图片8"/>
+					<img th:src="${display.pictures.get(7).resource}" class="image" id="realImg8" alt="图片8"/>
 					<br/>
 					<br/>
 					<form class="form-group" enctype="multipart/form-data">
 						<input type="file" class="inputfile" name="image8" id="image8" accept="image/jpeg"/>
-						<label for="image5" class="btn btn-primary">选择文件</label>
+						<label for="image8" class="btn btn-primary">选择文件</label>
 						<input class="btn btn-primary" type="button" value="修改" onclick="uploadimg(8)"/>
 					</form>
 				</div>
 				<div class="col-md-4 albumshow">
-					<img th:src="@{/img/display/se2.jpg}" class="image" id="realImg9" alt="图片9"/>
+					<img th:src="${display.pictures.get(8).resource}" class="image" id="realImg9" alt="图片9"/>
 					<br/>
 					<br/>
 					<form class="form-group" enctype="multipart/form-data">
