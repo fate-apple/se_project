@@ -1,7 +1,5 @@
 package com.se.Domain.Business;
 
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import javax.persistence.*;
 import java.util.Date;
 

@@ -65,9 +65,17 @@ public class DisplayController {
 		return "/editDisplay/bulletin";
 	}
 	
-	//修改introduction
+	//修改introduction(未完成)
 	@RequestMapping(value="/editDisplay/editIntroduction")
 	public String editIntroduction(@RequestParam String content,Model model){
+		model.addAttribute("display",displayService.findDisplay());
+		return "/editDisplay/introduction";
+	}
+	
+	//修改bulletin(未完成) id为1、2、3代表不同content和title
+	@RequestMapping(value="/editDisplay/editBulletin")
+	public String editBulletin(@RequestParam String content,@RequestParam String title,
+			@RequestParam int id,Model model){
 		model.addAttribute("display",displayService.findDisplay());
 		return "/editDisplay/introduction";
 	}

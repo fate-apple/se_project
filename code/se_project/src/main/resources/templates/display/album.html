@@ -24,9 +24,9 @@
             </div>
             <div class="col-md-3 col-sm-6 templatemo_leftgap">
 				<div class="templatemo_botgap templatemo_portfotopgap gallery-item">
-					<img th:src="@{/img/display/se3.jpg}" class="image" alt="gallery 1"/>
+					<img th:src="${display.pictures.get(0).resource}" class="image" alt="gallery 1"/>
 					<div class="overlay">
-						<a th:href="@{/img/display/se3.jpg}" data-rel="lightbox" class="fa fa-arrows-alt"></a>
+						<a th:href="${display.pictures.get(0).resource}" data-rel="lightbox" class="fa fa-arrows-alt"></a>
 					</div>
 				</div>				
                 <div class="templatemo_botgap templatemo_topgap gallery-item">
@@ -43,10 +43,44 @@
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 templatemo_leftgap">
-
+				<div class="templatemo_botgap templatemo_portfotopgap gallery-item">
+					<img th:src="@{/img/display/se3.jpg}" class="image" alt="gallery 4"/>
+					<div class="overlay">
+						<a th:href="@{/img/display/se3.jpg}" data-rel="lightbox" class="fa fa-arrows-alt"></a>
+					</div>
+				</div>				
+                <div class="templatemo_botgap templatemo_topgap gallery-item">
+					<img th:src="@{/img/display/se3.jpg}" class="image" alt="gallery 5"/>
+					<div class="overlay">
+						<a th:href="@{/img/display/se3.jpg}" data-rel="lightbox" class="fa fa-arrows-alt"></a>
+					</div>
+				</div>
+                <div class="templatemo_botgap templatemo_topgap gallery-item">
+             	   <img th:src="@{/img/display/se2.jpg}" class="image" alt="gallery 6"/>
+                   <div class="overlay">
+						<a th:href="@{/img/display/se2.jpg}" data-rel="lightbox" class="fa fa-arrows-alt"></a>
+					</div>
+                </div>
             </div>
             <div class="col-md-3 col-sm-6 templatemo_leftgap">
-            
+            	<div class="templatemo_botgap templatemo_portfotopgap gallery-item">
+					<img th:src="@{/img/display/se3.jpg}" class="image" alt="gallery 7"/>
+					<div class="overlay">
+						<a th:href="@{/img/display/se3.jpg}" data-rel="lightbox" class="fa fa-arrows-alt"></a>
+					</div>
+				</div>				
+                <div class="templatemo_botgap templatemo_topgap gallery-item">
+					<img th:src="@{/img/display/se3.jpg}" class="image" alt="gallery 8"/>
+					<div class="overlay">
+						<a th:href="@{/img/display/se3.jpg}" data-rel="lightbox" class="fa fa-arrows-alt"></a>
+					</div>
+				</div>
+                <div class="templatemo_botgap templatemo_topgap gallery-item">
+             	   <img th:src="@{/img/display/se2.jpg}" class="image" alt="gallery 9"/>
+                   <div class="overlay">
+						<a th:href="@{/img/display/se2.jpg}" data-rel="lightbox" class="fa fa-arrows-alt"></a>
+					</div>
+                </div>
             </div>
 		</div>
     </div>
