@@ -85,10 +85,10 @@ public class IndexController {
 //        return "base/timetable";
 //    }
 
-    @RequestMapping("/edu/courseware")
-    public String addCourseware(Model model) {
-        return "edu/courseware";
-    }
+//    @RequestMapping("/edu/courseware")
+//    public String addCourseware(Model model) {
+//        return "edu/courseware";
+//    }
 
 
 }
