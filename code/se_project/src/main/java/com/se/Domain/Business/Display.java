@@ -139,4 +139,7 @@ public class Display {
 		this.content3 = content3;
 //		this.pictures.add(new Profile(null,Profile.TYPE_IMAGE,"\\"+pictureDir+"\\"+"g0c0_"+toString(),new Date(System.currentTimeMillis()),this));
 	}
+
+	public Display() {
+	}
 }

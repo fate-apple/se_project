@@ -7,8 +7,9 @@ import com.se.Domain.Business.User;
 import com.se.Repository.Jpa.AdminClassRepository;
 import com.se.Repository.Jpa.DisplayRepository;
 import com.se.Repository.Jpa.UserRepository;
-import com.se.Repository.Mongo.ProfileRepository;
+import com.se.Repository.Jpa.ProfileRepository;
 import com.se.Service.Business.DisplayService;
+import com.se.Service.Business.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,9 +30,11 @@ public class DisplayServiceImpl implements DisplayService {
     ProfileRepository profileRepository;
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    ProfileService profileService;
     @Value("${staticPath}")
     String staticPath;
-    @Value("@{pictureDir}")
+    @Value("${pictureDir}")
     String pictureDir;
 String INTRODUCTION = "please add introduction here";
     String TITLE  = "please add title here";
@@ -41,7 +44,8 @@ String INTRODUCTION = "please add introduction here";
     public Display findDisplay(){
         try{
             AdminClass adminClass= adminClassRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-            Display display = displayRepository.findByRoomId(adminClass.getRoom().getRoomId());
+            int roomId = adminClass.getRoom().getRoomId();
+            Display display = displayRepository.findByRoomId(roomId);
             if (display==null) return findDefaultDisplay();
             return display;
         }catch (Exception e){
@@ -51,7 +55,7 @@ String INTRODUCTION = "please add introduction here";
     }
 
     @Override
-    public Profile UploadPictures(MultipartFile file,int id) throws IllegalStateException, IOException {
+    public Profile UploadPictures(MultipartFile file, int id) throws IllegalStateException, IOException {
         String contentType = file.getContentType();
         String username =SecurityContextHolder.getContext().getAuthentication().getName();
         String fileName = file.getOriginalFilename()+username+String.valueOf(id);
@@ -79,6 +83,7 @@ String INTRODUCTION = "please add introduction here";
         if(display==null){
 
             display = new Display(0,INTRODUCTION,TITLE,CONTENT,TITLE,CONTENT,TITLE,CONTENT);
+            profileService.initPictureDir();
             try{
             for (int i =0;i<LIMIT;i++){
             display.getPictures().add(profileRepository.findByResource("\\"+pictureDir+"\\default"+String.valueOf(i+1)));
