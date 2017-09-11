@@ -26,11 +26,22 @@ public class AdminClass extends User {
 
 
     private  List<Information> received_information ;
+    private Set<Courseware> received_courseware;
 //    @ManyToMany(cascade = CascadeType.ALL)
 //    @JoinTable(name = "information_receivers",
 //            joinColumns = {@JoinColumn(name = "class_id", referencedColumnName = "class_id")},
 //            inverseJoinColumns = {@JoinColumn(name = "information _id", referencedColumnName ="information_id")}
 //    )
+@ManyToMany(mappedBy = "receivers",fetch = FetchType.LAZY)
+@JsonIgnore
+    public Set<Courseware> getReceived_courseware() {
+        return received_courseware;
+    }
+
+    public void setReceived_courseware(Set<Courseware> received_courseware) {
+        this.received_courseware = received_courseware;
+    }
+
     @ManyToMany(mappedBy = "receivers",fetch = FetchType.LAZY)
     @JsonIgnore
     public List<Information> getReceived_information() {

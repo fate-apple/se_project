@@ -96,7 +96,6 @@ public class Information {
 			joinColumns = {@JoinColumn(name = "information_id", referencedColumnName = "information_id")},
 			inverseJoinColumns = {@JoinColumn(name = "class_id", referencedColumnName ="class_id")}
 	)
-
 	public Set<AdminClass> getReceivers() {
 		return receivers;
 	}

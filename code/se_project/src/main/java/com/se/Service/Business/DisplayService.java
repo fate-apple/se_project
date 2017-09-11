@@ -12,5 +12,6 @@ public interface DisplayService {
 
     Profile UploadPictures(MultipartFile file, int id) throws IllegalStateException, IOException;
 
-    Display findDefaultDisplay();
+
+    Display findDefaultDisplay(int roomId);
 }
