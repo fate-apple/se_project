@@ -1,5 +1,6 @@
 package com.se.Domain.Business;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -68,6 +69,7 @@ public class Course {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "room_id")
+    @JsonIgnore
     public Room getRoom() {
         return room;
     }
@@ -80,6 +82,7 @@ public class Course {
     //    @ManyToOne(fetch = FetchType.LAZY)
     @ManyToOne
     @JoinColumn(name = "teacher_id")
+    @JsonIgnore
     public Teacher getTeacher() {
         return teacher;
     }
@@ -91,6 +94,7 @@ public class Course {
     //    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "virtual_class_id")
     @ManyToOne
+    @JsonIgnore
     public VirtualClass getVirtualClass() {
         return virtualClass;
     }
@@ -103,6 +107,7 @@ public class Course {
     //    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "subject_id")
     @ManyToOne
+    @JsonIgnore
     public Subject getSubject() {
         return subject;
     }
@@ -114,6 +119,7 @@ public class Course {
     //    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "period_id")
     @ManyToOne
+    @JsonIgnore
     public Period getPeriod() {
         return period;
     }
@@ -124,6 +130,7 @@ public class Course {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "class_id")
+    @JsonIgnore
     public AdminClass getAdminClass() {
         return adminClass;
     }

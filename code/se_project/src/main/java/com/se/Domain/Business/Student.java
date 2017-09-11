@@ -1,5 +1,6 @@
 package com.se.Domain.Business;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.se.Domain.Auth.Role;
 
 import javax.persistence.*;
@@ -31,6 +32,7 @@ public class Student extends User {
 
     @ManyToOne
     @JoinColumn(name = "class_id")
+    @JsonIgnore
     public AdminClass getAdminClass() {
         return adminClass;
     }
@@ -41,6 +43,7 @@ public class Student extends User {
 
     @ManyToOne
     @JoinColumn(name = "virtual_class_id")
+    @JsonIgnore
     public VirtualClass getVirtualClass() {
         return virtualClass;
     }
@@ -69,6 +72,7 @@ public class Student extends User {
 //    @ManyToMany(mappedBy = "students")
 @ManyToMany(cascade = CascadeType.MERGE,targetEntity = ElectiveCourse.class)
 @JoinTable(name = "takes",joinColumns = {@JoinColumn(name="student_id")},inverseJoinColumns = {@JoinColumn(name="course_id")})
+@JsonIgnore
 //    @ManyToMany(cascade = CascadeType.MERGE,mappedBy = "students")
     public Set<ElectiveCourse> getElectiveCourses() {
         return electiveCourses;

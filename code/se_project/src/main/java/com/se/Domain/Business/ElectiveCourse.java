@@ -1,6 +1,9 @@
 package com.se.Domain.Business;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -42,6 +45,7 @@ public class ElectiveCourse extends  Course {
     }
     @ManyToMany(cascade = CascadeType.MERGE,targetEntity = Student.class)
     @JoinTable(name = "takes",joinColumns = {@JoinColumn(name="course_id",referencedColumnName = "course_id")},inverseJoinColumns = {@JoinColumn(name="student_id",referencedColumnName = "student_id")})
+    @JsonIgnore
     public Set<Student> getStudents() {
         return students;
     }

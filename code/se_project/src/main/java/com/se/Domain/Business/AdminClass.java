@@ -85,6 +85,7 @@ public class AdminClass extends User {
 
     @OneToOne
     @JoinColumn(name = "class_teacher_id")
+    @JsonIgnore
     public Teacher getTeacher() {
         return teacher;
     }

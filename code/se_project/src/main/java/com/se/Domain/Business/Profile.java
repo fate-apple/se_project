@@ -1,6 +1,9 @@
 package com.se.Domain.Business;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 
 @Entity
@@ -31,6 +34,7 @@ public class Profile {
     }
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "display_id")
+    @JsonIgnore
     public Display getDisplay() {
         return display;
     }
@@ -40,6 +44,7 @@ public class Profile {
     }
 
     @ManyToOne
+    @JsonIgnore
     public User getUser() {
         return user;
     }

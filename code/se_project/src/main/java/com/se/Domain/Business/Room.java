@@ -1,5 +1,6 @@
 package com.se.Domain.Business;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.Column;
@@ -88,6 +89,7 @@ public class Room {
 
     @OneToOne(mappedBy = "room")
 //    @OneToOne
+    @JsonIgnore
     public AdminClass getAdminClass() {
         return adminClass;
     }
