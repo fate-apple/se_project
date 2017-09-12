@@ -1,6 +1,7 @@
 package com.se.Controller;
 
 
+import com.se.Domain.Business.User;
 import com.se.Repository.Jpa.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,8 +62,10 @@ public class PublicAdvice {
             }
         }
         if (sec_username != null) {
+        	User user = userRepository.findByUsername(sec_username);
             model.addAttribute("sec_username", sec_username);
             model.addAttribute("sec_role", sec_role);
+            model.addAttribute("user",user);
         }
         return;
     }

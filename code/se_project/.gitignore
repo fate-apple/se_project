@@ -9,7 +9,7 @@ target/
 .settings
 .springBeans
 .gitignore
-.properties
+*.properties
 
 ### IntelliJ IDEA ###
 .idea
@@ -20,7 +20,7 @@ target/
 **/webapp/**
 *.ipr
 
-
+src/main/webapp/*
 ### NetBeans ###
 nbproject/private/
 build/

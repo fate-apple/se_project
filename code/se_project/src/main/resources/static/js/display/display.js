@@ -43,7 +43,8 @@ jQuery(document).ready(function() {
 	$("#content3p").html(content3);
 	var information1 = $("#information1").val();
 	$("#information1p").html(information1);
-	
+	var intr1 = $("#intr1").val();
+	$("#intr1p").html(intr1);
 	//填充课表
 	var username = $("#timetableUsername").val();
 	console.log(username);

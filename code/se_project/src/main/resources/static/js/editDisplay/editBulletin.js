@@ -1,8 +1,15 @@
 jQuery(document).ready(function() {
-    
+	var acontent1 = $("#bullet1").val();
+	var acontent2 = $("#bullet2").val();
+	var acontent3 = $("#bullet3").val();
+	CKEDITOR.instances.content1.setData(acontent1);
+	CKEDITOR.instances.content2.setData(acontent2);
+	CKEDITOR.instances.content3.setData(acontent3);
+	
     $("#editBulletin1").click(function(e) {
     	var content = CKEDITOR.instances.content1.getData();
     	var title = $("#title1").val();
+    	
     	var id = 1;
     	console.log(content,title);
    		jQuery.ajax({

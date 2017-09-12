@@ -45,21 +45,26 @@
 function uploadimg(id){
 	var formData = new FormData();
 	var name = $('#image'+id).val();
-	formData.append("file",$("#image"+id).get(0).files[0]); 
-	formData.append("id",id);
-	$.ajax({
-	    url: '/editDisplay/uploadAlbum',
-	    type: 'POST',
-	    cache: false,
-	    data: formData,
-	    processData: false,
-	    contentType: false, 
-	    success: function (returndata) {  
-            $("#realImg"+id).attr("src",returndata);
-//            $("#realImg1").html('<img scr="'+returndata+'" />');
-          },  
-        error: function (returndata) {  
-              alert("修改失败！");  
-         } 
-	});
+	if(!$("#image"+id).get(0).files[0])
+		alert("请选择文件");
+	else{
+		formData.append("file",$("#image"+id).get(0).files[0]); 
+		formData.append("id",id);
+		$.ajax({
+		    url: '/editDisplay/uploadAlbum',
+		    type: 'POST',
+		    cache: false,
+		    data: formData,
+		    processData: false,
+		    contentType: false, 
+		    success: function (returndata) {  
+	            $("#realImg"+id).attr("src",returndata);
+	            var $label = $('#image'+id).next( 'label' );
+	            var labelVal = $label.html("选择文件");
+	          },  
+	        error: function (returndata) {  
+	              alert("修改失败！");  
+	         } 
+		});
+	}
 }

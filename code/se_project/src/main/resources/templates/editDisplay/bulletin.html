@@ -22,6 +22,9 @@
 		<div class="informationWrapper">
 			<h1>编辑班级公告</h1>
 			<br/>
+			<input id="bullet1" th:value="${display.content1}" style="display:none;"/>
+			<input id="bullet2" th:value="${display.content2}" style="display:none;"/>
+			<input id="bullet3" th:value="${display.content3}" style="display:none;"/>
 			<ul class="nav nav-pills" id="myTab">
 			  <li class="active" ><a href="#bulletin1" data-toggle="tab">公告1</a></li>
 			  <li><a href="#bulletin2" data-toggle="tab">公告2</a></li>
@@ -39,7 +42,7 @@
 						<div class="col-md-12">
 							<h2>正文</h2>
 							<textarea id="content1" cols="20" rows="2" class="ckeditor">
-								<p id="content1p" th:text="${display.content1}"></p>
+<!-- 								<p id="content1p" th:text="${display.content1}"></p> -->
 							</textarea>
 							<br/>
 						</div>	
@@ -58,7 +61,7 @@
 						<div class="col-md-12">
 							<h2>正文</h2>
 							<textarea id="content2" cols="20" rows="2" class="ckeditor">
-								<p id="content2p" th:text="${display.content2}"></p>
+<!-- 								<p id="content2p" th:text="${display.content2}"></p> -->
 							</textarea>
 							<br/>
 						</div>	
@@ -77,7 +80,7 @@
 						<div class="col-md-12">
 							<h2>正文</h2>
 							<textarea id="content3" cols="20" rows="2" class="ckeditor">
-								<p id="content3p" th:text="${display.content3}"></p>
+<!-- 								<p id="content3p" th:text="${display.content3}"></p> -->
 							</textarea>
 							<br/>
 						</div>	
