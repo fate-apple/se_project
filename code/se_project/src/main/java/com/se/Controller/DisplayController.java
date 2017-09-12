@@ -87,7 +87,7 @@ public class DisplayController {
 			@RequestParam int id,Model model){
 		displayService.editContent(id,title);
 		displayService.editContent(id+3,content);
-		model.addAttribute("            display",displayService.findDisplay());
+		model.addAttribute("display",displayService.findDisplay());
 		return "/editDisplay/introduction";
 	}
 	

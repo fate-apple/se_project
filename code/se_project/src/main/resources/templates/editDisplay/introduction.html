@@ -24,8 +24,8 @@
 			<br/>
 			<div class="row">
 				<div class="col-md-12">
+					<input id="introduction1" th:value="${display.introduction}" style="display:none;"/>
 					<textarea id="informationEditor" cols="20" rows="2" class="ckeditor">
-						<p th:text="${display.introduction}"></p>
 					</textarea>
 					<br/>
 					<button type="button" id="editIntroduction" class="btn btn-default">

@@ -1,5 +1,6 @@
 jQuery(document).ready(function() {
-    
+    var inform = $("#introduction1").val();
+    CKEDITOR.instances.informationEditor.setData(inform);
     $("#editIntroduction").click(function(e) {
     	var content = CKEDITOR.instances.informationEditor.getData();
     	if(content==""){
