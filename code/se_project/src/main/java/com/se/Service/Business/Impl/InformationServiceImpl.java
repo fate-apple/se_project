@@ -5,6 +5,7 @@ import com.se.Domain.Business.Information;
 import com.se.Domain.Business.Pager;
 import com.se.Domain.Business.User;
 import com.se.Repository.Jpa.*;
+import com.se.Service.Business.AdminClassService;
 import com.se.Service.Business.InformationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -30,6 +31,8 @@ public class InformationServiceImpl implements InformationService {
     AdminClassRepository adminClassRepository;
     @Autowired
     StudentRepository studentRepository;
+    @Autowired
+    AdminClassService adminClassService;
     @Override
     public List<Information> findAll() {
         GrantedAuthority[] authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toArray(new GrantedAuthority[0]);
@@ -62,12 +65,13 @@ public class InformationServiceImpl implements InformationService {
 
     @Override
     public Information addInformation(String title, String content, String classes){
-        String[] classesStr = classes.split(",");
-        Set<AdminClass> receivers = new HashSet<AdminClass>();
-        for (String classStr : classesStr) {
-            receivers.add(adminClassRepository.findOne(Long.parseLong(classStr)));
-        }
-        User informer = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+//        String[] classesStr = classes.split(",");
+//        Set<AdminClass> receivers = new HashSet<AdminClass>();
+//        for (String classStr : classesStr) {
+//            receivers.add(adminClassRepository.findOne(Long.parseLong(classStr)));
+//        }
+        Set<AdminClass> receivers = adminClassService.findByClasses(classes);
+                User informer = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         Information information = new Information(new java.sql.Date(System.currentTimeMillis()),title,content,informer,receivers);
         return informationRepository.save(information);
 
