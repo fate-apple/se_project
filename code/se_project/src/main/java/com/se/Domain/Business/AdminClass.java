@@ -43,6 +43,7 @@ public class AdminClass extends User {
     }
 
     @ManyToMany(mappedBy = "receivers",fetch = FetchType.LAZY)
+    @OrderBy(value = "date")
     @JsonIgnore
     public List<Information> getReceived_information() {
         return received_information;
