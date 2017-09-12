@@ -2,9 +2,7 @@ package com.se.Controller;
 
 import com.se.Domain.Business.Courseware;
 import com.se.Service.Business.CoursewareService;
-import com.sun.deploy.net.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +29,7 @@ public class CoursewareController {
 	  @RequestMapping("/edu/addcourseware")
 	  public String addCourseware(@RequestParam MultipartFile file,@RequestParam String classes ,Model model) throws  Exception {
 			coursewareService.UploadCourseware(file,classes);
-		  System.out.println(file.getOriginalFilename());
+//		  System.out.println(file.getOriginalFilename());
 	      return "edu/courseware";
 	  }
 	  
@@ -44,9 +42,8 @@ public class CoursewareController {
 	  
 	  @RequestMapping("base/courseware/download")
 	  public String download(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, @RequestParam int id, Model model) throws Exception{
-		  System.out.println(id);
 		 Courseware courseware = coursewareService.download(httpServletRequest,httpServletResponse,id);
 		  model.addAttribute("courseware",courseware);
-    	return "base/courseware";
+    	return null;
 	  }
 }
