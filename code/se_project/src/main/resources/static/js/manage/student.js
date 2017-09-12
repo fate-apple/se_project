@@ -128,7 +128,7 @@ jQuery(document).ready(function() {
 						success : function(data) {
 							console.log(id);
 							bootbox.alert({
-								message :data,
+								message :"添加成功",
 								callback : function() {
 									location.reload();
 								}

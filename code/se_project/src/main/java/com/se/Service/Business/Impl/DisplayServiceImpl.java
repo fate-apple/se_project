@@ -60,7 +60,7 @@ String INTRODUCTION = "please add introduction here";
         String contentType = file.getContentType();
         String username =SecurityContextHolder.getContext().getAuthentication().getName();
         String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-        String fileName = username+"_"+String.valueOf(id)+suffix;
+        String fileName = username+"_"+String.valueOf(id)+".jpg";
 //        String filePath = request.getSession().getServletContext().getRealPath("/imgupload/");
 //		ClassLoader loader = Thread.currentThread().getContextClassLoader();
         String resourcePath = staticPath+pictureDir;
@@ -102,7 +102,7 @@ String INTRODUCTION = "please add introduction here";
             for (int i =0;i<LIMIT;i++){
 //                Profile defaultProfile =profileRepository.findByResource("\\"+pictureDir+"\\default"+String.valueOf(i+1));
 //                String resource  ="\\"+pictureDir+"\\"+username+"_"+String.valueOf(i+1)+defaultProfile.getResource().substring(defaultProfile.getResource().lastIndexOf("."));
-                String resource  ="\\"+pictureDir+"\\default"+String.valueOf(i+1)+".jpg";
+                String resource  ="\\"+pictureDir+"\\"+username+"_"+String.valueOf(i+1)+".jpg";
                 Profile profile = new Profile(null,Profile.TYPE_IMAGE,resource,new Date(System.currentTimeMillis()),display);
                 profileRepository.save(profile);
                 display.getPictures().add(profile);

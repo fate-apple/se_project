@@ -33,10 +33,12 @@
                 	<div class="templatemo_graybg" id="templatemo_information" 
                 	    style="background: #ff6363;">
                     	<div class="templatemo_frame" style="width:100%;">
-                			<h2 id="information1h" th:text="'【'+${information.date}+'】'+${information.title}">标题</h2>
-                    		<div class="clear"></div>
-                    		<input id="information1" th:value="${information.content}" style="display:none;"/>
-							<p id="information1p">通知一下</p>
+                    		<div th:unless="!${information}"> 
+	                			<h2 id="information1h" th:text="'【'+${information.date}+'】'+${information.title}">标题</h2>
+	                    		<div class="clear"></div>
+	                    		<input id="information1" th:value="${information.content}" style="display:none;"/>
+								<p id="information1p">通知一下</p>
+							</div>
 			            </div>
                	  	</div>
 				</div>
