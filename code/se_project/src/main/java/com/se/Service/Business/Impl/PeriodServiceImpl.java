@@ -23,7 +23,9 @@ public class PeriodServiceImpl implements PeriodService {
         Time date = new Time(utildate.getTime());
         List<Period> list = findAll();
         for(Period period : list){
-            if(date.before(period.getEndTime())&&date.after(period.getEndTime())){
+            boolean flag1 = date.before(period.getEndTime());
+            boolean flag2 = date.after(period.getBeginTime());
+            if(flag1&&flag2){
                 return period;
             }
         }

@@ -56,8 +56,8 @@ public class DisplayController {
 		model.addAttribute("periods", periods);
 		model.addAttribute("display",displayService.findDisplay());
 		model.addAttribute("information",informationService.findFirst());
-//		model.addAttribute("tmpcourse", courseService.findNextCourse().get(0));
-//		model.addAttribute("nextcourse", courseService.findNextCourse().get(1));
+		model.addAttribute("tmpcourse", courseService.findNextCourse().get(0));
+		model.addAttribute("nextcourse", courseService.findNextCourse().get(1));
 		return "/display/class";
 	}
 	
