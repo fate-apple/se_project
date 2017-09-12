@@ -81,7 +81,8 @@ public class ProfileServiceImpl implements ProfileService {
         String contentType = file.getContentType();
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-        String fileName = username + "_" + file.getOriginalFilename()+ suffix;
+//        String fileName = username + "_" + file.getOriginalFilename()+ suffix;
+        String fileName = username + "_" + file.getOriginalFilename();
 //        String filePath = request.getSession().getServletContext().getRealPath("/imgupload/");
 //		ClassLoader loader = Thread.currentThread().getContextClassLoader();
         String resourcePath = staticPath + coursewareDir;
@@ -92,7 +93,7 @@ public class ProfileServiceImpl implements ProfileService {
             targetFile.mkdirs();
         }
         file.transferTo(new File(filePath + "\\" + fileName));
-        String resource = "\\" + coursewareDir + "\\" + fileName;
+        String resource = "\\" + coursewareDir + "\\" +username+ "\\" + fileName;
         Courseware courseware= new Courseware(userRepository.findByUsername(username),
                 Profile.TYPE_IMAGE, resource, new Date(System.currentTimeMillis()), null,fileName,receivers);
         //修改已存在图片

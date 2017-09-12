@@ -9,6 +9,7 @@ import com.se.Repository.Jpa.UserRepository;
 import com.se.Service.Business.CoursewareService;
 import com.se.Service.Business.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -16,10 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 
 @Service
@@ -34,10 +32,24 @@ public class CoursewareServiceImpl implements CoursewareService {
     StudentRepository studentRepository;
     @Autowired
     ProfileService profileService;
+    @Value("${staticPath}")
+    String staticPath;
 
     @Override
     public Courseware UploadCourseware(MultipartFile file, String classes) throws IllegalStateException, IOException {
         return profileService.UploadCourseware(file,classes);
+    }
+    @Override
+    public Courseware download(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, int id) throws Exception{
+        Courseware courseware = coursewareRepository.findOne(id);
+        String resource =courseware.getResource();
+        int endIndex = resource.lastIndexOf("\\");
+//        String filePath = System.getProperty("user.dir") +staticPath+ resource.substring(1,endIndex);
+        String filePath =System.getProperty("user.dir") +staticPath+ resource.substring(1);
+        String filename = courseware.getName();
+        profileService.download(filename,filePath,httpServletRequest,httpServletResponse);
+        return courseware;
+
     }
 
     @Override
