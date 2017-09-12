@@ -107,7 +107,6 @@ public class Course {
     //    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "subject_id")
     @ManyToOne
-    @JsonIgnore
     public Subject getSubject() {
         return subject;
     }
@@ -119,7 +118,6 @@ public class Course {
     //    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "period_id")
     @ManyToOne
-    @JsonIgnore
     public Period getPeriod() {
         return period;
     }

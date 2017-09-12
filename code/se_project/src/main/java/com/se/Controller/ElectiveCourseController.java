@@ -57,4 +57,20 @@ public class ElectiveCourseController {
 	  courseSerivce.delete(courseId);
       return ResponseEntity.ok(null);
   }
+  
+  
+  //选课，记得判断number以及选完number+1
+  //如果已经选了一门课则返回选课失败，在函数initselect()中加入该生已经选择的课程
+  @RequestMapping("/select")
+  public ResponseEntity<?> select(@RequestParam Long courseId) {
+
+      return ResponseEntity.ok(null);
+  }
+  
+  //清除所有已选课程
+  @RequestMapping("/drop")
+  public String drop() {
+
+      return "redirect:/manage/electivecourse/initselect";
+  }
 }
