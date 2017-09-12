@@ -76,6 +76,7 @@ public class DisplayController {
 	//修改introduction(未完成)
 	@RequestMapping(value="/editDisplay/editIntroduction")
 	public String editIntroduction(@RequestParam String content,Model model){
+		displayService.editIntroduction(content);
 		model.addAttribute("display",displayService.findDisplay());
 		return "/editDisplay/introduction";
 	}
@@ -84,7 +85,9 @@ public class DisplayController {
 	@RequestMapping(value="/editDisplay/editBulletin")
 	public String editBulletin(@RequestParam String content,@RequestParam String title,
 			@RequestParam int id,Model model){
-		model.addAttribute("display",displayService.findDisplay());
+		displayService.editContent(id,title);
+		displayService.editContent(id+3,content);
+		model.addAttribute("            display",displayService.findDisplay());
 		return "/editDisplay/introduction";
 	}
 	

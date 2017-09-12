@@ -14,4 +14,9 @@ public interface DisplayService {
 
 
     Display findDefaultDisplay(int roomId);
+
+     Display setContent(int id, String content);
+     void editContent(int id,String content);
+
+    Display editIntroduction(String content);
 }

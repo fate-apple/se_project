@@ -33,7 +33,9 @@ public class InformationController {
     //添加information，发布者后端获取，classes为接受者字符串需要处理一下
     @RequestMapping("/base/addnews")
     public String addNews(@RequestParam String title,@RequestParam String content,@RequestParam String classes){
+        informationService.addInformation(title,content,classes);
     	System.out.println(title+content+classes);
     	return "base/news";
     }
+
 }

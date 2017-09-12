@@ -11,7 +11,11 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 @Service
 public class InformationServiceImpl implements InformationService {
     @Autowired
@@ -56,5 +60,17 @@ public class InformationServiceImpl implements InformationService {
         return null;
     }
 
+    @Override
+    public Information addInformation(String title, String content, String classes){
+        String[] classesStr = classes.split(",");
+        Set<AdminClass> receivers = new HashSet<AdminClass>();
+        for (String classStr : classesStr) {
+            receivers.add(adminClassRepository.findOne(Long.parseLong(classStr)));
+        }
+        User informer = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        Information information = new Information(new java.sql.Date(System.currentTimeMillis()),title,content,informer,receivers);
+        return informationRepository.save(information);
+
+    }
 
 }

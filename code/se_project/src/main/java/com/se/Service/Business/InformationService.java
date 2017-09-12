@@ -1,6 +1,5 @@
 package com.se.Service.Business;
 
-import com.se.Domain.Business.AdminClass;
 import com.se.Domain.Business.Information;
 import com.se.Domain.Business.Pager;
 import org.springframework.stereotype.Service;
@@ -19,4 +18,6 @@ public interface InformationService {
     Information findFirst();
 
     List<Information>findPage(Pager pager);
+
+    Information addInformation(String title, String content, String classes);
 }
