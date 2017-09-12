@@ -3,6 +3,7 @@ package com.se.Controller;
 import com.se.Domain.Business.Information;
 import com.se.Service.Business.InformationService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,8 @@ public class InformationController {
     
     @RequestMapping("/base/news")
     public String showNews(Model model){
-    	List<Information> informations = informationService.findAll();
+    	List<Information> informations = new ArrayList<Information>();
+    	informations = informationService.findAll();
     	model.addAttribute("informations", informations);
     	return "base/news";
     }

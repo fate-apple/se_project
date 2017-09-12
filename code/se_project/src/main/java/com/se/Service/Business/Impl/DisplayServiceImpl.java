@@ -74,9 +74,19 @@ String INTRODUCTION = "please add introduction here";
         String resource = "\\"+pictureDir+"\\"+fileName;
         Profile picture = new Profile(userRepository.findByUsername(username),
                 Profile.TYPE_IMAGE,resource, new Date(System.currentTimeMillis()), findDisplay());
-        profileRepository.save(picture);
-        Profile profile = profileRepository.findByResource("\\"+pictureDir+"\\default"+String.valueOf(id));
+        //修改已存在图片
+        Profile oldprofile = profileRepository.findByResource(resource);
+        if(oldprofile!=null){
+        	oldprofile.setResource(resource);
+        	oldprofile.setTime(new Date(System.currentTimeMillis()));
+        	profileRepository.save(oldprofile);
+        	return picture;
+        }
+        
+        //删除default图片
+        Profile profile = profileRepository.findByResource("\\"+pictureDir+"\\default"+String.valueOf(id)+".jpg");
         if(profile!=null) profileRepository.delete(profile.getProfile_id());
+        profileRepository.save(picture);
         return picture;
     }
     @Override
@@ -85,15 +95,15 @@ String INTRODUCTION = "please add introduction here";
         if(display==null){
 
             display = new Display(roomId,INTRODUCTION,TITLE,CONTENT,TITLE,CONTENT,TITLE,CONTENT);
-            displayRepository.save(display);
-            profileService.initPictureDir();
+            display= displayRepository.save(display);
+            //profileService.initPictureDir();
             String username =SecurityContextHolder.getContext().getAuthentication().getName();
             try{
             for (int i =0;i<LIMIT;i++){
-                Profile defaultProfile =profileRepository.findByResource("\\"+pictureDir+"\\default"+String.valueOf(i+1));
+//                Profile defaultProfile =profileRepository.findByResource("\\"+pictureDir+"\\default"+String.valueOf(i+1));
 //                String resource  ="\\"+pictureDir+"\\"+username+"_"+String.valueOf(i+1)+defaultProfile.getResource().substring(defaultProfile.getResource().lastIndexOf("."));
-//                String resource  ="\\"+pictureDir+"\\"+username+"_"+String.valueOf(i+1);
-                Profile profile = new Profile(null,Profile.TYPE_IMAGE,defaultProfile.getResource(),new Date(System.currentTimeMillis()),display);
+                String resource  ="\\"+pictureDir+"\\default"+String.valueOf(i+1)+".jpg";
+                Profile profile = new Profile(null,Profile.TYPE_IMAGE,resource,new Date(System.currentTimeMillis()),display);
                 profileRepository.save(profile);
                 display.getPictures().add(profile);
             }

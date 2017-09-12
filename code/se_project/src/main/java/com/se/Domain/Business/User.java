@@ -1,5 +1,7 @@
 package com.se.Domain.Business;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.se.Domain.Auth.Role;
 
@@ -25,6 +27,7 @@ public class User {
 
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @JsonBackReference
     public List<Profile> getProfiles() {
         return profiles;
     }
@@ -42,7 +45,7 @@ public class User {
 //        this.released_information  = released_information ;
 //    }
     @OneToMany(mappedBy = "informer",fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @JsonBackReference
     public Set<Information> getReleased_information() {
         return released_information;
     }
