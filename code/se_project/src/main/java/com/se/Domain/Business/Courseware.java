@@ -37,6 +37,12 @@ public class Courseware extends  Profile{
         this.name = name;
     }
 
+    public Courseware(User user, Integer typeId, String resource, Date time, Display display, String name, Set<AdminClass> receivers) {
+        super(user, typeId, resource, time, display);
+        this.name = name;
+        this.receivers = receivers;
+    }
+
     public Courseware() {
     }
 }

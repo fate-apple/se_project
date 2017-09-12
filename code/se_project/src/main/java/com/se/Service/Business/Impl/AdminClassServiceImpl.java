@@ -95,6 +95,15 @@ public class AdminClassServiceImpl implements AdminClassService{
         classes.put("classnum",classnum);
         System.out.println(classes);
         return classes;
+    }
 
+    @Override
+    public Set<AdminClass> findByClasses(String classes){
+        String[] classesStr = classes.split(",");
+        Set<AdminClass> receivers = new HashSet<AdminClass>();
+        for (String classStr : classesStr) {
+            receivers.add(adminClassRepository.findOne(Long.parseLong(classStr)));
+        }
+        return receivers;
     }
 }
