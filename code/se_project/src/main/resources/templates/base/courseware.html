@@ -42,13 +42,10 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="course:${courses}" class="update" th:attr="data-id=${course.courseId},
-										data-roomid=${course.room.roomId},data-teacherid=${course.teacher.id},
-										data-subjectid=${course.subject.subjectId},data-periodid=${course.period.id},
-										data-adminclassid=${course.adminClass.id},data-weekday=${course.weekday}">
-											<td></td>
-											<td></td>
-											<td></td>
+										<tr th:each="cw:${coursewares}" >
+											<td ><a th:text="${cw.name}" th:href="@{/base/courseware/download?id=}+${cw.profile_id}"></a></td>
+											<td th:text="${cw.user.fullname}"></td>
+											<td th:text="${cw.time}"></td>
 										</tr>
 									</tbody>
 								</table>

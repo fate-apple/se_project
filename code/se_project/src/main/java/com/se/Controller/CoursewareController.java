@@ -37,4 +37,12 @@ public class CoursewareController {
 		  model.addAttribute("coursewares",coursewares);
     	return "base/courseware";
 	  }
+	  
+	  @RequestMapping("base/courseware/download")
+	  public String download(@RequestParam int id,Model model){
+		  System.out.println(id);
+		  List<Courseware> coursewares = coursewareService.findAll();
+		  model.addAttribute("coursewares",coursewares);
+    	return "base/courseware";
+	  }
 }
