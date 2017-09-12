@@ -15,7 +15,7 @@ import java.util.Set;
 public class Information {
 
 	private int information_id;
-	@OrderBy
+//	@OrderBy
 	private Date date;
 	private String title;
 	private String content;
@@ -57,7 +57,7 @@ public class Information {
 	public void setInformation_id(int information_id) {
 		this.information_id = information_id;
 	}
-
+//@OrderBy
 	public Date getDate() {
 		return date;
 	}
