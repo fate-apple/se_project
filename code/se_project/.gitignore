@@ -9,7 +9,7 @@ target/
 .settings
 .springBeans
 .gitignore
-*.properties
+#*.properties
 
 ### IntelliJ IDEA ###
 .idea
@@ -19,6 +19,7 @@ target/
 *.jpg
 **/webapp/**
 *.ipr
+*.gitignore
 
 src/main/webapp/*
 ### NetBeans ###
