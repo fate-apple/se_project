@@ -24,7 +24,11 @@
 	<div class="wrap-fluid">
 		<div class="informationWrapper">
 			<h1>选课</h1>
-
+			<br/>
+			<p>您已经选择了 课</p>
+			<a th:href="@{drop}">
+				<button class="btn btn-primary">退出所有课程</button>
+			</a>
 			<br/>
 			<br/>
 			<div class="row">
@@ -35,7 +39,7 @@
 								<table class="table table-bordered table-hover"
 									id="dataTables">
 									<thead>
-										<tr >
+										<tr>
 										    <th>科目</th>
 											<th>任课老师</th>
 											<th>教室</th>
@@ -45,10 +49,8 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="course:${courses}" class="update" th:attr="data-id=${course.courseId},
-										data-roomid=${course.room.roomId},data-teacherid=${course.teacher.id},
-										data-subjectid=${course.subject.subjectId},data-periodid=${course.period.id},
-										data-weekday=${course.weekday}">
+										<tr th:each="course:${courses}" class="select" th:attr="data-id=${course.courseId},
+										data-capability=${course.capability},data-number=${course.number}">
 											<td th:text="${course.subject.title}"></td>
 											<td th:text="${course.teacher.fullname}"></td>
 											<td th:text="${course.room.buildingName}+' '+${course.room.roomNum}"></td>
@@ -76,10 +78,9 @@
 	<script type="text/javascript" th:src="@{/js/load.js}"></script>
 	<script type="text/javascript" th:src="@{/js/main.js}"></script>
 	<script type="text/javascript" th:src="@{/bootstrap-select/js/bootstrap-select.min.js}"></script>
-	<script type="text/javascript" th:src="@{/js/classSelect.js}"></script>
 	<script type="text/javascript" th:src="@{/js/manage/datatableCHN.js}"></script>
 <!-- 	<script type="text/javascript" th:src="@{/js/manage/resource.js}"></script> -->
-	<script type="text/javascript" th:src="@{/js/manage/electivecourse.js}"></script>
+	<script type="text/javascript" th:src="@{/js/base/elective.js}"></script>
 	
 </body>
 </html>
