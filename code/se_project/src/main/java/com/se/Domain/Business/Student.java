@@ -5,6 +5,7 @@ import com.se.Domain.Auth.Role;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 
@@ -19,7 +20,7 @@ public class Student extends User {
     private Boolean gender;
     private Date enrollDate;
 
-    private Set<ElectiveCourse> electiveCourses;
+    private List<ElectiveCourse> electiveCourses;
 
     public Student(String username, String password, Role role, String fullname, AdminClass adminClass, VirtualClass virtualClass, Boolean gender, Date enrollDate) {
         super(username, password, role, fullname);
@@ -74,11 +75,11 @@ public class Student extends User {
 @JoinTable(name = "takes",joinColumns = {@JoinColumn(name="student_id")},inverseJoinColumns = {@JoinColumn(name="course_id")})
 @JsonIgnore
 //    @ManyToMany(cascade = CascadeType.MERGE,mappedBy = "students")
-    public Set<ElectiveCourse> getElectiveCourses() {
+    public List<ElectiveCourse> getElectiveCourses() {
         return electiveCourses;
     }
 
-    public void setElectiveCourses(Set<ElectiveCourse> electiveCourses) {
+    public void setElectiveCourses(List<ElectiveCourse> electiveCourses) {
         this.electiveCourses = electiveCourses;
     }
 
