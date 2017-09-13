@@ -53,7 +53,7 @@ public class ElectiveCourseServiceImpl implements ElectiveCourseService {
     }
     @Override
     public ElectiveCourse update(Long courseId, int roomId, Long adminClassId, Long virtualClassId,
-                         Long teacherId, int periodId, int subjectId, int weekday,int capability,int number) {
+                         Long teacherId, int periodId, int subjectId, int weekday,int capability) {
         Room room = roomRepository.findOne(roomId);
         AdminClass adminClass = (adminClassId != null) ? adminClassRepository.findOne(adminClassId) : null;
         VirtualClass virtualClass = (virtualClassId != null) ? virtualClassRepository.findOne(virtualClassId) : null;
@@ -69,7 +69,6 @@ public class ElectiveCourseServiceImpl implements ElectiveCourseService {
         if(subject!=null) course.setSubject(subject);
         course.setWeekday(weekday);
         course.setCapability(capability);
-        course.setNumber(number);
         return electiveCourseRepository.save(course);
     }
 
@@ -95,6 +94,19 @@ public class ElectiveCourseServiceImpl implements ElectiveCourseService {
     @Override
     public List<ElectiveCourse> findAllSelected(){
         return studentRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getElectiveCourses();
+    }
+    @Override
+    @Transactional
+    public void dropAll(){
+        List<ElectiveCourse> selectedCourses = findAllSelected();
+        Student student = studentRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        try{
+        for(ElectiveCourse electiveCourse : selectedCourses){
+            electiveCourse.getStudents().remove(student);
+            electiveCourse.setNumber(electiveCourse.getNumber()-1);
+            electiveCourseRepository.save(electiveCourse);
+        }} catch (Exception e){e.printStackTrace();}
+        return;
     }
 
 }
