@@ -128,14 +128,14 @@ jQuery(document).ready(function() {
 						success : function(data) {
 							console.log(id);
 							bootbox.alert({
-								message :"添加成功",
+								message :data,
 								callback : function() {
 									location.reload();
 								}
 							});
 						},
 						error:function(data){
-							alert(data);
+							alert("添加失败");
 						}
 				});
 		}

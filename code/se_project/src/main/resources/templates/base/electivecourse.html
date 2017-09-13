@@ -25,7 +25,8 @@
 		<div class="informationWrapper">
 			<h1>选课</h1>
 			<br/>
-			<p>您已经选择了 课</p>
+			<div class="alert alert-info" th:if="${selectedCourses}" th:each="sc:${selectedCourses}" 
+				th:text="'您已经选择了'+${sc.subject.title}">您已经选择了 课</div>
 			<a th:href="@{drop}">
 				<button class="btn btn-primary">重置选课</button>
 			</a>
@@ -46,6 +47,7 @@
 											<th>选课人数</th>
 											<th>星期</th>
 											<th>时间</th>
+											<th>是否选择</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -57,6 +59,7 @@
 											<td th:text="${course.number}+'/'+${course.capability}"></td>
 											<td th:text="${course.weekday}"></td>
 											<td th:text="${course.period.beginTime}+'-'+${course.period.endTime}"></td>
+											<td th:each="sc:${selectedCourses}" th:text="${course.courseId}==${sc.courseId}?'√':'X'">√</td>
 										</tr>
 									</tbody>
 								</table>

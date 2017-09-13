@@ -45,8 +45,9 @@ public class StudentController {
                                     @RequestParam Long adminClassId, @RequestParam Long virtualClassId, @RequestParam Boolean gender, @RequestParam String enrollDate) {
 
         Student student = studentService.create(username, password, fullname, adminClassId, virtualClassId, gender, enrollDate);
-        if (student == null) return ResponseEntity.badRequest().body("create error");
-        return ResponseEntity.ok(student);
+        if (student == null) return ResponseEntity.ok("用户名重复，添加失败");
+//        return ResponseEntity.ok(student);
+        return ResponseEntity.ok("添加成功");
     }
 
     @RequestMapping("/update")

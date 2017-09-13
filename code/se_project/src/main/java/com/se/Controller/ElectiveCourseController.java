@@ -36,6 +36,7 @@ public class ElectiveCourseController {
 	  List<ElectiveCourse> courses = courseSerivce.findAll();
 	  List<ElectiveCourse> selectedCourses = courseSerivce.findAllSelected();
 	  model.addAttribute("courses",courses);
+	  model.addAttribute("selectedCourses",selectedCourses);
       return "base/electivecourse";
   }
   
