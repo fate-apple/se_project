@@ -75,12 +75,14 @@ jQuery(document).ready(function() {
 							id : id
 						},
 						success : function(data) {
-								bootbox.alert({
-								message :"删除成功",
-								callback : function() {
-									location.reload();
-								}
-							});
+								if(data!=null) {
+                                    bootbox.alert({
+                                        message: data,
+                                        callback: function () {
+                                            location.reload();
+                                        }
+                                    });
+                                }
 						}
 					});
 				}
@@ -116,7 +118,7 @@ jQuery(document).ready(function() {
 							success : function(data) {
 								console.log(id);
 								bootbox.alert({
-									message :"添加成功",
+									message :data,
 									callback : function() {
 										location.reload();
 									}
@@ -143,7 +145,7 @@ jQuery(document).ready(function() {
 						success : function(data) {
 							console.log(id);
 							bootbox.alert({
-								message :"修改成功",
+								message :data,
 								callback : function() {
 									location.reload();
 								}

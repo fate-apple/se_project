@@ -1,14 +1,13 @@
 package com.se.Domain.Business;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 
 @Table(name = "course")
 @Entity
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "courseId")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Course {
 
@@ -70,7 +69,7 @@ public class Course {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "room_id")
-    @JsonBackReference
+//    @JsonBackReference
     public Room getRoom() {
         return room;
     }
@@ -83,7 +82,7 @@ public class Course {
     //    @ManyToOne(fetch = FetchType.LAZY)
     @ManyToOne
     @JoinColumn(name = "teacher_id")
-    @JsonBackReference
+//    @JsonBackReference
     public Teacher getTeacher() {
         return teacher;
     }
@@ -95,7 +94,7 @@ public class Course {
     //    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "virtual_class_id")
     @ManyToOne
-    @JsonBackReference
+//    @JsonBackReference
     public VirtualClass getVirtualClass() {
         return virtualClass;
     }
@@ -129,7 +128,7 @@ public class Course {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "class_id")
-    @JsonBackReference
+//    @JsonBackReference
     public AdminClass getAdminClass() {
         return adminClass;
     }

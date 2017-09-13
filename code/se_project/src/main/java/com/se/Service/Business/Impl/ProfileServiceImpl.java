@@ -54,7 +54,8 @@ public class ProfileServiceImpl implements ProfileService {
             throws Exception {
 
         response.setCharacterEncoding("utf-8");
-        response.setContentType("multipart/form-data");
+//        response.setContentType("multipart/form-data");
+        response.setContentType("application/octet-stream;charset=UTF-8");
         response.setHeader("Content-Disposition", "attachment;fileName=" + fileName);
         try {
             //打开本地文件流

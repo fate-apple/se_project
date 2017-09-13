@@ -50,7 +50,7 @@ public class StudentController {
         Student student = studentService.create(username, password, fullname, adminClassId, virtualClassId, gender, enrollDate);
         if (student == null) return ResponseEntity.ok("用户名重复，添加失败");
 //        return ResponseEntity.ok(student);
-        return ResponseEntity.ok("添加成功");
+        return ResponseEntity.ok("success");
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -58,14 +58,14 @@ public class StudentController {
     public ResponseEntity<?> update(@RequestParam Long id, @RequestParam String username, @RequestParam String fullname,
                                     @RequestParam Long adminClassId, @RequestParam Long virtualClassId, @RequestParam Boolean gender, @RequestParam String enrollDate) {
         Student student = studentService.update(id, username, fullname, adminClassId, virtualClassId, gender, enrollDate);
-        return ResponseEntity.ok(student);
+        return ResponseEntity.ok("success");
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/delete")
     public ResponseEntity<?> delete(@RequestParam Long id) {
         studentService.delete(id);
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok("success");
     }
 }
 

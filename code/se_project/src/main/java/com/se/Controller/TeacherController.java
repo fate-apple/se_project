@@ -41,7 +41,7 @@ public class TeacherController {
 
         Teacher teacher = teacherService.create(username, password, fullname, roomId, gender);
         if (teacher == null) return ResponseEntity.badRequest().body("create error");
-        return ResponseEntity.ok(teacher);
+        return ResponseEntity.ok("success");
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -49,13 +49,13 @@ public class TeacherController {
     public ResponseEntity<?> update(@RequestParam Long id, @RequestParam String username, @RequestParam String fullname, @RequestParam int roomId, @RequestParam boolean gender) {
         System.out.println(id + username + fullname + roomId + gender);
         Teacher teacher = teacherService.update(id, username, fullname, roomId, gender);
-        return ResponseEntity.ok(teacher);
+        return ResponseEntity.ok("success");
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/delete")
     public ResponseEntity<?> delete(@RequestParam Long id) {
         teacherService.delete(id);
-        return ResponseEntity.ok(id);
+        return ResponseEntity.ok("成功了！！！");
     }
 }

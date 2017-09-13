@@ -12,9 +12,9 @@ jQuery(document).ready(function() {
 		success:function(data){
 //			alert(JSON.stringify(data));
 			for(var i=0;i<data.length;i++){
-//				$("#timetable tr:eq("+data[i].period.id+") td:eq("+data[i].weekday+")").append(data[i].subject.title+
-//						"("+data[i].teacher.fullname+")"+"<br/>");
-				$("#timetable tr:eq("+data[i].period.id+") td:eq("+data[i].weekday+")").append(data[i].subject.title+"<br/>");
+				$("#timetable tr:eq("+data[i].period.id+") td:eq("+data[i].weekday+")").append(data[i].subject.title+
+						"("+data[i].teacher.fullname+")"+"<br/>");
+// 				$("#timetable tr:eq("+data[i].period.id+") td:eq("+data[i].weekday+")").append(data[i].subject.title+"<br/>");
 			}
 		}
 	});

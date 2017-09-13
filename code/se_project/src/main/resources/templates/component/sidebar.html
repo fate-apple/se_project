@@ -51,7 +51,7 @@
                                 <span>浏览课件</span>
                             </a>
                         </li>
-                        <li th:unless="${sec_role}=='ROLE_CLASS'or${sec_role}=='ROLE_TEACHER'">
+                        <li th:if="${sec_role}=='ROLE_STUDENT'">
                             <a class="tooltip-tip ajax-load" th:href="@{/manage/electivecourse/initselect}" title="发布通知">
                                 <i class="icon-document-edit"></i>
                                 <span>选课</span>
