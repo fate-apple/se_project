@@ -2,16 +2,15 @@ package com.se.Service.Business.Impl;
 
 import com.se.Domain.Business.*;
 import com.se.Repository.Jpa.*;
-import com.se.Service.Business.CourseSerivce;
 import com.se.Service.Business.ElectiveCourseService;
 import com.se.Service.Business.PeriodService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Set;
+
 @Service
 public class ElectiveCourseServiceImpl implements ElectiveCourseService {
     @Autowired
@@ -32,6 +31,8 @@ public class ElectiveCourseServiceImpl implements ElectiveCourseService {
     ElectiveCourseRepository electiveCourseRepository;
     @Autowired
     PeriodService periodService;
+    int COURSENUM_LIMIT =1;
+
     @Override
     public ElectiveCourse create(int roomId, Long adminClassId, Long virtualClassId,
                                  Long teacherId, int periodId, int subjectId, int weekday, int capability){
@@ -76,5 +77,24 @@ public class ElectiveCourseServiceImpl implements ElectiveCourseService {
 	public List<ElectiveCourse> findAll() {
 		return electiveCourseRepository.findAll();
 	}
+@Override
+@Transactional
+    public Boolean select(Long courseId){
+        Student student = studentRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        ElectiveCourse electiveCourse = electiveCourseRepository.findOne(courseId);
+        if(electiveCourse.getNumber()<electiveCourse.getCapability()&&findAllSelected().size()<=COURSENUM_LIMIT){
+            electiveCourse.setNumber(electiveCourse.getNumber()+1);
+            electiveCourse.getStudents().add(student);
+            electiveCourseRepository.save(electiveCourse);
+            return true;
+        }
+        else{
+            return false;
+        }
+}
+    @Override
+    public List<ElectiveCourse> findAllSelected(){
+        return studentRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getElectiveCourses();
+    }
 
 }

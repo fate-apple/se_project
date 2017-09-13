@@ -2,7 +2,6 @@ package com.se.Service.Business;
 
 import java.util.List;
 
-import com.se.Domain.Business.Course;
 import com.se.Domain.Business.ElectiveCourse;
 
 public interface ElectiveCourseService {
@@ -15,4 +14,8 @@ public interface ElectiveCourseService {
                   Long teacherId, int periodId, int subjectId, int weekday, int capability, int number);
     
     List<ElectiveCourse> findAll();
+
+    Boolean select(Long courseId);
+
+    List<ElectiveCourse> findAllSelected();
 }

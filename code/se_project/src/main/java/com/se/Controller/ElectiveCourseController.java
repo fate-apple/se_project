@@ -34,6 +34,7 @@ public class ElectiveCourseController {
   @RequestMapping("/initselect")
   public String initSelect(Model model) {
 	  List<ElectiveCourse> courses = courseSerivce.findAll();
+	  List<ElectiveCourse> selectedCourses = courseSerivce.findAllSelected();
 	  model.addAttribute("courses",courses);
       return "base/electivecourse";
   }
@@ -62,8 +63,11 @@ public class ElectiveCourseController {
   //选课，记得判断number以及选完number+1
   //如果已经选了一门课则返回选课失败，在函数initselect()中加入该生已经选择的课程
   @RequestMapping("/select")
-  public ResponseEntity<?> select(@RequestParam Long courseId) {
-
+  public ResponseEntity<?> select(@RequestParam Long courseId,Model model) {
+       Boolean result =  courseSerivce.select(courseId);
+      if(!result) {
+          return ResponseEntity.badRequest().body("select failed");
+      }
       return ResponseEntity.ok(null);
   }
   

@@ -4,7 +4,9 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Table(name="electiveCourse")
@@ -15,7 +17,7 @@ public class ElectiveCourse extends  Course {
     private int capability;
     private int number;
 
-   private  Set<Student> students=new HashSet<Student>();
+   private List<Student> students=new ArrayList<>();
 
     public ElectiveCourse() {
     }
@@ -46,11 +48,11 @@ public class ElectiveCourse extends  Course {
     @ManyToMany(cascade = CascadeType.MERGE,targetEntity = Student.class)
     @JoinTable(name = "takes",joinColumns = {@JoinColumn(name="course_id",referencedColumnName = "course_id")},inverseJoinColumns = {@JoinColumn(name="student_id",referencedColumnName = "student_id")})
     @JsonIgnore
-    public Set<Student> getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
 //    @ManyToMany(cascade = CascadeType.MERGE,mappedBy = "electiveCourses")
-    public void setStudents(Set<Student> students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
     }
 }
