@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ public class ElectiveCourseController {
 //	@Autowired
 //	private PeriodRepository periodRepository;
 
+  @PreAuthorize("hasRole('ROLE_ADMIN')")
   @RequestMapping("")
   public String courseMangement(Model model) {
 	  List<ElectiveCourse> courses = courseSerivce.findAll();
@@ -31,6 +33,7 @@ public class ElectiveCourseController {
       return "manage/electivecourse";
   }
   
+  @PreAuthorize("hasRole('ROLE_STUDENT')")
   @RequestMapping("/initselect")
   public String initSelect(Model model) {
 	  List<ElectiveCourse> courses = courseSerivce.findAll();

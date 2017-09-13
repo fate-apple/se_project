@@ -19,7 +19,10 @@
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                         	<div class="form-top">
                         		<div class="form-top-left">
-                        			<h1><strong>您的访问出错了！</strong></h1>     		
+                        			
+                        			<h1><strong>您的访问出错了！</strong></h1>  
+                        			<h1 th:text="'错误状态码：'+${status}"></h1> 
+                        			<h3 th:text="'信息：'+${message}"></h3>
                         		</div>
                             </div>
                         </div>

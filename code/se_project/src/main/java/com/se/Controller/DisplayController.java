@@ -17,6 +17,7 @@ import com.se.Service.Business.InformationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,6 +50,7 @@ public class DisplayController {
         return ResponseEntity.ok(1);
 	}
 	
+	@PreAuthorize("hasRole('ROLE_CLASS')")
 	@RequestMapping(value="/display/class")
 	public String initDisplay(Model model){
 		List<Period> periods = new ArrayList<Period>();
@@ -61,19 +63,22 @@ public class DisplayController {
 		return "/display/class";
 	}
 	
+	@PreAuthorize("hasRole('ROLE_CLASS')")
 	@RequestMapping(value="/editDisplay/introduction")
 	public String initEditIntroduction(Model model){
 		model.addAttribute("display",displayService.findDisplay());
 		return "/editDisplay/introduction";
 	}
 	
+	@PreAuthorize("hasRole('ROLE_CLASS')")
 	@RequestMapping(value="/editDisplay/bulletin")
 	public String initEditBulletin(Model model){
 		model.addAttribute("display",displayService.findDisplay());
 		return "/editDisplay/bulletin";
 	}
 	
-	//修改introduction(未完成)
+	//修改introduction
+	@PreAuthorize("hasRole('ROLE_CLASS')")
 	@RequestMapping(value="/editDisplay/editIntroduction")
 	public String editIntroduction(@RequestParam String content,Model model){
 		displayService.editIntroduction(content);
@@ -81,7 +86,8 @@ public class DisplayController {
 		return "/editDisplay/introduction";
 	}
 	
-	//修改bulletin(未完成) id为1、2、3代表不同content和title
+	//修改bulletin id为1、2、3代表不同content和title
+	@PreAuthorize("hasRole('ROLE_CLASS')")
 	@RequestMapping(value="/editDisplay/editBulletin")
 	public String editBulletin(@RequestParam String content,@RequestParam String title,
 			@RequestParam int id,Model model){
@@ -91,6 +97,7 @@ public class DisplayController {
 		return "/editDisplay/introduction";
 	}
 	
+	@PreAuthorize("hasRole('ROLE_CLASS')")
 	@RequestMapping(value="/editDisplay/album")
 	public String initEditAlbum(Model model){
 		model.addAttribute("display",displayService.findDisplay());
