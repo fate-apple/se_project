@@ -43,6 +43,8 @@ public class InformationServiceImpl implements InformationService {
         if (role.equals( "ROLE_CLASS")) return adminClassRepository.findByUsername(user.getUsername()).getReceived_information();
         if (role.equals(  "ROLE_STUDENT"))
             return studentRepository.findByUsername(user.getUsername()).getAdminClass().getReceived_information();
+        if (role.equals("ROLE_ADMIN"))
+        	return informationRepository.findByInformer(user);
         return null;
     }
     @Override

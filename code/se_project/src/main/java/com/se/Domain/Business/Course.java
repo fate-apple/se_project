@@ -1,5 +1,6 @@
 package com.se.Domain.Business;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -69,7 +70,7 @@ public class Course {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "room_id")
-    @JsonIgnore
+    @JsonBackReference
     public Room getRoom() {
         return room;
     }
@@ -82,7 +83,7 @@ public class Course {
     //    @ManyToOne(fetch = FetchType.LAZY)
     @ManyToOne
     @JoinColumn(name = "teacher_id")
-    @JsonIgnore
+    @JsonBackReference
     public Teacher getTeacher() {
         return teacher;
     }
@@ -94,7 +95,7 @@ public class Course {
     //    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "virtual_class_id")
     @ManyToOne
-    @JsonIgnore
+    @JsonBackReference
     public VirtualClass getVirtualClass() {
         return virtualClass;
     }
@@ -128,7 +129,7 @@ public class Course {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "class_id")
-    @JsonIgnore
+    @JsonBackReference
     public AdminClass getAdminClass() {
         return adminClass;
     }
