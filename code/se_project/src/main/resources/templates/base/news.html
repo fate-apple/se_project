@@ -28,11 +28,15 @@
 						<div class="panel-heading">
 							<h3 th:text="'【'+${information.date}+'】'+${information.title}" class="panel-title">热烈庆祝开学————2017年9月1日</h3>
 							<div class="right">
-								<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-down"></i></button>
+								<button type="button" class="btn-toggle-collapse detail"
+									th:attr="data-id=${information.information_id},data-content=${information.content}">
+									<i class="lnr lnr-chevron-down"></i>
+								</button>
 							</div>
 						</div>
-						<div class="panel-body collapse">
-							<p th:text="${information.content}">今天开学啦！</p>
+						<div class="panel-body collapse" >
+							<p th:text="'发布者：'+${information.informer.fullname}"></p>
+							<p th:id="'inform'+${information.information_id}" th:text="${information.content}">今天开学啦！</p>
 						</div>
 					</div>
 					<!-- END PANEL DEFAULT -->
@@ -46,5 +50,6 @@
 	<script type="text/javascript" th:src="@{/js/load.js}"></script>
 	<script type="text/javascript" th:src="@{/js/main.js}"></script>
 	<script type="text/javascript" th:src="@{/js/panel.js}"></script>
+	<script type="text/javascript" th:src="@{/js/base/news.js}"></script>
 </body>
 </html>
