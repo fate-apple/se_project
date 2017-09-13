@@ -50,7 +50,7 @@ public class ElectiveCourseController {
   @RequestMapping("/update")
   public ResponseEntity<?> update(@RequestParam Long courseId, @RequestParam int roomId, @RequestParam int capability,
                                   @RequestParam Long teacherId, @RequestParam int periodId, @RequestParam int subjectId, @RequestParam int weekday) {
-	  ElectiveCourse course = (ElectiveCourse) courseSerivce.update(courseId, roomId, null, null, teacherId, periodId, subjectId, weekday, capability,0);
+	  ElectiveCourse course = (ElectiveCourse) courseSerivce.update(courseId, roomId, null, null, teacherId, periodId, subjectId, weekday, capability);
       return ResponseEntity.ok(course);
   }
 
@@ -75,7 +75,7 @@ public class ElectiveCourseController {
   //清除所有已选课程
   @RequestMapping("/drop")
   public String drop() {
-
+        courseSerivce.dropAll();
       return "redirect:/manage/electivecourse/initselect";
   }
 }

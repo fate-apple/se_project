@@ -75,8 +75,10 @@ public class StudentServiceImpl implements StudentService {
         if (userRepository.findByUsername(username) != null) {
             return null;
         }
-        AdminClass adminClass = adminClassRepository.findOne(adminClassId);
-        VirtualClass virtualClass = virtualClassRepository.findOne(virtualClassId);
+        AdminClass adminClass=null;
+        VirtualClass virtualClass = null;
+        if(adminClassId!=null) adminClass = adminClassRepository.findOne(adminClassId);
+        if(virtualClassId!=null) virtualClass= virtualClassRepository.findOne(virtualClassId);
         Student student = new Student(username, encoder.encode(password), role, fullname, adminClass, virtualClass, gender, date);
         studentRepository.save(student);
         return student;
