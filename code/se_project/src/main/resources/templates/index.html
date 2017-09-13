@@ -33,30 +33,30 @@
 			                    		<label class="sr-only" for="username">账号</label>
 			                        	<input type="text" name="username" placeholder="账号" class="form-username form-control" id="username"></input>
 			                        </div>
-			                        <div class="form-group" id="selectClass" style="display:none">
-			                    		<select class="form-control" id="selectGrade" data-type="horizontal" style="float: left; width:45%;" onchange="classChange()">
-			                    			<option value="1">高一</option>
-											<option value="2">高二</option>
-											<option value="3">高三</option>
-			                    		</select>
-			                    		<select  class="form-control" id="grade1" data-type="horizontal" style="float: right;width:45%;">
-											<option th:each="i:${#numbers.sequence(1,classes.get(0))}" th:inline="text" th:value="${i}"> 高一（[[${i}]]）班</option>
-			                    		</select>
-			                    		<select  class="form-control" id="grade2" data-type="horizontal" style="display:none;float: right;width:45%;">
-											<option th:each="i:${#numbers.sequence(1,classes.get(1))}" th:inline="text" th:value="${i}"> 高二（[[${i}]]）班</option>
-			                    		</select>
-			                    		<select  class="form-control" id="grade3" data-type="horizontal" style="display:none;float: right;width:45%;">
-											<option th:each="i:${#numbers.sequence(1,classes.get(2))}" th:inline="text" th:value="${i}"> 高三（[[${i}]]）班</option>
-			                    		</select>
-			                        </div>
+<!-- 			                        <div class="form-group" id="selectClass" style="display:none"> -->
+<!-- 			                    		<select class="form-control" id="selectGrade" data-type="horizontal" style="float: left; width:45%;" onchange="classChange()"> -->
+<!-- 			                    			<option value="1">高一</option> -->
+<!-- 											<option value="2">高二</option> -->
+<!-- 											<option value="3">高三</option> -->
+<!-- 			                    		</select> -->
+<!-- 			                    		<select  class="form-control" id="grade1" data-type="horizontal" style="float: right;width:45%;"> -->
+<!-- 											<option th:each="i:${#numbers.sequence(1,classes.get(0))}" th:inline="text" th:value="${i}"> 高一（[[${i}]]）班</option> -->
+<!-- 			                    		</select> -->
+<!-- 			                    		<select  class="form-control" id="grade2" data-type="horizontal" style="display:none;float: right;width:45%;"> -->
+<!-- 											<option th:each="i:${#numbers.sequence(1,classes.get(1))}" th:inline="text" th:value="${i}"> 高二（[[${i}]]）班</option> -->
+<!-- 			                    		</select> -->
+<!-- 			                    		<select  class="form-control" id="grade3" data-type="horizontal" style="display:none;float: right;width:45%;"> -->
+<!-- 											<option th:each="i:${#numbers.sequence(1,classes.get(2))}" th:inline="text" th:value="${i}"> 高三（[[${i}]]）班</option> -->
+<!-- 			                    		</select> -->
+<!-- 			                        </div> -->
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="password">密码</label>
 			                        	<input type="password" name="password" placeholder="密码" class="form-password form-control" id="password"></input>
 			                        </div>
-			                         <div class="form-group">
-			                        	<input type="radio" name="usertype" value="person" checked="checked" onclick="radioShow();"/>学号/工号登录
-			                        	<input type="radio" name="usertype" value="class" onclick="radioShow();"/>班级登录
-			                        </div>
+<!-- 			                         <div class="form-group"> -->
+<!-- 			                        	<input type="radio" name="usertype" value="person" checked="checked" onclick="radioShow();"/>学号/工号登录 -->
+<!-- 			                        	<input type="radio" name="usertype" value="class" onclick="radioShow();"/>班级登录 -->
+<!-- 			                        </div> -->
 			                        <button type="submit" class="btn" id="login">登录</button>
 			                    </form>
 		                    </div>

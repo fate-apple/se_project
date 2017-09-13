@@ -96,59 +96,65 @@ jQuery(document).ready(function() {
 		var roomid = $("#room").val();
 		var dataset = e.currentTarget.dataset;
 		var id = dataset.id;
-		if(id==""){
-			jQuery.ajax({
-					url : "/manage/teacher/create",
+		if(gender==""||fullname==""||username==""||roomid==""){
+			alert("请填写完整信息！");
+		}
+		else{
+			if(id==""){
+				jQuery.ajax({
+						url : "/manage/teacher/create",
+							processData : true,
+							dataType : "text",
+							method : "POST",
+							data:{
+								fullname : fullname,
+								username : username,
+								password : password,
+								roomId : roomid,
+								gender : gender
+							},
+							success : function(data) {
+								console.log(id);
+								bootbox.alert({
+									message :"添加成功",
+									callback : function() {
+										location.reload();
+									}
+								});
+							},
+							error:function(data){
+								alert("用户名重复");
+							}
+					});
+			}
+			else{
+				jQuery.ajax({
+					url : "/manage/teacher/update",
 						processData : true,
 						dataType : "text",
 						method : "POST",
 						data:{
+							id: id,
 							fullname : fullname,
 							username : username,
-							password : password,
 							roomId : roomid,
 							gender : gender
 						},
 						success : function(data) {
 							console.log(id);
 							bootbox.alert({
-								message :"添加成功",
+								message :"修改成功",
 								callback : function() {
 									location.reload();
 								}
 							});
 						},
 						error:function(data){
-							alert("用户名重复");
+							alert("修改失败");
 						}
 				});
-		}
-		else{
-			jQuery.ajax({
-				url : "/manage/teacher/update",
-					processData : true,
-					dataType : "text",
-					method : "POST",
-					data:{
-						id: id,
-						fullname : fullname,
-						username : username,
-						roomId : roomid,
-						gender : gender
-					},
-					success : function(data) {
-						console.log(id);
-						bootbox.alert({
-							message :"修改成功",
-							callback : function() {
-								location.reload();
-							}
-						});
-					},
-					error:function(data){
-						alert("修改失败");
-					}
-			});
+			}
+			//end else of id==""
 		}
 	});
 

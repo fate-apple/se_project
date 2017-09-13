@@ -25,10 +25,10 @@
         <div class="skin-part">
             <div id="tree-wrap">
                 <div class="side-bar">
-                    <ul class="topnav menu-left-nest">
+                    <ul th:unless="${sec_role}=='ROLE_ADMIN'" class="topnav menu-left-nest">
                         <li>
                             <a href="#" style="border-left:0px solid!important;" class="title-menu-left">
-                                <span >教务功能</span>
+                                <span >基本功能</span>
                                 
                             </a>
                         </li>
@@ -51,6 +51,19 @@
                                 <span>浏览课件</span>
                             </a>
                         </li>
+                        <li th:unless="${sec_role}=='ROLE_CLASS'or${sec_role}=='ROLE_TEACHER'">
+                            <a class="tooltip-tip ajax-load" th:href="@{/manage/electivecourse/initselect}" title="发布通知">
+                                <i class="icon-document-edit"></i>
+                                <span>选课</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul th:if="${sec_role}=='ROLE_TEACHER'or${sec_role}=='ROLE_ADMIN'" class="topnav menu-left-nest">
+                        <li>
+                            <a href="#" style="border-left:0px solid!important;" class="title-menu-left">
+                                <span >教务功能</span>      
+                            </a>
+                        </li>
                         <li>
                             <a class="tooltip-tip ajax-load" th:href="@{/edu/courseware}" title="上传课件">
                                 <i class="icon-upload"></i>
@@ -63,14 +76,8 @@
                                 <span>发布通知</span>
                             </a>
                         </li>
-                        <li>
-                            <a class="tooltip-tip ajax-load" th:href="@{/manage/electivecourse/initselect}" title="发布通知">
-                                <i class="icon-document-edit"></i>
-                                <span>选课</span>
-                            </a>
-                        </li>
                     </ul>
-                    <ul class="topnav menu-left-nest">
+                    <ul th:if="${sec_role}=='ROLE_CLASS'" class="topnav menu-left-nest">
                         <li>
                             <a href="#" style="border-left:0px solid!important;" class="title-menu-left">
                                 <span>展示功能</span>
@@ -101,7 +108,7 @@
                             </a>
                         </li>
                     </ul>
-                    <ul class="topnav menu-left-nest">
+                    <ul th:if="${sec_role}=='ROLE_ADMIN'" class="topnav menu-left-nest">
                         <li>
                             <a href="#" style="border-left:0px solid!important;" class="title-menu-left">
                                 <span>管理功能</span>
@@ -127,7 +134,7 @@
                         </li>
                         <li>
                             <a class="tooltip-tip ajax-load" th:href="@{/manage/electivecourse}" title="课程管理">
-                                <i class="icon-view-thumb"></i>
+                                <i class="icon-view-list-large"></i>
                                 <span>选修课管理</span>
                             </a>
                         </li>
@@ -137,12 +144,12 @@
                                 <span>教师管理</span>
                             </a>
                         </li>
-                       	<li>
-                            <a class="tooltip-tip " th:href="@{/manage/password}" title="密码重置">
-                                <i class="icon-user"></i>
-                                <span>密码重置</span>
-                            </a>
-                        </li>                         
+<!--                        	<li> -->
+<!--                             <a class="tooltip-tip " th:href="@{/manage/password}" title="密码重置"> -->
+<!--                                 <i class="icon-user"></i> -->
+<!--                                 <span>密码重置</span> -->
+<!--                             </a> -->
+<!--                         </li>                          -->
                     </ul>
                 </div>
             </div>

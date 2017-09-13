@@ -123,6 +123,7 @@ public class CourseServiceImpl implements CourseSerivce {
     User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
     if(role.matches("ROLE_STUDENT")) return findByStudentname(user.getUsername());
     if(role.matches("ROLE_CLASS")) return courseRepository.findByAdminClass(adminClassRepository.findByUsername(user.getUsername()));
+    if(role.equals("ROLE_TEACHER")) return courseRepository.findByTeacher(teacherRepository.findByUsername(user.getUsername()));
     return null;
 }
 

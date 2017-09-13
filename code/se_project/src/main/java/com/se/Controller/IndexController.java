@@ -7,6 +7,7 @@ import com.se.Service.Auth.AuthService;
 import com.se.Service.Business.AdminClassService;
 import com.se.Service.Business.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.authentication.UserServiceBeanDefinitionParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +37,7 @@ public class IndexController {
         return userService.findAll();
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/register")
     public String register(Model model) {
         return "register";
@@ -60,6 +62,7 @@ public class IndexController {
         return "redirect:/login";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/manage/course")
     public String courseMangement(Model model) {
         return "manage/course";

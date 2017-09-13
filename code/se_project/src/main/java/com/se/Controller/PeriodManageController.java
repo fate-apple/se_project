@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,7 +30,7 @@ public class PeriodManageController {
     @Autowired
     private PeriodRepository periodRepository;
 
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/getPeriod")
     public String getPeriod(Model model) {
         List<Period> periods = new ArrayList<Period>();
@@ -39,6 +40,7 @@ public class PeriodManageController {
     }
 
     //return message(add the case of "delete failed because of foreign key")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/deletePeriod")
     @ResponseBody
     public String deletePeriod(int periodId) {
@@ -47,6 +49,7 @@ public class PeriodManageController {
     }
 
     //add or update the period. If periodId==0 then add, else update
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/updatePeriod", method = RequestMethod.POST)
     public String updatePeriod(@RequestParam String beginTime,
                                @RequestParam String endTime, @RequestParam int periodId, Model model) {

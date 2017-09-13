@@ -13,23 +13,24 @@ jQuery(document).ready(function() {
     $("#login").click(function(e) {
     	var username;
     	var password;
-		var usertype;
-		var radio = document.getElementsByName("usertype"); 
-	    for (i=0; i<radio.length; i++) {  
-	        if (radio[i].checked) {  
-	            usertype = radio[i].value;  
-	        }  
-	    } 
-		if (usertype=="person"){
-			username = $("input[name='username']").val();
-		}
-		if (usertype=="class"){
-			var grade = document.getElementById("selectGrade").value;
-			var classNo = document.getElementById("grade"+grade).value;
-			username = "g"+grade+"c"+classNo;
-		}
+//		var usertype;
+//		var radio = document.getElementsByName("usertype"); 
+//	    for (i=0; i<radio.length; i++) {  
+//	        if (radio[i].checked) {  
+//	            usertype = radio[i].value;  
+//	        }  
+//	    } 
+//		if (usertype=="person"){
+//			username = $("input[name='username']").val();
+//		}
+//		if (usertype=="class"){
+//			var grade = document.getElementById("selectGrade").value;
+//			var classNo = document.getElementById("grade"+grade).value;
+//			username = "g"+grade+"c"+classNo;
+//		}
+		username = $("input[name='username']").val();
 		password = $("input[name='password']").val();
-		console.log(username, password,usertype);
+		console.log(username, password);
         $.ajax({
             type: "post",
             url: "/auth",

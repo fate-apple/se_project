@@ -6,6 +6,7 @@ import com.se.Repository.Jpa.VirtualClassRepository;
 import com.se.Service.Business.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,7 @@ public class StudentController {
     @Autowired
     private VirtualClassService virtualClassService;
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("")
     public String manage(Model model) {
         model.addAttribute("adminClasses", adminClassService.findAll());
@@ -40,6 +42,7 @@ public class StudentController {
         return "/manage/student";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/create")
     public ResponseEntity<?> create(@RequestParam String username, @RequestParam String password, @RequestParam String fullname,
                                     @RequestParam Long adminClassId, @RequestParam Long virtualClassId, @RequestParam Boolean gender, @RequestParam String enrollDate) {
@@ -50,6 +53,7 @@ public class StudentController {
         return ResponseEntity.ok("添加成功");
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/update")
     public ResponseEntity<?> update(@RequestParam Long id, @RequestParam String username, @RequestParam String fullname,
                                     @RequestParam Long adminClassId, @RequestParam Long virtualClassId, @RequestParam Boolean gender, @RequestParam String enrollDate) {
@@ -57,6 +61,7 @@ public class StudentController {
         return ResponseEntity.ok(student);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/delete")
     public ResponseEntity<?> delete(@RequestParam Long id) {
         studentService.delete(id);

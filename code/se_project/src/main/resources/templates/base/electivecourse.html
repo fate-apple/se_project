@@ -59,7 +59,7 @@
 											<td th:text="${course.number}+'/'+${course.capability}"></td>
 											<td th:text="${course.weekday}"></td>
 											<td th:text="${course.period.beginTime}+'-'+${course.period.endTime}"></td>
-											<td th:each="sc:${selectedCourses}" th:text="${course.courseId}==${sc.courseId}?'√':'X'">√</td>
+											<td th:text="${#lists.contains(selectedCourses,course)}?'√':'X'" >√</td>
 										</tr>
 									</tbody>
 								</table>

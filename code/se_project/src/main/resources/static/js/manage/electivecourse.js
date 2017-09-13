@@ -183,16 +183,52 @@ jQuery(document).ready(function() {
 		var periodId = $("#period").val();
 		var dataset = e.currentTarget.dataset;
 		var id = dataset.id;
-		if(id==""){
-			jQuery.ajax({
-					url : "/manage/electivecourse/create",
+		if (subjectId==""||teacherId==""||roomId==""||capability==""||weekday==""||periodId==""){
+			alert("请填写完整信息！");
+		}
+		else if(capability<0){
+			alert("限制人数错误！")
+		}
+		else{
+			if(id==""){
+				jQuery.ajax({
+						url : "/manage/electivecourse/create",
+							processData : true,
+							dataType : "text",
+							method : "POST",
+							data:{
+								subjectId:subjectId,
+								teacherId : teacherId,
+								capability : capability,
+								weekday : weekday,
+								periodId : periodId,
+								roomId : roomId
+							},
+							success : function(data) {
+								console.log(id);
+								bootbox.alert({
+									message :"添加成功",
+									callback : function() {
+										location.reload();
+									}
+								});
+							},
+							error:function(data){
+								alert("表格不完整，添加失败");
+							}
+					});
+			}
+			else{
+				jQuery.ajax({
+					url : "/manage/electivecourse/update",
 						processData : true,
 						dataType : "text",
 						method : "POST",
 						data:{
+							courseId : id,
 							subjectId:subjectId,
 							teacherId : teacherId,
-							capability : capability,
+							capability:capability,
 							weekday : weekday,
 							periodId : periodId,
 							roomId : roomId
@@ -200,45 +236,18 @@ jQuery(document).ready(function() {
 						success : function(data) {
 							console.log(id);
 							bootbox.alert({
-								message :"添加成功",
+								message :"修改成功",
 								callback : function() {
 									location.reload();
 								}
 							});
 						},
 						error:function(data){
-							alert("表格不完整，添加失败");
+							alert("修改失败");
 						}
 				});
-		}
-		else{
-			jQuery.ajax({
-				url : "/manage/electivecourse/update",
-					processData : true,
-					dataType : "text",
-					method : "POST",
-					data:{
-						courseId : id,
-						subjectId:subjectId,
-						teacherId : teacherId,
-						capability:capability,
-						weekday : weekday,
-						periodId : periodId,
-						roomId : roomId
-					},
-					success : function(data) {
-						console.log(id);
-						bootbox.alert({
-							message :"修改成功",
-							callback : function() {
-								location.reload();
-							}
-						});
-					},
-					error:function(data){
-						alert("修改失败");
-					}
-			});
+			}
+			//end else of id==""
 		}
 	});
     

@@ -110,63 +110,69 @@ jQuery(document).ready(function() {
 		var enrollDate = $("#enrollDate").val();
 		var dataset = e.currentTarget.dataset;
 		var id = dataset.id;
-		if(id==""){
-			jQuery.ajax({
-					url : "/manage/student/create",
+		if(gender==""||fullname==""||username==""||gender==""||adminClassId==""||enrollDate==""){
+			alert("请填写完整信息！");
+		}
+		else{
+			if(id==""){
+				jQuery.ajax({
+						url : "/manage/student/create",
+							processData : true,
+							dataType : "text",
+							method : "POST",
+							data:{
+								fullname : fullname,
+								username : username,
+								password : password,
+								adminClassId : adminClassId,
+								virtualClassId : virtualClassId,
+								gender : gender,
+								enrollDate : enrollDate
+							},
+							success : function(data) {
+								console.log(id);
+								bootbox.alert({
+									message :data,
+									callback : function() {
+										location.reload();
+									}
+								});
+							},
+							error:function(data){
+								alert("添加失败");
+							}
+					});
+			}
+			else{
+				jQuery.ajax({
+					url : "/manage/student/update",
 						processData : true,
 						dataType : "text",
 						method : "POST",
 						data:{
+							id: id,
 							fullname : fullname,
 							username : username,
-							password : password,
 							adminClassId : adminClassId,
 							virtualClassId : virtualClassId,
 							gender : gender,
 							enrollDate : enrollDate
 						},
 						success : function(data) {
-							console.log(id);
+							console.log(data);
 							bootbox.alert({
-								message :data,
+								message :"修改成功",
 								callback : function() {
 									location.reload();
 								}
 							});
 						},
 						error:function(data){
-							alert("添加失败");
+							alert("修改失败");
 						}
 				});
-		}
-		else{
-			jQuery.ajax({
-				url : "/manage/student/update",
-					processData : true,
-					dataType : "text",
-					method : "POST",
-					data:{
-						id: id,
-						fullname : fullname,
-						username : username,
-						adminClassId : adminClassId,
-						virtualClassId : virtualClassId,
-						gender : gender,
-						enrollDate : enrollDate
-					},
-					success : function(data) {
-						console.log(data);
-						bootbox.alert({
-							message :"修改成功",
-							callback : function() {
-								location.reload();
-							}
-						});
-					},
-					error:function(data){
-						alert("修改失败");
-					}
-			});
+			}
+			//end else of id==""
 		}
 	});
 	

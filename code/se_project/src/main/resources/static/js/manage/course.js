@@ -184,64 +184,72 @@ jQuery(document).ready(function() {
 		var dataset = e.currentTarget.dataset;
 		var id = dataset.id;
 		console.log(subjectId,teacherId,roomId,adminClassId,periodId,id);
-		if(id==""){
-			jQuery.ajax({
-					url : "/manage/course/create",
+		if(subjectId==""||teacherId==""||roomId==""||adminClassId==""||weekday==""||periodId==""){
+			alert("请填写完整信息！")
+		}
+		else{
+			if(id==""){
+				jQuery.ajax({
+						url : "/manage/course/create",
+							processData : true,
+							dataType : "text",
+							method : "POST",
+							data:{
+								subjectId:subjectId,
+								teacherId : teacherId,
+								adminClassId : adminClassId,
+								weekday : weekday,
+								periodId : periodId,
+								roomId : roomId
+							},
+							success : function(data) {
+								console.log(id);
+								bootbox.alert({
+									message :"添加成功",
+									callback : function() {
+										location.reload();
+									}
+								});
+							},
+							error:function(data){
+								alert("表格不完整，添加失败");
+							}
+					});
+			}
+			else{
+				jQuery.ajax({
+					url : "/manage/course/update",
 						processData : true,
 						dataType : "text",
 						method : "POST",
 						data:{
+							courseId : id,
 							subjectId:subjectId,
 							teacherId : teacherId,
 							adminClassId : adminClassId,
 							weekday : weekday,
 							periodId : periodId,
-							roomId : roomId
+							roomId : roomId,
+							virtualClassId : 1
 						},
 						success : function(data) {
 							console.log(id);
 							bootbox.alert({
-								message :"添加成功",
+								message :"修改成功",
 								callback : function() {
 									location.reload();
 								}
 							});
 						},
 						error:function(data){
-							alert("表格不完整，添加失败");
+							alert("修改失败");
 						}
 				});
+				//end ajax
+			}
+			//end else of id==""
 		}
-		else{
-			jQuery.ajax({
-				url : "/manage/course/update",
-					processData : true,
-					dataType : "text",
-					method : "POST",
-					data:{
-						courseId : id,
-						subjectId:subjectId,
-						teacherId : teacherId,
-						adminClassId : adminClassId,
-						weekday : weekday,
-						periodId : periodId,
-						roomId : roomId,
-						virtualClassId : 1
-					},
-					success : function(data) {
-						console.log(id);
-						bootbox.alert({
-							message :"修改成功",
-							callback : function() {
-								location.reload();
-							}
-						});
-					},
-					error:function(data){
-						alert("修改失败");
-					}
-			});
-		}
+		//end else
 	});
     
     $("#getCourse").click(function(e){

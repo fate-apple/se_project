@@ -29,6 +29,7 @@ public class ClassController {
     @Autowired
     private RoomService roomService;
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("")
     public String manage(Model model) {
         model.addAttribute("classes", adminClassService.findAll());
@@ -51,6 +52,7 @@ public class ClassController {
         return ResponseEntity.ok(adminClass);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/delete")
     public ResponseEntity<?> delete(@RequestParam Long id) {
         adminClassService.delete(id);

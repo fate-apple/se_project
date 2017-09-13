@@ -108,62 +108,70 @@ jQuery(document).ready(function() {
 		var roomid = $("#room").val();
 		var dataset = e.currentTarget.dataset;
 		var id = dataset.id;
-		if(id==""){
-			jQuery.ajax({
-				url : "/manage/class/create",
-					processData : true,
-					dataType : "text",
-					method : "POST",
-					data:{
-						fullname : fullname,
-						username : username,
-						password : password,
-						teacherId : teacherid,
-						roomId : roomid,
-						grade : grade
-					},
-					success : function(data) {
-						console.log(id);
-						bootbox.alert({
-							message :"添加成功",
-							callback : function() {
-								location.reload();
-							}
-						});
-					},
-					error:function(data){
-						alert("用户名重复");
-					}
-			});
+		if(grade==""||fullname==""||username==""||teacherid==""||roomid==""){
+			alert("请填写完整信息！")
 		}
 		else{
-			jQuery.ajax({
-				url : "/manage/class/update",
-					processData : true,
-					dataType : "text",
-					method : "POST",
-					data:{
-						id: id,
-						fullname : fullname,
-						username : username,
-						teacherId : teacherid,
-						roomId : roomid,
-						grade : grade
-					},
-					success : function(data) {
-						console.log(id);
-						bootbox.alert({
-							message :"修改成功",
-							callback : function() {
-								location.reload();
-							}
-						});
-					},
-					error:function(data){
-						alert("修改失败");
-					}
-			});
+			if(id==""){
+				jQuery.ajax({
+					url : "/manage/class/create",
+						processData : true,
+						dataType : "text",
+						method : "POST",
+						data:{
+							fullname : fullname,
+							username : username,
+							password : password,
+							teacherId : teacherid,
+							roomId : roomid,
+							grade : grade
+						},
+						success : function(data) {
+							console.log(id);
+							bootbox.alert({
+								message :"添加成功",
+								callback : function() {
+									location.reload();
+								}
+							});
+						},
+						error:function(data){
+							alert("用户名重复");
+						}
+				});
+			}
+			else{
+				jQuery.ajax({
+					url : "/manage/class/update",
+						processData : true,
+						dataType : "text",
+						method : "POST",
+						data:{
+							id: id,
+							fullname : fullname,
+							username : username,
+							teacherId : teacherid,
+							roomId : roomid,
+							grade : grade
+						},
+						success : function(data) {
+							console.log(id);
+							bootbox.alert({
+								message :"修改成功",
+								callback : function() {
+									location.reload();
+								}
+							});
+						},
+						error:function(data){
+							alert("修改失败");
+						}
+				});
+				//end ajax
+			}
+			//end else of id==""
 		}
+		//end else
 	});
     
 });

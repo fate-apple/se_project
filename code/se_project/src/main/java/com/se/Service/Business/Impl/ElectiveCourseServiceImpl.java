@@ -81,7 +81,7 @@ public class ElectiveCourseServiceImpl implements ElectiveCourseService {
     public Boolean select(Long courseId){
         Student student = studentRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         ElectiveCourse electiveCourse = electiveCourseRepository.findOne(courseId);
-        if(electiveCourse.getNumber()<electiveCourse.getCapability()&&findAllSelected().size()<=COURSENUM_LIMIT){
+        if(electiveCourse.getNumber()<electiveCourse.getCapability()&&findAllSelected().size()<COURSENUM_LIMIT){
             electiveCourse.setNumber(electiveCourse.getNumber()+1);
             electiveCourse.getStudents().add(student);
             electiveCourseRepository.save(electiveCourse);

@@ -7,6 +7,7 @@ import com.se.Service.Business.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,7 @@ public class TeacherController {
     @Autowired
     private RoomService roomService;
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("")
     public String manage(Model model) {
         model.addAttribute("teachers", teacherService.findAll());
@@ -33,6 +35,7 @@ public class TeacherController {
         return "/manage/teacher";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/create")
     public ResponseEntity<?> create(@RequestParam String username, @RequestParam String password, @RequestParam String fullname, @RequestParam int roomId, @RequestParam Boolean gender) {
 
@@ -41,6 +44,7 @@ public class TeacherController {
         return ResponseEntity.ok(teacher);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/update")
     public ResponseEntity<?> update(@RequestParam Long id, @RequestParam String username, @RequestParam String fullname, @RequestParam int roomId, @RequestParam boolean gender) {
         System.out.println(id + username + fullname + roomId + gender);
@@ -48,6 +52,7 @@ public class TeacherController {
         return ResponseEntity.ok(teacher);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/delete")
     public ResponseEntity<?> delete(@RequestParam Long id) {
         teacherService.delete(id);

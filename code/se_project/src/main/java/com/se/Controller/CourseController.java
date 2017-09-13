@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,6 +39,7 @@ public class CourseController {
 //	@Autowired
 //	private PeriodRepository periodRepository;
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/create")
     public ResponseEntity<?> create(@RequestParam int roomId, @RequestParam(value = "adminClassId", required = false) Long adminClassId, @RequestParam(value = "virtualClassId", required = false) Long virtualClassId,
                                     @RequestParam Long teacherId, @RequestParam int periodId, @RequestParam int subjectId, @RequestParam int weekday) {
@@ -45,6 +47,7 @@ public class CourseController {
         return ResponseEntity.ok(course);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/update")
     public ResponseEntity<?> update(@RequestParam Long courseId, @RequestParam int roomId, @RequestParam Long adminClassId, @RequestParam Long virtualClassId,
                                     @RequestParam Long teacherId, @RequestParam int periodId, @RequestParam int subjectId, @RequestParam int weekday) {
@@ -52,12 +55,14 @@ public class CourseController {
         return ResponseEntity.ok(course);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/delete")
     public ResponseEntity<?> delete(@RequestParam Long courseId) {
         courseSerivce.delete(courseId);
         return ResponseEntity.ok(null);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/findByAdminClass")
     public String findByAdminClasses(@RequestParam String adminClasses, Model model) {
         List<Course> courseList = courseSerivce.findByAdminClasses(adminClasses);
