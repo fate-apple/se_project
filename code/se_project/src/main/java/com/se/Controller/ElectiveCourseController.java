@@ -47,20 +47,20 @@ public class ElectiveCourseController {
   public ResponseEntity<?> create(@RequestParam int roomId, @RequestParam int capability,
                                   @RequestParam Long teacherId, @RequestParam int periodId, @RequestParam int subjectId, @RequestParam int weekday) {
       ElectiveCourse course =  courseSerivce.create(roomId, null, null, teacherId, periodId, subjectId, weekday,capability);
-      return ResponseEntity.ok(course);
+      return ResponseEntity.ok("success");
   }
 
   @RequestMapping("/update")
   public ResponseEntity<?> update(@RequestParam Long courseId, @RequestParam int roomId, @RequestParam int capability,
                                   @RequestParam Long teacherId, @RequestParam int periodId, @RequestParam int subjectId, @RequestParam int weekday) {
 	  ElectiveCourse course = (ElectiveCourse) courseSerivce.update(courseId, roomId, null, null, teacherId, periodId, subjectId, weekday, capability);
-      return ResponseEntity.ok(course);
+      return ResponseEntity.ok("success");
   }
 
   @RequestMapping("/delete")
   public ResponseEntity<?> delete(@RequestParam Long courseId) {
 	  courseSerivce.delete(courseId);
-      return ResponseEntity.ok(null);
+      return ResponseEntity.ok("success");
   }
   
   
@@ -72,7 +72,7 @@ public class ElectiveCourseController {
       if(!result) {
           return ResponseEntity.badRequest().body("select failed");
       }
-      return ResponseEntity.ok(null);
+      return ResponseEntity.ok("success");
   }
   
   //清除所有已选课程

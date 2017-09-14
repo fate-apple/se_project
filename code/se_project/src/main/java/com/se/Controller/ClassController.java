@@ -43,20 +43,20 @@ public class ClassController {
 
         AdminClass adminClass = adminClassService.create(username, password, fullname, teacherId, roomId, grade);
         if (adminClass == null) return ResponseEntity.badRequest().body("create error");
-        return ResponseEntity.ok(adminClass);
+    return ResponseEntity.ok("success");
     }
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/update")
     public ResponseEntity<?> update(@RequestParam Long id, @RequestParam String username, @RequestParam String fullname, @RequestParam Long teacherId, @RequestParam int roomId, @RequestParam int grade) {
         AdminClass adminClass = adminClassService.update(id, username, fullname, teacherId, roomId, grade);
-        return ResponseEntity.ok(adminClass);
+        return ResponseEntity.ok("success");
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/delete")
     public ResponseEntity<?> delete(@RequestParam Long id) {
         adminClassService.delete(id);
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok("success");
     }
 
 }
